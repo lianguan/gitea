@@ -233,7 +233,7 @@ export default {
       outputFilename: 'licenses.txt',
       outputWriter: ({dependencies}) => {
         const line = '-'.repeat(80);
-        const goJson = readFileSync('assets/go-licenses.json', 'utf8');
+        const goJson = readFileSync('bundles/go-licenses.json', 'utf8');
         const goModules = JSON.parse(goJson).map(({name, licenseText}) => {
           return {name, body: formatLicenseText(licenseText)};
         });

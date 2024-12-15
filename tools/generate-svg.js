@@ -59,7 +59,7 @@ async function main() {
 
   await Promise.all([
     ...processFiles('node_modules/@primer/octicons/build/svg/*-16.svg', {prefix: 'octicon'}),
-    ...processFiles('web_src/svg/*.svg'),
+    ...processFiles('bundles/svg/*.svg'),
     ...processFiles('public/assets/img/gitea.svg', {fullName: 'gitea-gitea'}),
   ]);
 }

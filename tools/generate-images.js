@@ -58,8 +58,8 @@ async function generate(svg, path, {size, bg}) {
 
 async function main() {
   const gitea = argv.slice(2).includes('gitea');
-  const logoSvg = await readFile(new URL('../assets/logo.svg', import.meta.url), 'utf8');
-  const faviconSvg = await readFile(new URL('../assets/favicon.svg', import.meta.url), 'utf8');
+  const logoSvg = await readFile(new URL('../bundles/logo.svg', import.meta.url), 'utf8');
+  const faviconSvg = await readFile(new URL('../bundles/favicon.svg', import.meta.url), 'utf8');
 
   await Promise.all([
     generate(logoSvg, '../public/assets/img/logo.svg', {size: 32}),

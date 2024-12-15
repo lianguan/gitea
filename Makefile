@@ -131,7 +131,7 @@ SVG_DEST_DIR := public/assets/img/svg
 AIR_TMP_DIR := .air
 
 GO_LICENSE_TMP_DIR := .go-licenses
-GO_LICENSE_FILE := assets/go-licenses.json
+GO_LICENSE_FILE := bundles/go-licenses.json
 
 TAGS ?=
 TAGS_SPLIT := $(subst $(COMMA), ,$(TAGS))
