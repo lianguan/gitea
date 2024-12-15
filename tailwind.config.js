@@ -20,8 +20,8 @@ function extractRootVars(css) {
 }
 
 const vars = extractRootVars([
-  readFileSync(new URL('web_src/css/themes/theme-gitea-light.css', import.meta.url), 'utf8'),
-  readFileSync(new URL('web_src/css/themes/theme-gitea-dark.css', import.meta.url), 'utf8'),
+  readFileSync(new URL('bundles/css/themes/theme-gitea-light.css', import.meta.url), 'utf8'),
+  readFileSync(new URL('bundles/css/themes/theme-gitea-dark.css', import.meta.url), 'utf8'),
 ].join('\n'));
 
 export default {
@@ -29,20 +29,20 @@ export default {
   important: true, // the frameworks are mixed together, so tailwind needs to override other framework's styles
   content: [
     isProduction && '!./templates/devtest/**/*',
-    isProduction && '!./web_src/js/standalone/devtest.js',
+    isProduction && '!./bundles/js/standalone/devtest.js',
     '!./templates/swagger/v1_json.tmpl',
     '!./templates/user/auth/oidc_wellknown.tmpl',
     '!**/*_test.go',
     '!./modules/{public,options,templates}/bindata.go',
     './{build,models,modules,routers,services}/**/*.go',
     './templates/**/*.tmpl',
-    './web_src/js/**/*.{ts,js,vue}',
+    './bundles/js/**/*.{ts,js,vue}',
   ].filter(Boolean),
   blocklist: [
     // classes that don't work without CSS variables from "@tailwind base" which we don't use
     'transform', 'shadow', 'ring', 'blur', 'grayscale', 'invert', '!invert', 'filter', '!filter',
     'backdrop-filter',
-    // we use double-class tw-hidden defined in web_src/css/helpers.css for increased specificity
+    // we use double-class tw-hidden defined in bundles/css/helpers.css for increased specificity
     'hidden',
     // unneeded classes
     '[-a-zA-Z:0-9_.]',

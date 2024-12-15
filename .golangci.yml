@@ -106,7 +106,7 @@ linters-settings:
 issues:
   max-issues-per-linter: 0
   max-same-issues: 0
-  exclude-dirs: [node_modules, public, web_src]
+  exclude-dirs: [node_modules, public, bundles]
   exclude-case-sensitive: true
   exclude-rules:
     - path: _test\.go

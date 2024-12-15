@@ -4,8 +4,8 @@ import {stringPlugin} from 'vite-string-plugin';
 
 export default defineConfig({
   test: {
-    include: ['web_src/**/*.test.ts'],
-    setupFiles: ['web_src/js/vitest.setup.ts'],
+    include: ['bundles/**/*.test.ts'],
+    setupFiles: ['bundles/js/vitest.setup.ts'],
     environment: 'happy-dom',
     testTimeout: 20000,
     open: false,

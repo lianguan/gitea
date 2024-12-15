@@ -26,7 +26,7 @@ const glob = (pattern) => fastGlob.sync(pattern, {
 });
 
 const themes = {};
-for (const path of glob('web_src/css/themes/*.css')) {
+for (const path of glob('bundles/css/themes/*.css')) {
   themes[parse(path).name] = [path];
 }
 
@@ -45,7 +45,7 @@ if ('ENABLE_SOURCEMAP' in env) {
 
 // define which web components we use for Vue to not interpret them as Vue components
 const webComponents = new Set([
-  // our own, in web_src/js/webcomponents
+  // our own, in bundles/js/webcomponents
   'overflow-menu',
   'origin-url',
   'absolute-date',
@@ -76,27 +76,27 @@ export default {
   mode: isProduction ? 'production' : 'development',
   entry: {
     index: [
-      fileURLToPath(new URL('web_src/js/globals.ts', import.meta.url)),
-      fileURLToPath(new URL('web_src/fomantic/build/semantic.js', import.meta.url)),
-      fileURLToPath(new URL('web_src/js/index.ts', import.meta.url)),
+      fileURLToPath(new URL('bundles/js/globals.ts', import.meta.url)),
+      fileURLToPath(new URL('bundles/fomantic/build/semantic.js', import.meta.url)),
+      fileURLToPath(new URL('bundles/js/index.ts', import.meta.url)),
       fileURLToPath(new URL('node_modules/easymde/dist/easymde.min.css', import.meta.url)),
-      fileURLToPath(new URL('web_src/fomantic/build/semantic.css', import.meta.url)),
-      fileURLToPath(new URL('web_src/css/index.css', import.meta.url)),
+      fileURLToPath(new URL('bundles/fomantic/build/semantic.css', import.meta.url)),
+      fileURLToPath(new URL('bundles/css/index.css', import.meta.url)),
     ],
     webcomponents: [
-      fileURLToPath(new URL('web_src/js/webcomponents/index.ts', import.meta.url)),
+      fileURLToPath(new URL('bundles/js/webcomponents/index.ts', import.meta.url)),
     ],
     swagger: [
-      fileURLToPath(new URL('web_src/js/standalone/swagger.ts', import.meta.url)),
-      fileURLToPath(new URL('web_src/css/standalone/swagger.css', import.meta.url)),
+      fileURLToPath(new URL('bundles/js/standalone/swagger.ts', import.meta.url)),
+      fileURLToPath(new URL('bundles/css/standalone/swagger.css', import.meta.url)),
     ],
     'eventsource.sharedworker': [
-      fileURLToPath(new URL('web_src/js/features/eventsource.sharedworker.ts', import.meta.url)),
+      fileURLToPath(new URL('bundles/js/features/eventsource.sharedworker.ts', import.meta.url)),
     ],
     ...(!isProduction && {
       devtest: [
-        fileURLToPath(new URL('web_src/js/standalone/devtest.ts', import.meta.url)),
-        fileURLToPath(new URL('web_src/css/standalone/devtest.css', import.meta.url)),
+        fileURLToPath(new URL('bundles/js/standalone/devtest.ts', import.meta.url)),
+        fileURLToPath(new URL('bundles/css/standalone/devtest.css', import.meta.url)),
       ],
     }),
     ...themes,

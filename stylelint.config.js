@@ -1,9 +1,9 @@
 import {fileURLToPath} from 'node:url';
 
 const cssVarFiles = [
-  fileURLToPath(new URL('web_src/css/base.css', import.meta.url)),
-  fileURLToPath(new URL('web_src/css/themes/theme-gitea-light.css', import.meta.url)),
-  fileURLToPath(new URL('web_src/css/themes/theme-gitea-dark.css', import.meta.url)),
+  fileURLToPath(new URL('bundles/css/base.css', import.meta.url)),
+  fileURLToPath(new URL('bundles/css/themes/theme-gitea-light.css', import.meta.url)),
+  fileURLToPath(new URL('bundles/css/themes/theme-gitea-dark.css', import.meta.url)),
 ];
 
 /** @type {import('stylelint').Config} */
@@ -16,7 +16,7 @@ export default {
   ],
   ignoreFiles: [
     '**/*.go',
-    '/web_src/fomantic',
+    '/bundles/fomantic',
   ],
   overrides: [
     {

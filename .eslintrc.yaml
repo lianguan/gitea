@@ -2,8 +2,8 @@ root: true
 reportUnusedDisableDirectives: true
 
 ignorePatterns:
-  - /web_src/js/vendor
-  - /web_src/fomantic
+  - /bundles/js/vendor
+  - /bundles/fomantic
   - /public/assets/js
 
 parser: "@typescript-eslint/parser"
@@ -43,15 +43,15 @@ env:
   node: true
 
 overrides:
-  - files: ["web_src/**/*"]
+  - files: ["bundles/**/*"]
     globals:
       __webpack_public_path__: true
       process: false # https://github.com/webpack/webpack/issues/15833
-  - files: ["web_src/**/*", "docs/**/*"]
+  - files: ["bundles/**/*", "docs/**/*"]
     env:
       browser: true
       node: false
-  - files: ["web_src/**/*worker.*"]
+  - files: ["bundles/**/*worker.*"]
     env:
       worker: true
     rules:
@@ -64,10 +64,10 @@ overrides:
       import-x/no-unused-modules: [0]
       "@typescript-eslint/consistent-type-definitions": [0]
       "@typescript-eslint/consistent-type-imports": [0]
-  - files: ["web_src/js/types.ts"]
+  - files: ["bundles/js/types.ts"]
     rules:
       import-x/no-unused-modules: [0]
-  - files: ["**/*.test.*", "web_src/js/test/setup.ts"]
+  - files: ["**/*.test.*", "bundles/js/test/setup.ts"]
     env:
       vitest-globals/env: true
     rules:
@@ -120,7 +120,7 @@ overrides:
       vitest/valid-describe-callback: [2]
       vitest/valid-expect: [2]
       vitest/valid-title: [2]
-  - files: ["web_src/js/modules/fetch.ts", "web_src/js/standalone/**/*"]
+  - files: ["bundles/js/modules/fetch.ts", "bundles/js/standalone/**/*"]
     rules:
       no-restricted-syntax: [2, WithStatement, ForInStatement, LabeledStatement, SequenceExpression]
   - files: ["**/*.vue"]

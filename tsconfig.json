@@ -3,7 +3,7 @@
     "*",
     "tests/e2e/**/*",
     "tools/**/*",
-    "web_src/js/**/*",
+    "bundles/js/**/*",
   ],
   "compilerOptions": {
     "target": "es2020",
@@ -28,7 +28,7 @@
     "sourceMap": true,
     "types": [
       "vitest/globals",
-      "./web_src/js/globals.d.ts",
+      "./bundles/js/globals.d.ts",
     ],
   }
 }

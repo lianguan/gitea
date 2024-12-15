@@ -47,7 +47,7 @@ interface Element {
 type Writable<T> = { -readonly [K in keyof T]: T[K] };
 
 interface Window {
-  config: import('./web_src/js/types.ts').Config;
+  config: import('./bundles/js/types.ts').Config;
   $: typeof import('@types/jquery'),
   jQuery: typeof import('@types/jquery'),
   htmx: Omit<typeof import('htmx.org/dist/htmx.esm.js').default, 'config'> & {
