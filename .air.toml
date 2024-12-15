@@ -8,10 +8,10 @@ bin = "gitea"
 delay = 2000
 include_ext = ["go", "tmpl"]
 include_file = ["main.go"]
-include_dir = ["app", "models", "modules", "options", "services"]
+include_dir = ["app", "database", models", "modules", "options", "services"]
 exclude_dir = [
   "models/fixtures",
-  "models/migrations/fixtures",
+  "database/migrations/fixtures",
   "modules/avatar/identicon/testdata",
   "modules/avatar/testdata",
   "modules/git/tests",

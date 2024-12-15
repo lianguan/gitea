@@ -18,8 +18,8 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/migrations"
-	migrate_base "code.gitea.io/gitea/models/migrations/base"
+	"code.gitea.io/gitea/database/migrations"
+	migrate_base "code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/models/unittest"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/charset"

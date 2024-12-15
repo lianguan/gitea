@@ -12,8 +12,8 @@ import (
 	"text/tabwriter"
 
 	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/migrations"
-	migrate_base "code.gitea.io/gitea/models/migrations/base"
+	"code.gitea.io/gitea/database/migrations"
+	migrate_base "code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"testing"
 
-	"code.gitea.io/gitea/cmd"
+	"code.gitea.io/gitea/app/cmd"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
 

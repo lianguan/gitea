@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/models/unittest"
 	"code.gitea.io/gitea/modules/setting"
 
-	_ "code.gitea.io/gitea/cmd" // for TestPrimaryKeys
+	_ "code.gitea.io/gitea/app/cmd" // for TestPrimaryKeys
 
 	"github.com/stretchr/testify/assert"
 )

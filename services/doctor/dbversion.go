@@ -7,7 +7,7 @@ import (
 	"context"
 
 	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/migrations"
+	"code.gitea.io/gitea/database/migrations"
 	"code.gitea.io/gitea/modules/log"
 )
 

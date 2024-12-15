@@ -17,6 +17,8 @@ _test
 .vscode
 __debug_bin*
 
+\.\!*
+
 *.cgo1.go
 *.cgo2.c
 _cgo_defun.c
@@ -56,7 +58,7 @@ cpu.out
 /dist
 /custom/*
 !/custom/conf/app.example.ini
-/data
+/storage
 /indexers
 /log
 /public/assets/img/avatar
