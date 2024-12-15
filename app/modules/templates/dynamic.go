@@ -11,5 +11,5 @@ import (
 )
 
 func BuiltinAssets() *assetfs.Layer {
-	return assetfs.Local("builtin(static)", setting.StaticRootPath, "templates")
+	return assetfs.Local("builtin(static)", setting.StaticRootPath, "bundles", "templates")
 }

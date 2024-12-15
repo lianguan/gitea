@@ -16,7 +16,7 @@ func AssetFS() *assetfs.LayeredFS {
 }
 
 func CustomAssets() *assetfs.Layer {
-	return assetfs.Local("custom", setting.CustomPath, "templates")
+	return assetfs.Local("custom", setting.CustomPath, "bundles/templates")
 }
 
 func ListWebTemplateAssetNames(assets *assetfs.LayeredFS) ([]string, error) {

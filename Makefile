@@ -146,8 +146,8 @@ WEB_DIRS := bundles/js bundles/css
 
 ESLINT_FILES := bundles/js tools *.js *.ts tests/e2e
 STYLELINT_FILES := bundles/css bundles/js/components/*.vue
-SPELLCHECK_FILES := $(GO_DIRS) $(WEB_DIRS) templates bundles/options/locale/locale_en-US.ini .github $(filter-out CHANGELOG.md, $(wildcard *.go *.js *.md *.yml *.yaml *.toml))
-EDITORCONFIG_FILES := templates .github/workflows bundles/options/locale/locale_en-US.ini
+SPELLCHECK_FILES := $(GO_DIRS) $(WEB_DIRS) bundles/templates bundles/options/locale/locale_en-US.ini .github $(filter-out CHANGELOG.md, $(wildcard *.go *.js *.md *.yml *.yaml *.toml))
+EDITORCONFIG_FILES := bundles/templates .github/workflows bundles/options/locale/locale_en-US.ini
 
 GO_SOURCES := $(wildcard *.go)
 GO_SOURCES += $(shell find $(GO_DIRS) -type f -name "*.go" ! -path app/modules/options/bindata.go ! -path app/modules/public/bindata.go ! -path app/modules/templates/bindata.go)
@@ -164,7 +164,7 @@ ifdef DEPS_PLAYWRIGHT
 	PLAYWRIGHT_FLAGS += --with-deps
 endif
 
-SWAGGER_SPEC := templates/swagger/v1_json.tmpl
+SWAGGER_SPEC := bundles/templates/swagger/v1_json.tmpl
 SWAGGER_SPEC_S_TMPL := s|"basePath": *"/api/v1"|"basePath": "{{AppSubUrl \| JSEscape}}/api/v1"|g
 SWAGGER_SPEC_S_JSON := s|"basePath": *"{{AppSubUrl \| JSEscape}}/api/v1"|"basePath": "/api/v1"|g
 SWAGGER_EXCLUDE := code.gitea.io/sdk
@@ -298,7 +298,7 @@ clean:
 .PHONY: fmt
 fmt:
 	@GOFUMPT_PACKAGE=$(GOFUMPT_PACKAGE) $(GO) run generate/code-batch-process.go gitea-fmt -w '{file-list}'
-	$(eval TEMPLATES := $(shell find templates -type f -name '*.tmpl'))
+	$(eval TEMPLATES := $(shell find bundles/templates -type f -name '*.tmpl'))
 	@# strip whitespace after '{{' or '(' and before '}}' or ')' unless there is only
 	@# whitespace before it
 	@$(SED_INPLACE) \
@@ -308,7 +308,7 @@ fmt:
 
 .PHONY: fmt-check
 fmt-check: fmt
-	@diff=$$(git diff --color=always $(GO_SOURCES) templates $(WEB_DIRS)); \
+	@diff=$$(git diff --color=always $(GO_SOURCES) bundles/templates $(WEB_DIRS)); \
 	if [ -n "$$diff" ]; then \
 	  echo "Please run 'make fmt' and commit the result:"; \
 	  echo "$${diff}"; \
@@ -445,7 +445,7 @@ lint-actions:
 .PHONY: lint-templates
 lint-templates: .venv node_modules
 	@node tools/lint-templates-svg.js
-	@poetry run djlint $(shell find templates -type f -iname '*.tmpl')
+	@poetry run djlint $(shell find bundles/templates -type f -iname '*.tmpl')
 
 .PHONY: lint-yaml
 lint-yaml: .venv

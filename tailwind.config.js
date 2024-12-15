@@ -28,14 +28,14 @@ export default {
   prefix: 'tw-',
   important: true, // the frameworks are mixed together, so tailwind needs to override other framework's styles
   content: [
-    isProduction && '!./templates/devtest/**/*',
+    isProduction && '!./bundles/templates/devtest/**/*',
     isProduction && '!./bundles/js/standalone/devtest.js',
-    '!./templates/swagger/v1_json.tmpl',
-    '!./templates/user/auth/oidc_wellknown.tmpl',
+    '!./bundles/templates/swagger/v1_json.tmpl',
+    '!./bundles/templates/user/auth/oidc_wellknown.tmpl',
     '!**/*_test.go',
     '!./app/modules/{public,options,templates}/bindata.go',
     './{app,generate}/**/*.go',
-    './templates/**/*.tmpl',
+    './bundles/templates/**/*.tmpl',
     './bundles/js/**/*.{ts,js,vue}',
   ].filter(Boolean),
   blocklist: [

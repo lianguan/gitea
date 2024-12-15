@@ -3,7 +3,7 @@
 *.pb.go linguist-generated
 /bundles/*.json linguist-generated
 /public/assets/img/svg/*.svg linguist-generated
-/templates/swagger/v1_json.tmpl linguist-generated
+/bundles/templates/swagger/v1_json.tmpl linguist-generated
 /vendor/** -text -eol linguist-vendored
 /bundles/fomantic/build/** linguist-generated
 /bundles/fomantic/_site/globals/site.variables linguist-language=Less
