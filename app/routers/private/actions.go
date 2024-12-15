@@ -16,7 +16,7 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/private"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // GenerateActionsRunnerToken generates a new runner token for a given scope

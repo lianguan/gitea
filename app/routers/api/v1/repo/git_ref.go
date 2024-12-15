@@ -10,7 +10,7 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // GetGitAllRefs get ref or an list all the refs of a repository

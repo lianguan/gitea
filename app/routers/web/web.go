@@ -41,9 +41,9 @@ import (
 	"code.gitea.io/gitea/app/routers/web/user"
 	user_setting "code.gitea.io/gitea/app/routers/web/user/setting"
 	"code.gitea.io/gitea/app/routers/web/user/setting/security"
-	auth_service "code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
+	auth_service "code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
 
 	_ "code.gitea.io/gitea/modules/session" // to registers all internal adapters
 

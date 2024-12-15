@@ -11,8 +11,8 @@ import (
 	activities_model "code.gitea.io/gitea/models/activities"
 	"code.gitea.io/gitea/models/db"
 	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 func statusStringToNotificationStatus(status string) activities_model.NotificationStatus {

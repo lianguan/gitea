@@ -10,7 +10,7 @@ import (
 	"code.gitea.io/gitea/models/avatars"
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/httpcache"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 func cacheableRedirect(ctx *context.Context, location string) {

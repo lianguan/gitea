@@ -17,9 +17,9 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	webhook_module "code.gitea.io/gitea/modules/webhook"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	webhook_service "code.gitea.io/gitea/services/webhook"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	webhook_service "code.gitea.io/gitea/app/services/webhook"
 )
 
 // ListHooks list all hooks of a repository

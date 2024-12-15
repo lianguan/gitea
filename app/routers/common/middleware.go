@@ -15,7 +15,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web/middleware"
 	"code.gitea.io/gitea/modules/web/routing"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 
 	"gitea.com/go-chi/session"
 	"github.com/chi-middleware/proxy"

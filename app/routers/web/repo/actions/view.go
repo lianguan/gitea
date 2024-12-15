@@ -35,9 +35,9 @@ import (
 	"code.gitea.io/gitea/modules/timeutil"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
-	actions_service "code.gitea.io/gitea/services/actions"
-	context_module "code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	context_module "code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 
 	"github.com/nektos/act/pkg/jobparser"
 	"github.com/nektos/act/pkg/model"

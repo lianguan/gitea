@@ -8,7 +8,7 @@ import (
 
 	"code.gitea.io/gitea/models/unittest"
 	"code.gitea.io/gitea/modules/setting"
-	webhook_service "code.gitea.io/gitea/services/webhook"
+	webhook_service "code.gitea.io/gitea/app/services/webhook"
 )
 
 func TestMain(m *testing.M) {

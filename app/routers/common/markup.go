@@ -18,7 +18,7 @@ import (
 	"code.gitea.io/gitea/modules/markup/markdown"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // RenderMarkup renders markup text for the /markup and /markdown endpoints

@@ -31,14 +31,14 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/validation"
 	"code.gitea.io/gitea/modules/web"
-	actions_service "code.gitea.io/gitea/services/actions"
-	asymkey_service "code.gitea.io/gitea/services/asymkey"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	"code.gitea.io/gitea/services/migrations"
-	mirror_service "code.gitea.io/gitea/services/mirror"
-	repo_service "code.gitea.io/gitea/services/repository"
-	wiki_service "code.gitea.io/gitea/services/wiki"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	"code.gitea.io/gitea/app/services/migrations"
+	mirror_service "code.gitea.io/gitea/app/services/mirror"
+	repo_service "code.gitea.io/gitea/app/services/repository"
+	wiki_service "code.gitea.io/gitea/app/services/wiki"
 )
 
 const (

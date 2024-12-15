@@ -61,7 +61,6 @@ func newFileCollector(fileFilter string, batchSize int) (*fileCollector, error) 
 			"models",
 			"modules",
 			"routers",
-			"services",
 			"tests",
 			"generate",
 			"scripts",
@@ -75,7 +74,7 @@ func newFileCollector(fileFilter string, batchSize int) (*fileCollector, error) 
 		co.excludePatterns = append(co.excludePatterns, regexp.MustCompile(`modules/git/tests`))
 		co.excludePatterns = append(co.excludePatterns, regexp.MustCompile(`models/fixtures`))
 		co.excludePatterns = append(co.excludePatterns, regexp.MustCompile(`database/migrations/fixtures`))
-		co.excludePatterns = append(co.excludePatterns, regexp.MustCompile(`services/gitdiff/testdata`))
+		co.excludePatterns = append(co.excludePatterns, regexp.MustCompile(`app/services/gitdiff/testdata`))
 	}
 
 	if co.dirs == nil {

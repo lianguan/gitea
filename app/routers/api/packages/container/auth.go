@@ -8,8 +8,8 @@ import (
 
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/packages"
+	"code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/packages"
 )
 
 var _ auth.Method = &Auth{}

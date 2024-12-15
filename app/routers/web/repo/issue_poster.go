@@ -12,7 +12,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/setting"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 type userSearchInfo struct {

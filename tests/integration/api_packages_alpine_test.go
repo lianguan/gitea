@@ -19,7 +19,7 @@ import (
 	"code.gitea.io/gitea/models/unittest"
 	user_model "code.gitea.io/gitea/models/user"
 	alpine_module "code.gitea.io/gitea/modules/packages/alpine"
-	alpine_service "code.gitea.io/gitea/services/packages/alpine"
+	alpine_service "code.gitea.io/gitea/app/services/packages/alpine"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

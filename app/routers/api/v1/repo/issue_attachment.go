@@ -12,11 +12,11 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
-	attachment_service "code.gitea.io/gitea/services/attachment"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	"code.gitea.io/gitea/services/convert"
-	issue_service "code.gitea.io/gitea/services/issue"
+	attachment_service "code.gitea.io/gitea/app/services/attachment"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	"code.gitea.io/gitea/app/services/convert"
+	issue_service "code.gitea.io/gitea/app/services/issue"
 )
 
 // GetIssueAttachment gets a single attachment of the issue

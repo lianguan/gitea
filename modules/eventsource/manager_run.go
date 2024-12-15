@@ -15,7 +15,7 @@ import (
 	"code.gitea.io/gitea/modules/process"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // Init starts this eventsource

@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/services/doctor"
+	"code.gitea.io/gitea/app/services/doctor"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/urfave/cli/v2"

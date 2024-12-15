@@ -18,8 +18,8 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/indexer/stats"
 	"code.gitea.io/gitea/modules/queue"
-	repo_service "code.gitea.io/gitea/services/repository"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	repo_service "code.gitea.io/gitea/app/services/repository"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

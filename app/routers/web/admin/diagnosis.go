@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"code.gitea.io/gitea/modules/httplib"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 func MonitorDiagnosis(ctx *context.Context) {

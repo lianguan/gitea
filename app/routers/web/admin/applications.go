@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/setting"
 	user_setting "code.gitea.io/gitea/app/routers/web/user/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 var (

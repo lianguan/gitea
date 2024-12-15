@@ -15,7 +15,7 @@ import (
 	"code.gitea.io/gitea/modules/activitypub"
 	"code.gitea.io/gitea/modules/httplib"
 	"code.gitea.io/gitea/modules/setting"
-	gitea_context "code.gitea.io/gitea/services/context"
+	gitea_context "code.gitea.io/gitea/app/services/context"
 
 	"github.com/42wim/httpsig"
 	ap "github.com/go-ap/activitypub"

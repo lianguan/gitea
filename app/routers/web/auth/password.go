@@ -18,10 +18,10 @@ import (
 	"code.gitea.io/gitea/modules/timeutil"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/modules/web/middleware"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	"code.gitea.io/gitea/services/mailer"
-	user_service "code.gitea.io/gitea/services/user"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	"code.gitea.io/gitea/app/services/mailer"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 var (

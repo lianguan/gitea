@@ -11,9 +11,9 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"
-	asymkey_service "code.gitea.io/gitea/services/asymkey"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
+	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
 )
 
 // DeployKeys render the deploy keys list of a repository page

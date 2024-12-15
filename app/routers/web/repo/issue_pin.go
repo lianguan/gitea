@@ -9,7 +9,7 @@ import (
 	issues_model "code.gitea.io/gitea/models/issues"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // IssuePinOrUnpin pin or unpin a Issue

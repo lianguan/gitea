@@ -10,8 +10,8 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // ListUnadoptedRepositories lists the unadopted repositories that match the provided names

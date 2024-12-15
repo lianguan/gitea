@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/modules/httpcache"
 	"code.gitea.io/gitea/modules/httplib"
 	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // ServeBlob download a git.Blob

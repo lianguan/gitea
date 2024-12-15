@@ -18,9 +18,9 @@ import (
 	arch_module "code.gitea.io/gitea/modules/packages/arch"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/services/context"
-	packages_service "code.gitea.io/gitea/services/packages"
-	arch_service "code.gitea.io/gitea/services/packages/arch"
+	"code.gitea.io/gitea/app/services/context"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	arch_service "code.gitea.io/gitea/app/services/packages/arch"
 )
 
 func apiError(ctx *context.Context, status int, obj any) {

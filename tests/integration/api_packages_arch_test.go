@@ -17,7 +17,7 @@ import (
 	"code.gitea.io/gitea/models/unittest"
 	user_model "code.gitea.io/gitea/models/user"
 	arch_module "code.gitea.io/gitea/modules/packages/arch"
-	arch_service "code.gitea.io/gitea/services/packages/arch"
+	arch_service "code.gitea.io/gitea/app/services/packages/arch"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/klauspost/compress/zstd"

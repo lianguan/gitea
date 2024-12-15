@@ -22,7 +22,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/migrations"
+	"code.gitea.io/gitea/app/services/migrations"
 
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v3"

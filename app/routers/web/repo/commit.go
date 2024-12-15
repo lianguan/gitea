@@ -28,9 +28,9 @@ import (
 	"code.gitea.io/gitea/modules/markup"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/gitdiff"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/gitdiff"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 const (

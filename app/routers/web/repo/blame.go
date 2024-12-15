@@ -19,8 +19,8 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/templates"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 )
 
 type blameRow struct {

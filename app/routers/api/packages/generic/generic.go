@@ -14,8 +14,8 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/services/context"
-	packages_service "code.gitea.io/gitea/services/packages"
+	"code.gitea.io/gitea/app/services/context"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 
 var (

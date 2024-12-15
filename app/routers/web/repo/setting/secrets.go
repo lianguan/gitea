@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	shared "code.gitea.io/gitea/app/routers/web/shared/secrets"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 const (

@@ -14,9 +14,9 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/migration"
-	mirror_service "code.gitea.io/gitea/services/mirror"
-	release_service "code.gitea.io/gitea/services/release"
-	repo_service "code.gitea.io/gitea/services/repository"
+	mirror_service "code.gitea.io/gitea/app/services/mirror"
+	release_service "code.gitea.io/gitea/app/services/release"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

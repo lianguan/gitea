@@ -14,8 +14,8 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	webhook_service "code.gitea.io/gitea/services/webhook"
+	"code.gitea.io/gitea/app/services/context"
+	webhook_service "code.gitea.io/gitea/app/services/webhook"
 )
 
 // ListHooks list system's webhooks

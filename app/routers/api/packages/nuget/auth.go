@@ -10,7 +10,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/services/auth"
+	"code.gitea.io/gitea/app/services/auth"
 )
 
 var _ auth.Method = &Auth{}

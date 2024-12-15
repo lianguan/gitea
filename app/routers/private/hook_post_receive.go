@@ -25,9 +25,9 @@ import (
 	timeutil "code.gitea.io/gitea/modules/timeutil"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
-	gitea_context "code.gitea.io/gitea/services/context"
-	pull_service "code.gitea.io/gitea/services/pull"
-	repo_service "code.gitea.io/gitea/services/repository"
+	gitea_context "code.gitea.io/gitea/app/services/context"
+	pull_service "code.gitea.io/gitea/app/services/pull"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // HookPostReceive updates services and users

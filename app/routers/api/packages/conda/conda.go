@@ -18,8 +18,8 @@ import (
 	conda_module "code.gitea.io/gitea/modules/packages/conda"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/services/context"
-	packages_service "code.gitea.io/gitea/services/packages"
+	"code.gitea.io/gitea/app/services/context"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 
 	"github.com/dsnet/compress/bzip2"
 )

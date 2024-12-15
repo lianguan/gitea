@@ -10,8 +10,8 @@ import (
 	repo_model "code.gitea.io/gitea/models/repo"
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/private"
-	gitea_context "code.gitea.io/gitea/services/context"
-	repo_service "code.gitea.io/gitea/services/repository"
+	gitea_context "code.gitea.io/gitea/app/services/context"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // SetDefaultBranch updates the default branch

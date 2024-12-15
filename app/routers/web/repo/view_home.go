@@ -24,8 +24,8 @@ import (
 	"code.gitea.io/gitea/modules/svg"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/web/feed"
-	"code.gitea.io/gitea/services/context"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 func checkOutdatedBranch(ctx *context.Context) {

@@ -13,8 +13,8 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
-	org_service "code.gitea.io/gitea/services/org"
+	"code.gitea.io/gitea/app/services/context"
+	org_service "code.gitea.io/gitea/app/services/org"
 )
 
 const (

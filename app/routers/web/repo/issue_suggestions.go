@@ -12,7 +12,7 @@ import (
 	issue_indexer "code.gitea.io/gitea/modules/indexer/issues"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // IssueSuggestions returns a list of issue suggestions

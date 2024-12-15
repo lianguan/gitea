@@ -19,10 +19,10 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/services/context"
-	notify_service "code.gitea.io/gitea/services/notify"
-	packages_service "code.gitea.io/gitea/services/packages"
-	rpm_service "code.gitea.io/gitea/services/packages/rpm"
+	"code.gitea.io/gitea/app/services/context"
+	notify_service "code.gitea.io/gitea/app/services/notify"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	rpm_service "code.gitea.io/gitea/app/services/packages/rpm"
 )
 
 func apiError(ctx *context.Context, status int, obj any) {

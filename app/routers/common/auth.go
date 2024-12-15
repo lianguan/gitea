@@ -6,8 +6,8 @@ package common
 import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/web/middleware"
-	auth_service "code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
+	auth_service "code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 type AuthResult struct {

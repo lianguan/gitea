@@ -10,8 +10,8 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/app/routers/web/repo"
-	"code.gitea.io/gitea/services/context"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // SetDefaultBranchPost set default branch

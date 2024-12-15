@@ -5,7 +5,7 @@ package user
 
 import (
 	"code.gitea.io/gitea/app/routers/api/v1/shared"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // https://docs.github.com/en/rest/actions/self-hosted-runners?apiVersion=2022-11-28#create-a-registration-token-for-an-organization

@@ -14,7 +14,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 
 	"gitea.com/go-chi/binding"
 	chi_middleware "github.com/go-chi/chi/v5/middleware"

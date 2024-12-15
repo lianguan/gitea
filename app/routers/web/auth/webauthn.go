@@ -14,8 +14,8 @@ import (
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/externalaccount"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/externalaccount"
 
 	"github.com/go-webauthn/webauthn/protocol"
 	"github.com/go-webauthn/webauthn/webauthn"

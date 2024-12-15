@@ -17,7 +17,7 @@ import (
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
-	repo_service "code.gitea.io/gitea/services/repository"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"github.com/stretchr/testify/assert"
 )

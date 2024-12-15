@@ -20,8 +20,8 @@ import (
 	packages_module "code.gitea.io/gitea/modules/packages"
 	container_module "code.gitea.io/gitea/modules/packages/container"
 	"code.gitea.io/gitea/modules/util"
-	notify_service "code.gitea.io/gitea/services/notify"
-	packages_service "code.gitea.io/gitea/services/packages"
+	notify_service "code.gitea.io/gitea/app/services/notify"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 
 	digest "github.com/opencontainers/go-digest"
 	oci "github.com/opencontainers/image-spec/specs-go/v1"

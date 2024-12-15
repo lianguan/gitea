@@ -29,10 +29,10 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	"code.gitea.io/gitea/services/forms"
-	issue_service "code.gitea.io/gitea/services/issue"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	"code.gitea.io/gitea/app/services/forms"
+	issue_service "code.gitea.io/gitea/app/services/issue"
 )
 
 // Tries to load and set an issue template. The first return value indicates if a template was loaded.

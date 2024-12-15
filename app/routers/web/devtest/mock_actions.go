@@ -14,7 +14,7 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/web/repo/actions"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 func generateMockStepsLog(logCur actions.LogCursor) (stepsLog []*actions.ViewStepLog) {

@@ -35,8 +35,8 @@ import (
 	"code.gitea.io/gitea/app/routers/api/packages/rubygems"
 	"code.gitea.io/gitea/app/routers/api/packages/swift"
 	"code.gitea.io/gitea/app/routers/api/packages/vagrant"
-	"code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 func reqPackageAccess(accessMode perm.AccessMode) func(ctx *context.Context) {

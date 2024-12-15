@@ -23,7 +23,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/test"
-	package_service "code.gitea.io/gitea/services/packages"
+	package_service "code.gitea.io/gitea/app/services/packages"
 	"code.gitea.io/gitea/tests"
 
 	oci "github.com/opencontainers/image-spec/specs-go/v1"

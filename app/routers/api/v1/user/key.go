@@ -17,9 +17,9 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/repo"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	asymkey_service "code.gitea.io/gitea/services/asymkey"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // appendPrivateInformation appends the owner and key type information to api.PublicKey

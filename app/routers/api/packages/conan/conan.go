@@ -22,10 +22,10 @@ import (
 	conan_module "code.gitea.io/gitea/modules/packages/conan"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	auth_service "code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
-	notify_service "code.gitea.io/gitea/services/notify"
-	packages_service "code.gitea.io/gitea/services/packages"
+	auth_service "code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
+	notify_service "code.gitea.io/gitea/app/services/notify"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 
 const (

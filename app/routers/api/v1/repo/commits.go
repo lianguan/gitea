@@ -16,8 +16,8 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // GetSingleCommit get a commit via sha

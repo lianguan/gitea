@@ -9,7 +9,7 @@ import (
 
 	"code.gitea.io/gitea/modules/process"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // Stacktrace show admin monitor goroutines page

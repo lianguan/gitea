@@ -17,7 +17,7 @@ import (
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/doctor"
+	"code.gitea.io/gitea/app/services/doctor"
 
 	"github.com/urfave/cli/v2"
 	"xorm.io/xorm"

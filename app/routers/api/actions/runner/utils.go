@@ -16,7 +16,7 @@ import (
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/actions"
+	"code.gitea.io/gitea/app/services/actions"
 
 	runnerv1 "code.gitea.io/actions-proto-go/runner/v1"
 	"google.golang.org/protobuf/types/known/structpb"

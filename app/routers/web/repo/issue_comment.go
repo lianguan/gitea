@@ -19,11 +19,11 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	"code.gitea.io/gitea/services/forms"
-	issue_service "code.gitea.io/gitea/services/issue"
-	pull_service "code.gitea.io/gitea/services/pull"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	"code.gitea.io/gitea/app/services/forms"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	pull_service "code.gitea.io/gitea/app/services/pull"
 )
 
 // NewComment create a comment for issue

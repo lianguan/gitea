@@ -17,12 +17,12 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	"code.gitea.io/gitea/services/forms"
-	issue_service "code.gitea.io/gitea/services/issue"
-	pull_service "code.gitea.io/gitea/services/pull"
-	user_service "code.gitea.io/gitea/services/user"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	"code.gitea.io/gitea/app/services/forms"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	pull_service "code.gitea.io/gitea/app/services/pull"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 const (

@@ -26,10 +26,10 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	auth_service "code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
-	packages_service "code.gitea.io/gitea/services/packages"
-	container_service "code.gitea.io/gitea/services/packages/container"
+	auth_service "code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	container_service "code.gitea.io/gitea/app/services/packages/container"
 
 	digest "github.com/opencontainers/go-digest"
 )

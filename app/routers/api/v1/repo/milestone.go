@@ -16,8 +16,8 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // ListMilestones list milestones for a repository

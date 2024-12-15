@@ -20,11 +20,11 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/user"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	feed_service "code.gitea.io/gitea/services/feed"
-	org_service "code.gitea.io/gitea/services/org"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	feed_service "code.gitea.io/gitea/app/services/feed"
+	org_service "code.gitea.io/gitea/app/services/org"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // ListTeams list all the teams of an organization

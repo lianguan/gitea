@@ -11,8 +11,8 @@ import (
 	"code.gitea.io/gitea/models/unit"
 	"code.gitea.io/gitea/models/unittest"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/contexttest"
-	"code.gitea.io/gitea/services/forms"
+	"code.gitea.io/gitea/app/services/contexttest"
+	"code.gitea.io/gitea/app/services/forms"
 
 	"github.com/stretchr/testify/assert"
 )

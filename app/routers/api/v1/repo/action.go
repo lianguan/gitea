@@ -15,10 +15,10 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/shared"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	actions_service "code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	secret_service "code.gitea.io/gitea/services/secrets"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	secret_service "code.gitea.io/gitea/app/services/secrets"
 )
 
 // ListActionsSecrets list an repo's actions secrets

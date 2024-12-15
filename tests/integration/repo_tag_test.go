@@ -18,7 +18,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/services/release"
+	"code.gitea.io/gitea/app/services/release"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

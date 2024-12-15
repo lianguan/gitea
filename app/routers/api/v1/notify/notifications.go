@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/models/db"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // NewAvailable check if unread notifications exist

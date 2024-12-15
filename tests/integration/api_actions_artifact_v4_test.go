@@ -16,7 +16,7 @@ import (
 
 	"code.gitea.io/gitea/modules/storage"
 	"code.gitea.io/gitea/app/routers/api/actions"
-	actions_service "code.gitea.io/gitea/services/actions"
+	actions_service "code.gitea.io/gitea/app/services/actions"
 
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/encoding/protojson"

@@ -21,8 +21,8 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
-	packages_service "code.gitea.io/gitea/services/packages"
-	packages_cleanup_service "code.gitea.io/gitea/services/packages/cleanup"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	packages_cleanup_service "code.gitea.io/gitea/app/services/packages/cleanup"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

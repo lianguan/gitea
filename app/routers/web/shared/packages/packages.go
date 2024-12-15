@@ -15,10 +15,10 @@ import (
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	cargo_service "code.gitea.io/gitea/services/packages/cargo"
-	container_service "code.gitea.io/gitea/services/packages/container"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	cargo_service "code.gitea.io/gitea/app/services/packages/cargo"
+	container_service "code.gitea.io/gitea/app/services/packages/container"
 )
 
 func SetPackagesContext(ctx *context.Context, owner *user_model.User) {

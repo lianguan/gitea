@@ -16,7 +16,7 @@ import (
 	packages_module "code.gitea.io/gitea/modules/packages"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/storage"
-	packages_service "code.gitea.io/gitea/services/packages"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 
 	"github.com/stretchr/testify/assert"
 )

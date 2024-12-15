@@ -17,10 +17,10 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	issue_service "code.gitea.io/gitea/services/issue"
-	pull_service "code.gitea.io/gitea/services/pull"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	pull_service "code.gitea.io/gitea/app/services/pull"
 )
 
 // ListPullReviews lists all reviews of a pull request

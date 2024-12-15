@@ -37,8 +37,8 @@ import (
 	"code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/typesniffer"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	_ "golang.org/x/image/bmp"  // for processing bmp images
 	_ "golang.org/x/image/webp" // for processing webp images

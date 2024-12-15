@@ -8,8 +8,8 @@ import (
 
 	activities_model "code.gitea.io/gitea/models/activities"
 	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/services/context"
-	feed_service "code.gitea.io/gitea/services/feed"
+	"code.gitea.io/gitea/app/services/context"
+	feed_service "code.gitea.io/gitea/app/services/feed"
 
 	"github.com/gorilla/feeds"
 )

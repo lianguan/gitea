@@ -25,10 +25,10 @@ import (
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/test"
-	pull_service "code.gitea.io/gitea/services/pull"
-	release_service "code.gitea.io/gitea/services/release"
-	repo_service "code.gitea.io/gitea/services/repository"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	pull_service "code.gitea.io/gitea/app/services/pull"
+	release_service "code.gitea.io/gitea/app/services/release"
+	repo_service "code.gitea.io/gitea/app/services/repository"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 
 	"github.com/stretchr/testify/assert"
 )

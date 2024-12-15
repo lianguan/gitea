@@ -35,11 +35,11 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/test"
 	"code.gitea.io/gitea/modules/translation"
-	"code.gitea.io/gitea/services/automerge"
-	"code.gitea.io/gitea/services/pull"
-	repo_service "code.gitea.io/gitea/services/repository"
-	commitstatus_service "code.gitea.io/gitea/services/repository/commitstatus"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/automerge"
+	"code.gitea.io/gitea/app/services/pull"
+	repo_service "code.gitea.io/gitea/app/services/repository"
+	commitstatus_service "code.gitea.io/gitea/app/services/repository/commitstatus"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 
 	"github.com/stretchr/testify/assert"
 )

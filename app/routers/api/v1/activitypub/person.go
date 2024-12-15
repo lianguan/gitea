@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/modules/activitypub"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 
 	ap "github.com/go-ap/activitypub"
 	"github.com/go-ap/jsonld"

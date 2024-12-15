@@ -26,10 +26,10 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/web/explore"
 	user_setting "code.gitea.io/gitea/app/routers/web/user/setting"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	"code.gitea.io/gitea/services/mailer"
-	user_service "code.gitea.io/gitea/services/user"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	"code.gitea.io/gitea/app/services/mailer"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 const (

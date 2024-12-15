@@ -25,10 +25,10 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	"code.gitea.io/gitea/services/forms"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	"code.gitea.io/gitea/app/services/forms"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 )
 
 const (

@@ -31,12 +31,12 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/templates"
 	"code.gitea.io/gitea/modules/templates/vars"
-	asymkey_service "code.gitea.io/gitea/services/asymkey"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	issue_service "code.gitea.io/gitea/services/issue"
-	pull_service "code.gitea.io/gitea/services/pull"
-	user_service "code.gitea.io/gitea/services/user"
+	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	pull_service "code.gitea.io/gitea/app/services/pull"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 // roleDescriptor returns the role descriptor for a comment in/with the given repo, poster and issue

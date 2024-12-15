@@ -16,10 +16,10 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/contexttest"
-	"code.gitea.io/gitea/services/forms"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/contexttest"
+	"code.gitea.io/gitea/app/services/forms"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"github.com/stretchr/testify/assert"
 )

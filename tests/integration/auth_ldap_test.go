@@ -19,9 +19,9 @@ import (
 	"code.gitea.io/gitea/modules/test"
 	"code.gitea.io/gitea/modules/translation"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/auth/source/ldap"
-	org_service "code.gitea.io/gitea/services/org"
+	"code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/auth/source/ldap"
+	org_service "code.gitea.io/gitea/app/services/org"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

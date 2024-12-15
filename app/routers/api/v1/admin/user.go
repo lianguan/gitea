@@ -23,11 +23,11 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/user"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	asymkey_service "code.gitea.io/gitea/services/asymkey"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	"code.gitea.io/gitea/services/mailer"
-	user_service "code.gitea.io/gitea/services/user"
+	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	"code.gitea.io/gitea/app/services/mailer"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 func parseAuthSource(ctx *context.APIContext, u *user_model.User, sourceID int64) {

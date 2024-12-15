@@ -11,8 +11,8 @@ import (
 	"code.gitea.io/gitea/modules/label"
 	repo_module "code.gitea.io/gitea/modules/repository"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
 )
 
 // RetrieveLabels find all the labels of an organization

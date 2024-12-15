@@ -21,8 +21,8 @@ import (
 	"code.gitea.io/gitea/modules/svg"
 	"code.gitea.io/gitea/modules/templates/eval"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/gitdiff"
-	"code.gitea.io/gitea/services/webtheme"
+	"code.gitea.io/gitea/app/services/gitdiff"
+	"code.gitea.io/gitea/app/services/webtheme"
 )
 
 // NewFuncMap returns functions for injecting to templates

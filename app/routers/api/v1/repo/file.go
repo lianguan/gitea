@@ -29,9 +29,9 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/services/context"
-	archiver_service "code.gitea.io/gitea/services/repository/archiver"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 )
 
 const giteaObjectTypeHeader = "X-Gitea-Object-Type"

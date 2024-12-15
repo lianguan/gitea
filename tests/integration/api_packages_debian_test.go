@@ -20,7 +20,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/base"
 	debian_module "code.gitea.io/gitea/modules/packages/debian"
-	packages_cleanup_service "code.gitea.io/gitea/services/packages/cleanup"
+	packages_cleanup_service "code.gitea.io/gitea/app/services/packages/cleanup"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/blakesmith/ar"

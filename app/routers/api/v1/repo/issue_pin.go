@@ -8,8 +8,8 @@ import (
 
 	issues_model "code.gitea.io/gitea/models/issues"
 	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // PinIssue pins a issue

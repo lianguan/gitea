@@ -13,7 +13,7 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/app/routers/web/healthcheck"
-	"code.gitea.io/gitea/services/forms"
+	"code.gitea.io/gitea/app/services/forms"
 )
 
 // Routes registers the installation routes

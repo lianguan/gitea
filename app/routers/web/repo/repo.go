@@ -30,12 +30,12 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	"code.gitea.io/gitea/services/forms"
-	repo_service "code.gitea.io/gitea/services/repository"
-	archiver_service "code.gitea.io/gitea/services/repository/archiver"
-	commitstatus_service "code.gitea.io/gitea/services/repository/commitstatus"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	"code.gitea.io/gitea/app/services/forms"
+	repo_service "code.gitea.io/gitea/app/services/repository"
+	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
+	commitstatus_service "code.gitea.io/gitea/app/services/repository/commitstatus"
 )
 
 const (

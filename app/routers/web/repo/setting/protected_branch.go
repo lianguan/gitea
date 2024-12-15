@@ -17,10 +17,10 @@ import (
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/web/repo"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	pull_service "code.gitea.io/gitea/services/pull"
-	"code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	pull_service "code.gitea.io/gitea/app/services/pull"
+	"code.gitea.io/gitea/app/services/repository"
 
 	"github.com/gobwas/glob"
 )

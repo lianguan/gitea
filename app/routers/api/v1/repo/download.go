@@ -9,8 +9,8 @@ import (
 
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/services/context"
-	archiver_service "code.gitea.io/gitea/services/repository/archiver"
+	"code.gitea.io/gitea/app/services/context"
+	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
 )
 
 func DownloadArchive(ctx *context.APIContext) {

@@ -18,11 +18,11 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	"code.gitea.io/gitea/services/forms"
-	"code.gitea.io/gitea/services/migrations"
-	mirror_service "code.gitea.io/gitea/services/mirror"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	"code.gitea.io/gitea/app/services/forms"
+	"code.gitea.io/gitea/app/services/migrations"
+	mirror_service "code.gitea.io/gitea/app/services/mirror"
 )
 
 // MirrorSync adds a mirrored repository to the sync queue

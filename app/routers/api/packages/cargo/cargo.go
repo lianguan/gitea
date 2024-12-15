@@ -20,10 +20,10 @@ import (
 	"code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	packages_service "code.gitea.io/gitea/services/packages"
-	cargo_service "code.gitea.io/gitea/services/packages/cargo"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	cargo_service "code.gitea.io/gitea/app/services/packages/cargo"
 )
 
 // https://doc.rust-lang.org/cargo/reference/registries.html#web-api

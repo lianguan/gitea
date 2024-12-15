@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/modules/auth/password"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/setting"
-	user_service "code.gitea.io/gitea/services/user"
+	user_service "code.gitea.io/gitea/app/services/user"
 
 	"github.com/urfave/cli/v2"
 )

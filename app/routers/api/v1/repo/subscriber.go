@@ -9,8 +9,8 @@ import (
 	repo_model "code.gitea.io/gitea/models/repo"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 )
 
 // ListSubscribers list a repo's subscribers (i.e. watchers)

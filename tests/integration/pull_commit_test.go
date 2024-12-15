@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"testing"
 
-	pull_service "code.gitea.io/gitea/services/pull"
+	pull_service "code.gitea.io/gitea/app/services/pull"
 
 	"github.com/stretchr/testify/assert"
 )

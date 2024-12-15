@@ -79,8 +79,8 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	web_types "code.gitea.io/gitea/modules/web/types"
-	actions_service "code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/context"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 const artifactRouteBase = "/_apis/pipelines/workflows/{run_id}/artifacts"

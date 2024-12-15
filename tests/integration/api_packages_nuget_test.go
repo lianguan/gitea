@@ -26,7 +26,7 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/packages/nuget"
-	packageService "code.gitea.io/gitea/services/packages"
+	packageService "code.gitea.io/gitea/app/services/packages"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

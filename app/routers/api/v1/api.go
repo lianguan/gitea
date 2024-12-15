@@ -93,10 +93,10 @@ import (
 	"code.gitea.io/gitea/app/routers/api/v1/settings"
 	"code.gitea.io/gitea/app/routers/api/v1/user"
 	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
+	"code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
 
 	_ "code.gitea.io/gitea/app/routers/api/v1/swagger" // for swagger generation
 

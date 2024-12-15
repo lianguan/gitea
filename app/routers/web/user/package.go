@@ -28,9 +28,9 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	packages_helper "code.gitea.io/gitea/app/routers/api/packages/helper"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
-	packages_service "code.gitea.io/gitea/services/packages"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 
 const (

@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	code_indexer "code.gitea.io/gitea/modules/indexer/code"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 const tplSearch base.TplName = "repo/search"

@@ -15,9 +15,9 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/mailer"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/mailer"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // Collaboration render a repository's collaboration page

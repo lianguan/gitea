@@ -8,9 +8,9 @@ import (
 
 	"code.gitea.io/gitea/models"
 	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	releaseservice "code.gitea.io/gitea/services/release"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	releaseservice "code.gitea.io/gitea/app/services/release"
 )
 
 // GetReleaseByTag get a single release of a repository by tag name

@@ -24,9 +24,9 @@ import (
 	"code.gitea.io/gitea/modules/markup"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
-	issue_service "code.gitea.io/gitea/services/issue"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 
 	"github.com/nektos/act/pkg/model"
 )

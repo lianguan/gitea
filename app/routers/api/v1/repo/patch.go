@@ -13,8 +13,8 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/repository/files"
 )
 
 // ApplyDiffPatch handles API call for applying a patch

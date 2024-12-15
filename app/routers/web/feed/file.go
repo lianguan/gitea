@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 
 	"github.com/gorilla/feeds"
 )

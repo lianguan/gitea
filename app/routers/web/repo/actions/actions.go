@@ -24,8 +24,8 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
 
 	"github.com/nektos/act/pkg/model"
 	"gopkg.in/yaml.v3"

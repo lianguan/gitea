@@ -23,11 +23,11 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/updatechecker"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/cron"
-	"code.gitea.io/gitea/services/forms"
-	release_service "code.gitea.io/gitea/services/release"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/cron"
+	"code.gitea.io/gitea/app/services/forms"
+	release_service "code.gitea.io/gitea/app/services/release"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 const (

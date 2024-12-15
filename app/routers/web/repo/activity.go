@@ -10,7 +10,7 @@ import (
 	activities_model "code.gitea.io/gitea/models/activities"
 	"code.gitea.io/gitea/models/unit"
 	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 const (

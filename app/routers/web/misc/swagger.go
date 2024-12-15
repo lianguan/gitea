@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // tplSwagger swagger page template

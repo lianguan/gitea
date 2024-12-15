@@ -9,8 +9,8 @@ import (
 
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	user_service "code.gitea.io/gitea/services/user"
+	"code.gitea.io/gitea/app/services/context"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 // UpdateAvatar updates the Avatar of an User

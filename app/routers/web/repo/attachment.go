@@ -15,10 +15,10 @@ import (
 	"code.gitea.io/gitea/modules/storage"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/services/attachment"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/context/upload"
-	repo_service "code.gitea.io/gitea/services/repository"
+	"code.gitea.io/gitea/app/services/attachment"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/context/upload"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 
 // UploadIssueAttachment response for Issue/PR attachments

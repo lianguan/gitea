@@ -6,8 +6,8 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/services/context"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	"code.gitea.io/gitea/app/services/context"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 )
 
 // GetTree get the tree of a repository.

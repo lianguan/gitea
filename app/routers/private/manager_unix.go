@@ -9,7 +9,7 @@ import (
 	"net/http"
 
 	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // Restart causes the server to perform a graceful restart

@@ -10,9 +10,9 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	user_service "code.gitea.io/gitea/services/user"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	user_service "code.gitea.io/gitea/app/services/user"
 )
 
 func ListBlocks(ctx *context.APIContext, blocker *user_model.User) {

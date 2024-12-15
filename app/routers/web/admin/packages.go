@@ -13,9 +13,9 @@ import (
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
-	packages_service "code.gitea.io/gitea/services/packages"
-	packages_cleanup_service "code.gitea.io/gitea/services/packages/cleanup"
+	"code.gitea.io/gitea/app/services/context"
+	packages_service "code.gitea.io/gitea/app/services/packages"
+	packages_cleanup_service "code.gitea.io/gitea/app/services/packages/cleanup"
 )
 
 const (

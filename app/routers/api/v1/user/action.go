@@ -13,9 +13,9 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	actions_service "code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/context"
-	secret_service "code.gitea.io/gitea/services/secrets"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/context"
+	secret_service "code.gitea.io/gitea/app/services/secrets"
 )
 
 // create or update one secret of the user scope

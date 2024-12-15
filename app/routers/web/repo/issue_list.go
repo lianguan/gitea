@@ -24,10 +24,10 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/app/routers/web/shared/issue"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	issue_service "code.gitea.io/gitea/services/issue"
-	pull_service "code.gitea.io/gitea/services/pull"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	issue_service "code.gitea.io/gitea/app/services/issue"
+	pull_service "code.gitea.io/gitea/app/services/pull"
 )
 
 func issueIDsFromSearch(ctx *context.Context, keyword string, opts *issues_model.IssuesOptions) ([]int64, error) {

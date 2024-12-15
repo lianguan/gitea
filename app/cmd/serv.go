@@ -30,7 +30,7 @@ import (
 	"code.gitea.io/gitea/modules/process"
 	repo_module "code.gitea.io/gitea/modules/repository"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/lfs"
+	"code.gitea.io/gitea/app/services/lfs"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/kballard/go-shellquote"

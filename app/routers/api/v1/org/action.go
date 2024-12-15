@@ -15,9 +15,9 @@ import (
 	"code.gitea.io/gitea/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/shared"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	actions_service "code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/context"
-	secret_service "code.gitea.io/gitea/services/secrets"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/context"
+	secret_service "code.gitea.io/gitea/app/services/secrets"
 )
 
 // ListActionsSecrets list an organization's actions secrets

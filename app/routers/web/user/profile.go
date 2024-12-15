@@ -25,8 +25,8 @@ import (
 	"code.gitea.io/gitea/app/routers/web/feed"
 	"code.gitea.io/gitea/app/routers/web/org"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/services/context"
-	feed_service "code.gitea.io/gitea/services/feed"
+	"code.gitea.io/gitea/app/services/context"
+	feed_service "code.gitea.io/gitea/app/services/feed"
 )
 
 const (

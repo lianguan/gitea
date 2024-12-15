@@ -12,7 +12,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // https://datatracker.ietf.org/doc/html/draft-ietf-appsawg-webfinger-14#section-4.4

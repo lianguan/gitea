@@ -20,7 +20,7 @@ import (
 	conan_module "code.gitea.io/gitea/modules/packages/conan"
 	"code.gitea.io/gitea/modules/setting"
 	conan_router "code.gitea.io/gitea/app/routers/api/packages/conan"
-	package_service "code.gitea.io/gitea/services/packages"
+	package_service "code.gitea.io/gitea/app/services/packages"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

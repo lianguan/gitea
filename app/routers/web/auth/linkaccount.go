@@ -16,11 +16,11 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
-	auth_service "code.gitea.io/gitea/services/auth"
-	"code.gitea.io/gitea/services/auth/source/oauth2"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/externalaccount"
-	"code.gitea.io/gitea/services/forms"
+	auth_service "code.gitea.io/gitea/app/services/auth"
+	"code.gitea.io/gitea/app/services/auth/source/oauth2"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/externalaccount"
+	"code.gitea.io/gitea/app/services/forms"
 
 	"github.com/markbates/goth"
 )

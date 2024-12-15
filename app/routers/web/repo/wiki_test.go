@@ -15,9 +15,9 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/contexttest"
-	"code.gitea.io/gitea/services/forms"
-	wiki_service "code.gitea.io/gitea/services/wiki"
+	"code.gitea.io/gitea/app/services/contexttest"
+	"code.gitea.io/gitea/app/services/forms"
+	wiki_service "code.gitea.io/gitea/app/services/wiki"
 
 	"github.com/stretchr/testify/assert"
 )

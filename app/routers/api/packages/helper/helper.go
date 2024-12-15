@@ -12,7 +12,7 @@ import (
 	packages_model "code.gitea.io/gitea/models/packages"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/services/context"
+	"code.gitea.io/gitea/app/services/context"
 )
 
 // LogAndProcessError logs an error and calls a custom callback with the processed error message.

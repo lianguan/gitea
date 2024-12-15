@@ -14,7 +14,7 @@ import (
 	"code.gitea.io/gitea/models/unittest"
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/git"
-	repo_service "code.gitea.io/gitea/services/repository"
+	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

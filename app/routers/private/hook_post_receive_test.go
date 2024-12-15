@@ -14,7 +14,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/private"
 	repo_module "code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/services/contexttest"
+	"code.gitea.io/gitea/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"
 )

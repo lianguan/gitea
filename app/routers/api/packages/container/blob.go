@@ -19,7 +19,7 @@ import (
 	packages_module "code.gitea.io/gitea/modules/packages"
 	container_module "code.gitea.io/gitea/modules/packages/container"
 	"code.gitea.io/gitea/modules/util"
-	packages_service "code.gitea.io/gitea/services/packages"
+	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 
 // saveAsPackageBlob creates a package blob from an upload

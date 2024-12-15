@@ -8,9 +8,9 @@ import (
 	"code.gitea.io/gitea/models/db"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/web"
-	actions_service "code.gitea.io/gitea/services/actions"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/forms"
+	actions_service "code.gitea.io/gitea/app/services/actions"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/forms"
 )
 
 func SetVariablesContext(ctx *context.Context, ownerID, repoID int64) {

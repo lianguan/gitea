@@ -28,7 +28,7 @@ import (
 	"code.gitea.io/gitea/modules/lfs"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"
-	gitea_context "code.gitea.io/gitea/services/context"
+	gitea_context "code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

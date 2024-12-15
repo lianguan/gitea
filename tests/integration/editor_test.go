@@ -12,7 +12,7 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/modules/json"
-	gitea_context "code.gitea.io/gitea/services/context"
+	gitea_context "code.gitea.io/gitea/app/services/context"
 
 	"github.com/stretchr/testify/assert"
 )

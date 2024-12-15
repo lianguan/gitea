@@ -19,7 +19,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/gitrepo"
-	files_service "code.gitea.io/gitea/services/repository/files"
+	files_service "code.gitea.io/gitea/app/services/repository/files"
 
 	"github.com/stretchr/testify/assert"
 )

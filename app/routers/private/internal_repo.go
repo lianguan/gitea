@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/private"
-	gitea_context "code.gitea.io/gitea/services/context"
+	gitea_context "code.gitea.io/gitea/app/services/context"
 )
 
 // This file contains common functions relating to setting the Repository for the internal routes

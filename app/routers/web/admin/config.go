@@ -19,8 +19,8 @@ import (
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/setting/config"
 	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/mailer"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/mailer"
 
 	"gitea.com/go-chi/session"
 )

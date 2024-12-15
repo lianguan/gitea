@@ -16,10 +16,10 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/services/context"
-	"code.gitea.io/gitea/services/convert"
-	notify_service "code.gitea.io/gitea/services/notify"
-	wiki_service "code.gitea.io/gitea/services/wiki"
+	"code.gitea.io/gitea/app/services/context"
+	"code.gitea.io/gitea/app/services/convert"
+	notify_service "code.gitea.io/gitea/app/services/notify"
+	wiki_service "code.gitea.io/gitea/app/services/wiki"
 )
 
 // NewWikiPage response for wiki create request

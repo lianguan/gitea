@@ -17,8 +17,8 @@ import (
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	webhook_module "code.gitea.io/gitea/modules/webhook"
-	"code.gitea.io/gitea/services/context"
-	webhook_service "code.gitea.io/gitea/services/webhook"
+	"code.gitea.io/gitea/app/services/context"
+	webhook_service "code.gitea.io/gitea/app/services/webhook"
 )
 
 // ListOwnerHooks lists the webhooks of the provided owner
