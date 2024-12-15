@@ -1,4 +1,4 @@
-import emojis from '../../../assets/emoji.json';
+import emojis from '../../../bundles/emoji.json';
 
 const {assetUrlPrefix, customEmojis} = window.config;
 
