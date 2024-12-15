@@ -146,8 +146,8 @@ WEB_DIRS := bundles/js bundles/css
 
 ESLINT_FILES := bundles/js tools *.js *.ts tests/e2e
 STYLELINT_FILES := bundles/css bundles/js/components/*.vue
-SPELLCHECK_FILES := $(GO_DIRS) $(WEB_DIRS) templates options/locale/locale_en-US.ini .github $(filter-out CHANGELOG.md, $(wildcard *.go *.js *.md *.yml *.yaml *.toml))
-EDITORCONFIG_FILES := templates .github/workflows options/locale/locale_en-US.ini
+SPELLCHECK_FILES := $(GO_DIRS) $(WEB_DIRS) templates bundles/options/locale/locale_en-US.ini .github $(filter-out CHANGELOG.md, $(wildcard *.go *.js *.md *.yml *.yaml *.toml))
+EDITORCONFIG_FILES := templates .github/workflows bundles/options/locale/locale_en-US.ini
 
 GO_SOURCES := $(wildcard *.go)
 GO_SOURCES += $(shell find $(GO_DIRS) -type f -name "*.go" ! -path app/modules/options/bindata.go ! -path app/modules/public/bindata.go ! -path app/modules/templates/bindata.go)
@@ -961,7 +961,7 @@ update-translations:
 	rm ./translations/gitea.zip
 	$(SED_INPLACE) -e 's/="/=/g' -e 's/"$$//g' ./translations/*.ini
 	$(SED_INPLACE) -e 's/\\"/"/g' ./translations/*.ini
-	mv ./translations/*.ini ./options/locale/
+	mv ./translations/*.ini ./bundles/options/locale/
 	rmdir ./translations
 
 .PHONY: generate-license

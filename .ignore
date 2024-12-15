@@ -4,8 +4,8 @@
 /app/modules/options/bindata.go
 /app/modules/public/bindata.go
 /app/modules/templates/bindata.go
-/options/gitignore
-/options/license
+/bundles/options/gitignore
+/bundles/options/license
 /public/assets
 /vendor
 node_modules

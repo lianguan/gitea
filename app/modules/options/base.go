@@ -9,7 +9,7 @@ import (
 )
 
 func CustomAssets() *assetfs.Layer {
-	return assetfs.Local("custom", setting.CustomPath, "options")
+	return assetfs.Local("custom", setting.CustomPath, "bundles", "options")
 }
 
 func AssetFS() *assetfs.LayeredFS {

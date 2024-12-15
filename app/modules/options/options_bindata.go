@@ -5,4 +5,4 @@
 
 package options
 
-//go:generate go run ../../../generate/generate-bindata.go ../../../options options bindata.go
+//go:generate go run ../../../generate/generate-bindata.go ../../../bundles/options options bindata.go
