@@ -11,9 +11,9 @@ import (
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/repository"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/repository"
 )
 
 var notifiers []Notifier

@@ -23,11 +23,11 @@ import (
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	alpine_model "code.gitea.io/gitea/app/models/packages/alpine"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/json"
-	packages_module "code.gitea.io/gitea/modules/packages"
-	alpine_module "code.gitea.io/gitea/modules/packages/alpine"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/json"
+	packages_module "code.gitea.io/gitea/app/modules/packages"
+	alpine_module "code.gitea.io/gitea/app/modules/packages/alpine"
+	"code.gitea.io/gitea/app/modules/util"
 	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 

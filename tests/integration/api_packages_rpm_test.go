@@ -19,9 +19,9 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	rpm_module "code.gitea.io/gitea/modules/packages/rpm"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	rpm_module "code.gitea.io/gitea/app/modules/packages/rpm"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/ProtonMail/go-crypto/openpgp"

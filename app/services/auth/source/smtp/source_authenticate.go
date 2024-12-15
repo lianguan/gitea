@@ -12,8 +12,8 @@ import (
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // Authenticate queries if the provided login/password is authenticates against the SMTP server

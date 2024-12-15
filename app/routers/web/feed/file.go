@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context"
 
 	"github.com/gorilla/feeds"

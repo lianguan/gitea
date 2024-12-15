@@ -13,11 +13,11 @@ import (
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/cache"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/log"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/cache"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/log"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToAPIPullRequest assumes following fields have been assigned with valid values:

@@ -9,7 +9,7 @@ import (
 
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToPullReview convert a review to api format

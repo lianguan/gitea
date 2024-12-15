@@ -13,8 +13,8 @@ import (
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	unit_model "code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/log"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/log"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToRepo converts a Repository to api.Repository

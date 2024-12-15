@@ -11,8 +11,8 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/storage"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/storage"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context/upload"
 
 	"github.com/google/uuid"

@@ -20,7 +20,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"code.gitea.io/gitea/modules/json"
+	"code.gitea.io/gitea/app/modules/json"
 )
 
 const (
@@ -28,7 +28,7 @@ const (
 	maxUnicodeVersion = 15
 )
 
-var flagOut = flag.String("o", "modules/emoji/emoji_data.go", "out")
+var flagOut = flag.String("o", "app/modules/emoji/emoji_data.go", "out")
 
 // Gemoji is a set of emoji data.
 type Gemoji []Emoji

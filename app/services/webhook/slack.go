@@ -11,12 +11,12 @@ import (
 	"strings"
 
 	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 )
 
 // SlackMeta contains the slack metadata

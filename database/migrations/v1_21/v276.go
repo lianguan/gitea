@@ -9,10 +9,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/modules/git"
-	giturl "code.gitea.io/gitea/modules/git/url"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/git"
+	giturl "code.gitea.io/gitea/app/modules/git/url"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/xorm"
 )

@@ -6,11 +6,11 @@ package misc
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/markup"
-	"code.gitea.io/gitea/modules/markup/markdown"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/markup"
+	"code.gitea.io/gitea/app/modules/markup/markdown"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/app/services/context"
 )

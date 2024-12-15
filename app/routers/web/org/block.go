@@ -6,7 +6,7 @@ package org
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/base"
+	"code.gitea.io/gitea/app/modules/base"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
 	"code.gitea.io/gitea/app/services/context"
 )

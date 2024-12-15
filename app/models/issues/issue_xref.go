@@ -11,8 +11,8 @@ import (
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/references"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/references"
 )
 
 type crossReference struct {

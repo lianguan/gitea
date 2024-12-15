@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/url"
 
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"
 )

@@ -4,7 +4,7 @@
 package v1_13 //nolint
 
 import (
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/log"
 
 	"xorm.io/builder"
 	"xorm.io/xorm"

@@ -11,12 +11,12 @@ import (
 	"strings"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/auth/webauthn"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/session"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/auth/webauthn"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/session"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 	user_service "code.gitea.io/gitea/app/services/user"
 )

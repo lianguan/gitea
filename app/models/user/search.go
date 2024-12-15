@@ -9,9 +9,9 @@ import (
 	"strings"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/structs"
 
 	"xorm.io/builder"
 	"xorm.io/xorm"

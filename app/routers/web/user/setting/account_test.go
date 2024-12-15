@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/contexttest"
 	"code.gitea.io/gitea/app/services/forms"
 

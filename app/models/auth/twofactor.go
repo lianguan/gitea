@@ -14,10 +14,10 @@ import (
 	"fmt"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/secret"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/secret"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"github.com/pquerna/otp/totp"
 	"golang.org/x/crypto/pbkdf2"

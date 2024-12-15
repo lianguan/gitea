@@ -4,9 +4,9 @@
 package indexer
 
 import (
-	code_indexer "code.gitea.io/gitea/modules/indexer/code"
-	issue_indexer "code.gitea.io/gitea/modules/indexer/issues"
-	stats_indexer "code.gitea.io/gitea/modules/indexer/stats"
+	code_indexer "code.gitea.io/gitea/app/modules/indexer/code"
+	issue_indexer "code.gitea.io/gitea/app/modules/indexer/issues"
+	stats_indexer "code.gitea.io/gitea/app/modules/indexer/stats"
 	notify_service "code.gitea.io/gitea/app/services/notify"
 )
 

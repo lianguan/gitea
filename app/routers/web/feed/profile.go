@@ -8,7 +8,7 @@ import (
 
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	"code.gitea.io/gitea/app/models/renderhelper"
-	"code.gitea.io/gitea/modules/markup/markdown"
+	"code.gitea.io/gitea/app/modules/markup/markdown"
 	"code.gitea.io/gitea/app/services/context"
 	feed_service "code.gitea.io/gitea/app/services/feed"
 

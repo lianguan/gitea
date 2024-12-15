@@ -12,12 +12,12 @@ import (
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 )
 
 // Ensure the struct implements the interface.

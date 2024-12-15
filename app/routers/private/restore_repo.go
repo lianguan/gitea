@@ -7,8 +7,8 @@ import (
 	"io"
 	"net/http"
 
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/private"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/private"
 	myCtx "code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/migrations"
 )

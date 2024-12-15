@@ -7,8 +7,8 @@ import (
 	"net/http"
 
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/log"
 	"code.gitea.io/gitea/app/services/context"
 )
 

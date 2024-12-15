@@ -21,8 +21,8 @@ import (
 	"strings"
 
 	"code.gitea.io/gitea/build/license"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 func main() {

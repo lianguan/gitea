@@ -15,9 +15,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	git_model "code.gitea.io/gitea/app/models/git"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/lfs"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/lfs"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/routers/web"
 	"code.gitea.io/gitea/tests"
 

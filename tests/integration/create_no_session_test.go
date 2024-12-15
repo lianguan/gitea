@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/routers"
 	"code.gitea.io/gitea/tests"
 

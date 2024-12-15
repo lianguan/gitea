@@ -16,8 +16,8 @@ import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	"github.com/stretchr/testify/assert"
 	"xorm.io/builder"

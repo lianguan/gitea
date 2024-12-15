@@ -9,8 +9,8 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/container"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/container"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 
 	"xorm.io/builder"
 )

@@ -15,12 +15,12 @@ import (
 	project_model "code.gitea.io/gitea/app/models/project"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/builder"
 )

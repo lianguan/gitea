@@ -4,7 +4,7 @@
 package cmd
 
 import (
-	"code.gitea.io/gitea/modules/graceful"
+	"code.gitea.io/gitea/app/modules/graceful"
 	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 

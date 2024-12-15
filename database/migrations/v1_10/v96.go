@@ -6,8 +6,8 @@ package v1_10 //nolint
 import (
 	"path/filepath"
 
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/xorm"
 )

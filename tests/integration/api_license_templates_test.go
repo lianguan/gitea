@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"testing"
 
-	"code.gitea.io/gitea/modules/options"
-	repo_module "code.gitea.io/gitea/modules/repository"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/options"
+	repo_module "code.gitea.io/gitea/app/modules/repository"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

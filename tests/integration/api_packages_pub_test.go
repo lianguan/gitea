@@ -20,7 +20,7 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	pub_module "code.gitea.io/gitea/modules/packages/pub"
+	pub_module "code.gitea.io/gitea/app/modules/packages/pub"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

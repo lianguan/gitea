@@ -8,14 +8,14 @@ import (
 	"net/http"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/graceful/releasereopen"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/private"
-	"code.gitea.io/gitea/modules/queue"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/templates"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/graceful/releasereopen"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/private"
+	"code.gitea.io/gitea/app/modules/queue"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/templates"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 )
 

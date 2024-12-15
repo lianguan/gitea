@@ -10,9 +10,9 @@ import (
 	"sync/atomic"
 
 	"code.gitea.io/gitea/app/models/perm"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // Type is Unit's Type

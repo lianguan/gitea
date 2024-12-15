@@ -15,9 +15,9 @@ import (
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"xorm.io/builder"

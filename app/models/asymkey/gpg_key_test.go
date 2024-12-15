@@ -10,8 +10,8 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"github.com/keybase/go-crypto/openpgp/packet"
 	"github.com/stretchr/testify/assert"

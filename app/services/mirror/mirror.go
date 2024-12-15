@@ -8,9 +8,9 @@ import (
 	"fmt"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/queue"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/queue"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // doMirrorSync causes this request to mirror itself

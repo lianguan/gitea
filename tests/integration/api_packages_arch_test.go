@@ -16,7 +16,7 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	arch_module "code.gitea.io/gitea/modules/packages/arch"
+	arch_module "code.gitea.io/gitea/app/modules/packages/arch"
 	arch_service "code.gitea.io/gitea/app/services/packages/arch"
 	"code.gitea.io/gitea/tests"
 

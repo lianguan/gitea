@@ -12,9 +12,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/timeutil"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 
 	"github.com/nektos/act/pkg/jobparser"
 )

@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/structs"
 
 	"github.com/stretchr/testify/assert"
 )

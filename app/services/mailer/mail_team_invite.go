@@ -11,10 +11,10 @@ import (
 
 	org_model "code.gitea.io/gitea/app/models/organization"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/translation"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/translation"
 	sender_service "code.gitea.io/gitea/app/services/mailer/sender"
 )
 

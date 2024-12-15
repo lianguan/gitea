@@ -9,9 +9,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 )
 

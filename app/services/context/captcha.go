@@ -7,14 +7,14 @@ import (
 	"fmt"
 	"sync"
 
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/cache"
-	"code.gitea.io/gitea/modules/hcaptcha"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/mcaptcha"
-	"code.gitea.io/gitea/modules/recaptcha"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/turnstile"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/cache"
+	"code.gitea.io/gitea/app/modules/hcaptcha"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/mcaptcha"
+	"code.gitea.io/gitea/app/modules/recaptcha"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/turnstile"
 
 	"gitea.com/go-chi/captcha"
 )

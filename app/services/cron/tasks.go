@@ -14,11 +14,11 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	system_model "code.gitea.io/gitea/app/models/system"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/process"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/translation"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/process"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/translation"
 )
 
 var (

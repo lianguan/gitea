@@ -10,14 +10,14 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/options"
-	"code.gitea.io/gitea/modules/queue"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/options"
+	"code.gitea.io/gitea/app/modules/queue"
 
 	licenseclassifier "github.com/google/licenseclassifier/v2"
 )

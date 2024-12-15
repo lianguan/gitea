@@ -8,8 +8,8 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"
 )

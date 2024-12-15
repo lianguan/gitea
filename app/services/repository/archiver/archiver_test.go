@@ -9,7 +9,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/git"
+	"code.gitea.io/gitea/app/modules/git"
 	"code.gitea.io/gitea/app/services/contexttest"
 
 	_ "code.gitea.io/gitea/app/models/actions"

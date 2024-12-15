@@ -10,8 +10,8 @@ import (
 	perm_model "code.gitea.io/gitea/app/models/perm"
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/log"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 func ToActivity(ctx context.Context, ac *activities_model.Action, doer *user_model.User) *api.Activity {

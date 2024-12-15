@@ -11,10 +11,10 @@ import (
 
 	"code.gitea.io/gitea/app/models/auth"
 	user_model "code.gitea.io/gitea/app/models/user"
-	wa "code.gitea.io/gitea/modules/auth/webauthn"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web"
+	wa "code.gitea.io/gitea/app/modules/auth/webauthn"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/forms"
 

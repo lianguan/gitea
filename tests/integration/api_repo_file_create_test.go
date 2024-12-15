@@ -17,9 +17,9 @@ import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/context"
 
 	"github.com/stretchr/testify/assert"

@@ -9,7 +9,7 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	project_model "code.gitea.io/gitea/app/models/project"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // LoadProject load the project the issue was assigned to

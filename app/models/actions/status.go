@@ -4,7 +4,7 @@
 package actions
 
 import (
-	"code.gitea.io/gitea/modules/translation"
+	"code.gitea.io/gitea/app/modules/translation"
 
 	runnerv1 "code.gitea.io/actions-proto-go/runner/v1"
 )

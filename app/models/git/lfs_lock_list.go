@@ -9,7 +9,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/container"
+	"code.gitea.io/gitea/app/modules/container"
 )
 
 // LFSLockList is a list of LFSLock

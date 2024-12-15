@@ -8,8 +8,8 @@ import (
 	"net/http"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/session"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/session"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 )
 
 // DataStore represents a data store

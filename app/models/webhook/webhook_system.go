@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/optional"
+	"code.gitea.io/gitea/app/modules/optional"
 )
 
 // GetDefaultWebhooks returns all admin-default webhooks.

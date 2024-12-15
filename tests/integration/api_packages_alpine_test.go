@@ -18,7 +18,7 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	alpine_module "code.gitea.io/gitea/modules/packages/alpine"
+	alpine_module "code.gitea.io/gitea/app/modules/packages/alpine"
 	alpine_service "code.gitea.io/gitea/app/services/packages/alpine"
 	"code.gitea.io/gitea/tests"
 

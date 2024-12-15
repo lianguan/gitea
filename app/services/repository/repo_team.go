@@ -13,7 +13,7 @@ import (
 	"code.gitea.io/gitea/app/models/organization"
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // TeamAddRepository adds new repository to team of organization.

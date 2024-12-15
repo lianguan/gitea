@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	maven_module "code.gitea.io/gitea/modules/packages/maven"
+	maven_module "code.gitea.io/gitea/app/modules/packages/maven"
 )
 
 // MetadataResponse https://maven.apache.org/ref/3.2.5/maven-repository-metadata/repository-metadata.html

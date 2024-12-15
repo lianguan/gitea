@@ -8,7 +8,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 )
 
 // Star represents a starred repo by an user.

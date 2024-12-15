@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/auth/password/hash"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/auth/password/hash"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	"github.com/go-testfixtures/testfixtures/v3"
 	"xorm.io/xorm"

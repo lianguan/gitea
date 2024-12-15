@@ -7,10 +7,10 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/database/migrations/base"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/secret"
-	"code.gitea.io/gitea/modules/setting"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/secret"
+	"code.gitea.io/gitea/app/modules/setting"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 
 	"github.com/stretchr/testify/assert"
 )

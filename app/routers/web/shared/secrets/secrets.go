@@ -6,9 +6,9 @@ package secrets
 import (
 	"code.gitea.io/gitea/app/models/db"
 	secret_model "code.gitea.io/gitea/app/models/secret"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/forms"
 	secret_service "code.gitea.io/gitea/app/services/secrets"

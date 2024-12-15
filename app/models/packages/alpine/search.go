@@ -7,7 +7,7 @@ import (
 	"context"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	alpine_module "code.gitea.io/gitea/modules/packages/alpine"
+	alpine_module "code.gitea.io/gitea/app/modules/packages/alpine"
 )
 
 // GetBranches gets all available branches

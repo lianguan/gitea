@@ -13,8 +13,8 @@ import (
 	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

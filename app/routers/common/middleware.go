@@ -9,12 +9,12 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/modules/cache"
-	"code.gitea.io/gitea/modules/httplib"
-	"code.gitea.io/gitea/modules/process"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web/middleware"
-	"code.gitea.io/gitea/modules/web/routing"
+	"code.gitea.io/gitea/app/modules/cache"
+	"code.gitea.io/gitea/app/modules/httplib"
+	"code.gitea.io/gitea/app/modules/process"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/web/routing"
 	"code.gitea.io/gitea/app/services/context"
 
 	"gitea.com/go-chi/session"

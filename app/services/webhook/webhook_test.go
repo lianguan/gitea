@@ -10,8 +10,8 @@ import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
 	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	api "code.gitea.io/gitea/modules/structs"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	api "code.gitea.io/gitea/app/modules/structs"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 
 	"github.com/stretchr/testify/assert"
 )

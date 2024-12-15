@@ -8,9 +8,9 @@ import (
 	"html"
 	"net/http"
 
-	"code.gitea.io/gitea/modules/public"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/public"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/app/routers/web/healthcheck"
 	"code.gitea.io/gitea/app/services/forms"

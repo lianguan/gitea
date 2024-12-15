@@ -10,9 +10,9 @@ import (
 
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/modules/test"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/repository"
+	"code.gitea.io/gitea/app/modules/test"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/contexttest"
 	"code.gitea.io/gitea/app/services/forms"
 

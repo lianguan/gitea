@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"code.gitea.io/gitea/modules/lfs"
+	"code.gitea.io/gitea/app/modules/lfs"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

@@ -8,8 +8,8 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/storage"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"xorm.io/builder"

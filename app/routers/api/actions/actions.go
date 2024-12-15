@@ -6,7 +6,7 @@ package actions
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/api/actions/ping"
 	"code.gitea.io/gitea/app/routers/api/actions/runner"
 )

@@ -6,7 +6,7 @@ package user
 import (
 	"strings"
 
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/structs"
 )
 
 const (

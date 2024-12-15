@@ -6,7 +6,7 @@ package base
 import (
 	"testing"
 
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 
 	"xorm.io/xorm/names"
 )

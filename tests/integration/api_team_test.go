@@ -17,7 +17,7 @@ import (
 	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/convert"
 	"code.gitea.io/gitea/tests"
 

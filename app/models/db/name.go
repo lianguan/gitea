@@ -9,7 +9,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 var (

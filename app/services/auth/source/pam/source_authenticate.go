@@ -10,9 +10,9 @@ import (
 
 	"code.gitea.io/gitea/app/models/auth"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/auth/pam"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/auth/pam"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	"github.com/google/uuid"
 )

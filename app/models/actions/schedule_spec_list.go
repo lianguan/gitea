@@ -8,7 +8,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/container"
+	"code.gitea.io/gitea/app/modules/container"
 
 	"xorm.io/builder"
 )

@@ -10,10 +10,10 @@ import (
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/actions"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/actions"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/timeutil"
 )
 
 // StopZombieTasks stops the task which have running status, but haven't been updated for a long time

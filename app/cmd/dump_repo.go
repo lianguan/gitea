@@ -10,12 +10,12 @@ import (
 	"os"
 	"strings"
 
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/log"
-	base "code.gitea.io/gitea/modules/migration"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/log"
+	base "code.gitea.io/gitea/app/modules/migration"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/convert"
 	"code.gitea.io/gitea/app/services/migrations"
 

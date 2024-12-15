@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/gitrepo"
 	"code.gitea.io/gitea/app/services/context"
 	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
 )

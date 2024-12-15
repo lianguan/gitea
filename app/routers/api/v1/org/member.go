@@ -8,8 +8,8 @@ import (
 	"net/url"
 
 	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/user"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"

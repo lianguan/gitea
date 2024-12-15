@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/unittest"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"

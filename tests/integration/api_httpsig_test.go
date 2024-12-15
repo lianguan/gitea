@@ -10,9 +10,9 @@ import (
 	"testing"
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/test"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/test"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/42wim/httpsig"

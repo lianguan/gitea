@@ -5,7 +5,7 @@ package swagger
 
 import (
 	activities_model "code.gitea.io/gitea/app/models/activities"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // User

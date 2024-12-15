@@ -6,10 +6,10 @@ package misc
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/options"
-	repo_module "code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/options"
+	repo_module "code.gitea.io/gitea/app/modules/repository"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context"
 )
 

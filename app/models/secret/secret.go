@@ -10,12 +10,12 @@ import (
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	"code.gitea.io/gitea/app/models/db"
-	actions_module "code.gitea.io/gitea/modules/actions"
-	"code.gitea.io/gitea/modules/log"
-	secret_module "code.gitea.io/gitea/modules/secret"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	actions_module "code.gitea.io/gitea/app/modules/actions"
+	"code.gitea.io/gitea/app/modules/log"
+	secret_module "code.gitea.io/gitea/app/modules/secret"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/builder"
 )

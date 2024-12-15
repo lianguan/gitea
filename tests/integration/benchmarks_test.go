@@ -11,7 +11,7 @@ import (
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // StringWithCharset random string (from https://www.calhoun.io/creating-random-strings-in-go/)

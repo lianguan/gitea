@@ -7,7 +7,7 @@ import (
 	"context"
 
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 const replyPayloadVersion1 byte = 1

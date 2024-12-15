@@ -7,7 +7,7 @@ import (
 	"context"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/log"
 )
 
 func checkUserType(ctx context.Context, logger log.Logger, autofix bool) error {

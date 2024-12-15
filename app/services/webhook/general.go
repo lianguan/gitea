@@ -10,10 +10,10 @@ import (
 	"strings"
 
 	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/modules/setting"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/util"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/setting"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/util"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 )
 
 type linkFormatter = func(string, string) string

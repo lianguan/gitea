@@ -6,8 +6,8 @@ package forms
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	"code.gitea.io/gitea/app/services/context"
 
 	"gitea.com/go-chi/binding"

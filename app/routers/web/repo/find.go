@@ -6,8 +6,8 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context"
 )
 

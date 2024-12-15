@@ -8,8 +8,8 @@ package private
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/private"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/private"
 	"code.gitea.io/gitea/app/services/context"
 )
 

@@ -10,7 +10,7 @@ import (
 
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"
 )

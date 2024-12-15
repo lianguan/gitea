@@ -10,7 +10,7 @@ import (
 	"code.gitea.io/gitea/app/models/perm"
 	"code.gitea.io/gitea/app/models/unit"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/container"
+	"code.gitea.io/gitea/app/modules/container"
 
 	"xorm.io/builder"
 )

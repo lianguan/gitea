@@ -5,7 +5,7 @@ package common
 
 import (
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	auth_service "code.gitea.io/gitea/app/services/auth"
 	"code.gitea.io/gitea/app/services/context"
 )

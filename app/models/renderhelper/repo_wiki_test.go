@@ -9,8 +9,8 @@ import (
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/markup"
-	"code.gitea.io/gitea/modules/markup/markdown"
+	"code.gitea.io/gitea/app/modules/markup"
+	"code.gitea.io/gitea/app/modules/markup/markdown"
 
 	"github.com/stretchr/testify/assert"
 )

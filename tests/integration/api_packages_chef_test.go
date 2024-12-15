@@ -29,8 +29,8 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	chef_module "code.gitea.io/gitea/modules/packages/chef"
-	"code.gitea.io/gitea/modules/setting"
+	chef_module "code.gitea.io/gitea/app/modules/packages/chef"
+	"code.gitea.io/gitea/app/modules/setting"
 	chef_router "code.gitea.io/gitea/app/routers/api/packages/chef"
 	"code.gitea.io/gitea/tests"
 

@@ -9,7 +9,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	"code.gitea.io/gitea/app/services/actions"
 
 	"github.com/stretchr/testify/assert"

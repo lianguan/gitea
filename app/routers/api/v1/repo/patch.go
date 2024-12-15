@@ -10,9 +10,9 @@ import (
 	"code.gitea.io/gitea/app/models"
 	git_model "code.gitea.io/gitea/app/models/git"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/git"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/repository/files"
 )

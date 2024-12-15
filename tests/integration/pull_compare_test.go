@@ -14,7 +14,7 @@ import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/test"
+	"code.gitea.io/gitea/app/modules/test"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 	"code.gitea.io/gitea/tests"
 

@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	"github.com/gobwas/glob"
 	"github.com/stretchr/testify/assert"

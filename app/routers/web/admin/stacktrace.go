@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"runtime"
 
-	"code.gitea.io/gitea/modules/process"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/process"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 )
 

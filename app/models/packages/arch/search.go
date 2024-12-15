@@ -7,7 +7,7 @@ import (
 	"context"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	arch_module "code.gitea.io/gitea/modules/packages/arch"
+	arch_module "code.gitea.io/gitea/app/modules/packages/arch"
 )
 
 // GetRepositories gets all available repositories

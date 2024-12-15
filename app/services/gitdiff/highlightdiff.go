@@ -6,7 +6,7 @@ package gitdiff
 import (
 	"strings"
 
-	"code.gitea.io/gitea/modules/highlight"
+	"code.gitea.io/gitea/app/modules/highlight"
 
 	"github.com/sergi/go-diff/diffmatchpatch"
 )

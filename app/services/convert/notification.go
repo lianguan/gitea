@@ -10,7 +10,7 @@ import (
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	"code.gitea.io/gitea/app/models/perm"
 	access_model "code.gitea.io/gitea/app/models/perm/access"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToNotificationThread convert a Notification to api.NotificationThread

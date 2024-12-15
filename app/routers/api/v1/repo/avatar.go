@@ -7,8 +7,8 @@ import (
 	"encoding/base64"
 	"net/http"
 
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 )

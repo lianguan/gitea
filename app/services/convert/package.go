@@ -9,7 +9,7 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	access_model "code.gitea.io/gitea/app/models/perm/access"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToPackage convert a packages.PackageDescriptor to api.Package

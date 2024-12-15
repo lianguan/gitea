@@ -18,12 +18,12 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/testlogger"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/testlogger"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers"
 	"code.gitea.io/gitea/tests"
 )

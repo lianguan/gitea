@@ -13,9 +13,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	org_model "code.gitea.io/gitea/app/models/organization"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/timeutil"
 
 	"github.com/golang-jwt/jwt/v5"
 )

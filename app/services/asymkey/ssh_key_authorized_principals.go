@@ -15,9 +15,9 @@ import (
 
 	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // This file contains functions for creating authorized_principals files

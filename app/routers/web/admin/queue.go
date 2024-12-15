@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"code.gitea.io/gitea/modules/queue"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/queue"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 )
 

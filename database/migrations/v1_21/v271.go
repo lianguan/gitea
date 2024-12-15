@@ -3,7 +3,7 @@
 
 package v1_21 //nolint
 import (
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 
 	"xorm.io/xorm"
 )

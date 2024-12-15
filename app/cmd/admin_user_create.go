@@ -11,9 +11,9 @@ import (
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/models/db"
 	user_model "code.gitea.io/gitea/app/models/user"
-	pwd "code.gitea.io/gitea/modules/auth/password"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	pwd "code.gitea.io/gitea/app/modules/auth/password"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	"github.com/urfave/cli/v2"
 )

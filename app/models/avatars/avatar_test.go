@@ -9,8 +9,8 @@ import (
 	avatars_model "code.gitea.io/gitea/app/models/avatars"
 	"code.gitea.io/gitea/app/models/db"
 	system_model "code.gitea.io/gitea/app/models/system"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/setting/config"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/setting/config"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -17,12 +17,12 @@ import (
 	"time"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/log"
-	base "code.gitea.io/gitea/modules/migration"
-	"code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/log"
+	base "code.gitea.io/gitea/app/modules/migration"
+	"code.gitea.io/gitea/app/modules/repository"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/structs"
 
 	"github.com/google/uuid"
 	"gopkg.in/yaml.v3"

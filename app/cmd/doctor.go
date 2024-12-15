@@ -14,9 +14,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/database/migrations"
 	migrate_base "code.gitea.io/gitea/database/migrations/base"
-	"code.gitea.io/gitea/modules/container"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/container"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/doctor"
 
 	"github.com/urfave/cli/v2"

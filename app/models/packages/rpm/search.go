@@ -7,7 +7,7 @@ import (
 	"context"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	rpm_module "code.gitea.io/gitea/modules/packages/rpm"
+	rpm_module "code.gitea.io/gitea/app/modules/packages/rpm"
 )
 
 // GetGroups gets all available groups

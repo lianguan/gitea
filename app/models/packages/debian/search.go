@@ -9,7 +9,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/packages"
-	debian_module "code.gitea.io/gitea/modules/packages/debian"
+	debian_module "code.gitea.io/gitea/app/modules/packages/debian"
 
 	"xorm.io/builder"
 )

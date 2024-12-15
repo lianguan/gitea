@@ -10,8 +10,8 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	unit_model "code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/optional"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/optional"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 

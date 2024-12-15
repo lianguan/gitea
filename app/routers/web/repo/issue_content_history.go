@@ -11,9 +11,9 @@ import (
 
 	"code.gitea.io/gitea/app/models/avatars"
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/templates"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/templates"
 	"code.gitea.io/gitea/app/services/context"
 
 	"github.com/sergi/go-diff/diffmatchpatch"

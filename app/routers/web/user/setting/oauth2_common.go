@@ -8,9 +8,9 @@ import (
 	"net/http"
 
 	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/forms"

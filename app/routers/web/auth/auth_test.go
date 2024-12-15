@@ -10,10 +10,10 @@ import (
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/session"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/test"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/session"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/test"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/auth/source/oauth2"
 	"code.gitea.io/gitea/app/services/contexttest"
 

@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"

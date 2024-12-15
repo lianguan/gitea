@@ -11,9 +11,9 @@ import (
 	issue_model "code.gitea.io/gitea/app/models/issues"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
-	repo_module "code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/git"
+	repo_module "code.gitea.io/gitea/app/modules/repository"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/pull"
 )
 

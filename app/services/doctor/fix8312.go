@@ -9,7 +9,7 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	org_model "code.gitea.io/gitea/app/models/organization"
 	"code.gitea.io/gitea/app/models/perm"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/log"
 	org_service "code.gitea.io/gitea/app/services/org"
 
 	"xorm.io/builder"

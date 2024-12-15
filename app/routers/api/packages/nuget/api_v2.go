@@ -9,7 +9,7 @@ import (
 	"time"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	nuget_module "code.gitea.io/gitea/modules/packages/nuget"
+	nuget_module "code.gitea.io/gitea/app/modules/packages/nuget"
 )
 
 type AtomTitle struct {

@@ -8,7 +8,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/modules/eventsource"
+	"code.gitea.io/gitea/app/modules/eventsource"
 	"code.gitea.io/gitea/app/services/context"
 )
 

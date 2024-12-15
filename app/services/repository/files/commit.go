@@ -8,8 +8,8 @@ import (
 
 	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/structs"
 )
 
 // CountDivergingCommits determines how many commits a branch is ahead or behind the repository's base branch

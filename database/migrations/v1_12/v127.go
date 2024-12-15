@@ -6,7 +6,7 @@ package v1_12 //nolint
 import (
 	"fmt"
 
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 
 	"xorm.io/xorm"
 )

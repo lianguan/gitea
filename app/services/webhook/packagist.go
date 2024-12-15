@@ -9,10 +9,10 @@ import (
 	"net/http"
 
 	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/log"
-	api "code.gitea.io/gitea/modules/structs"
-	webhook_module "code.gitea.io/gitea/modules/webhook"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/log"
+	api "code.gitea.io/gitea/app/modules/structs"
+	webhook_module "code.gitea.io/gitea/app/modules/webhook"
 )
 
 type (

@@ -6,7 +6,7 @@ package secrets
 import (
 	"regexp"
 
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // https://docs.github.com/en/actions/security-guides/encrypted-secrets#naming-your-secrets

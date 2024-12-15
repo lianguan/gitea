@@ -6,7 +6,7 @@ package web
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 )
 

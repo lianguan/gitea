@@ -8,8 +8,8 @@ import (
 	"net/http"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/base"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/base"
+	"code.gitea.io/gitea/app/modules/setting"
 	shared "code.gitea.io/gitea/app/routers/web/shared/secrets"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
 	"code.gitea.io/gitea/app/services/context"

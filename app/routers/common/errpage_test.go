@@ -12,8 +12,8 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/test"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/test"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 
 	"github.com/stretchr/testify/assert"
 )

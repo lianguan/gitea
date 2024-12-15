@@ -6,7 +6,7 @@ package common
 import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
+	"code.gitea.io/gitea/app/modules/git"
 )
 
 // CompareInfo represents the collected results from ParseCompareInfo

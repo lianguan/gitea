@@ -9,8 +9,8 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	code_indexer "code.gitea.io/gitea/modules/indexer/code"
-	"code.gitea.io/gitea/modules/setting"
+	code_indexer "code.gitea.io/gitea/app/modules/indexer/code"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/PuerkitoBio/goquery"

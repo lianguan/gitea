@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/templates"
+	"code.gitea.io/gitea/app/modules/templates"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/contexttest"
 	"code.gitea.io/gitea/app/services/pull"

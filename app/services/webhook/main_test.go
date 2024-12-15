@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/hostmatcher"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/hostmatcher"
+	"code.gitea.io/gitea/app/modules/setting"
 
 	_ "code.gitea.io/gitea/app/models"
 	_ "code.gitea.io/gitea/app/models/actions"

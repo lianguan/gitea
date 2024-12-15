@@ -13,11 +13,11 @@ import (
 
 	"code.gitea.io/gitea/app/models/renderhelper"
 	"code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/httplib"
-	"code.gitea.io/gitea/modules/markup"
-	"code.gitea.io/gitea/modules/markup/markdown"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/httplib"
+	"code.gitea.io/gitea/app/modules/markup"
+	"code.gitea.io/gitea/app/modules/markup/markdown"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context"
 )
 

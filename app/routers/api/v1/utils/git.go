@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/log"
 	"code.gitea.io/gitea/app/services/context"
 )
 

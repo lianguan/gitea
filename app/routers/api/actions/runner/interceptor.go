@@ -11,9 +11,9 @@ import (
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"connectrpc.com/connect"
 	"google.golang.org/grpc/codes"

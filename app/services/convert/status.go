@@ -8,7 +8,7 @@ import (
 
 	git_model "code.gitea.io/gitea/app/models/git"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToCommitStatus converts git_model.CommitStatus to api.CommitStatus

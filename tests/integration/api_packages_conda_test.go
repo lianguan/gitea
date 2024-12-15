@@ -16,8 +16,8 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	conda_module "code.gitea.io/gitea/modules/packages/conda"
-	"code.gitea.io/gitea/modules/zstd"
+	conda_module "code.gitea.io/gitea/app/modules/packages/conda"
+	"code.gitea.io/gitea/app/modules/zstd"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/dsnet/compress/bzip2"

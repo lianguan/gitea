@@ -7,10 +7,10 @@ import (
 	"net/http"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/private"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/private"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/agit"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 )

@@ -17,16 +17,16 @@ import (
 
 	"code.gitea.io/gitea/app/models/unit"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/cache"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/httpcache"
-	"code.gitea.io/gitea/modules/session"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/templates"
-	"code.gitea.io/gitea/modules/translation"
-	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/modules/web/middleware"
-	web_types "code.gitea.io/gitea/modules/web/types"
+	"code.gitea.io/gitea/app/modules/cache"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/httpcache"
+	"code.gitea.io/gitea/app/modules/session"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/templates"
+	"code.gitea.io/gitea/app/modules/translation"
+	"code.gitea.io/gitea/app/modules/web"
+	"code.gitea.io/gitea/app/modules/web/middleware"
+	web_types "code.gitea.io/gitea/app/modules/web/types"
 )
 
 // Render represents a template render

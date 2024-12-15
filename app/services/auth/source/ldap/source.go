@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/secret"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/secret"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // .____     ________      _____ __________

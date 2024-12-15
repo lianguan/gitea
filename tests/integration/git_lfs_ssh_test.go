@@ -12,9 +12,9 @@ import (
 	"testing"
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/app/services/context"
 

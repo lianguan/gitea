@@ -10,9 +10,9 @@ import (
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/models/perm"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/api/packages/alpine"
 	"code.gitea.io/gitea/app/routers/api/packages/arch"
 	"code.gitea.io/gitea/app/routers/api/packages/cargo"

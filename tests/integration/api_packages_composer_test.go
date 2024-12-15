@@ -15,8 +15,8 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	composer_module "code.gitea.io/gitea/modules/packages/composer"
-	"code.gitea.io/gitea/modules/setting"
+	composer_module "code.gitea.io/gitea/app/modules/packages/composer"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/routers/api/packages/composer"
 	"code.gitea.io/gitea/tests"
 

@@ -8,8 +8,8 @@ import (
 	"fmt"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // ErrUserOwnRepos represents a "UserOwnRepos" kind of error.

@@ -7,8 +7,8 @@ import (
 	"context"
 
 	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // ___________.__             ___________                     __

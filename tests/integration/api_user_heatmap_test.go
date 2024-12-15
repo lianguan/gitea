@@ -11,7 +11,7 @@ import (
 
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

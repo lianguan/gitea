@@ -11,8 +11,8 @@ import (
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	"code.gitea.io/gitea/app/services/context"
 
 	"gitea.com/go-chi/binding"

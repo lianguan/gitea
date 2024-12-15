@@ -17,10 +17,10 @@ import (
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/log"
-	packages_module "code.gitea.io/gitea/modules/packages"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/log"
+	packages_module "code.gitea.io/gitea/app/modules/packages"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/storage"
 
 	"github.com/urfave/cli/v2"
 )

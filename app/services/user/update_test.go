@@ -9,9 +9,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	password_module "code.gitea.io/gitea/modules/auth/password"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/structs"
+	password_module "code.gitea.io/gitea/app/modules/auth/password"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/structs"
 
 	"github.com/stretchr/testify/assert"
 )

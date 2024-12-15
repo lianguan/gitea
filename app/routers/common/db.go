@@ -11,9 +11,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/database/migrations"
 	system_model "code.gitea.io/gitea/app/models/system"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/setting/config"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/setting/config"
 
 	"xorm.io/xorm"
 )

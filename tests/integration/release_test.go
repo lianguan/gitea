@@ -11,9 +11,9 @@ import (
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/test"
-	"code.gitea.io/gitea/modules/translation"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/test"
+	"code.gitea.io/gitea/app/modules/translation"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/PuerkitoBio/goquery"

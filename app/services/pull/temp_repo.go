@@ -14,9 +14,9 @@ import (
 	git_model "code.gitea.io/gitea/app/models/git"
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/log"
-	repo_module "code.gitea.io/gitea/modules/repository"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/log"
+	repo_module "code.gitea.io/gitea/app/modules/repository"
 )
 
 // Temporary repos created here use standard branch names to help simplify

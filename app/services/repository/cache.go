@@ -7,8 +7,8 @@ import (
 	"context"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/cache"
-	"code.gitea.io/gitea/modules/git"
+	"code.gitea.io/gitea/app/modules/cache"
+	"code.gitea.io/gitea/app/modules/git"
 )
 
 // CacheRef cachhe last commit information of the branch or the tag

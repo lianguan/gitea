@@ -13,8 +13,8 @@ import (
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/storage"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/storage"
+	"code.gitea.io/gitea/app/modules/util"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 

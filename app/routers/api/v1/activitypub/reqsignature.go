@@ -12,9 +12,9 @@ import (
 	"net/http"
 	"net/url"
 
-	"code.gitea.io/gitea/modules/activitypub"
-	"code.gitea.io/gitea/modules/httplib"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/activitypub"
+	"code.gitea.io/gitea/app/modules/httplib"
+	"code.gitea.io/gitea/app/modules/setting"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 
 	"github.com/42wim/httpsig"

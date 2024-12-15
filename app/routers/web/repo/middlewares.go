@@ -9,8 +9,8 @@ import (
 
 	system_model "code.gitea.io/gitea/app/models/system"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/optional"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/optional"
 	"code.gitea.io/gitea/app/services/context"
 	user_service "code.gitea.io/gitea/app/services/user"
 )

@@ -13,9 +13,9 @@ import (
 	git_model "code.gitea.io/gitea/app/models/git"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/lfs"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/lfs"
+	"code.gitea.io/gitea/app/modules/setting"
 )
 
 // UploadRepoFileOptions contains the uploaded repository file options

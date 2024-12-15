@@ -18,8 +18,8 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/base"
-	debian_module "code.gitea.io/gitea/modules/packages/debian"
+	"code.gitea.io/gitea/app/modules/base"
+	debian_module "code.gitea.io/gitea/app/modules/packages/debian"
 	packages_cleanup_service "code.gitea.io/gitea/app/services/packages/cleanup"
 	"code.gitea.io/gitea/tests"
 

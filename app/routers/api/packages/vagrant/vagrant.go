@@ -12,9 +12,9 @@ import (
 	"strings"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	packages_module "code.gitea.io/gitea/modules/packages"
-	vagrant_module "code.gitea.io/gitea/modules/packages/vagrant"
-	"code.gitea.io/gitea/modules/setting"
+	packages_module "code.gitea.io/gitea/app/modules/packages"
+	vagrant_module "code.gitea.io/gitea/app/modules/packages/vagrant"
+	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
 	"code.gitea.io/gitea/app/services/context"
 	packages_service "code.gitea.io/gitea/app/services/packages"

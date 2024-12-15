@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/storage"
 	"code.gitea.io/gitea/app/routers/api/actions"
 	actions_service "code.gitea.io/gitea/app/services/actions"
 

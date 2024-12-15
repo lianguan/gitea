@@ -14,11 +14,11 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	container_model "code.gitea.io/gitea/app/models/packages/container"
-	"code.gitea.io/gitea/modules/globallock"
-	"code.gitea.io/gitea/modules/log"
-	packages_module "code.gitea.io/gitea/modules/packages"
-	container_module "code.gitea.io/gitea/modules/packages/container"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/globallock"
+	"code.gitea.io/gitea/app/modules/log"
+	packages_module "code.gitea.io/gitea/app/modules/packages"
+	container_module "code.gitea.io/gitea/app/modules/packages/container"
+	"code.gitea.io/gitea/app/modules/util"
 	packages_service "code.gitea.io/gitea/app/services/packages"
 )
 

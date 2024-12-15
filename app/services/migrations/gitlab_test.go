@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/modules/json"
-	base "code.gitea.io/gitea/modules/migration"
+	"code.gitea.io/gitea/app/modules/json"
+	base "code.gitea.io/gitea/app/modules/migration"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/xanzy/go-gitlab"

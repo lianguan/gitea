@@ -6,7 +6,7 @@ package repo
 import (
 	"net/url"
 
-	"code.gitea.io/gitea/modules/git"
+	"code.gitea.io/gitea/app/modules/git"
 	"code.gitea.io/gitea/app/services/context"
 )
 

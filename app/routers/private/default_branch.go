@@ -8,8 +8,8 @@ import (
 	"net/http"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/gitrepo"
-	"code.gitea.io/gitea/modules/private"
+	"code.gitea.io/gitea/app/modules/gitrepo"
+	"code.gitea.io/gitea/app/modules/private"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 )

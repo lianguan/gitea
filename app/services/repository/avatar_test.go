@@ -12,7 +12,7 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/avatar"
+	"code.gitea.io/gitea/app/modules/avatar"
 
 	"github.com/stretchr/testify/assert"
 )

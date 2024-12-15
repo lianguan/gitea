@@ -9,12 +9,12 @@ import (
 	"time"
 
 	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/modules/git"
-	"code.gitea.io/gitea/modules/httpcache"
-	"code.gitea.io/gitea/modules/lfs"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/git"
+	"code.gitea.io/gitea/app/modules/httpcache"
+	"code.gitea.io/gitea/app/modules/lfs"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/storage"
 	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/app/services/context"
 )

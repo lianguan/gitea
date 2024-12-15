@@ -11,9 +11,9 @@ import (
 	"runtime"
 	"time"
 
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/private"
-	process_module "code.gitea.io/gitea/modules/process"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/private"
+	process_module "code.gitea.io/gitea/app/modules/process"
 	"code.gitea.io/gitea/app/services/context"
 )
 

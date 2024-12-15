@@ -9,7 +9,7 @@ import (
 
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	"code.gitea.io/gitea/app/models/db"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"
 )

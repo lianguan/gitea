@@ -6,7 +6,7 @@ package common
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/lfs"
 )
 

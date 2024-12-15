@@ -4,8 +4,8 @@
 package v1_15 //nolint
 
 import (
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/builder"
 	"xorm.io/xorm"

@@ -9,9 +9,9 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/app/models/unit"
-	issue_indexer "code.gitea.io/gitea/modules/indexer/issues"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/structs"
+	issue_indexer "code.gitea.io/gitea/app/modules/indexer/issues"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/context"
 )
 

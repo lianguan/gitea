@@ -12,11 +12,11 @@ import (
 
 	"code.gitea.io/gitea/app/models/avatars"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/avatar"
-	"code.gitea.io/gitea/modules/httplib"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/avatar"
+	"code.gitea.io/gitea/app/modules/httplib"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/storage"
 )
 
 // CustomAvatarRelativePath returns user custom avatar relative path.

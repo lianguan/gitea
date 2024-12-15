@@ -12,7 +12,7 @@ import (
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/models/db"
 	git_model "code.gitea.io/gitea/app/models/git"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

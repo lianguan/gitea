@@ -16,11 +16,11 @@ import (
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	system_model "code.gitea.io/gitea/app/models/system"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/hostmatcher"
-	"code.gitea.io/gitea/modules/log"
-	base "code.gitea.io/gitea/modules/migration"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/hostmatcher"
+	"code.gitea.io/gitea/app/modules/log"
+	base "code.gitea.io/gitea/app/modules/migration"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // MigrateOptions is equal to base.MigrateOptions

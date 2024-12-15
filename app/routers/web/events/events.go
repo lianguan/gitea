@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"code.gitea.io/gitea/modules/eventsource"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/eventsource"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/log"
 	"code.gitea.io/gitea/app/routers/web/auth"
 	"code.gitea.io/gitea/app/services/context"
 )

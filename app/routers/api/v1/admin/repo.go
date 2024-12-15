@@ -4,8 +4,8 @@
 package admin
 
 import (
-	api "code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web"
+	api "code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/routers/api/v1/repo"
 	"code.gitea.io/gitea/app/services/context"
 )

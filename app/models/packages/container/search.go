@@ -11,8 +11,8 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/packages"
 	user_model "code.gitea.io/gitea/app/models/user"
-	container_module "code.gitea.io/gitea/modules/packages/container"
-	"code.gitea.io/gitea/modules/util"
+	container_module "code.gitea.io/gitea/app/modules/packages/container"
+	"code.gitea.io/gitea/app/modules/util"
 
 	"xorm.io/builder"
 )

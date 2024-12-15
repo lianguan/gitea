@@ -9,8 +9,8 @@ import (
 
 	conan_model "code.gitea.io/gitea/app/models/packages/conan"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/json"
-	conan_module "code.gitea.io/gitea/modules/packages/conan"
+	"code.gitea.io/gitea/app/modules/json"
+	conan_module "code.gitea.io/gitea/app/modules/packages/conan"
 	"code.gitea.io/gitea/app/services/context"
 )
 

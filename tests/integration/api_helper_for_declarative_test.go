@@ -16,9 +16,9 @@ import (
 	"code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/models/perm"
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/modules/json"
-	"code.gitea.io/gitea/modules/queue"
-	api "code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/json"
+	"code.gitea.io/gitea/app/modules/queue"
+	api "code.gitea.io/gitea/app/modules/structs"
 	"code.gitea.io/gitea/app/services/forms"
 
 	"github.com/stretchr/testify/assert"

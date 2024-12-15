@@ -7,7 +7,7 @@ import (
 	"context"
 
 	repo_model "code.gitea.io/gitea/app/models/repo"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToAPIRelease convert a repo_model.Release to api.Release

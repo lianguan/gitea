@@ -8,9 +8,9 @@ import (
 	"fmt"
 
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/auth/password"
-	"code.gitea.io/gitea/modules/optional"
-	"code.gitea.io/gitea/modules/setting"
+	"code.gitea.io/gitea/app/modules/auth/password"
+	"code.gitea.io/gitea/app/modules/optional"
+	"code.gitea.io/gitea/app/modules/setting"
 	user_service "code.gitea.io/gitea/app/services/user"
 
 	"github.com/urfave/cli/v2"

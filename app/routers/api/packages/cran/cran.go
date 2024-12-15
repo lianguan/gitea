@@ -13,9 +13,9 @@ import (
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	cran_model "code.gitea.io/gitea/app/models/packages/cran"
-	packages_module "code.gitea.io/gitea/modules/packages"
-	cran_module "code.gitea.io/gitea/modules/packages/cran"
-	"code.gitea.io/gitea/modules/util"
+	packages_module "code.gitea.io/gitea/app/modules/packages"
+	cran_module "code.gitea.io/gitea/app/modules/packages/cran"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"
 	"code.gitea.io/gitea/app/services/context"
 	packages_service "code.gitea.io/gitea/app/services/packages"

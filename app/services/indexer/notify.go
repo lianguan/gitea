@@ -9,12 +9,12 @@ import (
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
-	code_indexer "code.gitea.io/gitea/modules/indexer/code"
-	issue_indexer "code.gitea.io/gitea/modules/indexer/issues"
-	stats_indexer "code.gitea.io/gitea/modules/indexer/stats"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/repository"
-	"code.gitea.io/gitea/modules/setting"
+	code_indexer "code.gitea.io/gitea/app/modules/indexer/code"
+	issue_indexer "code.gitea.io/gitea/app/modules/indexer/issues"
+	stats_indexer "code.gitea.io/gitea/app/modules/indexer/stats"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/repository"
+	"code.gitea.io/gitea/app/modules/setting"
 	notify_service "code.gitea.io/gitea/app/services/notify"
 )
 

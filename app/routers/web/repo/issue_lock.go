@@ -5,7 +5,7 @@ package repo
 
 import (
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/forms"
 )

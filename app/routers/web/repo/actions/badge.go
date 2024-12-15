@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/modules/badge"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/badge"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/context"
 )
 

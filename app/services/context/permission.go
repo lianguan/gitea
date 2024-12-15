@@ -9,7 +9,7 @@ import (
 	auth_model "code.gitea.io/gitea/app/models/auth"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/modules/log"
+	"code.gitea.io/gitea/app/modules/log"
 )
 
 // RequireRepoAdmin returns a middleware for requiring repository admin permission

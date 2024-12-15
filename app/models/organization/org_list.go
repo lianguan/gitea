@@ -11,7 +11,7 @@ import (
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/perm"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/structs"
+	"code.gitea.io/gitea/app/modules/structs"
 
 	"xorm.io/builder"
 )

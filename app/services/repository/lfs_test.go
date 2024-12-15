@@ -13,9 +13,9 @@ import (
 	git_model "code.gitea.io/gitea/app/models/git"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/modules/lfs"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/storage"
+	"code.gitea.io/gitea/app/modules/lfs"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/storage"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 
 	"github.com/stretchr/testify/assert"

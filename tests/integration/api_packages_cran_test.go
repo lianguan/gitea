@@ -16,7 +16,7 @@ import (
 	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/app/models/unittest"
 	user_model "code.gitea.io/gitea/app/models/user"
-	cran_module "code.gitea.io/gitea/modules/packages/cran"
+	cran_module "code.gitea.io/gitea/app/modules/packages/cran"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

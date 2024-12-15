@@ -10,7 +10,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/app/models/perm"
-	"code.gitea.io/gitea/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/timeutil"
 
 	"xorm.io/builder"
 )

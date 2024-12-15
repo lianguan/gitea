@@ -8,7 +8,7 @@ import (
 
 	"code.gitea.io/gitea/app/models/perm"
 	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/modules/structs"
+	api "code.gitea.io/gitea/app/modules/structs"
 )
 
 // ToUser convert user_model.User to api.User

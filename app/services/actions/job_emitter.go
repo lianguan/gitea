@@ -10,8 +10,8 @@ import (
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/graceful"
-	"code.gitea.io/gitea/modules/queue"
+	"code.gitea.io/gitea/app/modules/graceful"
+	"code.gitea.io/gitea/app/modules/queue"
 
 	"github.com/nektos/act/pkg/jobparser"
 	"xorm.io/builder"

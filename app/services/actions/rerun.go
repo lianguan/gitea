@@ -5,7 +5,7 @@ package actions
 
 import (
 	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/modules/container"
+	"code.gitea.io/gitea/app/modules/container"
 )
 
 // GetAllRerunJobs get all jobs that need to be rerun when job should be rerun

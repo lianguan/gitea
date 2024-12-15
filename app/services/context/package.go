@@ -12,9 +12,9 @@ import (
 	"code.gitea.io/gitea/app/models/perm"
 	"code.gitea.io/gitea/app/models/unit"
 	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/templates"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/templates"
 )
 
 // Package contains owner, access mode and optional the package descriptor

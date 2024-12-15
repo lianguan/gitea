@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/timeutil"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/app/modules/util"
 )
 
 // ErrPackageBlobUploadNotExist indicates a package blob upload not exist error

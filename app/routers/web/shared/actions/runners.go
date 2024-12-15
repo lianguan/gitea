@@ -8,9 +8,9 @@ import (
 
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/modules/log"
-	"code.gitea.io/gitea/modules/util"
-	"code.gitea.io/gitea/modules/web"
+	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/app/modules/web"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/forms"
 )

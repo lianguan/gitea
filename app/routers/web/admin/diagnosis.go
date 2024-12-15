@@ -9,7 +9,7 @@ import (
 	"runtime/pprof"
 	"time"
 
-	"code.gitea.io/gitea/modules/httplib"
+	"code.gitea.io/gitea/app/modules/httplib"
 	"code.gitea.io/gitea/app/services/context"
 )
 

@@ -9,7 +9,7 @@ import (
 	"time"
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
-	composer_module "code.gitea.io/gitea/modules/packages/composer"
+	composer_module "code.gitea.io/gitea/app/modules/packages/composer"
 )
 
 // ServiceIndexResponse contains registry endpoints

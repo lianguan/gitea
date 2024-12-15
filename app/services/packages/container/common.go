@@ -9,7 +9,7 @@ import (
 
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	user_model "code.gitea.io/gitea/app/models/user"
-	container_module "code.gitea.io/gitea/modules/packages/container"
+	container_module "code.gitea.io/gitea/app/modules/packages/container"
 )
 
 // UpdateRepositoryNames updates the repository name property for all packages of the specific owner

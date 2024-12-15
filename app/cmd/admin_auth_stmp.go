@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/modules/util"
+	"code.gitea.io/gitea/app/modules/util"
 	"code.gitea.io/gitea/app/services/auth/source/smtp"
 
 	"github.com/urfave/cli/v2"

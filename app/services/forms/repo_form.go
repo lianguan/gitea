@@ -12,9 +12,9 @@ import (
 	"code.gitea.io/gitea/app/models"
 	issues_model "code.gitea.io/gitea/app/models/issues"
 	project_model "code.gitea.io/gitea/app/models/project"
-	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/modules/web/middleware"
+	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/app/modules/structs"
+	"code.gitea.io/gitea/app/modules/web/middleware"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/webhook"
 
