@@ -26,7 +26,7 @@ RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
  && make clean-all build
 
 # Begin env-to-ini build
-RUN go build contrib/environment-to-ini/environment-to-ini.go
+RUN go build scripts/environment-to-ini/environment-to-ini.go
 
 # Copy local files
 COPY docker/root /tmp/local
@@ -83,4 +83,4 @@ CMD ["/bin/s6-svscan", "/etc/s6"]
 COPY --from=build-env /tmp/local /
 COPY --from=build-env /go/src/code.gitea.io/gitea/gitea /app/gitea/gitea
 COPY --from=build-env /go/src/code.gitea.io/gitea/environment-to-ini /usr/local/bin/environment-to-ini
-COPY --from=build-env /go/src/code.gitea.io/gitea/contrib/autocompletion/bash_autocomplete /etc/profile.d/gitea_bash_autocomplete.sh
+COPY --from=build-env /go/src/code.gitea.io/gitea/scripts/autocompletion/bash_autocomplete /etc/profile.d/gitea_bash_autocomplete.sh

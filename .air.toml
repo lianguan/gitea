@@ -10,14 +10,14 @@ include_ext = ["go", "tmpl"]
 include_file = ["main.go"]
 include_dir = ["app", "database", "bundles/options"]
 exclude_dir = [
-  "ap/models/fixtures",
-  "database/migrations/fixtures",
+  "app/models/fixtures",
   "app/modules/avatar/identicon/testdata",
   "app/modules/avatar/testdata",
   "app/modules/git/tests",
   "app/modules/migration/file_format_testdata",
   "app/routers/private/tests",
   "app/services/gitdiff/testdata",
+  "database/migrations/fixtures",
 ]
 exclude_regex = ["_test.go$", "_gen.go$"]
 stop_on_error = true
