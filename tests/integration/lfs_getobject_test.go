@@ -18,7 +18,7 @@ import (
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/lfs"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/routers/web"
+	"code.gitea.io/gitea/app/routers/web"
 	"code.gitea.io/gitea/tests"
 
 	gzipp "github.com/klauspost/compress/gzip"

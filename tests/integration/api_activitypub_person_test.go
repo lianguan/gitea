@@ -15,7 +15,7 @@ import (
 	user_model "code.gitea.io/gitea/models/user"
 	"code.gitea.io/gitea/modules/activitypub"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/routers"
+	"code.gitea.io/gitea/app/routers"
 
 	ap "github.com/go-ap/activitypub"
 	"github.com/stretchr/testify/assert"

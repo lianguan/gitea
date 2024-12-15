@@ -10,8 +10,8 @@ import (
 
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/test"
-	"code.gitea.io/gitea/routers"
-	"code.gitea.io/gitea/routers/web"
+	"code.gitea.io/gitea/app/routers"
+	"code.gitea.io/gitea/app/routers/web"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

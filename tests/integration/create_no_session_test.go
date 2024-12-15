@@ -12,7 +12,7 @@ import (
 
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/setting"
-	"code.gitea.io/gitea/routers"
+	"code.gitea.io/gitea/app/routers"
 	"code.gitea.io/gitea/tests"
 
 	"gitea.com/go-chi/session"

@@ -25,7 +25,7 @@ import (
 	nuget_module "code.gitea.io/gitea/modules/packages/nuget"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/structs"
-	"code.gitea.io/gitea/routers/api/packages/nuget"
+	"code.gitea.io/gitea/app/routers/api/packages/nuget"
 	packageService "code.gitea.io/gitea/services/packages"
 	"code.gitea.io/gitea/tests"
 

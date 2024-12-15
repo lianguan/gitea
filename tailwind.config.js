@@ -34,7 +34,7 @@ export default {
     '!./templates/user/auth/oidc_wellknown.tmpl',
     '!**/*_test.go',
     '!./modules/{public,options,templates}/bindata.go',
-    './{build,models,modules,routers,services}/**/*.go',
+    './{app,models,modules,services,generate}/**/*.go',
     './templates/**/*.tmpl',
     './bundles/js/**/*.{ts,js,vue}',
   ].filter(Boolean),

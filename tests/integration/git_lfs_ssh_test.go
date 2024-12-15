@@ -15,7 +15,7 @@ import (
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"
-	"code.gitea.io/gitea/routers/common"
+	"code.gitea.io/gitea/app/routers/common"
 	"code.gitea.io/gitea/services/context"
 
 	"github.com/stretchr/testify/assert"
