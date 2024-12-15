@@ -26,7 +26,7 @@ const (
 )
 
 func TestMain(m *testing.M) {
-	setting.StaticRootPath = "../../"
+	setting.StaticRootPath = "../../../"
 	setting.Names = []string{"english"}
 	setting.Langs = []string{"en-US"}
 	// setup
