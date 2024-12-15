@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/models/auth"
+	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/setting"
 
 	"github.com/gobwas/glob"

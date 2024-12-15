@@ -7,9 +7,9 @@ import (
 	"errors"
 	"net/http"
 
-	access_model "code.gitea.io/gitea/models/perm/access"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"

@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	user_model "code.gitea.io/gitea/models/user"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"

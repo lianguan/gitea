@@ -4,7 +4,7 @@
 package project
 
 import (
-	project_model "code.gitea.io/gitea/models/project"
+	project_model "code.gitea.io/gitea/app/models/project"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/app/services/context"
 )

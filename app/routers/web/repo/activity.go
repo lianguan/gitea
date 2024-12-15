@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	"code.gitea.io/gitea/models/unit"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/app/services/context"
 )

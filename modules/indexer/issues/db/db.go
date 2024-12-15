@@ -6,8 +6,8 @@ package db
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/db"
-	issue_model "code.gitea.io/gitea/models/issues"
+	"code.gitea.io/gitea/app/models/db"
+	issue_model "code.gitea.io/gitea/app/models/issues"
 	indexer_internal "code.gitea.io/gitea/modules/indexer/internal"
 	inner_db "code.gitea.io/gitea/modules/indexer/internal/db"
 	"code.gitea.io/gitea/modules/indexer/issues/internal"

@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	system_model "code.gitea.io/gitea/models/system"
+	system_model "code.gitea.io/gitea/app/models/system"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/cache"
 	"code.gitea.io/gitea/modules/git"

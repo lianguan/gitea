@@ -8,7 +8,7 @@ import (
 	"slices"
 	"testing"
 
-	unit_model "code.gitea.io/gitea/models/unit"
+	unit_model "code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/tests"
 )
 

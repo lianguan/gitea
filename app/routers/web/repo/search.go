@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/git"
 	code_indexer "code.gitea.io/gitea/modules/indexer/code"

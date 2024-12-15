@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"strconv"
 
-	system_model "code.gitea.io/gitea/models/system"
-	user_model "code.gitea.io/gitea/models/user"
+	system_model "code.gitea.io/gitea/app/models/system"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/app/services/context"

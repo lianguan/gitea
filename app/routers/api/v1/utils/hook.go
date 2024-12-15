@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/models/db"
-	user_model "code.gitea.io/gitea/models/user"
-	"code.gitea.io/gitea/models/webhook"
+	"code.gitea.io/gitea/app/models/db"
+	user_model "code.gitea.io/gitea/app/models/user"
+	"code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"

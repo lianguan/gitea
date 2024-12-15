@@ -7,10 +7,10 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/perm"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	"code.gitea.io/gitea/models/webhook"
+	"code.gitea.io/gitea/app/models/db"
+	"code.gitea.io/gitea/app/models/perm"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	"code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"

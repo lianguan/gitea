@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	"code.gitea.io/gitea/models/db"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/cache"
 	"code.gitea.io/gitea/modules/graceful"

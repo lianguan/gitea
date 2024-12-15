@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/models/auth"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/auth"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

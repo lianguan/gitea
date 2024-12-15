@@ -6,9 +6,9 @@ package integration
 import (
 	"strings"
 
-	"code.gitea.io/gitea/models"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
 	files_service "code.gitea.io/gitea/app/services/repository/files"

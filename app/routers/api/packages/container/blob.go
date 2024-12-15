@@ -11,9 +11,9 @@ import (
 	"os"
 	"strings"
 
-	"code.gitea.io/gitea/models/db"
-	packages_model "code.gitea.io/gitea/models/packages"
-	container_model "code.gitea.io/gitea/models/packages/container"
+	"code.gitea.io/gitea/app/models/db"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	container_model "code.gitea.io/gitea/app/models/packages/container"
 	"code.gitea.io/gitea/modules/globallock"
 	"code.gitea.io/gitea/modules/log"
 	packages_module "code.gitea.io/gitea/modules/packages"

@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

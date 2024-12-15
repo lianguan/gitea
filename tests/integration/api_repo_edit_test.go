@@ -9,12 +9,12 @@ import (
 	"net/url"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/models/auth"
-	"code.gitea.io/gitea/models/db"
-	repo_model "code.gitea.io/gitea/models/repo"
-	unit_model "code.gitea.io/gitea/models/unit"
-	"code.gitea.io/gitea/models/unittest"
-	user_model "code.gitea.io/gitea/models/user"
+	auth_model "code.gitea.io/gitea/app/models/auth"
+	"code.gitea.io/gitea/app/models/db"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	unit_model "code.gitea.io/gitea/app/models/unit"
+	"code.gitea.io/gitea/app/models/unittest"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 
 	"github.com/stretchr/testify/assert"

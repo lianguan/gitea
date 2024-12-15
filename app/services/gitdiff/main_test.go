@@ -6,11 +6,11 @@ package gitdiff
 import (
 	"testing"
 
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/unittest"
 
-	_ "code.gitea.io/gitea/models"
-	_ "code.gitea.io/gitea/models/actions"
-	_ "code.gitea.io/gitea/models/activities"
+	_ "code.gitea.io/gitea/app/models"
+	_ "code.gitea.io/gitea/app/models/actions"
+	_ "code.gitea.io/gitea/app/models/activities"
 )
 
 func TestMain(m *testing.M) {

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	repo_model "code.gitea.io/gitea/models/repo"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/test"
 
 	"github.com/stretchr/testify/assert"

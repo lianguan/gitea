@@ -6,7 +6,7 @@ package ldap
 import (
 	"strings"
 
-	"code.gitea.io/gitea/models/auth"
+	"code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/secret"
 	"code.gitea.io/gitea/modules/setting"

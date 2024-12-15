@@ -6,12 +6,12 @@ package actions
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	packages_model "code.gitea.io/gitea/models/packages"
-	perm_model "code.gitea.io/gitea/models/perm"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	perm_model "code.gitea.io/gitea/app/models/perm"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/repository"

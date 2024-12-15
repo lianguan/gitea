@@ -9,8 +9,8 @@ import (
 	"errors"
 	"strings"
 
-	actions_model "code.gitea.io/gitea/models/actions"
-	auth_model "code.gitea.io/gitea/models/auth"
+	actions_model "code.gitea.io/gitea/app/models/actions"
+	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/timeutil"
 	"code.gitea.io/gitea/modules/util"

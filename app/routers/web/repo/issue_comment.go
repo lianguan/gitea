@@ -9,9 +9,9 @@ import (
 	"html/template"
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	"code.gitea.io/gitea/models/renderhelper"
-	user_model "code.gitea.io/gitea/models/user"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	"code.gitea.io/gitea/app/models/renderhelper"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/markup/markdown"

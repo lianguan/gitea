@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	vagrant_module "code.gitea.io/gitea/modules/packages/vagrant"
 	"code.gitea.io/gitea/modules/setting"

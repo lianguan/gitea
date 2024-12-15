@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"code.gitea.io/gitea/models"
-	git_model "code.gitea.io/gitea/models/git"
-	repo_model "code.gitea.io/gitea/models/repo"
+	"code.gitea.io/gitea/app/models"
+	git_model "code.gitea.io/gitea/app/models/git"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/web"

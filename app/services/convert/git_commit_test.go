@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unittest"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"

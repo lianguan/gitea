@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/models/auth"
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/auth"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/setting"
 	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"

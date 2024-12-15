@@ -6,13 +6,13 @@ package issue
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	"code.gitea.io/gitea/models/organization"
-	"code.gitea.io/gitea/models/perm"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unit"
-	user_model "code.gitea.io/gitea/models/user"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	"code.gitea.io/gitea/app/models/organization"
+	"code.gitea.io/gitea/app/models/perm"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unit"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/log"
 	notify_service "code.gitea.io/gitea/app/services/notify"
 )

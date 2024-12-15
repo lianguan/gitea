@@ -9,11 +9,11 @@ import (
 	"html"
 	"html/template"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	"code.gitea.io/gitea/models/avatars"
-	"code.gitea.io/gitea/models/organization"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	"code.gitea.io/gitea/app/models/avatars"
+	"code.gitea.io/gitea/app/models/organization"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	gitea_html "code.gitea.io/gitea/modules/htmlutil"
 	"code.gitea.io/gitea/modules/setting"
 )

@@ -6,7 +6,7 @@ package internal
 import (
 	"strconv"
 
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/timeutil"
 )

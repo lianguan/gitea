@@ -7,9 +7,9 @@ import (
 	"context"
 	"time"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	"code.gitea.io/gitea/models/system"
-	user_model "code.gitea.io/gitea/models/user"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	"code.gitea.io/gitea/app/models/system"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	issue_indexer "code.gitea.io/gitea/modules/indexer/issues"
 	"code.gitea.io/gitea/modules/setting"

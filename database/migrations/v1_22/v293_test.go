@@ -6,9 +6,9 @@ package v1_22 //nolint
 import (
 	"testing"
 
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/database/migrations/base"
-	"code.gitea.io/gitea/models/project"
+	"code.gitea.io/gitea/app/models/project"
 
 	"github.com/stretchr/testify/assert"
 )

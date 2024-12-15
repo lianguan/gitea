@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/models/issues"
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/issues"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/markup"

@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/models/db"
-	system_model "code.gitea.io/gitea/models/system"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/db"
+	system_model "code.gitea.io/gitea/app/models/system"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/graceful"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/process"

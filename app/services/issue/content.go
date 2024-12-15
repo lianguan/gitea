@@ -6,9 +6,9 @@ package issue
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	user_model "code.gitea.io/gitea/models/user"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	user_model "code.gitea.io/gitea/app/models/user"
 	notify_service "code.gitea.io/gitea/app/services/notify"
 )
 

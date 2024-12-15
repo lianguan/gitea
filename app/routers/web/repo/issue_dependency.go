@@ -6,8 +6,8 @@ package repo
 import (
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	access_model "code.gitea.io/gitea/models/perm/access"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/app/services/context"
 )

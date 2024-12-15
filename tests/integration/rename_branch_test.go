@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"testing"
 
-	git_model "code.gitea.io/gitea/models/git"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unittest"
+	git_model "code.gitea.io/gitea/app/models/git"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unittest"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/tests"
 

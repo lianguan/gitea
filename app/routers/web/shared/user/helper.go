@@ -8,8 +8,8 @@ import (
 	"slices"
 	"strconv"
 
-	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/db"
+	"code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/optional"
 )
 

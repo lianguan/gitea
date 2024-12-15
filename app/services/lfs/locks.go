@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	auth_model "code.gitea.io/gitea/models/auth"
-	git_model "code.gitea.io/gitea/models/git"
-	repo_model "code.gitea.io/gitea/models/repo"
+	auth_model "code.gitea.io/gitea/app/models/auth"
+	git_model "code.gitea.io/gitea/app/models/git"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/json"
 	lfs_module "code.gitea.io/gitea/modules/lfs"
 	"code.gitea.io/gitea/modules/log"

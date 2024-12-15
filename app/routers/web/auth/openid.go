@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"net/url"
 
-	user_model "code.gitea.io/gitea/models/user"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/auth/openid"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/log"

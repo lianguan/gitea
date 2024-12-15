@@ -7,9 +7,9 @@ import (
 	"errors"
 	"net/http"
 
-	actions_model "code.gitea.io/gitea/models/actions"
-	"code.gitea.io/gitea/models/db"
-	secret_model "code.gitea.io/gitea/models/secret"
+	actions_model "code.gitea.io/gitea/app/models/actions"
+	"code.gitea.io/gitea/app/models/db"
+	secret_model "code.gitea.io/gitea/app/models/secret"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"

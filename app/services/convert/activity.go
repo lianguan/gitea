@@ -6,10 +6,10 @@ package convert
 import (
 	"context"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	perm_model "code.gitea.io/gitea/models/perm"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	user_model "code.gitea.io/gitea/models/user"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	perm_model "code.gitea.io/gitea/app/models/perm"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/log"
 	api "code.gitea.io/gitea/modules/structs"
 )

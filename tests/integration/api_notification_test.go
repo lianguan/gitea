@@ -8,12 +8,12 @@ import (
 	"net/http"
 	"testing"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	auth_model "code.gitea.io/gitea/models/auth"
-	"code.gitea.io/gitea/models/db"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unittest"
-	user_model "code.gitea.io/gitea/models/user"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	auth_model "code.gitea.io/gitea/app/models/auth"
+	"code.gitea.io/gitea/app/models/db"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unittest"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/tests"
 

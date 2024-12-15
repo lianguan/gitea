@@ -6,8 +6,8 @@ package org
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/models/db"
-	issues_model "code.gitea.io/gitea/models/issues"
+	"code.gitea.io/gitea/app/models/db"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/modules/label"
 	repo_module "code.gitea.io/gitea/modules/repository"
 	"code.gitea.io/gitea/modules/web"

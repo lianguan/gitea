@@ -6,8 +6,8 @@ package doctor
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/db"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/db"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/storage"
 	repo_service "code.gitea.io/gitea/app/services/repository"

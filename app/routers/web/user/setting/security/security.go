@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"sort"
 
-	auth_model "code.gitea.io/gitea/models/auth"
-	"code.gitea.io/gitea/models/db"
-	user_model "code.gitea.io/gitea/models/user"
+	auth_model "code.gitea.io/gitea/app/models/auth"
+	"code.gitea.io/gitea/app/models/db"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/setting"

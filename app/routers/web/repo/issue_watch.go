@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	issues_model "code.gitea.io/gitea/models/issues"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/app/services/context"

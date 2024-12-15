@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/models/auth"
+	"code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"

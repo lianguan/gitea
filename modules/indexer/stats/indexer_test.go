@@ -8,15 +8,15 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/models/db"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/db"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/queue"
 	"code.gitea.io/gitea/modules/setting"
 
-	_ "code.gitea.io/gitea/models"
-	_ "code.gitea.io/gitea/models/actions"
-	_ "code.gitea.io/gitea/models/activities"
+	_ "code.gitea.io/gitea/app/models"
+	_ "code.gitea.io/gitea/app/models/actions"
+	_ "code.gitea.io/gitea/app/models/activities"
 
 	"github.com/stretchr/testify/assert"
 )

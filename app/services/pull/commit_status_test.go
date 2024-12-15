@@ -7,7 +7,7 @@ package pull
 import (
 	"testing"
 
-	git_model "code.gitea.io/gitea/models/git"
+	git_model "code.gitea.io/gitea/app/models/git"
 	"code.gitea.io/gitea/modules/structs"
 
 	"github.com/stretchr/testify/assert"

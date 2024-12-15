@@ -6,9 +6,9 @@ package asymkey
 import (
 	"context"
 
-	"code.gitea.io/gitea/models"
-	"code.gitea.io/gitea/models/db"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models"
+	"code.gitea.io/gitea/app/models/db"
+	user_model "code.gitea.io/gitea/app/models/user"
 )
 
 // DeleteDeployKey deletes deploy key from its repository authorized_keys file if needed.

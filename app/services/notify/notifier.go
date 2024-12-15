@@ -6,11 +6,11 @@ package notify
 import (
 	"context"
 
-	git_model "code.gitea.io/gitea/models/git"
-	issues_model "code.gitea.io/gitea/models/issues"
-	packages_model "code.gitea.io/gitea/models/packages"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	git_model "code.gitea.io/gitea/app/models/git"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/repository"
 )

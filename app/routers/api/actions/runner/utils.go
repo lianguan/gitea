@@ -7,9 +7,9 @@ import (
 	"context"
 	"fmt"
 
-	actions_model "code.gitea.io/gitea/models/actions"
-	"code.gitea.io/gitea/models/db"
-	secret_model "code.gitea.io/gitea/models/secret"
+	actions_model "code.gitea.io/gitea/app/models/actions"
+	"code.gitea.io/gitea/app/models/db"
+	secret_model "code.gitea.io/gitea/app/models/secret"
 	actions_module "code.gitea.io/gitea/modules/actions"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/git"

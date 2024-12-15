@@ -14,9 +14,9 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/models/db"
-	packages_model "code.gitea.io/gitea/models/packages"
-	nuget_model "code.gitea.io/gitea/models/packages/nuget"
+	"code.gitea.io/gitea/app/models/db"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	nuget_model "code.gitea.io/gitea/app/models/packages/nuget"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/optional"
 	packages_module "code.gitea.io/gitea/modules/packages"

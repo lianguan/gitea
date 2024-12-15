@@ -6,7 +6,7 @@ package v1_18 //nolint
 import (
 	"fmt"
 
-	"code.gitea.io/gitea/models/issues"
+	"code.gitea.io/gitea/app/models/issues"
 
 	"xorm.io/builder"
 	"xorm.io/xorm"

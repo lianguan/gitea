@@ -8,11 +8,11 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/models/db"
-	project_model "code.gitea.io/gitea/models/project"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unit"
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/db"
+	project_model "code.gitea.io/gitea/app/models/project"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unit"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/tests"
 
 	"github.com/stretchr/testify/assert"

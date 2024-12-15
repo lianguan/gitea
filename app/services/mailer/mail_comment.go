@@ -6,9 +6,9 @@ package mailer
 import (
 	"context"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	issues_model "code.gitea.io/gitea/models/issues"
-	user_model "code.gitea.io/gitea/models/user"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

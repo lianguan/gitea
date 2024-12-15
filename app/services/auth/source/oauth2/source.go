@@ -4,7 +4,7 @@
 package oauth2
 
 import (
-	"code.gitea.io/gitea/models/auth"
+	"code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/json"
 )
 

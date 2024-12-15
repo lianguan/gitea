@@ -11,8 +11,8 @@ import (
 	"net/http"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	cran_model "code.gitea.io/gitea/models/packages/cran"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	cran_model "code.gitea.io/gitea/app/models/packages/cran"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	cran_module "code.gitea.io/gitea/modules/packages/cran"
 	"code.gitea.io/gitea/modules/util"

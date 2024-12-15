@@ -4,8 +4,8 @@
 package secrets
 
 import (
-	"code.gitea.io/gitea/models/db"
-	secret_model "code.gitea.io/gitea/models/secret"
+	"code.gitea.io/gitea/app/models/db"
+	secret_model "code.gitea.io/gitea/app/models/secret"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"

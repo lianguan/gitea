@@ -6,8 +6,8 @@ package setting
 import (
 	"net/http"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
-	"code.gitea.io/gitea/models/db"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/web"

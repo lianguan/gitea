@@ -6,7 +6,7 @@ package v1_17 //nolint
 import (
 	"time"
 
-	"code.gitea.io/gitea/models/repo"
+	"code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/timeutil"
 
 	"xorm.io/xorm"

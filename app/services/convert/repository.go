@@ -7,12 +7,12 @@ import (
 	"context"
 	"time"
 
-	"code.gitea.io/gitea/models"
-	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/perm"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	repo_model "code.gitea.io/gitea/models/repo"
-	unit_model "code.gitea.io/gitea/models/unit"
+	"code.gitea.io/gitea/app/models"
+	"code.gitea.io/gitea/app/models/db"
+	"code.gitea.io/gitea/app/models/perm"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	unit_model "code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/log"
 	api "code.gitea.io/gitea/modules/structs"
 )

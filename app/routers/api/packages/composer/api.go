@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"time"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	composer_module "code.gitea.io/gitea/modules/packages/composer"
 )
 

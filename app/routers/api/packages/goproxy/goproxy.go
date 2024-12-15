@@ -11,7 +11,7 @@ import (
 	"sort"
 	"time"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/modules/optional"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	goproxy_module "code.gitea.io/gitea/modules/packages/goproxy"

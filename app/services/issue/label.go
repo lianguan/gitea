@@ -6,10 +6,10 @@ package issue
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/db"
-	issues_model "code.gitea.io/gitea/models/issues"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/db"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	user_model "code.gitea.io/gitea/app/models/user"
 	notify_service "code.gitea.io/gitea/app/services/notify"
 )
 

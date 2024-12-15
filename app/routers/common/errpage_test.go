@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"testing"
 
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/test"
 	"code.gitea.io/gitea/modules/web/middleware"
 

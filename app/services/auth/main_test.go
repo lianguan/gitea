@@ -6,7 +6,7 @@ package auth
 import (
 	"testing"
 
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/unittest"
 )
 
 func TestMain(m *testing.M) {

@@ -6,9 +6,9 @@ package convert
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/packages"
-	access_model "code.gitea.io/gitea/models/perm/access"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/packages"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 )
 

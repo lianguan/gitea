@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	pypi_module "code.gitea.io/gitea/modules/packages/pypi"
 	"code.gitea.io/gitea/modules/setting"

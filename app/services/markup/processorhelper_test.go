@@ -9,9 +9,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/unittest"
-	"code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/db"
+	"code.gitea.io/gitea/app/models/unittest"
+	"code.gitea.io/gitea/app/models/user"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/contexttest"
 

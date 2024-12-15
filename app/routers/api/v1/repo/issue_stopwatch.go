@@ -7,7 +7,7 @@ import (
 	"errors"
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/models/issues"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"

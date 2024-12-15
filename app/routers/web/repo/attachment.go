@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	access_model "code.gitea.io/gitea/models/perm/access"
-	repo_model "code.gitea.io/gitea/models/repo"
+	access_model "code.gitea.io/gitea/app/models/perm/access"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/httpcache"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/models/db"
-	packages_model "code.gitea.io/gitea/models/packages"
+	"code.gitea.io/gitea/app/models/db"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/modules/optional"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	chef_module "code.gitea.io/gitea/modules/packages/chef"

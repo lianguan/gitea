@@ -7,9 +7,9 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/models/db"
-	repo_model "code.gitea.io/gitea/models/repo"
-	unit_model "code.gitea.io/gitea/models/unit"
+	"code.gitea.io/gitea/app/models/db"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	unit_model "code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/optional"
 	repo_service "code.gitea.io/gitea/app/services/repository"

@@ -6,12 +6,12 @@ package user
 import (
 	"context"
 
-	"code.gitea.io/gitea/models"
-	"code.gitea.io/gitea/models/db"
-	issues_model "code.gitea.io/gitea/models/issues"
-	org_model "code.gitea.io/gitea/models/organization"
-	repo_model "code.gitea.io/gitea/models/repo"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models"
+	"code.gitea.io/gitea/app/models/db"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	org_model "code.gitea.io/gitea/app/models/organization"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	user_model "code.gitea.io/gitea/app/models/user"
 	repo_service "code.gitea.io/gitea/app/services/repository"
 )
 

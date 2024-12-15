@@ -4,7 +4,7 @@
 package v1_22 //nolint
 
 import (
-	"code.gitea.io/gitea/models/perm"
+	"code.gitea.io/gitea/app/models/perm"
 
 	"xorm.io/xorm"
 )

@@ -7,10 +7,10 @@ import (
 	"context"
 	"slices"
 
-	actions_model "code.gitea.io/gitea/models/actions"
-	"code.gitea.io/gitea/models/db"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unit"
+	actions_model "code.gitea.io/gitea/app/models/actions"
+	"code.gitea.io/gitea/app/models/db"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/log"
 	actions_service "code.gitea.io/gitea/app/services/actions"
 )

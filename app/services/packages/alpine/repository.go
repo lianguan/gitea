@@ -20,9 +20,9 @@ import (
 	"io"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	alpine_model "code.gitea.io/gitea/models/packages/alpine"
-	user_model "code.gitea.io/gitea/models/user"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	alpine_model "code.gitea.io/gitea/app/models/packages/alpine"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/json"
 	packages_module "code.gitea.io/gitea/modules/packages"

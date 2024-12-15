@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"path"
 
-	"code.gitea.io/gitea/models/renderhelper"
+	"code.gitea.io/gitea/app/models/renderhelper"
 	"code.gitea.io/gitea/modules/charset"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"

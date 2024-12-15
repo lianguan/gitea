@@ -7,8 +7,8 @@ import (
 	"context"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	user_model "code.gitea.io/gitea/models/user"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	user_model "code.gitea.io/gitea/app/models/user"
 	container_module "code.gitea.io/gitea/modules/packages/container"
 )
 

@@ -17,9 +17,9 @@ import (
 	"time"
 	"unicode"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
-	git_model "code.gitea.io/gitea/models/git"
-	"code.gitea.io/gitea/models/perm"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
+	git_model "code.gitea.io/gitea/app/models/git"
+	"code.gitea.io/gitea/app/models/perm"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/json"

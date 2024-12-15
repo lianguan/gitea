@@ -11,8 +11,8 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/models/renderhelper"
-	"code.gitea.io/gitea/models/repo"
+	"code.gitea.io/gitea/app/models/renderhelper"
+	"code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/httplib"
 	"code.gitea.io/gitea/modules/markup"
 	"code.gitea.io/gitea/modules/markup/markdown"

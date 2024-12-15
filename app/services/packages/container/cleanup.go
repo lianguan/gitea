@@ -7,8 +7,8 @@ import (
 	"context"
 	"time"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	container_model "code.gitea.io/gitea/models/packages/container"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	container_model "code.gitea.io/gitea/app/models/packages/container"
 	"code.gitea.io/gitea/modules/optional"
 	container_module "code.gitea.io/gitea/modules/packages/container"
 	packages_service "code.gitea.io/gitea/app/services/packages"

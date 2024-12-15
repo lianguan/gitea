@@ -6,8 +6,8 @@ package convert
 import (
 	"context"
 
-	git_model "code.gitea.io/gitea/models/git"
-	user_model "code.gitea.io/gitea/models/user"
+	git_model "code.gitea.io/gitea/app/models/git"
+	user_model "code.gitea.io/gitea/app/models/user"
 	api "code.gitea.io/gitea/modules/structs"
 )
 

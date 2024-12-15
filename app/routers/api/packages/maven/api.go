@@ -7,7 +7,7 @@ import (
 	"encoding/xml"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	maven_module "code.gitea.io/gitea/modules/packages/maven"
 )
 

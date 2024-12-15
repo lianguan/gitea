@@ -10,7 +10,7 @@ import (
 	"strings"
 	"unicode"
 
-	packages_model "code.gitea.io/gitea/models/packages"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/modules/log"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	"code.gitea.io/gitea/app/routers/api/packages/helper"

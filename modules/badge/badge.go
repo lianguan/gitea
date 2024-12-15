@@ -4,7 +4,7 @@
 package badge
 
 import (
-	actions_model "code.gitea.io/gitea/models/actions"
+	actions_model "code.gitea.io/gitea/app/models/actions"
 )
 
 // The Badge layout: |offset|label|message|

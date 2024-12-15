@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"testing"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	"code.gitea.io/gitea/models/unittest"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/repository"
 	"code.gitea.io/gitea/modules/test"
 	"code.gitea.io/gitea/modules/web"

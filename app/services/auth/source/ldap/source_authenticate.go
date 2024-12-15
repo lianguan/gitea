@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"strings"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
-	"code.gitea.io/gitea/models/auth"
-	user_model "code.gitea.io/gitea/models/user"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
+	"code.gitea.io/gitea/app/models/auth"
+	user_model "code.gitea.io/gitea/app/models/user"
 	auth_module "code.gitea.io/gitea/modules/auth"
 	"code.gitea.io/gitea/modules/optional"
 	asymkey_service "code.gitea.io/gitea/app/services/asymkey"

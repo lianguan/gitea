@@ -6,7 +6,7 @@ package org_test
 import (
 	"testing"
 
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/app/routers/web/org"
 	"code.gitea.io/gitea/app/services/contexttest"
 

@@ -6,7 +6,7 @@ package private
 import (
 	"net/http"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
 	"code.gitea.io/gitea/modules/private"
 	"code.gitea.io/gitea/modules/timeutil"
 	"code.gitea.io/gitea/app/services/context"

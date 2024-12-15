@@ -21,8 +21,8 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"code.gitea.io/gitea/models/auth"
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/auth"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/graceful"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/log"
@@ -102,7 +102,7 @@ func TestMain(m *testing.M) {
 
 	err := unittest.InitFixtures(
 		unittest.FixturesOptions{
-			Dir: filepath.Join(filepath.Dir(setting.AppPath), "models/fixtures/"),
+			Dir: filepath.Join(filepath.Dir(setting.AppPath), "app/models/fixtures/"),
 		},
 	)
 	if err != nil {

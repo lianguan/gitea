@@ -6,7 +6,7 @@ package doctor
 import (
 	"context"
 
-	user_model "code.gitea.io/gitea/models/user"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/log"
 )
 

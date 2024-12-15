@@ -4,7 +4,7 @@
 package convert
 
 import (
-	secret_model "code.gitea.io/gitea/models/secret"
+	secret_model "code.gitea.io/gitea/app/models/secret"
 	api "code.gitea.io/gitea/modules/structs"
 )
 

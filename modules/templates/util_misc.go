@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	repo_model "code.gitea.io/gitea/models/repo"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	giturl "code.gitea.io/gitea/modules/git/url"
 	"code.gitea.io/gitea/modules/json"

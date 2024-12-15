@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net/http"
 
-	webhook_model "code.gitea.io/gitea/models/webhook"
+	webhook_model "code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/log"
 	api "code.gitea.io/gitea/modules/structs"

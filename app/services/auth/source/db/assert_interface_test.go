@@ -4,7 +4,7 @@
 package db_test
 
 import (
-	auth_model "code.gitea.io/gitea/models/auth"
+	auth_model "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/app/services/auth"
 	"code.gitea.io/gitea/app/services/auth/source/db"
 )

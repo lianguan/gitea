@@ -10,8 +10,8 @@ import (
 	"sort"
 	"strings"
 
-	issues_model "code.gitea.io/gitea/models/issues"
-	repo_model "code.gitea.io/gitea/models/repo"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/label"
 	"code.gitea.io/gitea/modules/log"

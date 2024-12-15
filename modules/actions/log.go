@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/models/dbfs"
+	"code.gitea.io/gitea/app/models/dbfs"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/storage"
 	"code.gitea.io/gitea/modules/zstd"

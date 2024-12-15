@@ -7,7 +7,7 @@ import (
 	"context"
 	"testing"
 
-	webhook_model "code.gitea.io/gitea/models/webhook"
+	webhook_model "code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"

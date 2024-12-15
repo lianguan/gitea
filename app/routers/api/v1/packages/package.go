@@ -6,7 +6,7 @@ package packages
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/models/packages"
+	"code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/modules/optional"
 	api "code.gitea.io/gitea/modules/structs"
 	"code.gitea.io/gitea/app/routers/api/v1/utils"

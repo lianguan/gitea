@@ -6,7 +6,7 @@ package system
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/system"
+	"code.gitea.io/gitea/app/models/system"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/util"
 )

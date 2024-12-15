@@ -10,7 +10,7 @@ import (
 	"io"
 	"os"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 )

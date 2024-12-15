@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/models/organization"
+	"code.gitea.io/gitea/app/models/organization"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"
 	repo_service "code.gitea.io/gitea/app/services/repository"

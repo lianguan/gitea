@@ -7,7 +7,7 @@ import (
 	"errors"
 	"net/http"
 
-	"code.gitea.io/gitea/models/webhook"
+	"code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/setting"
 	api "code.gitea.io/gitea/modules/structs"

@@ -6,9 +6,9 @@ package context
 import (
 	"net/http"
 
-	auth_model "code.gitea.io/gitea/models/auth"
-	repo_model "code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unit"
+	auth_model "code.gitea.io/gitea/app/models/auth"
+	repo_model "code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/log"
 )
 

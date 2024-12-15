@@ -6,9 +6,9 @@ package doctor
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/db"
-	org_model "code.gitea.io/gitea/models/organization"
-	"code.gitea.io/gitea/models/perm"
+	"code.gitea.io/gitea/app/models/db"
+	org_model "code.gitea.io/gitea/app/models/organization"
+	"code.gitea.io/gitea/app/models/perm"
 	"code.gitea.io/gitea/modules/log"
 	org_service "code.gitea.io/gitea/app/services/org"
 

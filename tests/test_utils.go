@@ -12,9 +12,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"code.gitea.io/gitea/models/db"
-	packages_model "code.gitea.io/gitea/models/packages"
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/db"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/graceful"

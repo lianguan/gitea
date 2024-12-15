@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	system_model "code.gitea.io/gitea/models/system"
+	system_model "code.gitea.io/gitea/app/models/system"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 	base "code.gitea.io/gitea/modules/migration"

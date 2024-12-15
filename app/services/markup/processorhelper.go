@@ -6,7 +6,7 @@ package markup
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/markup"
 	gitea_context "code.gitea.io/gitea/app/services/context"
 )

@@ -10,9 +10,9 @@ import (
 	"html/template"
 	"strings"
 
-	"code.gitea.io/gitea/models/perm/access"
-	"code.gitea.io/gitea/models/repo"
-	"code.gitea.io/gitea/models/unit"
+	"code.gitea.io/gitea/app/models/perm/access"
+	"code.gitea.io/gitea/app/models/repo"
+	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/charset"
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/indexer/code"

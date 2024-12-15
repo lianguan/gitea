@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/models/avatars"
-	issues_model "code.gitea.io/gitea/models/issues"
+	"code.gitea.io/gitea/app/models/avatars"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/templates"

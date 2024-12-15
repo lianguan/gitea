@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	webhook_model "code.gitea.io/gitea/models/webhook"
+	webhook_model "code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/graceful"
 	"code.gitea.io/gitea/modules/hostmatcher"
 	"code.gitea.io/gitea/modules/log"

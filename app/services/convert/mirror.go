@@ -6,7 +6,7 @@ package convert
 import (
 	"context"
 
-	repo_model "code.gitea.io/gitea/models/repo"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	api "code.gitea.io/gitea/modules/structs"
 )
 

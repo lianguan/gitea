@@ -3,7 +3,7 @@
 
 package context
 
-import "code.gitea.io/gitea/models/organization"
+import "code.gitea.io/gitea/app/models/organization"
 
 // APIOrganization contains organization and team
 type APIOrganization struct {

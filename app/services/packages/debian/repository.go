@@ -14,9 +14,9 @@ import (
 	"strings"
 	"time"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	debian_model "code.gitea.io/gitea/models/packages/debian"
-	user_model "code.gitea.io/gitea/models/user"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	debian_model "code.gitea.io/gitea/app/models/packages/debian"
+	user_model "code.gitea.io/gitea/app/models/user"
 	packages_module "code.gitea.io/gitea/modules/packages"
 	debian_module "code.gitea.io/gitea/modules/packages/debian"
 	"code.gitea.io/gitea/modules/setting"

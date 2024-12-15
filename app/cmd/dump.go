@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/modules/dump"
 	"code.gitea.io/gitea/modules/json"
 	"code.gitea.io/gitea/modules/log"

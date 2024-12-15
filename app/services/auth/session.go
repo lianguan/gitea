@@ -6,7 +6,7 @@ package auth
 import (
 	"net/http"
 
-	user_model "code.gitea.io/gitea/models/user"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/log"
 )
 

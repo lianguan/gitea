@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"time"
 
-	"code.gitea.io/gitea/models/db"
-	packages_model "code.gitea.io/gitea/models/packages"
+	"code.gitea.io/gitea/app/models/db"
+	packages_model "code.gitea.io/gitea/app/models/packages"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/optional"
 	"code.gitea.io/gitea/modules/setting"

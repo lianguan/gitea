@@ -6,9 +6,9 @@ package repo
 import (
 	"strings"
 
-	"code.gitea.io/gitea/models"
-	git_model "code.gitea.io/gitea/models/git"
-	"code.gitea.io/gitea/models/unit"
+	"code.gitea.io/gitea/app/models"
+	git_model "code.gitea.io/gitea/app/models/git"
+	"code.gitea.io/gitea/app/models/unit"
 	"code.gitea.io/gitea/modules/base"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"

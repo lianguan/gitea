@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"time"
 
-	"code.gitea.io/gitea/models/auth"
-	user_model "code.gitea.io/gitea/models/user"
+	"code.gitea.io/gitea/app/models/auth"
+	user_model "code.gitea.io/gitea/app/models/user"
 	wa "code.gitea.io/gitea/modules/auth/webauthn"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"

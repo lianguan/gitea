@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"testing"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
-	"code.gitea.io/gitea/models/perm"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
+	"code.gitea.io/gitea/app/models/perm"
 	"code.gitea.io/gitea/modules/private"
 
 	"github.com/stretchr/testify/assert"

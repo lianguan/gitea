@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/models/db"
-	"code.gitea.io/gitea/models/unittest"
-	webhook_model "code.gitea.io/gitea/models/webhook"
+	"code.gitea.io/gitea/app/models/db"
+	"code.gitea.io/gitea/app/models/unittest"
+	webhook_model "code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/hostmatcher"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/modules/util"

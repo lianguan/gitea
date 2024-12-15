@@ -6,8 +6,8 @@ package files
 import (
 	"context"
 
-	asymkey_model "code.gitea.io/gitea/models/asymkey"
-	repo_model "code.gitea.io/gitea/models/repo"
+	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/structs"
 )

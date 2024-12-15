@@ -6,7 +6,7 @@ package markup
 import (
 	"testing"
 
-	"code.gitea.io/gitea/models/unittest"
+	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/modules/markup"
 	"code.gitea.io/gitea/modules/templates"
 	"code.gitea.io/gitea/app/services/contexttest"

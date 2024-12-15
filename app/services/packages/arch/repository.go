@@ -15,9 +15,9 @@ import (
 	"os"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/models/packages"
-	arch_model "code.gitea.io/gitea/models/packages/arch"
-	user_model "code.gitea.io/gitea/models/user"
+	packages_model "code.gitea.io/gitea/app/models/packages"
+	arch_model "code.gitea.io/gitea/app/models/packages/arch"
+	user_model "code.gitea.io/gitea/app/models/user"
 	"code.gitea.io/gitea/modules/container"
 	"code.gitea.io/gitea/modules/globallock"
 	"code.gitea.io/gitea/modules/json"

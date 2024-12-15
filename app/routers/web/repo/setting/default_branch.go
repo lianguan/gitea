@@ -6,7 +6,7 @@ package setting
 import (
 	"net/http"
 
-	git_model "code.gitea.io/gitea/models/git"
+	git_model "code.gitea.io/gitea/app/models/git"
 	"code.gitea.io/gitea/modules/log"
 	"code.gitea.io/gitea/modules/setting"
 	"code.gitea.io/gitea/app/routers/web/repo"

@@ -6,8 +6,8 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/models"
-	repo_model "code.gitea.io/gitea/models/repo"
+	"code.gitea.io/gitea/app/models"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/services/context"
 	"code.gitea.io/gitea/app/services/convert"
 	releaseservice "code.gitea.io/gitea/app/services/release"

@@ -9,8 +9,8 @@ import (
 	"reflect"
 	"runtime"
 
-	"code.gitea.io/gitea/models"
-	authmodel "code.gitea.io/gitea/models/auth"
+	"code.gitea.io/gitea/app/models"
+	authmodel "code.gitea.io/gitea/app/models/auth"
 	"code.gitea.io/gitea/modules/cache"
 	"code.gitea.io/gitea/modules/eventsource"
 	"code.gitea.io/gitea/modules/git"

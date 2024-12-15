@@ -6,7 +6,7 @@ package payload
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/models/issues"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/modules/util"
 )
 

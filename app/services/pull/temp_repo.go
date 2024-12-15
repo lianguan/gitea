@@ -11,9 +11,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	git_model "code.gitea.io/gitea/models/git"
-	issues_model "code.gitea.io/gitea/models/issues"
-	repo_model "code.gitea.io/gitea/models/repo"
+	git_model "code.gitea.io/gitea/app/models/git"
+	issues_model "code.gitea.io/gitea/app/models/issues"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/log"
 	repo_module "code.gitea.io/gitea/modules/repository"

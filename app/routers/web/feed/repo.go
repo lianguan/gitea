@@ -6,8 +6,8 @@ package feed
 import (
 	"time"
 
-	activities_model "code.gitea.io/gitea/models/activities"
-	repo_model "code.gitea.io/gitea/models/repo"
+	activities_model "code.gitea.io/gitea/app/models/activities"
+	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/services/context"
 	feed_service "code.gitea.io/gitea/app/services/feed"
 

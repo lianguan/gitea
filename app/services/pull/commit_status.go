@@ -7,9 +7,9 @@ package pull
 import (
 	"context"
 
-	"code.gitea.io/gitea/models/db"
-	git_model "code.gitea.io/gitea/models/git"
-	issues_model "code.gitea.io/gitea/models/issues"
+	"code.gitea.io/gitea/app/models/db"
+	git_model "code.gitea.io/gitea/app/models/git"
+	issues_model "code.gitea.io/gitea/app/models/issues"
 	"code.gitea.io/gitea/modules/git"
 	"code.gitea.io/gitea/modules/gitrepo"
 	"code.gitea.io/gitea/modules/log"

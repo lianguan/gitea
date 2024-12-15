@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strings"
 
-	webhook_model "code.gitea.io/gitea/models/webhook"
+	webhook_model "code.gitea.io/gitea/app/models/webhook"
 	"code.gitea.io/gitea/modules/git"
 	api "code.gitea.io/gitea/modules/structs"
 	webhook_module "code.gitea.io/gitea/modules/webhook"

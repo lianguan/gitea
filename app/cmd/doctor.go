@@ -11,7 +11,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"code.gitea.io/gitea/models/db"
+	"code.gitea.io/gitea/app/models/db"
 	"code.gitea.io/gitea/database/migrations"
 	migrate_base "code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/modules/container"
