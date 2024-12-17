@@ -5,6 +5,37 @@
 
 <nav id="navbar" aria-label="{{ctx.Locale.Tr "aria.navbar"}}">
 	<div class="navbar-left ui secondary menu">
+		{{if .IsSigned}}
+		<button class="item tw-w-auto ui icon mini button tw-p-2 tw-m-0 navbar-panel-toggle" aria-label="{{ctx.Locale.Tr "home.nav_menu"}}">{{svg "octicon-three-bars"}}</button>
+		<div id="navbar-panel-popup" class="navbar-panel-popup tippy-target">
+			<div class="flex-items-block navbar-panel-list">
+			<a class="item" href="{{AppSubUrl}}/">
+				{{svg "octicon-home"}} {{ctx.Locale.Tr "dashboard"}}
+			</a>
+
+			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
+			<a class="item{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues">
+				{{svg "octicon-issue-opened"}} {{ctx.Locale.Tr "issues"}}
+			</a>
+			{{end}}
+			{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
+			<a class="item" href="{{AppSubUrl}}/pulls">
+				{{svg "octicon-git-pull-request"}} {{ctx.Locale.Tr "pull_requests"}}
+			</a>
+			{{end}}
+			{{if not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled)}}
+				{{if .ShowMilestonesDashboardPage}}
+				<a class="item" href="{{AppSubUrl}}/milestones">
+				{{svg "octicon-milestone"}} {{ctx.Locale.Tr "milestones"}}
+				</a>
+				{{end}}
+			{{end}}
+			<a class="item" href="{{AppSubUrl}}/explore/repos">
+				{{svg "octicon-telescope"}} {{ctx.Locale.Tr "explore"}}
+			</a>
+			</div>
+		{{end}}
+	</div>
 		<!-- the logo -->
 		<a class="item" id="navbar-logo" href="{{AppSubUrl}}/" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home"}}{{end}}">
 			<img width="30" height="30" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}" aria-hidden="true">
@@ -32,27 +63,6 @@
 		</div>
 
 		<!-- navbar links non-mobile -->
-		{{if and .IsSigned .MustChangePassword}}
-			{{/* No links */}}
-		{{else if .IsSigned}}
-			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
-				<a class="item{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues">{{ctx.Locale.Tr "issues"}}</a>
-			{{end}}
-			{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
-				<a class="item{{if .PageIsPulls}} active{{end}}" href="{{AppSubUrl}}/pulls">{{ctx.Locale.Tr "pull_requests"}}</a>
-			{{end}}
-			{{if not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled)}}
-				{{if .ShowMilestonesDashboardPage}}
-					<a class="item{{if .PageIsMilestonesDashboard}} active{{end}}" href="{{AppSubUrl}}/milestones">{{ctx.Locale.Tr "milestones"}}</a>
-				{{end}}
-			{{end}}
-			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/repos">{{ctx.Locale.Tr "explore"}}</a>
-		{{else if .IsLandingPageOrganizations}}
-			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/organizations">{{ctx.Locale.Tr "explore"}}</a>
-		{{else}}
-			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/repos">{{ctx.Locale.Tr "explore"}}</a>
-		{{end}}
-
 		{{template "custom/extra_links" .}}
 
 		{{if not .IsSigned}}

@@ -76,6 +76,7 @@ import {
   initGlobalDropdown,
   initGlobalTabularMenu,
   initHeadNavbarContentToggle,
+  initHeadNavbarPanelToggle,
 } from './features/common-page.ts';
 import {
   initGlobalButtonClickOnEnter,
@@ -142,6 +143,7 @@ onDomReady(() => {
     initInstall,
 
     initHeadNavbarContentToggle,
+    initHeadNavbarPanelToggle,
     initFootLanguageMenu,
 
     initCommentContent,

@@ -2,6 +2,7 @@ import {GET} from '../modules/fetch.ts';
 import {showGlobalErrorMessage} from '../bootstrap.ts';
 import {fomanticQuery} from '../modules/fomantic/base.ts';
 import {queryElems} from '../utils/dom.ts';
+import {createTippy} from '../modules/tippy.ts';
 
 const {appUrl} = window.config;
 
@@ -15,6 +16,23 @@ export function initHeadNavbarContentToggle() {
     navbar.classList.toggle('navbar-menu-open', !isExpanded);
     btn.classList.toggle('active', !isExpanded);
   });
+}
+
+function initNavbarPanelButton(btn: HTMLButtonElement) {
+  const elPanel = btn.nextElementSibling;
+  // "init" must be before the "createTippy" otherwise the "tippy-target" will be removed from the document
+  //initCloneSchemeUrlSelection(elPanel);
+  createTippy(btn, {
+    content: elPanel,
+    trigger: 'click',
+    placement: 'bottom-end',
+    interactive: true,
+    hideOnClick: true,
+  });
+}
+
+export function initHeadNavbarPanelToggle() {
+  queryElems(document, '.navbar-panel-toggle', initNavbarPanelButton);
 }
 
 export function initFootLanguageMenu() {
