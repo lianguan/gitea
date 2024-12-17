@@ -23,7 +23,7 @@
 			{{if .IsSigned}}
 			<a id="mobile-notifications-icon" class="item tw-w-auto tw-p-2" href="{{AppSubUrl}}/notifications" data-tooltip-content="{{ctx.Locale.Tr "notifications"}}" aria-label="{{ctx.Locale.Tr "notifications"}}">
 				<div class="tw-relative">
-					{{svg "octicon-bell"}}
+					{{svg "octicon-inbox"}}
 					<span class="notification_count{{if not $notificationUnreadCount}} tw-hidden{{end}}">{{$notificationUnreadCount}}</span>
 				</div>
 			</a>
@@ -99,7 +99,7 @@
 
 			<a class="item not-mobile tw-mx-0{{if .PageIsNotifications}} active{{end}}" href="{{AppSubUrl}}/notifications" data-tooltip-content="{{ctx.Locale.Tr "notifications"}}" aria-label="{{ctx.Locale.Tr "notifications"}}">
 				<div class="tw-relative">
-					{{svg "octicon-bell"}}
+					{{svg "octicon-inbox"}}
 					<span class="notification_count{{if not $notificationUnreadCount}} tw-hidden{{end}}">{{$notificationUnreadCount}}</span>
 				</div>
 			</a>
@@ -138,6 +138,7 @@
 						<a href="{{.SignedUser.HomeLink}}">
 							{{ctx.AvatarUtils.Avatar .SignedUser 24 "tw-mr-1"}}
 							@<strong>{{.SignedUser.Name}}</strong>
+							{{if .SignedUser.FullName}} ({{.SignedUser.FullName}}){{end}}
 						</a>
 					</div>
 
@@ -157,7 +158,7 @@
 						</a>
 					{{end}}
 					<a class="item" href="{{AppSubUrl}}/notifications/subscriptions">
-						{{svg "octicon-bell"}}
+						{{svg "octicon-inbox"}}
 						{{ctx.Locale.Tr "notification.subscriptions"}}
 					</a>
 					<div class="divider"></div>

@@ -362,6 +362,7 @@ func NotificationSubscriptions(ctx *context.Context) {
 	pager.AddParamString("state", state)
 	ctx.Data["Page"] = pager
 
+	ctx.Data["PageIsNotifications"] = true
 	ctx.HTML(http.StatusOK, tplNotificationSubscriptions)
 }
 
@@ -467,6 +468,7 @@ func NotificationWatching(ctx *context.Context) {
 
 	ctx.Data["Status"] = 2
 	ctx.Data["Title"] = ctx.Tr("notification.watching")
+	ctx.Data["PageIsNotifications"] = true
 
 	ctx.HTML(http.StatusOK, tplNotificationSubscriptions)
 }
