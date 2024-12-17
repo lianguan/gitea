@@ -135,10 +135,17 @@
 				</span>
 				<div class="menu user-menu">
 					<div class="ui header">
-						{{ctx.Locale.Tr "signed_in_as"}} <strong>{{.SignedUser.Name}}</strong>
+						<a href="{{.SignedUser.HomeLink}}">
+							{{ctx.AvatarUtils.Avatar .SignedUser 24 "tw-mr-1"}}
+							@<strong>{{.SignedUser.Name}}</strong>
+						</a>
 					</div>
 
 					<div class="divider"></div>
+					<a class="item" href="{{AppSubUrl}}/">
+						{{svg "octicon-home"}}
+						{{ctx.Locale.Tr "dashboard"}}
+					</a>
 					<a class="item" href="{{.SignedUser.HomeLink}}">
 						{{svg "octicon-person"}}
 						{{ctx.Locale.Tr "your_profile"}}
@@ -153,6 +160,7 @@
 						{{svg "octicon-bell"}}
 						{{ctx.Locale.Tr "notification.subscriptions"}}
 					</a>
+					<div class="divider"></div>
 					<a class="{{if .PageIsUserSettings}}active {{end}}item" href="{{AppSubUrl}}/user/settings">
 						{{svg "octicon-tools"}}
 						{{ctx.Locale.Tr "your_settings"}}

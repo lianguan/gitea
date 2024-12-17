@@ -511,6 +511,7 @@ func registerRoutes(m *web.Router) {
 	}, reqSignIn)
 
 	m.Get("/pulls", reqSignIn, user.Pulls)
+	m.Get("/merge_requests", reqSignIn, user.Pulls)
 	m.Get("/milestones", reqSignIn, reqMilestonesDashboardPageEnabled, user.Milestones)
 
 	// ***** START: User *****

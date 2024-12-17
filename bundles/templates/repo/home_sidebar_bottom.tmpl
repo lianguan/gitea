@@ -29,7 +29,9 @@
 				<div class="flex-item">
 					<div class="flex-item-main">
 						{{ctx.Locale.Tr "repo.release.no_releases"}}
-						<a class="item muted" href="{{.RepoLink}}/releases/new">{{ctx.Locale.Tr "repo.release.new_release"}}</a>
+						<a class="item muted" href="{{.RepoLink}}/releases/new">
+							<span class="tw-text-primary">{{ctx.Locale.Tr "repo.release.new_release"}}</span>
+						</a>
 					</div>
 				</div>
 				{{end}}
