@@ -61,7 +61,7 @@
 	</div>
 
 	<!-- the full dropdown menus -->
-	<div class="navbar-right">
+	<div class="navbar-right ui secondary menu">
 		{{if and .IsSigned .MustChangePassword}}
 			<div class="ui dropdown jump item" data-tooltip-content="{{ctx.Locale.Tr "user_profile_and_more"}}">
 				<span class="text tw-flex tw-items-center">
@@ -82,6 +82,12 @@
 				</div><!-- end content avatar menu -->
 			</div><!-- end dropdown avatar menu -->
 		{{else if .IsSigned}}
+			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
+				<a class="item not-mobile tw-mx-0{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues" data-tooltip-content="{{ctx.Locale.Tr "issues"}}" >{{svg "octicon-issue-opened"}}</a>
+			{{end}}
+			{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
+				<a class="item not-mobile tw-mx-0{{if .PageIsPulls}} active{{end}}" href="{{AppSubUrl}}/pulls" data-tooltip-content="{{ctx.Locale.Tr "pull_requests"}}" >{{svg "octicon-git-pull-request"}}</a>
+			{{end}}
 			{{if and EnableTimetracking .ActiveStopwatch}}
 			<a class="item not-mobile active-stopwatch tw-mx-0" href="{{.ActiveStopwatch.IssueLink}}" title="{{ctx.Locale.Tr "active_stopwatch"}}" data-seconds="{{.ActiveStopwatch.Seconds}}">
 				<div class="tw-relative">
@@ -91,7 +97,7 @@
 			</a>
 			{{end}}
 
-			<a class="item not-mobile tw-mx-0" href="{{AppSubUrl}}/notifications" data-tooltip-content="{{ctx.Locale.Tr "notifications"}}" aria-label="{{ctx.Locale.Tr "notifications"}}">
+			<a class="item not-mobile tw-mx-0{{if .PageIsNotifications}} active{{end}}" href="{{AppSubUrl}}/notifications" data-tooltip-content="{{ctx.Locale.Tr "notifications"}}" aria-label="{{ctx.Locale.Tr "notifications"}}">
 				<div class="tw-relative">
 					{{svg "octicon-bell"}}
 					<span class="notification_count{{if not $notificationUnreadCount}} tw-hidden{{end}}">{{$notificationUnreadCount}}</span>

@@ -71,6 +71,8 @@ func Notifications(ctx *context.Context) {
 		ctx.HTML(http.StatusOK, tplNotificationDiv)
 		return
 	}
+
+	ctx.Data["PageIsNotifications"] = true
 	ctx.HTML(http.StatusOK, tplNotification)
 }
 

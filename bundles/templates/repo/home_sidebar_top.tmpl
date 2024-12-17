@@ -55,6 +55,17 @@
 								{{svg "octicon-law"}} {{if eq (len .DetectedRepoLicenses) 1}}{{index .DetectedRepoLicenses 0}}{{else}}{{ctx.Locale.Tr "repo.multiple_licenses"}}{{end}}
 							</a>
 						{{end}}
+						{{if not $.DisableStars}}
+							<a class="flex-text-block muted" href="{{.RepoLink}}/stars">
+								{{svg "octicon-star"}} {{CountFmt .Repository.NumStars}} {{ctx.Locale.Tr "stars"}}
+							</a>
+						{{end}}
+						<a class="flex-text-block muted" href="{{.RepoLink}}/watchers">
+							{{svg "octicon-eye"}} {{CountFmt .Repository.NumWatches}} {{ctx.Locale.Tr "watching"}}
+						</a>
+						<a class="flex-text-block muted" href="{{.RepoLink}}/forks">
+							{{svg "octicon-repo-forked"}} {{CountFmt .Repository.NumForks}} {{ctx.Locale.Tr "forks"}}
+						</a>
 
 						{{if .CitiationExist}}
 							{{template "repo/cite/cite_modal" .}}
