@@ -12,7 +12,6 @@
 			<a class="item" href="{{AppSubUrl}}/">
 				{{svg "octicon-home"}} {{ctx.Locale.Tr "dashboard"}}
 			</a>
-
 			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
 			<a class="item{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues">
 				{{svg "octicon-issue-opened"}} {{ctx.Locale.Tr "issues"}}
@@ -33,9 +32,8 @@
 			<a class="item" href="{{AppSubUrl}}/explore/repos">
 				{{svg "octicon-telescope"}} {{ctx.Locale.Tr "explore"}}
 			</a>
-			</div>
+		</div>
 		{{end}}
-	</div>
 		<!-- the logo -->
 		<a class="item{{if .PageIsDashboard}} active{{end}}" id="navbar-logo" href="{{AppSubUrl}}/" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home"}}{{end}}">
 			<img width="30" height="30" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}" aria-hidden="true">
@@ -69,7 +67,6 @@
 			<a class="item" target="_blank" rel="noopener noreferrer" href="https://docs.gitea.com">{{ctx.Locale.Tr "help"}}</a>
 		{{end}}
 	</div>
-
 	<!-- the full dropdown menus -->
 	<div class="navbar-right ui secondary menu">
 		{{if and .IsSigned .MustChangePassword}}
