@@ -408,7 +408,7 @@ func TestIssueLoadAttributes(t *testing.T) {
 		if issue.MilestoneID > 0 {
 			assert.EqualValues(t, issue.MilestoneID, issue.Milestone.ID)
 		}
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			assert.EqualValues(t, issue.ID, issue.PullRequest.IssueID)
 		}
 		for _, attachment := range issue.Attachments {
@@ -447,7 +447,7 @@ func assertCreateIssues(t *testing.T, isPull bool) {
 		Repo:        repo,
 		Title:       title,
 		Content:     "issuecontent1",
-		IsPull:      isPull,
+		IsMergeRequest:      isPull,
 		PosterID:    owner.ID,
 		Poster:      owner,
 		IsClosed:    true,
@@ -461,10 +461,10 @@ func assertCreateIssues(t *testing.T, isPull bool) {
 	unittest.AssertExistsAndLoadBean(t, &issues_model.Reaction{Type: "heart", UserID: owner.ID, IssueID: i.ID})
 }
 
-func TestMigrate_CreateIssuesIsPullFalse(t *testing.T) {
+func TestMigrate_CreateIssuesIsMergeRequestFalse(t *testing.T) {
 	assertCreateIssues(t, false)
 }
 
-func TestMigrate_CreateIssuesIsPullTrue(t *testing.T) {
+func TestMigrate_CreateIssuesIsMergeRequestTrue(t *testing.T) {
 	assertCreateIssues(t, true)
 }

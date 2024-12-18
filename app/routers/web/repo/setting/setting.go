@@ -575,10 +575,10 @@ func SettingsPost(ctx *context.Context) {
 			deleteUnitTypes = append(deleteUnitTypes, unit_model.TypeActions)
 		}
 
-		if form.EnablePulls && !unit_model.TypePullRequests.UnitGlobalDisabled() {
+		if form.EnablePulls && !unit_model.TypeMergeRequests.UnitGlobalDisabled() {
 			units = append(units, repo_model.RepoUnit{
 				RepoID: repo.ID,
-				Type:   unit_model.TypePullRequests,
+				Type:   unit_model.TypeMergeRequests,
 				Config: &repo_model.PullRequestsConfig{
 					IgnoreWhitespaceConflicts:     form.PullsIgnoreWhitespace,
 					AllowMerge:                    form.PullsAllowMerge,
@@ -594,8 +594,8 @@ func SettingsPost(ctx *context.Context) {
 					DefaultAllowMaintainerEdit:    form.DefaultAllowMaintainerEdit,
 				},
 			})
-		} else if !unit_model.TypePullRequests.UnitGlobalDisabled() {
-			deleteUnitTypes = append(deleteUnitTypes, unit_model.TypePullRequests)
+		} else if !unit_model.TypeMergeRequests.UnitGlobalDisabled() {
+			deleteUnitTypes = append(deleteUnitTypes, unit_model.TypeMergeRequests)
 		}
 
 		if len(units) == 0 {

@@ -508,7 +508,7 @@ func TestConflictChecking(t *testing.T) {
 			Title:    "PR with conflict!",
 			PosterID: user.ID,
 			Poster:   user,
-			IsPull:   true,
+			IsMergeRequest:   true,
 		}
 
 		pullRequest := &issues_model.PullRequest{
@@ -645,7 +645,7 @@ func TestPullMergeIndexerNotifier(t *testing.T) {
 		issue := unittest.AssertExistsAndLoadBean(t, &issues_model.Issue{
 			RepoID:   repo1.ID,
 			Title:    "Indexer notifier test pull",
-			IsPull:   true,
+			IsMergeRequest:   true,
 			IsClosed: false,
 		})
 
@@ -781,7 +781,7 @@ func TestPullAutoMergeAfterCommitStatusSucceed(t *testing.T) {
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
-		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{PullID: pr.ID})
+		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{MergeRequestID: pr.ID})
 	})
 }
 
@@ -875,7 +875,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApproval(t *testing.T) {
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
-		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{PullID: pr.ID})
+		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{MergeRequestID: pr.ID})
 	})
 }
 
@@ -1004,7 +1004,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApprovalForAgitFlow(t *testing.
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
-		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{PullID: pr.ID})
+		unittest.AssertNotExistsBean(t, &pull_model.AutoMerge{MergeRequestID: pr.ID})
 	})
 }
 

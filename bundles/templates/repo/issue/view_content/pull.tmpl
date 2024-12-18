@@ -1,12 +1,12 @@
-{{if and .Issue.PullRequest.HasMerged (not .IsPullBranchDeletable)}}
+{{if and .Issue.PullRequest.HasMerged (not .IsMergeRequestBranchDeletable)}}
 {{/* Then the merge box will not be displayed because this page already contains enough information */}}
 {{else}}
 <div class="timeline-item comment merge box">
 	<div class="timeline-avatar text {{if .Issue.PullRequest.HasMerged}}purple
 	{{- else if .Issue.IsClosed}}grey
-	{{- else if .IsPullWorkInProgress}}grey
+	{{- else if .IsMergeRequestWorkInProgress}}grey
 	{{- else if .IsFilesConflicted}}grey
-	{{- else if .IsPullRequestBroken}}red
+	{{- else if .IsMergeRequestBroken}}red
 	{{- else if .IsBlockedByApprovals}}red
 	{{- else if .IsBlockedByRejection}}red
 	{{- else if .IsBlockedByOfficialReviewRequests}}red
@@ -34,7 +34,7 @@
 		{{$showGeneralMergeForm := false}}
 		<div class="ui attached segment merge-section {{if not $.LatestCommitStatus}}no-header{{end}} flex-items-block">
 			{{if .Issue.PullRequest.HasMerged}}
-				{{if .IsPullBranchDeletable}}
+				{{if .IsMergeRequestBranchDeletable}}
 					<div class="item item-section text tw-flex-1">
 						<div class="item-section-left">
 							<h3 class="tw-mb-2">
@@ -54,20 +54,20 @@
 					<div class="item-section-left">
 						<h3 class="tw-mb-2">{{ctx.Locale.Tr "repo.pulls.closed"}}</h3>
 						<div class="merge-section-info">
-							{{if .IsPullRequestBroken}}
+							{{if .IsMergeRequestBroken}}
 								{{ctx.Locale.Tr "repo.pulls.cant_reopen_deleted_branch"}}
 							{{else}}
 								{{ctx.Locale.Tr "repo.pulls.reopen_to_merge"}}
 							{{end}}
 						</div>
 					</div>
-					{{if and .IsPullBranchDeletable (not .IsPullRequestBroken)}}
+					{{if and .IsMergeRequestBranchDeletable (not .IsMergeRequestBroken)}}
 						<div class="item-section-right">
 							<button class="delete-button ui button" data-url="{{.DeleteBranchLink}}">{{ctx.Locale.Tr "repo.branch.delete_html"}}</button>
 						</div>
 					{{end}}
 				</div>
-			{{else if .IsPullFilesConflicted}}
+			{{else if .IsMergeRequestFilesConflicted}}
 				<div class="item">
 					{{svg "octicon-x"}}
 					{{ctx.Locale.Tr "repo.pulls.files_conflicted"}}
@@ -77,12 +77,12 @@
 					<li>{{.}}</li>
 					{{end}}
 				</ul>
-			{{else if .IsPullRequestBroken}}
+			{{else if .IsMergeRequestBroken}}
 				<div class="item">
 					{{svg "octicon-x"}}
 					{{ctx.Locale.Tr "repo.pulls.data_broken"}}
 				</div>
-			{{else if .IsPullWorkInProgress}}
+			{{else if .IsMergeRequestWorkInProgress}}
 				<div class="item toggle-wip" data-title="{{.Issue.Title}}" data-wip-prefix="{{.WorkInProgressPrefix}}" data-update-url="{{.Issue.Link}}/title">
 					<div class="item-section-left flex-text-inline tw-flex-1">
 						{{svg "octicon-x"}}
@@ -202,7 +202,7 @@
 				{{end}}
 
 				{{if .AllowMerge}} {{/* user is allowed to merge */}}
-					{{$prUnit := .Repository.MustGetUnit ctx ctx.Consts.RepoUnitTypePullRequests}}
+					{{$prUnit := .Repository.MustGetUnit ctx ctx.Consts.RepoUnitTypeMergeRequests}}
 					{{if or $prUnit.PullRequestsConfig.AllowMerge $prUnit.PullRequestsConfig.AllowRebase $prUnit.PullRequestsConfig.AllowRebaseMerge $prUnit.PullRequestsConfig.AllowSquash $prUnit.PullRequestsConfig.AllowFastForwardOnly}}
 						{{$hasPendingPullRequestMergeTip := ""}}
 						{{if .HasPendingPullRequestMerge}}
@@ -230,7 +230,7 @@
 								'allOverridableChecksOk': {{not $notAllOverridableChecksOk}},
 								'emptyCommit': {{.Issue.PullRequest.IsEmpty}},
 								'pullHeadCommitID': {{.PullHeadCommitID}},
-								'isPullBranchDeletable': {{.IsPullBranchDeletable}},
+								'isPullBranchDeletable': {{.IsMergeRequestBranchDeletable}},
 								'defaultMergeStyle': {{.MergeStyle}},
 								'defaultDeleteBranchAfterMerge': {{$prUnit.PullRequestsConfig.DefaultDeleteBranchAfterMerge}},
 								'mergeMessageFieldPlaceHolder': {{ctx.Locale.Tr "repo.editor.commit_message_desc"}},

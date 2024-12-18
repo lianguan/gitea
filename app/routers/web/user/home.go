@@ -146,7 +146,7 @@ func Dashboard(ctx *context.Context) {
 
 // Milestones render the user milestones page
 func Milestones(ctx *context.Context) {
-	if unit.TypeIssues.UnitGlobalDisabled() && unit.TypePullRequests.UnitGlobalDisabled() {
+	if unit.TypeIssues.UnitGlobalDisabled() && unit.TypeMergeRequests.UnitGlobalDisabled() {
 		log.Debug("Milestones overview page not available as both issues and pull requests are globally disabled")
 		ctx.Status(http.StatusNotFound)
 		return
@@ -340,15 +340,15 @@ func Milestones(ctx *context.Context) {
 
 // Pulls renders the user's pull request overview page
 func Pulls(ctx *context.Context) {
-	if unit.TypePullRequests.UnitGlobalDisabled() {
+	if unit.TypeMergeRequests.UnitGlobalDisabled() {
 		log.Debug("Pull request overview page not available as it is globally disabled.")
 		ctx.Status(http.StatusNotFound)
 		return
 	}
 
 	ctx.Data["Title"] = ctx.Tr("pull_requests")
-	ctx.Data["PageIsPulls"] = true
-	buildIssueOverview(ctx, unit.TypePullRequests)
+	ctx.Data["PageIsMergeRequests"] = true
+	buildIssueOverview(ctx, unit.TypeMergeRequests)
 }
 
 // Issues renders the user's issues overview page
@@ -414,9 +414,9 @@ func buildIssueOverview(ctx *context.Context, unitType unit.Type) {
 		viewType = "your_repositories"
 	}
 
-	isPullList := unitType == unit.TypePullRequests
+	isPullList := unitType == unit.TypeMergeRequests
 	opts := &issues_model.IssuesOptions{
-		IsPull:     optional.Some(isPullList),
+		IsMergeRequest:     optional.Some(isPullList),
 		SortType:   sortType,
 		IsArchived: optional.Some(false),
 		User:       ctx.Doer,

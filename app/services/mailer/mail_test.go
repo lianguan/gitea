@@ -292,7 +292,7 @@ func TestGenerateAdditionalHeaders(t *testing.T) {
 func TestGenerateMessageIDForIssue(t *testing.T) {
 	_, _, issue, comment := prepareMailerTest(t)
 	_, _, pullIssue, _ := prepareMailerTest(t)
-	pullIssue.IsPull = true
+	pullIssue.IsMergeRequest = true
 
 	type args struct {
 		issue      *issues_model.Issue
@@ -318,7 +318,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				issue:      pullIssue,
 				actionType: activities_model.ActionCreatePullRequest,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d@%s>", issue.Repo.FullName(), issue.Index, setting.Domain),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d@%s>", issue.Repo.FullName(), issue.Index, setting.Domain),
 		},
 		{
 			name: "Comment Issue",
@@ -336,7 +336,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				comment:    comment,
 				actionType: activities_model.ActionCommentPull,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d/comment/%d@%s>", issue.Repo.FullName(), issue.Index, comment.ID, setting.Domain),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d/comment/%d@%s>", issue.Repo.FullName(), issue.Index, comment.ID, setting.Domain),
 		},
 		{
 			name: "Close Issue",
@@ -352,7 +352,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				issue:      pullIssue,
 				actionType: activities_model.ActionClosePullRequest,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d/close/", issue.Repo.FullName(), issue.Index),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d/close/", issue.Repo.FullName(), issue.Index),
 		},
 		{
 			name: "Reopen Issue",
@@ -368,7 +368,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				issue:      pullIssue,
 				actionType: activities_model.ActionReopenPullRequest,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d/reopen/", issue.Repo.FullName(), issue.Index),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d/reopen/", issue.Repo.FullName(), issue.Index),
 		},
 		{
 			name: "Merge Pull",
@@ -376,7 +376,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				issue:      pullIssue,
 				actionType: activities_model.ActionMergePullRequest,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d/merge/", issue.Repo.FullName(), issue.Index),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d/merge/", issue.Repo.FullName(), issue.Index),
 		},
 		{
 			name: "Ready Pull",
@@ -384,7 +384,7 @@ func TestGenerateMessageIDForIssue(t *testing.T) {
 				issue:      pullIssue,
 				actionType: activities_model.ActionPullRequestReadyForReview,
 			},
-			prefix: fmt.Sprintf("<%s/pulls/%d/ready/", issue.Repo.FullName(), issue.Index),
+			prefix: fmt.Sprintf("<%s/merge_requests/%d/ready/", issue.Repo.FullName(), issue.Index),
 		},
 	}
 	for _, tt := range tests {

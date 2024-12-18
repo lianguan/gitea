@@ -51,7 +51,7 @@ func MergeUpstream(ctx context.Context, doer *user_model.User, repo *repo_model.
 		Index:    -1,
 		PosterID: doer.ID,
 		Poster:   doer,
-		IsPull:   true,
+		IsMergeRequest:   true,
 	}
 	fakePR := &issue_model.PullRequest{
 		ID:         -1,

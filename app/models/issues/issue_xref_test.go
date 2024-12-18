@@ -29,7 +29,7 @@ func TestXRef_AddCrossReferences(t *testing.T) {
 	ref := unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: itarget.ID, RefIssueID: pr.ID, RefCommentID: 0})
 	assert.Equal(t, issues_model.CommentTypePullRef, ref.Type)
 	assert.Equal(t, pr.RepoID, ref.RefRepoID)
-	assert.True(t, ref.RefIsPull)
+	assert.True(t, ref.RefIsMergeRequest)
 	assert.Equal(t, references.XRefActionCloses, ref.RefAction)
 
 	// Comment on PR to reopen issue #1
@@ -38,7 +38,7 @@ func TestXRef_AddCrossReferences(t *testing.T) {
 	ref = unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: itarget.ID, RefIssueID: pr.ID, RefCommentID: c.ID})
 	assert.Equal(t, issues_model.CommentTypeCommentRef, ref.Type)
 	assert.Equal(t, pr.RepoID, ref.RefRepoID)
-	assert.True(t, ref.RefIsPull)
+	assert.True(t, ref.RefIsMergeRequest)
 	assert.Equal(t, references.XRefActionReopens, ref.RefAction)
 
 	// Issue mentioning issue #1
@@ -47,7 +47,7 @@ func TestXRef_AddCrossReferences(t *testing.T) {
 	ref = unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: itarget.ID, RefIssueID: i.ID, RefCommentID: 0})
 	assert.Equal(t, issues_model.CommentTypeIssueRef, ref.Type)
 	assert.Equal(t, pr.RepoID, ref.RefRepoID)
-	assert.False(t, ref.RefIsPull)
+	assert.False(t, ref.RefIsMergeRequest)
 	assert.Equal(t, references.XRefActionNone, ref.RefAction)
 
 	// Issue #4 to test against
@@ -59,7 +59,7 @@ func TestXRef_AddCrossReferences(t *testing.T) {
 	ref = unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: itarget.ID, RefIssueID: i.ID, RefCommentID: 0})
 	assert.Equal(t, issues_model.CommentTypeIssueRef, ref.Type)
 	assert.Equal(t, i.RepoID, ref.RefRepoID)
-	assert.False(t, ref.RefIsPull)
+	assert.False(t, ref.RefIsMergeRequest)
 	assert.Equal(t, references.XRefActionNone, ref.RefAction)
 
 	// Cross-reference to issue #4 with no permission
@@ -142,7 +142,7 @@ func testCreateIssue(t *testing.T, repo, doer int64, title, content string, ispu
 		Poster:   d,
 		Title:    title,
 		Content:  content,
-		IsPull:   ispull,
+		IsMergeRequest:   ispull,
 		Index:    idx,
 	}
 
@@ -161,7 +161,7 @@ func testCreateIssue(t *testing.T, repo, doer int64, title, content string, ispu
 func testCreatePR(t *testing.T, repo, doer int64, title, content string) *issues_model.PullRequest {
 	r := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: repo})
 	d := unittest.AssertExistsAndLoadBean(t, &user_model.User{ID: doer})
-	i := &issues_model.Issue{RepoID: r.ID, PosterID: d.ID, Poster: d, Title: title, Content: content, IsPull: true}
+	i := &issues_model.Issue{RepoID: r.ID, PosterID: d.ID, Poster: d, Title: title, Content: content, IsMergeRequest: true}
 	pr := &issues_model.PullRequest{HeadRepoID: repo, BaseRepoID: repo, HeadBranch: "head", BaseBranch: "base", Status: issues_model.PullRequestStatusMergeable}
 	assert.NoError(t, issues_model.NewPullRequest(db.DefaultContext, r, i, nil, nil, pr))
 	pr.Issue = i

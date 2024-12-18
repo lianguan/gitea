@@ -303,7 +303,7 @@ type Comment struct {
 	RefIssueID   int64                 `xorm:"index"`
 	RefCommentID int64                 `xorm:"index"`    // 0 if origin is Issue title or content (or PR's)
 	RefAction    references.XRefAction `xorm:"SMALLINT"` // What happens if RefIssueID resolves
-	RefIsPull    bool
+	RefIsMergeRequest    bool
 
 	CommentMetaData *CommentMetaData `xorm:"JSON TEXT"` // put all non-index metadata in a single field
 
@@ -466,7 +466,7 @@ func (c *Comment) IssueURL(ctx context.Context) string {
 		return ""
 	}
 
-	if c.Issue.IsPull {
+	if c.Issue.IsMergeRequest {
 		return ""
 	}
 
@@ -492,7 +492,7 @@ func (c *Comment) PRURL(ctx context.Context) string {
 		return ""
 	}
 
-	if !c.Issue.IsPull {
+	if !c.Issue.IsMergeRequest {
 		return ""
 	}
 	return c.Issue.HTMLURL()
@@ -848,7 +848,7 @@ func CreateComment(ctx context.Context, opts *CreateCommentOptions) (_ *Comment,
 		RefIssueID:       opts.RefIssueID,
 		RefCommentID:     opts.RefCommentID,
 		RefAction:        opts.RefAction,
-		RefIsPull:        opts.RefIsPull,
+		RefIsMergeRequest:        opts.RefIsMergeRequest,
 		IsForcePush:      opts.IsForcePush,
 		Invalidated:      opts.Invalidated,
 		CommentMetaData:  commentMetaData,
@@ -902,7 +902,7 @@ func updateCommentInfos(ctx context.Context, opts *CreateCommentOptions, comment
 			return err
 		}
 	case CommentTypeReopen, CommentTypeClose:
-		if err = repo_model.UpdateRepoIssueNumbers(ctx, opts.Issue.RepoID, opts.Issue.IsPull, true); err != nil {
+		if err = repo_model.UpdateRepoIssueNumbers(ctx, opts.Issue.RepoID, opts.Issue.IsMergeRequest, true); err != nil {
 			return err
 		}
 	}
@@ -1032,7 +1032,7 @@ type CreateCommentOptions struct {
 	RefIssueID         int64
 	RefCommentID       int64
 	RefAction          references.XRefAction
-	RefIsPull          bool
+	RefIsMergeRequest          bool
 	IsForcePush        bool
 	Invalidated        bool
 }
@@ -1062,7 +1062,7 @@ type FindCommentsOptions struct {
 	Type        CommentType
 	IssueIDs    []int64
 	Invalidated optional.Option[bool]
-	IsPull      optional.Option[bool]
+	IsMergeRequest      optional.Option[bool]
 }
 
 // ToConds implements FindOptions interface
@@ -1097,8 +1097,8 @@ func (opts FindCommentsOptions) ToConds() builder.Cond {
 	if opts.Invalidated.Has() {
 		cond = cond.And(builder.Eq{"comment.invalidated": opts.Invalidated.Value()})
 	}
-	if opts.IsPull.Has() {
-		cond = cond.And(builder.Eq{"issue.is_pull": opts.IsPull.Value()})
+	if opts.IsMergeRequest.Has() {
+		cond = cond.And(builder.Eq{"issue.is_merge_request": opts.IsMergeRequest.Value()})
 	}
 	return cond
 }
@@ -1107,7 +1107,7 @@ func (opts FindCommentsOptions) ToConds() builder.Cond {
 func FindComments(ctx context.Context, opts *FindCommentsOptions) (CommentList, error) {
 	comments := make([]*Comment, 0, 10)
 	sess := db.GetEngine(ctx).Where(opts.ToConds())
-	if opts.RepoID > 0 || opts.IsPull.Has() {
+	if opts.RepoID > 0 || opts.IsMergeRequest.Has() {
 		sess.Join("INNER", "issue", "issue.id = comment.issue_id")
 	}
 

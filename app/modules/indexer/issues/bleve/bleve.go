@@ -73,7 +73,7 @@ func generateIssueIndexMapping() (mapping.IndexMapping, error) {
 	docMapping.AddFieldMappingsAt("content", textFieldMapping)
 	docMapping.AddFieldMappingsAt("comments", textFieldMapping)
 
-	docMapping.AddFieldMappingsAt("is_pull", boolFieldMapping)
+	docMapping.AddFieldMappingsAt("is_merge_request", boolFieldMapping)
 	docMapping.AddFieldMappingsAt("is_closed", boolFieldMapping)
 	docMapping.AddFieldMappingsAt("is_archived", boolFieldMapping)
 	docMapping.AddFieldMappingsAt("label_ids", numberFieldMapping)
@@ -180,8 +180,8 @@ func (b *Indexer) Search(ctx context.Context, options *internal.SearchOptions) (
 		queries = append(queries, bleve.NewDisjunctionQuery(repoQueries...))
 	}
 
-	if options.IsPull.Has() {
-		queries = append(queries, inner_bleve.BoolFieldQuery(options.IsPull.Value(), "is_pull"))
+	if options.IsMergeRequest.Has() {
+		queries = append(queries, inner_bleve.BoolFieldQuery(options.IsMergeRequest.Value(), "is_merge_request"))
 	}
 	if options.IsClosed.Has() {
 		queries = append(queries, inner_bleve.BoolFieldQuery(options.IsClosed.Value(), "is_closed"))

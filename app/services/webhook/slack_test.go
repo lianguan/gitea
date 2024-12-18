@@ -86,7 +86,7 @@ func TestSlackPayload(t *testing.T) {
 		pl, err := sc.PullRequest(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] Pull request opened: <http://localhost:3000/test/repo/pulls/12|#12 Fix bug> by <https://try.gitea.io/user1|user1>", pl.Text)
+		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] Pull request opened: <http://localhost:3000/test/repo/merge_requests/12|#12 Fix bug> by <https://try.gitea.io/user1|user1>", pl.Text)
 	})
 
 	t.Run("PullRequestComment", func(t *testing.T) {
@@ -95,7 +95,7 @@ func TestSlackPayload(t *testing.T) {
 		pl, err := sc.IssueComment(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] New comment on pull request <http://localhost:3000/test/repo/pulls/12|#12 Fix bug> by <https://try.gitea.io/user1|user1>", pl.Text)
+		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] New comment on pull request <http://localhost:3000/test/repo/merge_requests/12|#12 Fix bug> by <https://try.gitea.io/user1|user1>", pl.Text)
 	})
 
 	t.Run("Review", func(t *testing.T) {
@@ -105,7 +105,7 @@ func TestSlackPayload(t *testing.T) {
 		pl, err := sc.Review(p, webhook_module.HookEventPullRequestReviewApproved)
 		require.NoError(t, err)
 
-		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] Pull request review approved: [#12 Fix bug](http://localhost:3000/test/repo/pulls/12) by <https://try.gitea.io/user1|user1>", pl.Text)
+		assert.Equal(t, "[<http://localhost:3000/test/repo|test/repo>] Pull request review approved: [#12 Fix bug](http://localhost:3000/test/repo/merge_requests/12) by <https://try.gitea.io/user1|user1>", pl.Text)
 	})
 
 	t.Run("Repository", func(t *testing.T) {

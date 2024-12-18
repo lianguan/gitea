@@ -153,8 +153,8 @@
 						</a>
 					{{end}}
 
-					{{if and .Repository.CanEnablePulls (.Permission.CanRead ctx.Consts.RepoUnitTypePullRequests)}}
-						<a class="{{if .PageIsPullList}}active {{end}}item" href="{{.RepoLink}}/pulls">
+					{{if and .Repository.CanEnablePulls (.Permission.CanRead ctx.Consts.RepoUnitTypeMergeRequests)}}
+						<a class="{{if .PageIsMergeRequestList}}active {{end}}item" href="{{.RepoLink}}/merge_requests">
 							{{svg "octicon-git-pull-request"}} {{ctx.Locale.Tr "repo.pulls"}}
 							{{if .Repository.NumOpenPulls}}
 								<span class="ui small label">{{CountFmt .Repository.NumOpenPulls}}</span>
@@ -208,7 +208,7 @@
 						</a>
 					{{end}}
 
-					{{if and (.Permission.CanReadAny ctx.Consts.RepoUnitTypePullRequests ctx.Consts.RepoUnitTypeIssues ctx.Consts.RepoUnitTypeReleases) (not .IsEmptyRepo)}}
+					{{if and (.Permission.CanReadAny ctx.Consts.RepoUnitTypeMergeRequests ctx.Consts.RepoUnitTypeIssues ctx.Consts.RepoUnitTypeReleases) (not .IsEmptyRepo)}}
 						<a class="{{if .PageIsActivity}}active {{end}}item" href="{{.RepoLink}}/activity">
 							{{svg "octicon-pulse"}} {{ctx.Locale.Tr "repo.activity"}}
 						</a>

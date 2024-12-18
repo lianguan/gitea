@@ -346,8 +346,8 @@ func (repo *Repository) GetDiffFromMergeBase(base, head string, w io.Writer) err
 
 // ReadPatchCommit will check if a diff patch exists and return stats
 func (repo *Repository) ReadPatchCommit(prID int64) (commitSHA string, err error) {
-	// Migrated repositories download patches to "pulls" location
-	patchFile := fmt.Sprintf("pulls/%d.patch", prID)
+	// Migrated repositories download patches to "merge_requests" location
+	patchFile := fmt.Sprintf("merge_requests/%d.patch", prID)
 	loadPatch, err := os.Open(filepath.Join(repo.Path, patchFile))
 	if err != nil {
 		return "", err

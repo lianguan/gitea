@@ -85,8 +85,8 @@ func (run *ActionRun) WorkflowLink() string {
 // RefLink return the url of run's ref
 func (run *ActionRun) RefLink() string {
 	refName := git.RefName(run.Ref)
-	if refName.IsPull() {
-		return run.Repo.Link() + "/pulls/" + refName.ShortName()
+	if refName.IsMergeRequest() {
+		return run.Repo.Link() + "/merge_requests/" + refName.ShortName()
 	}
 	return git.RefURL(run.Repo.Link(), run.Ref)
 }
@@ -94,7 +94,7 @@ func (run *ActionRun) RefLink() string {
 // PrettyRef return #id for pull ref or ShortName for others
 func (run *ActionRun) PrettyRef() string {
 	refName := git.RefName(run.Ref)
-	if refName.IsPull() {
+	if refName.IsMergeRequest() {
 		return "#" + strings.TrimSuffix(strings.TrimPrefix(run.Ref, git.PullPrefix), "/head")
 	}
 	return refName.ShortName()

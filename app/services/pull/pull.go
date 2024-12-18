@@ -922,7 +922,7 @@ func GetIssuesAllCommitStatus(ctx context.Context, issues issues_model.IssueList
 	}()
 
 	for _, issue := range issues {
-		if !issue.IsPull {
+		if !issue.IsMergeRequest {
 			continue
 		}
 		gitRepo, ok := gitRepos[issue.RepoID]

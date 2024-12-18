@@ -60,7 +60,7 @@ func RemoveLabel(ctx context.Context, issue *issues_model.Issue, doer *user_mode
 	if err != nil {
 		return err
 	}
-	if !perm.CanWriteIssuesOrPulls(issue.IsPull) {
+	if !perm.CanWriteIssuesOrPulls(issue.IsMergeRequest) {
 		if label.OrgID > 0 {
 			return issues_model.ErrOrgLabelNotExist{}
 		}

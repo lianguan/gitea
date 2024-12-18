@@ -127,12 +127,12 @@ func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.PullRequest, 
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		return false, false, err
 	}
-	prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypePullRequests)
+	prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypeMergeRequests)
 	if err != nil {
 		if repo_model.IsErrUnitTypeNotExist(err) {
 			return false, false, nil
 		}
-		log.Error("pr.BaseRepo.GetUnit(unit.TypePullRequests): %v", err)
+		log.Error("pr.BaseRepo.GetUnit(unit.TypeMergeRequests): %v", err)
 		return false, false, err
 	}
 

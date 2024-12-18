@@ -400,7 +400,7 @@ func CreateRepositoryByExample(ctx context.Context, doer, u *user_model.User, re
 					EnableDependencies:               setting.Service.DefaultEnableDependencies,
 				},
 			})
-		} else if tp == unit.TypePullRequests {
+		} else if tp == unit.TypeMergeRequests {
 			units = append(units, repo_model.RepoUnit{
 				RepoID: repo.ID,
 				Type:   tp,

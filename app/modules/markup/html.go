@@ -80,11 +80,11 @@ var globalVars = sync.OnceValue[*globalVarsType](func() *globalVarsType {
 	// emojiShortCodeRegex find emoji by alias like :smile:
 	v.emojiShortCodeRegex = regexp.MustCompile(`:[-+\w]+:`)
 
-	// example: https://domain/org/repo/pulls/27#hash
-	v.issueFullPattern = regexp.MustCompile(`https?://(?:\S+/)[\w_.-]+/[\w_.-]+/(?:issues|pulls)/((?:\w{1,10}-)?[1-9][0-9]*)([\?|#](\S+)?)?\b`)
+	// example: https://domain/org/repo/merge_requests/27#hash
+	v.issueFullPattern = regexp.MustCompile(`https?://(?:\S+/)[\w_.-]+/[\w_.-]+/(?:issues|merge_requests)/((?:\w{1,10}-)?[1-9][0-9]*)([\?|#](\S+)?)?\b`)
 
-	// example: https://domain/org/repo/pulls/27/files#hash
-	v.filesChangedFullPattern = regexp.MustCompile(`https?://(?:\S+/)[\w_.-]+/[\w_.-]+/pulls/((?:\w{1,10}-)?[1-9][0-9]*)/files([\?|#](\S+)?)?\b`)
+	// example: https://domain/org/repo/merge_requests/27/files#hash
+	v.filesChangedFullPattern = regexp.MustCompile(`https?://(?:\S+/)[\w_.-]+/[\w_.-]+/merge_requests/((?:\w{1,10}-)?[1-9][0-9]*)/files([\?|#](\S+)?)?\b`)
 
 	// codePreviewPattern matches "http://domain/.../{owner}/{repo}/src/commit/{commit}/{filepath}#L10-L20"
 	v.codePreviewPattern = regexp.MustCompile(`https?://\S+/([^\s/]+)/([^\s/]+)/src/commit/([0-9a-f]{7,64})(/\S+)#(L\d+(-L\d+)?)`)

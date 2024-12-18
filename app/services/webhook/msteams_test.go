@@ -221,7 +221,7 @@ func TestMSTeamsPayload(t *testing.T) {
 		}
 		assert.Len(t, pl.PotentialAction, 1)
 		assert.Len(t, pl.PotentialAction[0].Targets, 1)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12", pl.PotentialAction[0].Targets[0].URI)
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12", pl.PotentialAction[0].Targets[0].URI)
 	})
 
 	t.Run("PullRequestComment", func(t *testing.T) {
@@ -247,7 +247,7 @@ func TestMSTeamsPayload(t *testing.T) {
 		}
 		assert.Len(t, pl.PotentialAction, 1)
 		assert.Len(t, pl.PotentialAction[0].Targets, 1)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12#issuecomment-4", pl.PotentialAction[0].Targets[0].URI)
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12#issuecomment-4", pl.PotentialAction[0].Targets[0].URI)
 	})
 
 	t.Run("Review", func(t *testing.T) {
@@ -274,7 +274,7 @@ func TestMSTeamsPayload(t *testing.T) {
 		}
 		assert.Len(t, pl.PotentialAction, 1)
 		assert.Len(t, pl.PotentialAction[0].Targets, 1)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12", pl.PotentialAction[0].Targets[0].URI)
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12", pl.PotentialAction[0].Targets[0].URI)
 	})
 
 	t.Run("Repository", func(t *testing.T) {

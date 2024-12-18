@@ -633,7 +633,7 @@ func NotifyWatchers(ctx context.Context, actions ...*Action) error {
 				}
 				permCode[i] = perm.CanRead(unit.TypeCode)
 				permIssue[i] = perm.CanRead(unit.TypeIssues)
-				permPR[i] = perm.CanRead(unit.TypePullRequests)
+				permPR[i] = perm.CanRead(unit.TypeMergeRequests)
 			}
 		}
 

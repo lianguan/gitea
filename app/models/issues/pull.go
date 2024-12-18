@@ -198,13 +198,13 @@ func DeletePullsByBaseRepoID(ctx context.Context, repoID int64) error {
 	deleteCond := builder.Select("id").From("pull_request").Where(builder.Eq{"pull_request.base_repo_id": repoID})
 
 	// Delete scheduled auto merges
-	if _, err := db.GetEngine(ctx).In("pull_id", deleteCond).
+	if _, err := db.GetEngine(ctx).In("merge_request_id", deleteCond).
 		Delete(&pull_model.AutoMerge{}); err != nil {
 		return err
 	}
 
 	// Delete review states
-	if _, err := db.GetEngine(ctx).In("pull_id", deleteCond).
+	if _, err := db.GetEngine(ctx).In("merge_request_id", deleteCond).
 		Delete(&pull_model.ReviewState{}); err != nil {
 		return err
 	}
@@ -579,7 +579,7 @@ func NewPullRequest(ctx context.Context, repo *repo_model.Repository, issue *Iss
 		Issue:       issue,
 		LabelIDs:    labelIDs,
 		Attachments: uuids,
-		IsPull:      true,
+		IsMergeRequest:      true,
 	}); err != nil {
 		if repo_model.IsErrUserDoesNotHaveAccessToRepo(err) || IsErrNewIssueInsert(err) {
 			return err

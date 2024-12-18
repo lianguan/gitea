@@ -129,7 +129,7 @@ func getPullInfo(ctx *context.Context) (issue *issues_model.Issue, ok bool) {
 	ctx.Data["Title"] = fmt.Sprintf("#%d - %s", issue.Index, emoji.ReplaceAliases(issue.Title))
 	ctx.Data["Issue"] = issue
 
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		ctx.NotFound("ViewPullCommits", nil)
 		return nil, false
 	}
@@ -264,7 +264,7 @@ func GetMergedBaseCommitID(ctx *context.Context, issue *issues_model.Issue) stri
 }
 
 func preparePullViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.CompareInfo {
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return nil
 	}
 	if issue.PullRequest.HasMerged {
@@ -286,7 +286,7 @@ func prepareMergedViewPullInfo(ctx *context.Context, issue *issues_model.Issue) 
 		baseCommit, pull.GetGitRefName(), false, false)
 	if err != nil {
 		if strings.Contains(err.Error(), "fatal: Not a valid object name") || strings.Contains(err.Error(), "unknown revision or path not in the working tree") {
-			ctx.Data["IsPullRequestBroken"] = true
+			ctx.Data["IsMergeRequestBroken"] = true
 			ctx.Data["BaseTarget"] = pull.BaseBranch
 			ctx.Data["NumCommits"] = 0
 			ctx.Data["NumFiles"] = 0
@@ -359,7 +359,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 
 	if !baseGitRepo.IsBranchExist(pull.BaseBranch) {
 		ctx.Data["BaseBranchNotExist"] = true
-		ctx.Data["IsPullRequestBroken"] = true
+		ctx.Data["IsMergeRequestBroken"] = true
 		ctx.Data["BaseTarget"] = pull.BaseBranch
 		ctx.Data["HeadTarget"] = pull.HeadBranch
 
@@ -386,7 +386,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 			pull.MergeBase, pull.GetGitRefName(), false, false)
 		if err != nil {
 			if strings.Contains(err.Error(), "fatal: Not a valid object name") {
-				ctx.Data["IsPullRequestBroken"] = true
+				ctx.Data["IsMergeRequestBroken"] = true
 				ctx.Data["BaseTarget"] = pull.BaseBranch
 				ctx.Data["NumCommits"] = 0
 				ctx.Data["NumFiles"] = 0
@@ -447,7 +447,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 	sha, err := baseGitRepo.GetRefCommitID(pull.GetGitRefName())
 	if err != nil {
 		if git.IsErrNotExist(err) {
-			ctx.Data["IsPullRequestBroken"] = true
+			ctx.Data["IsMergeRequestBroken"] = true
 			if pull.IsSameRepo() {
 				ctx.Data["HeadTarget"] = pull.HeadBranch
 			} else if pull.HeadRepo == nil {
@@ -520,7 +520,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 	ctx.Data["PullHeadCommitID"] = sha
 
 	if pull.HeadRepo == nil || !headBranchExist || (!pull.Issue.IsClosed && (headBranchSha != sha)) {
-		ctx.Data["IsPullRequestBroken"] = true
+		ctx.Data["IsMergeRequestBroken"] = true
 		if pull.IsSameRepo() {
 			ctx.Data["HeadTarget"] = pull.HeadBranch
 		} else if pull.HeadRepo == nil {
@@ -534,7 +534,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 		git.BranchPrefix+pull.BaseBranch, pull.GetGitRefName(), false, false)
 	if err != nil {
 		if strings.Contains(err.Error(), "fatal: Not a valid object name") {
-			ctx.Data["IsPullRequestBroken"] = true
+			ctx.Data["IsMergeRequestBroken"] = true
 			ctx.Data["BaseTarget"] = pull.BaseBranch
 			ctx.Data["NumCommits"] = 0
 			ctx.Data["NumFiles"] = 0
@@ -550,12 +550,12 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 	}
 
 	if pull.IsWorkInProgress(ctx) {
-		ctx.Data["IsPullWorkInProgress"] = true
+		ctx.Data["IsMergeRequestWorkInProgress"] = true
 		ctx.Data["WorkInProgressPrefix"] = pull.GetWorkInProgressPrefix(ctx)
 	}
 
 	if pull.IsFilesConflicted() {
-		ctx.Data["IsPullFilesConflicted"] = true
+		ctx.Data["IsMergeRequestFilesConflicted"] = true
 		ctx.Data["ConflictedFiles"] = pull.ConflictedFiles
 	}
 
@@ -613,8 +613,8 @@ func GetPullCommits(ctx *context.Context) {
 
 // ViewPullCommits show commits for a pull request
 func ViewPullCommits(ctx *context.Context) {
-	ctx.Data["PageIsPullList"] = true
-	ctx.Data["PageIsPullCommits"] = true
+	ctx.Data["PageIsMergeRequestList"] = true
+	ctx.Data["PageIsMergeRequestCommits"] = true
 
 	issue, ok := getPullInfo(ctx)
 	if !ok {
@@ -636,7 +636,7 @@ func ViewPullCommits(ctx *context.Context) {
 	ctx.Data["Commits"] = commits
 	ctx.Data["CommitCount"] = len(commits)
 
-	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)
+	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)
 	ctx.Data["IsIssuePoster"] = ctx.IsSigned && issue.IsPoster(ctx.Doer.ID)
 
 	// For PR commits page
@@ -650,8 +650,8 @@ func ViewPullCommits(ctx *context.Context) {
 
 // ViewPullFiles render pull request changed files list page
 func viewPullFiles(ctx *context.Context, specifiedStartCommit, specifiedEndCommit string, willShowSpecifiedCommitRange, willShowSpecifiedCommit bool) {
-	ctx.Data["PageIsPullList"] = true
-	ctx.Data["PageIsPullFiles"] = true
+	ctx.Data["PageIsMergeRequestList"] = true
+	ctx.Data["PageIsMergeRequestFiles"] = true
 
 	issue, ok := getPullInfo(ctx)
 	if !ok {
@@ -871,7 +871,7 @@ func viewPullFiles(ctx *context.Context, specifiedStartCommit, specifiedEndCommi
 
 	getBranchData(ctx, issue)
 	ctx.Data["IsIssuePoster"] = ctx.IsSigned && issue.IsPoster(ctx.Doer.ID)
-	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)
+	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)
 
 	ctx.Data["IsAttachmentEnabled"] = setting.Attachment.Enabled
 	// For files changed page
@@ -1037,7 +1037,7 @@ func MergePullRequest(ctx *context.Context) {
 	if err := pull_service.CheckPullMergeable(ctx, ctx.Doer, &ctx.Repo.Permission, pr, mergeCheckType, form.ForceMerge); err != nil {
 		switch {
 		case errors.Is(err, pull_service.ErrIsClosed):
-			if issue.IsPull {
+			if issue.IsMergeRequest {
 				ctx.JSONError(ctx.Tr("repo.pulls.is_closed"))
 			} else {
 				ctx.JSONError(ctx.Tr("repo.issues.closed_title"))
@@ -1257,7 +1257,7 @@ func CompareAndPullRequestPost(ctx *context.Context) {
 	ctx.Data["PullRequestWorkInProgressPrefixes"] = setting.Repository.PullRequest.WorkInProgressPrefixes
 	ctx.Data["IsAttachmentEnabled"] = setting.Attachment.Enabled
 	upload.AddUploadContext(ctx, "comment")
-	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWrite(unit.TypePullRequests)
+	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWrite(unit.TypeMergeRequests)
 
 	var (
 		repo        = ctx.Repo.Repository
@@ -1309,7 +1309,7 @@ func CompareAndPullRequestPost(ctx *context.Context) {
 		PosterID:    ctx.Doer.ID,
 		Poster:      ctx.Doer,
 		MilestoneID: milestoneID,
-		IsPull:      true,
+		IsMergeRequest:      true,
 		Content:     content,
 	}
 	pullRequest := &issues_model.PullRequest{
@@ -1573,12 +1573,12 @@ func UpdatePullRequestTarget(ctx *context.Context) {
 		return
 	}
 	pr := issue.PullRequest
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		ctx.Error(http.StatusNotFound)
 		return
 	}
 
-	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)) {
 		ctx.Error(http.StatusForbidden)
 		return
 	}

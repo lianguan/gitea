@@ -79,12 +79,12 @@ func (a *actionNotifier) IssueChangeStatus(ctx context.Context, doer *user_model
 	// Check comment type.
 	if closeOrReopen {
 		act.OpType = activities_model.ActionCloseIssue
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			act.OpType = activities_model.ActionClosePullRequest
 		}
 	} else {
 		act.OpType = activities_model.ActionReopenIssue
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			act.OpType = activities_model.ActionReopenPullRequest
 		}
 	}
@@ -119,7 +119,7 @@ func (a *actionNotifier) CreateIssueComment(ctx context.Context, doer *user_mode
 	}
 	act.Content = fmt.Sprintf("%d|%s", issue.Index, truncatedContent)
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		act.OpType = activities_model.ActionCommentPull
 	} else {
 		act.OpType = activities_model.ActionCommentIssue
@@ -392,7 +392,7 @@ func (a *actionNotifier) DeleteRef(ctx context.Context, doer *user_model.User, r
 func (a *actionNotifier) SyncPushCommits(ctx context.Context, pusher *user_model.User, repo *repo_model.Repository, opts *repository.PushUpdateOptions, commits *repository.PushCommits) {
 	// ignore pull sync message for pull requests refs
 	// TODO: it's better to have a UI to let users chose
-	if opts.RefFullName.IsPull() {
+	if opts.RefFullName.IsMergeRequest() {
 		return
 	}
 
@@ -419,7 +419,7 @@ func (a *actionNotifier) SyncPushCommits(ctx context.Context, pusher *user_model
 func (a *actionNotifier) SyncCreateRef(ctx context.Context, doer *user_model.User, repo *repo_model.Repository, refFullName git.RefName, refID string) {
 	// ignore pull sync message for pull requests refs
 	// TODO: it's better to have a UI to let users chose
-	if refFullName.IsPull() {
+	if refFullName.IsMergeRequest() {
 		return
 	}
 
@@ -439,7 +439,7 @@ func (a *actionNotifier) SyncCreateRef(ctx context.Context, doer *user_model.Use
 func (a *actionNotifier) SyncDeleteRef(ctx context.Context, doer *user_model.User, repo *repo_model.Repository, refFullName git.RefName) {
 	// ignore pull sync message for pull requests refs
 	// TODO: it's better to have a UI to let users chose
-	if refFullName.IsPull() {
+	if refFullName.IsMergeRequest() {
 		return
 	}
 

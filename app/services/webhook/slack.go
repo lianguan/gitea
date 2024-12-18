@@ -231,7 +231,7 @@ func (s slackConvertor) PullRequest(p *api.PullRequestPayload) (SlackPayload, er
 func (s slackConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (SlackPayload, error) {
 	senderLink := SlackLinkFormatter(setting.AppURL+p.Sender.UserName, p.Sender.UserName)
 	title := fmt.Sprintf("#%d %s", p.Index, p.PullRequest.Title)
-	titleLink := fmt.Sprintf("%s/pulls/%d", p.Repository.HTMLURL, p.Index)
+	titleLink := fmt.Sprintf("%s/merge_requests/%d", p.Repository.HTMLURL, p.Index)
 	repoLink := SlackLinkFormatter(p.Repository.HTMLURL, p.Repository.FullName)
 	var text string
 

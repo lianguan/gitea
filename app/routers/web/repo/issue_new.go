@@ -222,7 +222,7 @@ func DeleteIssue(ctx *context.Context) {
 		return
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		ctx.Redirect(fmt.Sprintf("%s/pulls", ctx.Repo.Repository.Link()), http.StatusSeeOther)
 		return
 	}

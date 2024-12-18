@@ -126,7 +126,7 @@ func (g *RepositoryDumper) CreateRepo(repo *base.Repository, opts base.MigrateOp
 		"labels":       opts.Labels,
 		"releases":     opts.Releases,
 		"comments":     opts.Comments,
-		"pulls":        opts.PullRequests,
+		"merge_requests":        opts.PullRequests,
 		"assets":       opts.ReleaseAssets,
 	})
 	if err != nil {
@@ -449,7 +449,7 @@ func (g *RepositoryDumper) handlePullRequest(pr *base.PullRequest) error {
 			return err
 		}
 		defer resp.Body.Close()
-		pullDir := filepath.Join(g.gitPath(), "pulls")
+		pullDir := filepath.Join(g.gitPath(), "merge_requests")
 		if err = os.MkdirAll(pullDir, os.ModePerm); err != nil {
 			return err
 		}
@@ -464,7 +464,7 @@ func (g *RepositoryDumper) handlePullRequest(pr *base.PullRequest) error {
 		if _, err = io.Copy(f, resp.Body); err != nil {
 			return err
 		}
-		pr.PatchURL = "git/pulls/" + fmt.Sprintf("%d.patch", pr.Number)
+		pr.PatchURL = "git/merge_requests/" + fmt.Sprintf("%d.patch", pr.Number)
 
 		return nil
 	}()

@@ -134,7 +134,7 @@ func TestPullRequestTargetEvent(t *testing.T) {
 			Title:    "Test pull-request-target-event",
 			PosterID: user4.ID,
 			Poster:   user4,
-			IsPull:   true,
+			IsMergeRequest:   true,
 		}
 		pullRequest := &issues_model.PullRequest{
 			HeadRepoID: forkedRepo.ID,
@@ -189,7 +189,7 @@ func TestPullRequestTargetEvent(t *testing.T) {
 			Title:    "A mismatched path cannot trigger pull-request-target-event",
 			PosterID: user4.ID,
 			Poster:   user4,
-			IsPull:   true,
+			IsMergeRequest:   true,
 		}
 		pullRequest = &issues_model.PullRequest{
 			HeadRepoID: forkedRepo.ID,

@@ -23,7 +23,7 @@ type IndexerData struct {
 	Comments []string `json:"comments"`
 
 	// Fields used for filtering
-	IsPull             bool               `json:"is_pull"`
+	IsMergeRequest             bool               `json:"is_merge_request"`
 	IsClosed           bool               `json:"is_closed"`
 	IsArchived         bool               `json:"is_archived"`
 	LabelIDs           []int64            `json:"label_ids"`
@@ -82,9 +82,9 @@ type SearchOptions struct {
 	RepoIDs   []int64 // repository IDs which the issues belong to
 	AllPublic bool    // if include all public repositories
 
-	IsPull     optional.Option[bool] // if the issues is a pull request
-	IsClosed   optional.Option[bool] // if the issues is closed
-	IsArchived optional.Option[bool] // if the repo is archived
+	IsMergeRequest optional.Option[bool] // if the issues is a merge request
+	IsClosed       optional.Option[bool] // if the issues is closed
+	IsArchived     optional.Option[bool] // if the repo is archived
 
 	IncludedLabelIDs    []int64 // labels the issues have
 	ExcludedLabelIDs    []int64 // labels the issues don't have

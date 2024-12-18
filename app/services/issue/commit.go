@@ -150,8 +150,8 @@ func UpdateIssuesCommit(ctx context.Context, doer *user_model.User, repo *repo_m
 			}
 
 			// FIXME: this kind of condition is all over the code, it should be consolidated in a single place
-			canclose := perm.IsAdmin() || perm.IsOwner() || perm.CanWriteIssuesOrPulls(refIssue.IsPull) || refIssue.PosterID == doer.ID
-			cancomment := canclose || perm.CanReadIssuesOrPulls(refIssue.IsPull)
+			canclose := perm.IsAdmin() || perm.IsOwner() || perm.CanWriteIssuesOrPulls(refIssue.IsMergeRequest) || refIssue.PosterID == doer.ID
+			cancomment := canclose || perm.CanReadIssuesOrPulls(refIssue.IsMergeRequest)
 
 			// Don't proceed if the user can't comment
 			if !cancomment {
@@ -167,7 +167,7 @@ func UpdateIssuesCommit(ctx context.Context, doer *user_model.User, repo *repo_m
 			}
 
 			// Only issues can be closed/reopened this way, and user needs the correct permissions
-			if refIssue.IsPull || !canclose {
+			if refIssue.IsMergeRequest || !canclose {
 				continue
 			}
 

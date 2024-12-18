@@ -324,7 +324,7 @@ func ParseCompareInfo(ctx *context.Context) *common.CompareInfo {
 	ctx.Data["BaseIsCommit"] = baseIsCommit
 	ctx.Data["BaseIsBranch"] = baseIsBranch
 	ctx.Data["BaseIsTag"] = baseIsTag
-	ctx.Data["IsPull"] = true
+	ctx.Data["IsMergeRequest"] = true
 
 	// Now we have the repository that represents the base
 
@@ -585,7 +585,7 @@ func PrepareCompareDiff(
 	if (headCommitID == ci.CompareInfo.MergeBase && !ci.DirectComparison) ||
 		headCommitID == ci.CompareInfo.BaseCommitID {
 		ctx.Data["IsNothingToCompare"] = true
-		if unit, err := repo.GetUnit(ctx, unit.TypePullRequests); err == nil {
+		if unit, err := repo.GetUnit(ctx, unit.TypeMergeRequests); err == nil {
 			config := unit.PullRequestsConfig()
 
 			if !config.AutodetectManualMerge {
@@ -838,9 +838,9 @@ func CompareDiff(ctx *context.Context) {
 	ctx.Data["IsAttachmentEnabled"] = setting.Attachment.Enabled
 	upload.AddUploadContext(ctx, "comment")
 
-	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWrite(unit.TypePullRequests)
+	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWrite(unit.TypeMergeRequests)
 
-	if unit, err := ctx.Repo.Repository.GetUnit(ctx, unit.TypePullRequests); err == nil {
+	if unit, err := ctx.Repo.Repository.GetUnit(ctx, unit.TypeMergeRequests); err == nil {
 		config := unit.PullRequestsConfig()
 		ctx.Data["AllowMaintainerEdit"] = config.DefaultAllowMaintainerEdit
 	} else {

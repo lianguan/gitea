@@ -273,7 +273,7 @@ func SearchIssues(ctx *context.APIContext) {
 		Keyword:             keyword,
 		RepoIDs:             repoIDs,
 		AllPublic:           allPublic,
-		IsPull:              isPull,
+		IsMergeRequest:      isPull,
 		IsClosed:            isClosed,
 		IncludedAnyLabelIDs: includedAnyLabels,
 		MilestoneIDs:        includedMilestones,
@@ -480,7 +480,7 @@ func ListIssues(ctx *context.APIContext) {
 
 	if !isPull.Has() {
 		canReadIssues := ctx.Repo.CanRead(unit.TypeIssues)
-		canReadPulls := ctx.Repo.CanRead(unit.TypePullRequests)
+		canReadPulls := ctx.Repo.CanRead(unit.TypeMergeRequests)
 		if !canReadIssues && !canReadPulls {
 			ctx.NotFound()
 			return
@@ -506,12 +506,12 @@ func ListIssues(ctx *context.APIContext) {
 	}
 
 	searchOpt := &issue_indexer.SearchOptions{
-		Paginator: &listOptions,
-		Keyword:   keyword,
-		RepoIDs:   []int64{ctx.Repo.Repository.ID},
-		IsPull:    isPull,
-		IsClosed:  isClosed,
-		SortBy:    issue_indexer.SortByCreatedDesc,
+		Paginator:      &listOptions,
+		Keyword:        keyword,
+		RepoIDs:        []int64{ctx.Repo.Repository.ID},
+		IsMergeRequest: isPull,
+		IsClosed:       isClosed,
+		SortBy:         issue_indexer.SortByCreatedDesc,
 	}
 	if since != 0 {
 		searchOpt.UpdatedAfterUnix = optional.Some(since)
@@ -622,7 +622,7 @@ func GetIssue(ctx *context.APIContext) {
 		}
 		return
 	}
-	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
@@ -803,7 +803,7 @@ func EditIssue(ctx *context.APIContext) {
 		return
 	}
 	issue.Repo = ctx.Repo.Repository
-	canWrite := ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)
+	canWrite := ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)
 
 	err = issue.LoadAttributes(ctx)
 	if err != nil {
@@ -901,7 +901,7 @@ func EditIssue(ctx *context.APIContext) {
 		}
 	}
 	if form.State != nil {
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			if err := issue.LoadPullRequest(ctx); err != nil {
 				ctx.Error(http.StatusInternalServerError, "GetPullRequest", err)
 				return
@@ -1042,7 +1042,7 @@ func UpdateIssueDeadline(ctx *context.APIContext) {
 		return
 	}
 
-	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.Error(http.StatusForbidden, "", "Not repo writer")
 		return
 	}

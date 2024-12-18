@@ -35,7 +35,7 @@ func TestDBSearchIssues(t *testing.T) {
 	t.Run("search issues by index", searchIssueByIndex)
 	t.Run("search issues in repo", searchIssueInRepo)
 	t.Run("search issues by ID", searchIssueByID)
-	t.Run("search issues is pr", searchIssueIsPull)
+	t.Run("search issues is pr", searchIssueIsMergeRequest)
 	t.Run("search issues is closed", searchIssueIsClosed)
 	t.Run("search issues is archived", searchIssueIsArchived)
 	t.Run("search issues by milestone", searchIssueByMilestoneID)
@@ -245,20 +245,20 @@ func searchIssueByID(t *testing.T) {
 	}
 }
 
-func searchIssueIsPull(t *testing.T) {
+func searchIssueIsMergeRequest(t *testing.T) {
 	tests := []struct {
 		opts        SearchOptions
 		expectedIDs []int64
 	}{
 		{
 			SearchOptions{
-				IsPull: optional.Some(false),
+				IsMergeRequest: optional.Some(false),
 			},
 			[]int64{17, 16, 15, 14, 13, 6, 5, 18, 10, 7, 4, 1},
 		},
 		{
 			SearchOptions{
-				IsPull: optional.Some(true),
+				IsMergeRequest: optional.Some(true),
 			},
 			[]int64{22, 21, 12, 11, 20, 19, 9, 8, 3, 2},
 		},

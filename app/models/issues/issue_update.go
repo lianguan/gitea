@@ -43,7 +43,7 @@ func changeIssueStatus(ctx context.Context, issue *Issue, doer *user_model.User,
 
 	// Nothing should be performed if current status is same as target status
 	if currentIssue.IsClosed == isClosed {
-		if !issue.IsPull {
+		if !issue.IsMergeRequest {
 			return nil, ErrIssueWasClosed{
 				ID: issue.ID,
 			}
@@ -99,7 +99,7 @@ func doChangeIssueStatus(ctx context.Context, issue *Issue, doer *user_model.Use
 	}
 
 	// update repository's issue closed number
-	if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsPull, true); err != nil {
+	if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsMergeRequest, true); err != nil {
 		return nil, err
 	}
 
@@ -284,7 +284,7 @@ type NewIssueOptions struct {
 	Issue       *Issue
 	LabelIDs    []int64
 	Attachments []string // In UUID format.
-	IsPull      bool
+	IsMergeRequest      bool
 }
 
 // NewIssueWithIndex creates issue with given index
@@ -335,7 +335,7 @@ func NewIssueWithIndex(ctx context.Context, doer *user_model.User, opts NewIssue
 		}
 	}
 
-	if err := repo_model.UpdateRepoIssueNumbers(ctx, opts.Issue.RepoID, opts.IsPull, false); err != nil {
+	if err := repo_model.UpdateRepoIssueNumbers(ctx, opts.Issue.RepoID, opts.IsMergeRequest, false); err != nil {
 		return err
 	}
 
@@ -537,8 +537,8 @@ func ResolveIssueMentionsByVisibility(ctx context.Context, issue *Issue, doer *u
 		if len(teams) != 0 {
 			checked := make([]int64, 0, len(teams))
 			unittype := unit.TypeIssues
-			if issue.IsPull {
-				unittype = unit.TypePullRequests
+			if issue.IsMergeRequest {
+				unittype = unit.TypeMergeRequests
 			}
 			for _, team := range teams {
 				if team.AccessMode >= perm.AccessModeAdmin {
@@ -610,7 +610,7 @@ func ResolveIssueMentionsByVisibility(ctx context.Context, issue *Issue, doer *u
 		if err != nil {
 			return nil, fmt.Errorf("GetUserRepoPermission [%d]: %w", user.ID, err)
 		}
-		if !perm.CanReadIssuesOrPulls(issue.IsPull) {
+		if !perm.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 			continue
 		}
 		users = append(users, user)

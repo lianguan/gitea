@@ -24,11 +24,11 @@ func IssueWatch(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest)) {
 		if log.IsTrace() {
 			if ctx.IsSigned {
 				issueType := "issues"
-				if issue.IsPull {
+				if issue.IsMergeRequest {
 					issueType = "pulls"
 				}
 				log.Trace("Permission Denied: User %-v not the Poster (ID: %d) and cannot read %s in Repo %-v.\n"+

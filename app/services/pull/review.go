@@ -414,7 +414,7 @@ func DismissReview(ctx context.Context, reviewID, repoID int64, message string, 
 		return nil, ErrDismissRequestOnClosedPR{}
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if err := issue.LoadPullRequest(ctx); err != nil {
 			return nil, err
 		}

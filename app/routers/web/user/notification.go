@@ -279,7 +279,7 @@ func NotificationSubscriptions(ctx *context.Context) {
 	count, err := issues_model.CountIssues(ctx, &issues_model.IssuesOptions{
 		SubscriberID: ctx.Doer.ID,
 		IsClosed:     showClosed,
-		IsPull:       issueTypeBool,
+		IsMergeRequest:       issueTypeBool,
 		LabelIDs:     labelIDs,
 	})
 	if err != nil {
@@ -294,7 +294,7 @@ func NotificationSubscriptions(ctx *context.Context) {
 		SubscriberID: ctx.Doer.ID,
 		SortType:     sortType,
 		IsClosed:     showClosed,
-		IsPull:       issueTypeBool,
+		IsMergeRequest:       issueTypeBool,
 		LabelIDs:     labelIDs,
 	})
 	if err != nil {

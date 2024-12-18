@@ -56,9 +56,9 @@ func handler(items ...string) []string {
 }
 
 func addToQueue(pr *issues_model.PullRequest, sha string) {
-	log.Trace("Adding pullID: %d to the pull requests patch checking queue with sha %s", pr.ID, sha)
+	log.Trace("Adding mergeRequestID: %d to the pull requests patch checking queue with sha %s", pr.ID, sha)
 	if err := prAutoMergeQueue.Push(fmt.Sprintf("%d_%s", pr.ID, sha)); err != nil {
-		log.Error("Error adding pullID: %d to the pull requests patch checking queue %v", pr.ID, err)
+		log.Error("Error adding mergeRequestID: %d to the pull requests patch checking queue %v", pr.ID, err)
 	}
 }
 
@@ -181,21 +181,21 @@ func getPullRequestsByHeadSHA(ctx context.Context, sha string, repo *repo_model.
 }
 
 // handlePullRequestAutoMerge merge the pull request if all checks are successful
-func handlePullRequestAutoMerge(pullID int64, sha string) {
+func handlePullRequestAutoMerge(mergeRequestID int64, sha string) {
 	ctx, _, finished := process.GetManager().AddContext(graceful.GetManager().HammerContext(),
-		fmt.Sprintf("Handle AutoMerge of PR[%d] with sha[%s]", pullID, sha))
+		fmt.Sprintf("Handle AutoMerge of PR[%d] with sha[%s]", mergeRequestID, sha))
 	defer finished()
 
-	pr, err := issues_model.GetPullRequestByID(ctx, pullID)
+	pr, err := issues_model.GetPullRequestByID(ctx, mergeRequestID)
 	if err != nil {
-		log.Error("GetPullRequestByID[%d]: %v", pullID, err)
+		log.Error("GetPullRequestByID[%d]: %v", mergeRequestID, err)
 		return
 	}
 
 	// Check if there is a scheduled pr in the db
-	exists, scheduledPRM, err := pull_model.GetScheduledMergeByPullID(ctx, pr.ID)
+	exists, scheduledPRM, err := pull_model.GetScheduledMergeByMergeRequestID(ctx, pr.ID)
 	if err != nil {
-		log.Error("%-v GetScheduledMergeByPullID: %v", pr, err)
+		log.Error("%-v GetScheduledMergeByMergeRequestID: %v", pr, err)
 		return
 	}
 	if !exists {
@@ -264,9 +264,9 @@ func handlePullRequestAutoMerge(pullID int64, sha string) {
 	}
 
 	// Check if all checks succeeded
-	pass, err := pull_service.IsPullCommitStatusPass(ctx, pr)
+	pass, err := pull_service.IsMergeRequestCommitStatusPass(ctx, pr)
 	if err != nil {
-		log.Error("%-v IsPullCommitStatusPass: %v", pr, err)
+		log.Error("%-v IsMergeRequestCommitStatusPass: %v", pr, err)
 		return
 	}
 	if !pass {

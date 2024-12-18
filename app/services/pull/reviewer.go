@@ -45,7 +45,7 @@ func GetReviewers(ctx context.Context, repo *repo_model.Repository, doerID, post
 			Join("INNER", "team_repo", "`team_repo`.team_id = `team_user`.team_id").
 			Join("INNER", "team_unit", "`team_unit`.team_id = `team_user`.team_id").
 			Where("`team_repo`.repo_id = ? AND (`team_unit`.access_mode >= ? AND `team_unit`.`type` = ?)",
-				repo.ID, perm.AccessModeRead, unit.TypePullRequests).
+				repo.ID, perm.AccessModeRead, unit.TypeMergeRequests).
 			Distinct("`team_user`.uid").
 			Select("`team_user`.uid").
 			Find(&additionalUserIDs); err != nil {
@@ -85,5 +85,5 @@ func GetReviewerTeams(ctx context.Context, repo *repo_model.Repository) ([]*orga
 		return nil, nil
 	}
 
-	return organization.GetTeamsWithAccessToRepoUnit(ctx, repo.OwnerID, repo.ID, perm.AccessModeRead, unit.TypePullRequests)
+	return organization.GetTeamsWithAccessToRepoUnit(ctx, repo.OwnerID, repo.ID, perm.AccessModeRead, unit.TypeMergeRequests)
 }

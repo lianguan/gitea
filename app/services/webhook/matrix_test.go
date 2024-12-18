@@ -103,8 +103,8 @@ func TestMatrixPayload(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, pl)
 
-		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] Pull request opened: [#12 Fix bug](http://localhost:3000/test/repo/pulls/12) by [user1](https://try.gitea.io/user1)", pl.Body)
-		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] Pull request opened: <a href="http://localhost:3000/test/repo/pulls/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
+		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] Pull request opened: [#12 Fix bug](http://localhost:3000/test/repo/merge_requests/12) by [user1](https://try.gitea.io/user1)", pl.Body)
+		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] Pull request opened: <a href="http://localhost:3000/test/repo/merge_requests/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
 	})
 
 	t.Run("PullRequestComment", func(t *testing.T) {
@@ -114,8 +114,8 @@ func TestMatrixPayload(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, pl)
 
-		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] New comment on pull request [#12 Fix bug](http://localhost:3000/test/repo/pulls/12) by [user1](https://try.gitea.io/user1)", pl.Body)
-		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] New comment on pull request <a href="http://localhost:3000/test/repo/pulls/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
+		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] New comment on pull request [#12 Fix bug](http://localhost:3000/test/repo/merge_requests/12) by [user1](https://try.gitea.io/user1)", pl.Body)
+		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] New comment on pull request <a href="http://localhost:3000/test/repo/merge_requests/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
 	})
 
 	t.Run("Review", func(t *testing.T) {
@@ -126,8 +126,8 @@ func TestMatrixPayload(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, pl)
 
-		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] Pull request review approved: [#12 Fix bug](http://localhost:3000/test/repo/pulls/12) by [user1](https://try.gitea.io/user1)", pl.Body)
-		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] Pull request review approved: <a href="http://localhost:3000/test/repo/pulls/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
+		assert.Equal(t, "[[test/repo](http://localhost:3000/test/repo)] Pull request review approved: [#12 Fix bug](http://localhost:3000/test/repo/merge_requests/12) by [user1](https://try.gitea.io/user1)", pl.Body)
+		assert.Equal(t, `[<a href="http://localhost:3000/test/repo">test/repo</a>] Pull request review approved: <a href="http://localhost:3000/test/repo/merge_requests/12">#12 Fix bug</a> by <a href="https://try.gitea.io/user1">user1</a>`, pl.FormattedBody)
 	})
 
 	t.Run("Repository", func(t *testing.T) {

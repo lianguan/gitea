@@ -305,7 +305,7 @@ func HasMergedPullRequestInRepo(ctx context.Context, repoID, posterID int64) (bo
 		Join("INNER", "pull_request", "pull_request.issue_id = issue.id").
 		Where("repo_id=?", repoID).
 		And("poster_id=?", posterID).
-		And("is_pull=?", true).
+		And("is_merge_request=?", true).
 		And("pull_request.has_merged=?", true).
 		Select("issue.id").
 		Limit(1).

@@ -486,7 +486,7 @@ func CreatePullRequest(ctx *context.APIContext) {
 		PosterID:     ctx.Doer.ID,
 		Poster:       ctx.Doer,
 		MilestoneID:  milestoneID,
-		IsPull:       true,
+		IsMergeRequest:       true,
 		Content:      form.Body,
 		DeadlineUnix: deadlineUnix,
 	}
@@ -627,7 +627,7 @@ func EditPullRequest(ctx *context.APIContext) {
 		return
 	}
 
-	if !issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWrite(unit.TypePullRequests) {
+	if !issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWrite(unit.TypeMergeRequests) {
 		ctx.Status(http.StatusForbidden)
 		return
 	}
@@ -676,7 +676,7 @@ func EditPullRequest(ctx *context.APIContext) {
 	// Pass one or more user logins to replace the set of assignees on this Issue.
 	// Send an empty array ([]) to clear all assignees from the Issue.
 
-	if ctx.Repo.CanWrite(unit.TypePullRequests) && (form.Assignees != nil || len(form.Assignee) > 0) {
+	if ctx.Repo.CanWrite(unit.TypeMergeRequests) && (form.Assignees != nil || len(form.Assignee) > 0) {
 		err = issue_service.UpdateAssignees(ctx, issue, form.Assignee, form.Assignees, ctx.Doer)
 		if err != nil {
 			if user_model.IsErrUserNotExist(err) {
@@ -690,7 +690,7 @@ func EditPullRequest(ctx *context.APIContext) {
 		}
 	}
 
-	if ctx.Repo.CanWrite(unit.TypePullRequests) && form.Milestone != 0 &&
+	if ctx.Repo.CanWrite(unit.TypeMergeRequests) && form.Milestone != 0 &&
 		issue.MilestoneID != form.Milestone {
 		oldMilestoneID := issue.MilestoneID
 		issue.MilestoneID = form.Milestone
@@ -700,7 +700,7 @@ func EditPullRequest(ctx *context.APIContext) {
 		}
 	}
 
-	if ctx.Repo.CanWrite(unit.TypePullRequests) && form.Labels != nil {
+	if ctx.Repo.CanWrite(unit.TypeMergeRequests) && form.Labels != nil {
 		labels, err := issues_model.GetLabelsInRepoByIDs(ctx, ctx.Repo.Repository.ID, form.Labels)
 		if err != nil {
 			ctx.Error(http.StatusInternalServerError, "GetLabelsInRepoByIDsError", err)
@@ -802,8 +802,8 @@ func EditPullRequest(ctx *context.APIContext) {
 	ctx.JSON(http.StatusCreated, convert.ToAPIPullRequest(ctx, pr, ctx.Doer))
 }
 
-// IsPullRequestMerged checks if a PR exists given an index
-func IsPullRequestMerged(ctx *context.APIContext) {
+// IsMergeRequestMerged checks if a PR exists given an index
+func IsMergeRequestMerged(ctx *context.APIContext) {
 	// swagger:operation GET /repos/{owner}/{repo}/pulls/{index}/merge repository repoPullRequestIsMerged
 	// ---
 	// summary: Check if a pull request has been merged
@@ -1367,7 +1367,7 @@ func CancelScheduledAutoMerge(ctx *context.APIContext) {
 		return
 	}
 
-	exist, autoMerge, err := pull_model.GetScheduledMergeByPullID(ctx, pull.ID)
+	exist, autoMerge, err := pull_model.GetScheduledMergeByMergeRequestID(ctx, pull.ID)
 	if err != nil {
 		ctx.InternalServerError(err)
 		return

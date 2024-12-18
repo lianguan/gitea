@@ -594,7 +594,7 @@
 
 .ui.secondary.pointing.menu .active.item {
   background-color: transparent;
-  border-color: currentcolor;
+  border-color: var(--color-orange-light);
   font-weight: var(--font-weight-medium);
 }
 

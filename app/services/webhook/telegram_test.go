@@ -100,7 +100,7 @@ more info needed`, pl.Message)
 		pl, err := tc.PullRequest(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, `[<a href="http://localhost:3000/test/repo" rel="nofollow">test/repo</a>] Pull request opened: <a href="http://localhost:3000/test/repo/pulls/12" rel="nofollow">#12 Fix bug</a> by <a href="https://try.gitea.io/user1" rel="nofollow">user1</a>
+		assert.Equal(t, `[<a href="http://localhost:3000/test/repo" rel="nofollow">test/repo</a>] Pull request opened: <a href="http://localhost:3000/test/repo/merge_requests/12" rel="nofollow">#12 Fix bug</a> by <a href="https://try.gitea.io/user1" rel="nofollow">user1</a>
 fixes bug #2`, pl.Message)
 	})
 
@@ -110,7 +110,7 @@ fixes bug #2`, pl.Message)
 		pl, err := tc.IssueComment(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, `[<a href="http://localhost:3000/test/repo" rel="nofollow">test/repo</a>] New comment on pull request <a href="http://localhost:3000/test/repo/pulls/12" rel="nofollow">#12 Fix bug</a> by <a href="https://try.gitea.io/user1" rel="nofollow">user1</a>
+		assert.Equal(t, `[<a href="http://localhost:3000/test/repo" rel="nofollow">test/repo</a>] New comment on pull request <a href="http://localhost:3000/test/repo/merge_requests/12" rel="nofollow">#12 Fix bug</a> by <a href="https://try.gitea.io/user1" rel="nofollow">user1</a>
 changes requested`, pl.Message)
 	})
 

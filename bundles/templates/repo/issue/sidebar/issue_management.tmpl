@@ -95,7 +95,7 @@
 	</button>
 	<div class="ui g-modal-confirm modal" id="sidebar-delete-issue">
 		<div class="header">
-			{{if .Issue.IsPull}}
+			{{if .Issue.IsMergeRequest}}
 				{{ctx.Locale.Tr "repo.pulls.delete.title"}}
 			{{else}}
 				{{ctx.Locale.Tr "repo.issues.delete.title"}}
@@ -103,7 +103,7 @@
 		</div>
 		<div class="content">
 			<p>
-				{{if .Issue.IsPull}}
+				{{if .Issue.IsMergeRequest}}
 					{{ctx.Locale.Tr "repo.pulls.delete.text"}}
 				{{else}}
 					{{ctx.Locale.Tr "repo.issues.delete.text"}}

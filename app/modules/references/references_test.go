@@ -22,7 +22,7 @@ type testResult struct {
 	Owner          string
 	Name           string
 	Issue          string
-	IsPull         bool
+	IsMergeRequest         bool
 	Action         XRefAction
 	RefLocation    *RefSpan
 	ActionLocation *RefSpan
@@ -33,10 +33,10 @@ func TestConvertFullHTMLReferencesToShortRefs(t *testing.T) {
 	re := regexp.MustCompile(`(\s|^|\(|\[)` +
 		regexp.QuoteMeta("https://ourgitea.com/git/") +
 		`([0-9a-zA-Z-_\.]+/[0-9a-zA-Z-_\.]+)/` +
-		`((?:issues)|(?:pulls))/([0-9]+)(?:\s|$|\)|\]|[:;,.?!]\s|[:;,.?!]$)`)
+		`((?:issues)|(?:merge_requests))/([0-9]+)(?:\s|$|\)|\]|[:;,.?!]\s|[:;,.?!]$)`)
 	test := `this is a https://ourgitea.com/git/owner/repo/issues/123456789, foo
-https://ourgitea.com/git/owner/repo/pulls/123456789
-  And https://ourgitea.com/git/owner/repo/pulls/123
+https://ourgitea.com/git/owner/repo/merge_requests/123456789
+  And https://ourgitea.com/git/owner/repo/merge_requests/123
 `
 	expect := `this is a owner/repo#123456789, foo
 owner/repo!123456789
@@ -100,7 +100,7 @@ func TestFindAllIssueReferences(t *testing.T) {
 			},
 		},
 		{
-			"This [three](/user2/repo1/pulls/922) yes.",
+			"This [three](/user2/repo1/merge_requests/922) yes.",
 			[]testResult{
 				{922, "user2", "repo1", "922", true, XRefActionNone, nil, nil, ""},
 			},
@@ -120,20 +120,20 @@ func TestFindAllIssueReferences(t *testing.T) {
 			[]testResult{},
 		},
 		{
-			"This http://gitea.com:3000/user4/repo5/pulls/202 yes.",
+			"This http://gitea.com:3000/user4/repo5/merge_requests/202 yes.",
 			[]testResult{
 				{202, "user4", "repo5", "202", true, XRefActionNone, nil, nil, ""},
 			},
 		},
 		{
-			"This http://gitea.com:3000/user4/repo5/pulls/202 yes. http://gitea.com:3000/user4/repo5/pulls/203 no",
+			"This http://gitea.com:3000/user4/repo5/merge_requests/202 yes. http://gitea.com:3000/user4/repo5/merge_requests/203 no",
 			[]testResult{
 				{202, "user4", "repo5", "202", true, XRefActionNone, nil, nil, ""},
 				{203, "user4", "repo5", "203", true, XRefActionNone, nil, nil, ""},
 			},
 		},
 		{
-			"This http://GiTeA.COM:3000/user4/repo6/pulls/205 yes.",
+			"This http://GiTeA.COM:3000/user4/repo6/merge_requests/205 yes.",
 			[]testResult{
 				{205, "user4", "repo6", "205", true, XRefActionNone, nil, nil, ""},
 			},
@@ -274,7 +274,7 @@ func testFixtures(t *testing.T, fixtures []testFixture, context string) {
 				index:          e.Index,
 				owner:          e.Owner,
 				name:           e.Name,
-				isPull:         e.IsPull,
+				isPull:         e.IsMergeRequest,
 				action:         e.Action,
 				issue:          e.Issue,
 				refLocation:    e.RefLocation,

@@ -172,7 +172,7 @@ func prepareIssueStopwatch(ctx *context.APIContext, shouldExist bool) (*issues_m
 		return nil, err
 	}
 
-	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.Status(http.StatusForbidden)
 		return nil, errors.New("Unable to write to PRs")
 	}

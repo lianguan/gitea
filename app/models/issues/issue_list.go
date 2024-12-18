@@ -323,7 +323,7 @@ func (issues IssueList) LoadAssignees(ctx context.Context) error {
 func (issues IssueList) getPullIssueIDs() []int64 {
 	ids := make([]int64, 0, len(issues))
 	for _, issue := range issues {
-		if issue.IsPull && issue.PullRequest == nil {
+		if issue.IsMergeRequest && issue.PullRequest == nil {
 			ids = append(ids, issue.ID)
 		}
 	}

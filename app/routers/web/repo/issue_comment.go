@@ -34,11 +34,11 @@ func NewComment(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest)) {
 		if log.IsTrace() {
 			if ctx.IsSigned {
 				issueType := "issues"
-				if issue.IsPull {
+				if issue.IsMergeRequest {
 					issueType = "pulls"
 				}
 				log.Trace("Permission Denied: User %-v not the Poster (ID: %d) and cannot read %s in Repo %-v.\n"+
@@ -57,7 +57,7 @@ func NewComment(ctx *context.Context) {
 		return
 	}
 
-	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) && !ctx.Doer.IsAdmin {
+	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) && !ctx.Doer.IsAdmin {
 		ctx.JSONError(ctx.Tr("repo.issues.comment_on_locked"))
 		return
 	}
@@ -75,13 +75,13 @@ func NewComment(ctx *context.Context) {
 	var comment *issues_model.Comment
 	defer func() {
 		// Check if issue admin/poster changes the status of issue.
-		if (ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) || (ctx.IsSigned && issue.IsPoster(ctx.Doer.ID))) &&
+		if (ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) || (ctx.IsSigned && issue.IsPoster(ctx.Doer.ID))) &&
 			(form.Status == "reopen" || form.Status == "close") &&
-			!(issue.IsPull && issue.PullRequest.HasMerged) {
+			!(issue.IsMergeRequest && issue.PullRequest.HasMerged) {
 			// Duplication and conflict check should apply to reopen pull request.
 			var pr *issues_model.PullRequest
 
-			if form.Status == "reopen" && issue.IsPull {
+			if form.Status == "reopen" && issue.IsMergeRequest {
 				pull := issue.PullRequest
 				var err error
 				pr, err = issues_model.GetUnmergedPullRequest(ctx, pull.HeadRepoID, pull.BaseRepoID, pull.HeadBranch, pull.BaseBranch, pull.Flow)
@@ -159,7 +159,7 @@ func NewComment(ctx *context.Context) {
 					log.Error("ChangeStatus: %v", err)
 
 					if issues_model.IsErrDependenciesLeft(err) {
-						if issue.IsPull {
+						if issue.IsMergeRequest {
 							ctx.JSONError(ctx.Tr("repo.issues.dependency.pr_close_blocked"))
 						} else {
 							ctx.JSONError(ctx.Tr("repo.issues.dependency.issue_close_blocked"))
@@ -179,7 +179,7 @@ func NewComment(ctx *context.Context) {
 
 		// Redirect to comment hashtag if there is any actual content.
 		typeName := "issues"
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			typeName = "pulls"
 		}
 		if comment != nil {
@@ -225,7 +225,7 @@ func UpdateCommentContent(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsMergeRequest)) {
 		ctx.Error(http.StatusForbidden)
 		return
 	}
@@ -303,7 +303,7 @@ func DeleteComment(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsMergeRequest)) {
 		ctx.Error(http.StatusForbidden)
 		return
 	} else if !comment.Type.HasContentSupport() {
@@ -338,11 +338,11 @@ func ChangeCommentReaction(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanReadIssuesOrPulls(comment.Issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanReadIssuesOrPulls(comment.Issue.IsMergeRequest)) {
 		if log.IsTrace() {
 			if ctx.IsSigned {
 				issueType := "issues"
-				if comment.Issue.IsPull {
+				if comment.Issue.IsMergeRequest {
 					issueType = "pulls"
 				}
 				log.Trace("Permission Denied: User %-v not the Poster (ID: %d) and cannot read %s in Repo %-v.\n"+
@@ -443,7 +443,7 @@ func GetCommentAttachments(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.Repo.Permission.CanReadIssuesOrPulls(comment.Issue.IsPull) {
+	if !ctx.Repo.Permission.CanReadIssuesOrPulls(comment.Issue.IsMergeRequest) {
 		ctx.NotFound("CanReadIssuesOrPulls", issues_model.ErrCommentNotExist{})
 		return
 	}

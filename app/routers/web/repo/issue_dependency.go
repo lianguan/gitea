@@ -22,7 +22,7 @@ func AddDependency(ctx *context.Context) {
 	}
 
 	// Check if the Repo is allowed to have dependencies
-	if !ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsPull) {
+	if !ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsMergeRequest) {
 		ctx.Error(http.StatusForbidden, "CanCreateIssueDependencies")
 		return
 	}
@@ -60,7 +60,7 @@ func AddDependency(ctx *context.Context) {
 			ctx.ServerError("GetUserRepoPermission", err)
 			return
 		}
-		if !depRepoPerm.CanReadIssuesOrPulls(dep.IsPull) {
+		if !depRepoPerm.CanReadIssuesOrPulls(dep.IsMergeRequest) {
 			// you can't see this dependency
 			return
 		}
@@ -96,7 +96,7 @@ func RemoveDependency(ctx *context.Context) {
 	}
 
 	// Check if the Repo is allowed to have dependencies
-	if !ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsPull) {
+	if !ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsMergeRequest) {
 		ctx.Error(http.StatusForbidden, "CanCreateIssueDependencies")
 		return
 	}

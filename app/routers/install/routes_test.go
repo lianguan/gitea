@@ -28,7 +28,7 @@ func TestRoutes(t *testing.T) {
 	assert.EqualValues(t, 404, w.Code)
 
 	w = httptest.NewRecorder()
-	req = httptest.NewRequest("GET", "/assets/img/gitea.svg", nil)
+	req = httptest.NewRequest("GET", "/assets/img/gitmin.svg", nil)
 	r.ServeHTTP(w, req)
 	assert.EqualValues(t, 200, w.Code)
 }

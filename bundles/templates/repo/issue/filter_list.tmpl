@@ -109,7 +109,7 @@
 			<a class="{{if eq .ViewType "all"}}active {{end}}item" href="{{QueryBuild $queryLink "type" "all"}}">{{ctx.Locale.Tr "repo.issues.filter_type.all_issues"}}</a>
 			<a class="{{if eq .ViewType "assigned"}}active {{end}}item" href="{{QueryBuild $queryLink "type" "assigned"}}">{{ctx.Locale.Tr "repo.issues.filter_type.assigned_to_you"}}</a>
 			<a class="{{if eq .ViewType "created_by"}}active {{end}}item" href="{{QueryBuild $queryLink "type" "created_by"}}">{{ctx.Locale.Tr "repo.issues.filter_type.created_by_you"}}</a>
-			{{if .PageIsPullList}}
+			{{if .PageIsMergeRequestList}}
 				<a class="{{if eq .ViewType "review_requested"}}active {{end}}item" href="{{QueryBuild $queryLink "type" "review_requested"}}">{{ctx.Locale.Tr "repo.issues.filter_type.review_requested"}}</a>
 				<a class="{{if eq .ViewType "reviewed_by"}}active {{end}}item" href="{{QueryBuild $queryLink "type" "reviewed_by"}}">{{ctx.Locale.Tr "repo.issues.filter_type.reviewed_by_you"}}</a>
 			{{end}}

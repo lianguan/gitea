@@ -108,7 +108,7 @@ func NewTemplateContextForWeb(ctx *Context) TemplateContext {
 	tmplCtx["Consts"] = map[string]any{
 		"RepoUnitTypeCode":            unit.TypeCode,
 		"RepoUnitTypeIssues":          unit.TypeIssues,
-		"RepoUnitTypePullRequests":    unit.TypePullRequests,
+		"RepoUnitTypeMergeRequests":    unit.TypeMergeRequests,
 		"RepoUnitTypeReleases":        unit.TypeReleases,
 		"RepoUnitTypeWiki":            unit.TypeWiki,
 		"RepoUnitTypeExternalWiki":    unit.TypeExternalWiki,

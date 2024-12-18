@@ -37,7 +37,7 @@ type IssuesOptions struct { //nolint
 	ProjectID          int64
 	ProjectColumnID    int64
 	IsClosed           optional.Option[bool]
-	IsPull             optional.Option[bool]
+	IsMergeRequest             optional.Option[bool]
 	LabelIDs           []int64
 	IncludedLabelNames []string
 	ExcludedLabelNames []string
@@ -263,8 +263,8 @@ func applyConditions(sess *xorm.Session, opts *IssuesOptions) {
 
 	applyProjectColumnCondition(sess, opts)
 
-	if opts.IsPull.Has() {
-		sess.And("issue.is_pull=?", opts.IsPull.Value())
+	if opts.IsMergeRequest.Has() {
+		sess.And("issue.is_merge_request=?", opts.IsMergeRequest.Value())
 	}
 
 	if opts.IsArchived.Has() {
@@ -274,7 +274,7 @@ func applyConditions(sess *xorm.Session, opts *IssuesOptions) {
 	applyLabelsCondition(sess, opts)
 
 	if opts.User != nil {
-		sess.And(issuePullAccessibleRepoCond("issue.repo_id", opts.User.ID, opts.Org, opts.Team, opts.IsPull.Value()))
+		sess.And(issuePullAccessibleRepoCond("issue.repo_id", opts.User.ID, opts.Org, opts.Team, opts.IsMergeRequest.Value()))
 	}
 }
 
@@ -325,7 +325,7 @@ func issuePullAccessibleRepoCond(repoIDstr string, userID int64, org *organizati
 	cond := builder.NewCond()
 	unitType := unit.TypeIssues
 	if isPull {
-		unitType = unit.TypePullRequests
+		unitType = unit.TypeMergeRequests
 	}
 	if org != nil {
 		if team != nil {

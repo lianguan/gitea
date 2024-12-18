@@ -91,19 +91,19 @@ func init() {
 		assert.EqualValues(t, repo.int("NumWatches"), actual,
 			"Unexpected number of watches for repo id: %d", repo.int("ID"))
 
-		actual = GetCountByCond(t, "issue", builder.Eq{"is_pull": false, "repo_id": repo.int("ID")})
+		actual = GetCountByCond(t, "issue", builder.Eq{"is_merge_request": false, "repo_id": repo.int("ID")})
 		assert.EqualValues(t, repo.int("NumIssues"), actual,
 			"Unexpected number of issues for repo id: %d", repo.int("ID"))
 
-		actual = GetCountByCond(t, "issue", builder.Eq{"is_pull": false, "is_closed": true, "repo_id": repo.int("ID")})
+		actual = GetCountByCond(t, "issue", builder.Eq{"is_merge_request": false, "is_closed": true, "repo_id": repo.int("ID")})
 		assert.EqualValues(t, repo.int("NumClosedIssues"), actual,
 			"Unexpected number of closed issues for repo id: %d", repo.int("ID"))
 
-		actual = GetCountByCond(t, "issue", builder.Eq{"is_pull": true, "repo_id": repo.int("ID")})
+		actual = GetCountByCond(t, "issue", builder.Eq{"is_merge_request": true, "repo_id": repo.int("ID")})
 		assert.EqualValues(t, repo.int("NumPulls"), actual,
 			"Unexpected number of pulls for repo id: %d", repo.int("ID"))
 
-		actual = GetCountByCond(t, "issue", builder.Eq{"is_pull": true, "is_closed": true, "repo_id": repo.int("ID")})
+		actual = GetCountByCond(t, "issue", builder.Eq{"is_merge_request": true, "is_closed": true, "repo_id": repo.int("ID")})
 		assert.EqualValues(t, repo.int("NumClosedPulls"), actual,
 			"Unexpected number of closed pulls for repo id: %d", repo.int("ID"))
 
@@ -117,7 +117,7 @@ func init() {
 		typeComment := modelsCommentTypeComment
 		actual := GetCountByCond(t, "comment", builder.Eq{"`type`": typeComment, "issue_id": issue.int("ID")})
 		assert.EqualValues(t, issue.int("NumComments"), actual, "Unexpected number of comments for issue id: %d", issue.int("ID"))
-		if issue.bool("IsPull") {
+		if issue.bool("IsMergeRequest") {
 			prRow := AssertExistsAndLoadMap(t, "pull_request", builder.Eq{"issue_id": issue.int("ID")})
 			assert.EqualValues(t, parseInt(prRow["index"]), issue.int("Index"), "Unexpected index for issue id: %d", issue.int("ID"))
 		}
@@ -126,7 +126,7 @@ func init() {
 	checkForPullRequestConsistency := func(t assert.TestingT, bean any) {
 		pr := reflectionWrap(bean)
 		issueRow := AssertExistsAndLoadMap(t, "issue", builder.Eq{"id": pr.int("IssueID")})
-		assert.True(t, parseBool(issueRow["is_pull"]))
+		assert.True(t, parseBool(issueRow["is_merge_request"]))
 		assert.EqualValues(t, parseInt(issueRow["index"]), pr.int("Index"), "Unexpected index for pull request id: %d", pr.int("ID"))
 	}
 

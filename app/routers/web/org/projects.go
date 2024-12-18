@@ -367,7 +367,7 @@ func ViewProject(ctx *context.Context) {
 		for _, issue := range issuesList {
 			var referencedIDs []int64
 			for _, comment := range issue.Comments {
-				if comment.RefIssueID != 0 && comment.RefIsPull {
+				if comment.RefIssueID != 0 && comment.RefIsMergeRequest {
 					referencedIDs = append(referencedIDs, comment.RefIssueID)
 				}
 			}
@@ -375,7 +375,7 @@ func ViewProject(ctx *context.Context) {
 			if len(referencedIDs) > 0 {
 				if linkedPrs, err := issues_model.Issues(ctx, &issues_model.IssuesOptions{
 					IssueIDs: referencedIDs,
-					IsPull:   optional.Some(true),
+					IsMergeRequest:   optional.Some(true),
 				}); err == nil {
 					linkedPrsMap[issue.ID] = linkedPrs
 				}

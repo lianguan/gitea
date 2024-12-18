@@ -167,8 +167,8 @@ func applyIssuesOptions(sess *xorm.Session, opts *IssuesOptions, issueIDs []int6
 		applyReviewedCondition(sess, opts.ReviewedID)
 	}
 
-	if opts.IsPull.Has() {
-		sess.And("issue.is_pull=?", opts.IsPull.Value())
+	if opts.IsMergeRequest.Has() {
+		sess.And("issue.is_merge_request=?", opts.IsMergeRequest.Value())
 	}
 
 	return sess

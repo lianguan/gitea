@@ -1,4 +1,4 @@
-{{if and .Issue.IsPull .IsIssuePoster (not .Issue.IsClosed) .Issue.PullRequest.HeadRepo}}
+{{if and .Issue.IsMergeRequest .IsIssuePoster (not .Issue.IsClosed) .Issue.PullRequest.HeadRepo}}
 	{{if and (not (eq .Issue.PullRequest.HeadRepo.FullName .Issue.PullRequest.BaseRepo.FullName)) .CanWriteToHeadRepo}}
 	<div class="divider"></div>
 	<div class="ui checkbox loading-icon-2px" id="allow-edits-from-maintainers"

@@ -195,15 +195,15 @@ func pullRequestCommentTestPayload() *api.IssueCommentPayload {
 			FullName: "test/repo",
 		},
 		Comment: &api.Comment{
-			HTMLURL: "http://localhost:3000/test/repo/pulls/12#issuecomment-4",
-			PRURL:   "http://localhost:3000/test/repo/pulls/12",
+			HTMLURL: "http://localhost:3000/test/repo/merge_requests/12#issuecomment-4",
+			PRURL:   "http://localhost:3000/test/repo/merge_requests/12",
 			Body:    "changes requested",
 		},
 		Issue: &api.Issue{
 			ID:      12,
 			Index:   12,
-			URL:     "http://localhost:3000/api/v1/repos/test/repo/pulls/12",
-			HTMLURL: "http://localhost:3000/test/repo/pulls/12",
+			URL:     "http://localhost:3000/api/v1/repos/test/repo/merge_requests/12",
+			HTMLURL: "http://localhost:3000/test/repo/merge_requests/12",
 			Title:   "Fix bug",
 			Body:    "fixes bug #2",
 			Poster: &api.User{
@@ -211,7 +211,7 @@ func pullRequestCommentTestPayload() *api.IssueCommentPayload {
 				AvatarURL: "http://localhost:3000/user1/avatar",
 			},
 		},
-		IsPull: true,
+		IsMergeRequest: true,
 	}
 }
 
@@ -269,8 +269,8 @@ func pullRequestTestPayload() *api.PullRequestPayload {
 		PullRequest: &api.PullRequest{
 			ID:        12,
 			Index:     12,
-			URL:       "http://localhost:3000/test/repo/pulls/12",
-			HTMLURL:   "http://localhost:3000/test/repo/pulls/12",
+			URL:       "http://localhost:3000/test/repo/merge_requests/12",
+			HTMLURL:   "http://localhost:3000/test/repo/merge_requests/12",
 			Title:     "Fix bug",
 			Body:      "fixes bug #2",
 			Mergeable: true,

@@ -43,7 +43,7 @@ type IssuePageMetaData struct {
 	RepoLink             string
 	Repository           *repo_model.Repository
 	Issue                *issues_model.Issue
-	IsPullRequest        bool
+	IsMergeRequest        bool
 	CanModifyIssueOrPull bool
 
 	ReviewersData  *issueSidebarReviewersData
@@ -58,7 +58,7 @@ func retrieveRepoIssueMetaData(ctx *context.Context, repo *repo_model.Repository
 		RepoLink:      ctx.Repo.RepoLink,
 		Repository:    repo,
 		Issue:         issue,
-		IsPullRequest: isPull,
+		IsMergeRequest: isPull,
 
 		ReviewersData:  &issueSidebarReviewersData{},
 		LabelsData:     &issueSidebarLabelsData{},

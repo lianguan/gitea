@@ -6,7 +6,7 @@
 			<span class="text"><strong>{{ctx.Locale.Tr "repo.issues.dependency.title"}}</strong></span>
 			<br>
 			<p>
-				{{if .Issue.IsPull}}
+				{{if .Issue.IsMergeRequest}}
 					{{ctx.Locale.Tr "repo.issues.dependency.pr_no_dependencies"}}
 				{{else}}
 					{{ctx.Locale.Tr "repo.issues.dependency.issue_no_dependencies"}}
@@ -15,7 +15,7 @@
 		{{end}}
 
 		{{if or .BlockingDependencies .BlockingDependenciesNotPermitted}}
-			<span class="text" data-tooltip-content="{{if .Issue.IsPull}}{{ctx.Locale.Tr "repo.issues.dependency.pr_close_blocks"}}{{else}}{{ctx.Locale.Tr "repo.issues.dependency.issue_close_blocks"}}{{end}}">
+			<span class="text" data-tooltip-content="{{if .Issue.IsMergeRequest}}{{ctx.Locale.Tr "repo.issues.dependency.pr_close_blocks"}}{{else}}{{ctx.Locale.Tr "repo.issues.dependency.issue_close_blocks"}}{{end}}">
 				<strong>{{ctx.Locale.Tr "repo.issues.dependency.blocks_short"}}</strong>
 			</span>
 			<div class="ui divided list">
@@ -47,7 +47,7 @@
 		{{end}}
 
 		{{if or .BlockedByDependencies .BlockedByDependenciesNotPermitted}}
-			<span class="text" data-tooltip-content="{{if .Issue.IsPull}}{{ctx.Locale.Tr "repo.issues.dependency.pr_closing_blockedby"}}{{else}}{{ctx.Locale.Tr "repo.issues.dependency.issue_closing_blockedby"}}{{end}}">
+			<span class="text" data-tooltip-content="{{if .Issue.IsMergeRequest}}{{ctx.Locale.Tr "repo.issues.dependency.pr_closing_blockedby"}}{{else}}{{ctx.Locale.Tr "repo.issues.dependency.issue_closing_blockedby"}}{{end}}">
 				<strong>{{ctx.Locale.Tr "repo.issues.dependency.blocked_by_short"}}</strong>
 			</span>
 			<div class="ui divided list">
@@ -135,7 +135,7 @@
 					<input type="hidden" value="" name="removeDependencyID" id="removeDependencyID">
 					<input type="hidden" value="" name="dependencyType" id="dependencyType">
 				</form>
-				<p>{{if .Issue.IsPull}}
+				<p>{{if .Issue.IsMergeRequest}}
 					{{ctx.Locale.Tr "repo.issues.dependency.pr_remove_text"}}
 				{{else}}
 					{{ctx.Locale.Tr "repo.issues.dependency.issue_remove_text"}}

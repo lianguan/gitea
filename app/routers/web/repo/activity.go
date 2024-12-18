@@ -56,7 +56,7 @@ func Activity(ctx *context.Context) {
 	if ctx.Data["Activity"], err = activities_model.GetActivityStats(ctx, ctx.Repo.Repository, timeFrom,
 		ctx.Repo.CanRead(unit.TypeReleases),
 		ctx.Repo.CanRead(unit.TypeIssues),
-		ctx.Repo.CanRead(unit.TypePullRequests),
+		ctx.Repo.CanRead(unit.TypeMergeRequests),
 		ctx.Repo.CanRead(unit.TypeCode)); err != nil {
 		ctx.ServerError("GetActivityStats", err)
 		return

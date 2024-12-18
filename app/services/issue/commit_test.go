@@ -100,7 +100,7 @@ func TestUpdateIssuesCommit(t *testing.T) {
 			CommitterName:  "User Two",
 			AuthorEmail:    "user2@example.com",
 			AuthorName:     "User Two",
-			Message:        "close " + setting.AppURL + repo.FullName() + "/pulls/1",
+			Message:        "close " + setting.AppURL + repo.FullName() + "/merge_requests/1",
 		},
 	}
 	repo = unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: 3})

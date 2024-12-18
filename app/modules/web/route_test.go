@@ -23,7 +23,7 @@ func TestRoute1(t *testing.T) {
 	recorder.Body = buff
 
 	r := NewRouter()
-	r.Get("/{username}/{reponame}/{type:issues|pulls}", func(resp http.ResponseWriter, req *http.Request) {
+	r.Get("/{username}/{reponame}/{type:issues|merge_requests|pulls}", func(resp http.ResponseWriter, req *http.Request) {
 		username := chi.URLParam(req, "username")
 		assert.EqualValues(t, "gitea", username)
 		reponame := chi.URLParam(req, "reponame")
@@ -48,7 +48,7 @@ func TestRoute2(t *testing.T) {
 	r := NewRouter()
 	r.Group("/{username}/{reponame}", func() {
 		r.Group("", func() {
-			r.Get("/{type:issues|pulls}", func(resp http.ResponseWriter, req *http.Request) {
+			r.Get("/{type:issues|merge_requests|pulls}", func(resp http.ResponseWriter, req *http.Request) {
 				username := chi.URLParam(req, "username")
 				assert.EqualValues(t, "gitea", username)
 				reponame := chi.URLParam(req, "reponame")
@@ -58,7 +58,7 @@ func TestRoute2(t *testing.T) {
 				hit = 0
 			})
 
-			r.Get("/{type:issues|pulls}/{index}", func(resp http.ResponseWriter, req *http.Request) {
+			r.Get("/{type:issues|merge_requests|pulls}/{index}", func(resp http.ResponseWriter, req *http.Request) {
 				username := chi.URLParam(req, "username")
 				assert.EqualValues(t, "gitea", username)
 				reponame := chi.URLParam(req, "reponame")

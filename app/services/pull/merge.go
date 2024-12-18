@@ -170,9 +170,9 @@ func Merge(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.U
 		return fmt.Errorf("unable to load head repo: %w", err)
 	}
 
-	prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypePullRequests)
+	prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypeMergeRequests)
 	if err != nil {
-		log.Error("pr.BaseRepo.GetUnit(unit.TypePullRequests): %v", err)
+		log.Error("pr.BaseRepo.GetUnit(unit.TypeMergeRequests): %v", err)
 		return err
 	}
 	prConfig := prUnit.PullRequestsConfig()
@@ -445,7 +445,7 @@ func CheckPullBranchProtections(ctx context.Context, pr *issues_model.PullReques
 		return nil
 	}
 
-	isPass, err := IsPullCommitStatusPass(ctx, pr)
+	isPass, err := IsMergeRequestCommitStatusPass(ctx, pr)
 	if err != nil {
 		return err
 	}
@@ -503,7 +503,7 @@ func MergedManually(ctx context.Context, pr *issues_model.PullRequest, doer *use
 		if err := pr.LoadBaseRepo(ctx); err != nil {
 			return err
 		}
-		prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypePullRequests)
+		prUnit, err := pr.BaseRepo.GetUnit(ctx, unit.TypeMergeRequests)
 		if err != nil {
 			return err
 		}

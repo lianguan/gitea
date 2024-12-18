@@ -80,7 +80,7 @@ func (r *stripRenderer) processString(w io.Writer, text []byte, coalesce bool) {
 	r.empty = false
 }
 
-// ProcessAutoLinks to detect and handle links to issues and pulls
+// ProcessAutoLinks to detect and handle links to issues and merge_requests
 func (r *stripRenderer) processAutoLink(w io.Writer, link []byte) {
 	linkStr := string(link)
 	u, err := url.Parse(linkStr)
@@ -109,7 +109,7 @@ func (r *stripRenderer) processAutoLink(w io.Writer, link []byte) {
 	var sep string
 	if parts[3] == "issues" {
 		sep = "#"
-	} else if parts[3] == "pulls" {
+	} else if parts[3] == "merge_requests" {
 		sep = "!"
 	} else {
 		// Process out of band

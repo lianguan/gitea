@@ -109,7 +109,7 @@ func NewDiffPatchPost(ctx *context.Context) {
 		return
 	}
 
-	if form.CommitChoice == frmCommitChoiceNewBranch && ctx.Repo.Repository.UnitEnabled(ctx, unit.TypePullRequests) {
+	if form.CommitChoice == frmCommitChoiceNewBranch && ctx.Repo.Repository.UnitEnabled(ctx, unit.TypeMergeRequests) {
 		ctx.Redirect(ctx.Repo.RepoLink + "/compare/" + util.PathEscapeSegments(ctx.Repo.BranchName) + "..." + util.PathEscapeSegments(form.NewBranchName))
 	} else {
 		ctx.Redirect(ctx.Repo.RepoLink + "/commit/" + fileResponse.Commit.SHA)

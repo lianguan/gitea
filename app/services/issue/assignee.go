@@ -122,7 +122,7 @@ func isValidReviewRequest(ctx context.Context, reviewer, doer *user_model.User, 
 	canDoerChangeReviewRequests := CanDoerChangeReviewRequests(ctx, doer, issue.Repo, issue.PosterID)
 
 	if isAdd {
-		if !permReviewer.CanAccessAny(perm.AccessModeRead, unit.TypePullRequests) {
+		if !permReviewer.CanAccessAny(perm.AccessModeRead, unit.TypeMergeRequests) {
 			return issues_model.ErrNotValidReviewRequest{
 				Reason: "Reviewer can't read",
 				UserID: doer.ID,
@@ -308,7 +308,7 @@ func CanDoerChangeReviewRequests(ctx context.Context, doer *user_model.User, rep
 			return false
 		}
 		for _, team := range teams {
-			if !team.UnitEnabled(ctx, unit.TypePullRequests) {
+			if !team.UnitEnabled(ctx, unit.TypeMergeRequests) {
 				continue
 			}
 			isMember, err := organization.IsTeamMember(ctx, repo.OwnerID, team.ID, doer.ID)

@@ -302,7 +302,7 @@ func runHookUpdate(c *cli.Context) error {
 		return nil
 	}
 	refName := git.RefName(os.Args[len(os.Args)-3])
-	if refName.IsPull() {
+	if refName.IsMergeRequest() {
 		// ignore update to refs/pull/xxx/head, so we don't need to output any information
 		os.Exit(1)
 	}

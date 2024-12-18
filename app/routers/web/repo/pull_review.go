@@ -38,7 +38,7 @@ func RenderNewCodeCommentForm(ctx *context.Context) {
 	if ctx.Written() {
 		return
 	}
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 	currentReview, err := issues_model.GetCurrentReview(ctx, ctx.Doer, issue)
@@ -46,7 +46,7 @@ func RenderNewCodeCommentForm(ctx *context.Context) {
 		ctx.ServerError("GetCurrentReview", err)
 		return
 	}
-	ctx.Data["PageIsPullFiles"] = true
+	ctx.Data["PageIsMergeRequestFiles"] = true
 	ctx.Data["Issue"] = issue
 	ctx.Data["CurrentReview"] = currentReview
 	pullHeadCommitID, err := ctx.Repo.GitRepo.GetRefCommitID(issue.PullRequest.GetGitRefName())
@@ -67,13 +67,13 @@ func CreateCodeComment(ctx *context.Context) {
 	if ctx.Written() {
 		return
 	}
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 
 	if ctx.HasError() {
 		ctx.Flash.Error(ctx.Data["ErrorMsg"].(string))
-		ctx.Redirect(fmt.Sprintf("%s/pulls/%d/files", ctx.Repo.RepoLink, issue.Index))
+		ctx.Redirect(fmt.Sprintf("%s/merge_requests/%d/files", ctx.Repo.RepoLink, issue.Index))
 		return
 	}
 
@@ -106,7 +106,7 @@ func CreateCodeComment(ctx *context.Context) {
 
 	if comment == nil {
 		log.Trace("Comment not created: %-v #%d[%d]", ctx.Repo.Repository, issue.Index, issue.ID)
-		ctx.Redirect(fmt.Sprintf("%s/pulls/%d/files", ctx.Repo.RepoLink, issue.Index))
+		ctx.Redirect(fmt.Sprintf("%s/merge_requests/%d/files", ctx.Repo.RepoLink, issue.Index))
 		return
 	}
 
@@ -147,7 +147,7 @@ func UpdateResolveConversation(ctx *context.Context) {
 		return
 	}
 
-	if !comment.Issue.IsPull {
+	if !comment.Issue.IsMergeRequest {
 		ctx.Error(http.StatusBadRequest)
 		return
 	}
@@ -167,7 +167,7 @@ func UpdateResolveConversation(ctx *context.Context) {
 }
 
 func renderConversation(ctx *context.Context, comment *issues_model.Comment, origin string) {
-	ctx.Data["PageIsPullFiles"] = origin == "diff"
+	ctx.Data["PageIsMergeRequestFiles"] = origin == "diff"
 
 	showOutdatedComments := origin == "timeline" || ctx.Data["ShowOutdatedComments"].(bool)
 	comments, err := issues_model.FetchCodeCommentsByLine(ctx, comment.Issue, ctx.Doer, comment.TreePath, comment.Line, showOutdatedComments)
@@ -225,12 +225,12 @@ func SubmitReview(ctx *context.Context) {
 	if ctx.Written() {
 		return
 	}
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 	if ctx.HasError() {
 		ctx.Flash.Error(ctx.Data["ErrorMsg"].(string))
-		ctx.JSONRedirect(fmt.Sprintf("%s/pulls/%d/files", ctx.Repo.RepoLink, issue.Index))
+		ctx.JSONRedirect(fmt.Sprintf("%s/merge_requests/%d/files", ctx.Repo.RepoLink, issue.Index))
 		return
 	}
 
@@ -251,7 +251,7 @@ func SubmitReview(ctx *context.Context) {
 			}
 
 			ctx.Flash.Error(translated)
-			ctx.JSONRedirect(fmt.Sprintf("%s/pulls/%d/files", ctx.Repo.RepoLink, issue.Index))
+			ctx.JSONRedirect(fmt.Sprintf("%s/merge_requests/%d/files", ctx.Repo.RepoLink, issue.Index))
 			return
 		}
 	}
@@ -265,7 +265,7 @@ func SubmitReview(ctx *context.Context) {
 	if err != nil {
 		if issues_model.IsContentEmptyErr(err) {
 			ctx.Flash.Error(ctx.Tr("repo.issues.review.content.empty"))
-			ctx.JSONRedirect(fmt.Sprintf("%s/pulls/%d/files", ctx.Repo.RepoLink, issue.Index))
+			ctx.JSONRedirect(fmt.Sprintf("%s/merge_requests/%d/files", ctx.Repo.RepoLink, issue.Index))
 		} else if errors.Is(err, pull_service.ErrSubmitReviewOnClosedPR) {
 			ctx.Status(http.StatusUnprocessableEntity)
 		} else {
@@ -273,7 +273,7 @@ func SubmitReview(ctx *context.Context) {
 		}
 		return
 	}
-	ctx.JSONRedirect(fmt.Sprintf("%s/pulls/%d#%s", ctx.Repo.RepoLink, issue.Index, comm.HashTag()))
+	ctx.JSONRedirect(fmt.Sprintf("%s/merge_requests/%d#%s", ctx.Repo.RepoLink, issue.Index, comm.HashTag()))
 }
 
 // DismissReview dismissing stale review by repo admin
@@ -289,7 +289,7 @@ func DismissReview(ctx *context.Context) {
 		return
 	}
 
-	ctx.Redirect(fmt.Sprintf("%s/pulls/%d#%s", ctx.Repo.RepoLink, comm.Issue.Index, comm.HashTag()))
+	ctx.Redirect(fmt.Sprintf("%s/merge_requests/%d#%s", ctx.Repo.RepoLink, comm.Issue.Index, comm.HashTag()))
 }
 
 // viewedFilesUpdate Struct to parse the body of a request to update the reviewed files of a PR
@@ -357,7 +357,7 @@ func UpdatePullReviewRequest(ctx *context.Context) {
 			return
 		}
 
-		if !issue.IsPull {
+		if !issue.IsMergeRequest {
 			log.Warn(
 				"UpdatePullReviewRequest: refusing to add review request for non-PR issue %-v#%d",
 				issue.Repo, issue.Index,

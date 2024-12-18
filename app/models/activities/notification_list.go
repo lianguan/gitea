@@ -108,7 +108,7 @@ func createOrUpdateIssueNotifications(ctx context.Context, issueID, commentID, n
 			return err
 		}
 		toNotify.AddMultiple(issueWatches...)
-		if !(issue.IsPull && issues_model.HasWorkInProgressPrefix(issue.Title)) {
+		if !(issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(issue.Title)) {
 			repoWatches, err := repo_model.GetRepoWatchersIDs(ctx, issue.RepoID)
 			if err != nil {
 				return err
@@ -149,10 +149,10 @@ func createOrUpdateIssueNotifications(ctx context.Context, issueID, commentID, n
 
 			return err
 		}
-		if issue.IsPull && !access_model.CheckRepoUnitUser(ctx, issue.Repo, user, unit.TypePullRequests) {
+		if issue.IsMergeRequest && !access_model.CheckRepoUnitUser(ctx, issue.Repo, user, unit.TypeMergeRequests) {
 			continue
 		}
-		if !issue.IsPull && !access_model.CheckRepoUnitUser(ctx, issue.Repo, user, unit.TypeIssues) {
+		if !issue.IsMergeRequest && !access_model.CheckRepoUnitUser(ctx, issue.Repo, user, unit.TypeIssues) {
 			continue
 		}
 
@@ -474,7 +474,7 @@ func (nl NotificationList) LoadComments(ctx context.Context) ([]int, error) {
 func (nl NotificationList) LoadIssuePullRequests(ctx context.Context) error {
 	issues := make(map[int64]*issues_model.Issue, len(nl))
 	for _, notification := range nl {
-		if notification.Issue != nil && notification.Issue.IsPull && notification.Issue.PullRequest == nil {
+		if notification.Issue != nil && notification.Issue.IsMergeRequest && notification.Issue.PullRequest == nil {
 			issues[notification.Issue.ID] = notification.Issue
 		}
 	}

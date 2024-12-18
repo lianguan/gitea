@@ -73,7 +73,7 @@ func ListIssueComments(ctx *context.APIContext) {
 		ctx.Error(http.StatusInternalServerError, "GetRawIssueByIndex", err)
 		return
 	}
-	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
@@ -223,7 +223,7 @@ func isXRefCommentAccessible(ctx stdCtx.Context, user *user_model.User, c *issue
 		if err != nil {
 			return false
 		}
-		if !perm.CanReadIssuesOrPulls(c.RefIsPull) {
+		if !perm.CanReadIssuesOrPulls(c.RefIsMergeRequest) {
 			return false
 		}
 	}
@@ -280,7 +280,7 @@ func ListRepoIssueComments(ctx *context.APIContext) {
 
 	var isPull optional.Option[bool]
 	canReadIssue := ctx.Repo.CanRead(unit.TypeIssues)
-	canReadPull := ctx.Repo.CanRead(unit.TypePullRequests)
+	canReadPull := ctx.Repo.CanRead(unit.TypeMergeRequests)
 	if canReadIssue && canReadPull {
 		isPull = optional.None[bool]()
 	} else if canReadIssue {
@@ -298,7 +298,7 @@ func ListRepoIssueComments(ctx *context.APIContext) {
 		Type:        issues_model.CommentTypeComment,
 		Since:       since,
 		Before:      before,
-		IsPull:      isPull,
+		IsMergeRequest:      isPull,
 	}
 
 	comments, err := issues_model.FindComments(ctx, opts)
@@ -386,12 +386,12 @@ func CreateIssueComment(ctx *context.APIContext) {
 		return
 	}
 
-	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
 
-	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) && !ctx.Doer.IsAdmin {
+	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) && !ctx.Doer.IsAdmin {
 		ctx.Error(http.StatusForbidden, "CreateIssueComment", errors.New(ctx.Locale.TrString("repo.issues.comment_on_locked")))
 		return
 	}
@@ -464,7 +464,7 @@ func GetIssueComment(ctx *context.APIContext) {
 		return
 	}
 
-	if !ctx.Repo.CanReadIssuesOrPulls(comment.Issue.IsPull) {
+	if !ctx.Repo.CanReadIssuesOrPulls(comment.Issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
@@ -599,7 +599,7 @@ func editIssueComment(ctx *context.APIContext, form api.EditIssueCommentOption) 
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsMergeRequest)) {
 		ctx.Status(http.StatusForbidden)
 		return
 	}
@@ -716,7 +716,7 @@ func deleteIssueComment(ctx *context.APIContext) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != comment.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(comment.Issue.IsMergeRequest)) {
 		ctx.Status(http.StatusForbidden)
 		return
 	} else if comment.Type != issues_model.CommentTypeComment {

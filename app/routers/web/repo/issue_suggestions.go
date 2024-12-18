@@ -20,13 +20,13 @@ func IssueSuggestions(ctx *context.Context) {
 	keyword := ctx.Req.FormValue("q")
 
 	canReadIssues := ctx.Repo.CanRead(unit.TypeIssues)
-	canReadPulls := ctx.Repo.CanRead(unit.TypePullRequests)
+	canReadPulls := ctx.Repo.CanRead(unit.TypeMergeRequests)
 
-	var isPull optional.Option[bool]
+	var isMergeRequest optional.Option[bool]
 	if canReadPulls && !canReadIssues {
-		isPull = optional.Some(true)
+		isMergeRequest = optional.Some(true)
 	} else if canReadIssues && !canReadPulls {
-		isPull = optional.Some(false)
+		isMergeRequest = optional.Some(false)
 	}
 
 	searchOpt := &issue_indexer.SearchOptions{
@@ -34,11 +34,11 @@ func IssueSuggestions(ctx *context.Context) {
 			Page:     0,
 			PageSize: 5,
 		},
-		Keyword:  keyword,
-		RepoIDs:  []int64{ctx.Repo.Repository.ID},
-		IsPull:   isPull,
-		IsClosed: nil,
-		SortBy:   issue_indexer.SortByUpdatedDesc,
+		Keyword:        keyword,
+		RepoIDs:        []int64{ctx.Repo.Repository.ID},
+		IsMergeRequest: isMergeRequest,
+		IsClosed:       nil,
+		SortBy:         issue_indexer.SortByUpdatedDesc,
 	}
 
 	ids, _, err := issue_indexer.SearchIssues(ctx, searchOpt)
@@ -62,7 +62,7 @@ func IssueSuggestions(ctx *context.Context) {
 			State: issue.State(),
 		}
 
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			if err := issue.LoadPullRequest(ctx); err != nil {
 				ctx.ServerError("LoadPullRequest", err)
 				return

@@ -87,7 +87,7 @@
 				{{end}}
 				<span class="text grey muted-links">
 					{{template "repo/issue/view_content/comments_authorlink" dict "ctxData" $ "comment" .}}
-					{{if .Issue.IsPull}}
+					{{if .Issue.IsMergeRequest}}
 						{{ctx.Locale.Tr "repo.pulls.reopened_at" .EventTag $createdStr}}
 					{{else}}
 						{{ctx.Locale.Tr "repo.issues.reopened_at" .EventTag $createdStr}}
@@ -102,7 +102,7 @@
 				{{end}}
 				<span class="text grey muted-links">
 					{{template "repo/issue/view_content/comments_authorlink" dict "ctxData" $ "comment" .}}
-					{{if .Issue.IsPull}}
+					{{if .Issue.IsMergeRequest}}
 						{{ctx.Locale.Tr "repo.pulls.closed_at" .EventTag $createdStr}}
 					{{else}}
 						{{ctx.Locale.Tr "repo.issues.closed_at" .EventTag $createdStr}}
@@ -131,7 +131,7 @@
 				{{$refFrom = ctx.Locale.Tr "repo.issues.ref_from" .RefRepo.FullName}}
 			{{end}}
 			{{$refTr := "repo.issues.ref_issue_from"}}
-			{{if .Issue.IsPull}}
+			{{if .Issue.IsMergeRequest}}
 				{{$refTr = "repo.issues.ref_pull_from"}}
 			{{else if eq .RefAction 1}}
 				{{$refTr = "repo.issues.ref_closing_from"}}

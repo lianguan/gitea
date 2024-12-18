@@ -23,7 +23,7 @@ const (
 	TypeInvalid         Type = iota // 0 invalid
 	TypeCode                        // 1 code
 	TypeIssues                      // 2 issues
-	TypePullRequests                // 3 PRs
+	TypeMergeRequests               // 3 MRs
 	TypeReleases                    // 4 Releases
 	TypeWiki                        // 5 Wiki
 	TypeExternalWiki                // 6 ExternalWiki
@@ -52,7 +52,7 @@ var (
 	AllRepoUnitTypes = []Type{
 		TypeCode,
 		TypeIssues,
-		TypePullRequests,
+		TypeMergeRequests,
 		TypeReleases,
 		TypeWiki,
 		TypeExternalWiki,
@@ -66,7 +66,7 @@ var (
 	DefaultRepoUnits = []Type{
 		TypeCode,
 		TypeIssues,
-		TypePullRequests,
+		TypeMergeRequests,
 		TypeReleases,
 		TypeWiki,
 		TypeProjects,
@@ -77,7 +77,7 @@ var (
 	// ForkRepoUnits contains the default unit types for forks
 	DefaultForkRepoUnits = []Type{
 		TypeCode,
-		TypePullRequests,
+		TypeMergeRequests,
 	}
 
 	// DefaultMirrorRepoUnits contains the default unit types for mirrors
@@ -94,7 +94,7 @@ var (
 	DefaultTemplateRepoUnits = []Type{
 		TypeCode,
 		TypeIssues,
-		TypePullRequests,
+		TypeMergeRequests,
 		TypeReleases,
 		TypeWiki,
 		TypeProjects,
@@ -271,9 +271,9 @@ var (
 	}
 
 	UnitPullRequests = Unit{
-		TypePullRequests,
+		TypeMergeRequests,
 		"repo.pulls",
-		"/pulls",
+		"/merge_requests",
 		"repo.pulls.desc",
 		2,
 		perm.AccessModeOwner,
@@ -338,7 +338,7 @@ var (
 		TypeCode:            UnitCode,
 		TypeIssues:          UnitIssues,
 		TypeExternalTracker: UnitExternalTracker,
-		TypePullRequests:    UnitPullRequests,
+		TypeMergeRequests:   UnitPullRequests,
 		TypeReleases:        UnitReleases,
 		TypeWiki:            UnitWiki,
 		TypeExternalWiki:    UnitExternalWiki,

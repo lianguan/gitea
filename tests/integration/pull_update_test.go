@@ -162,7 +162,7 @@ func createOutdatedPR(t *testing.T, actor, forkOrg *user_model.User) *issues_mod
 		Title:    "Test Pull -to-update-",
 		PosterID: actor.ID,
 		Poster:   actor,
-		IsPull:   true,
+		IsMergeRequest:   true,
 	}
 	pullRequest := &issues_model.PullRequest{
 		HeadRepoID: headRepo.ID,

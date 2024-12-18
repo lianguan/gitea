@@ -12,7 +12,7 @@
 		{{if .PageIsMilestones}}
 			{{svg "octicon-milestone"}}
 		{{else}}
-			{{Iif .PageIsPullList (svg "octicon-git-pull-request") (svg "octicon-issue-opened")}}
+			{{Iif .PageIsMergeRequestList (svg "octicon-git-pull-request") (svg "octicon-issue-opened")}}
 		{{end}}
 		{{ctx.Locale.PrettyNumber .OpenCount}} {{ctx.Locale.Tr "repo.issues.open_title"}}
 	</a>

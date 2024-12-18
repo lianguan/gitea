@@ -134,7 +134,7 @@ func SearchIssues(ctx *context.Context) {
 
 	isPull := optional.None[bool]()
 	switch ctx.FormString("type") {
-	case "pulls":
+	case "merge_requests":
 		isPull = optional.Some(true)
 	case "issues":
 		isPull = optional.Some(false)
@@ -190,7 +190,7 @@ func SearchIssues(ctx *context.Context) {
 		Keyword:             keyword,
 		RepoIDs:             repoIDs,
 		AllPublic:           allPublic,
-		IsPull:              isPull,
+		IsMergeRequest:      isPull,
 		IsClosed:            isClosed,
 		IncludedAnyLabelIDs: includedAnyLabels,
 		MilestoneIDs:        includedMilestones,
@@ -323,12 +323,12 @@ func SearchRepoIssuesJSON(ctx *context.Context) {
 		projectID = optional.Some(v)
 	}
 
-	isPull := optional.None[bool]()
+	isMergeRequest := optional.None[bool]()
 	switch ctx.FormString("type") {
-	case "pulls":
-		isPull = optional.Some(true)
+	case "merge_requests":
+		isMergeRequest = optional.Some(true)
 	case "issues":
-		isPull = optional.Some(false)
+		isMergeRequest = optional.Some(false)
 	}
 
 	// FIXME: we should be more efficient here
@@ -350,12 +350,12 @@ func SearchRepoIssuesJSON(ctx *context.Context) {
 			Page:     ctx.FormInt("page"),
 			PageSize: convert.ToCorrectPageSize(ctx.FormInt("limit")),
 		},
-		Keyword:   keyword,
-		RepoIDs:   []int64{ctx.Repo.Repository.ID},
-		IsPull:    isPull,
-		IsClosed:  isClosed,
-		ProjectID: projectID,
-		SortBy:    issue_indexer.SortByCreatedDesc,
+		Keyword:        keyword,
+		RepoIDs:        []int64{ctx.Repo.Repository.ID},
+		IsMergeRequest: isMergeRequest,
+		IsClosed:       isClosed,
+		ProjectID:      projectID,
+		SortBy:         issue_indexer.SortByCreatedDesc,
 	}
 	if since != 0 {
 		searchOpt.UpdatedAfterUnix = optional.Some(since)
@@ -438,7 +438,7 @@ func UpdateIssueStatus(ctx *context.Context) {
 	}
 
 	for _, issue := range issues {
-		if issue.IsPull && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
 			continue
 		}
 		if issue.IsClosed != isClosed {
@@ -535,7 +535,7 @@ func issues(ctx *context.Context, milestoneID, projectID int64, isPullOption opt
 		PosterID:          posterUserID,
 		ReviewRequestedID: reviewRequestedID,
 		ReviewedID:        reviewedID,
-		IsPull:            isPullOption,
+		IsMergeRequest:            isPullOption,
 		IssueIDs:          nil,
 	}
 	if keyword != "" {
@@ -619,7 +619,7 @@ func issues(ctx *context.Context, milestoneID, projectID int64, isPullOption opt
 			MilestoneIDs:      mileIDs,
 			ProjectID:         projectID,
 			IsClosed:          isShowClosed,
-			IsPull:            isPullOption,
+			IsMergeRequest:            isPullOption,
 			LabelIDs:          labelIDs,
 			SortType:          sortType,
 		})
@@ -748,14 +748,14 @@ func issues(ctx *context.Context, milestoneID, projectID int64, isPullOption opt
 
 // Issues render issues page
 func Issues(ctx *context.Context) {
-	isPullList := ctx.PathParam(":type") == "pulls"
-	if isPullList {
+	isMergeRequestList := ctx.PathParam(":type") == "merge_requests"
+	if isMergeRequestList {
 		MustAllowPulls(ctx)
 		if ctx.Written() {
 			return
 		}
 		ctx.Data["Title"] = ctx.Tr("repo.pulls")
-		ctx.Data["PageIsPullList"] = true
+		ctx.Data["PageIsMergeRequestList"] = true
 	} else {
 		MustEnableIssues(ctx)
 		if ctx.Written() {
@@ -766,7 +766,7 @@ func Issues(ctx *context.Context) {
 		ctx.Data["NewIssueChooseTemplate"] = issue_service.HasTemplatesOrContactLinks(ctx.Repo.Repository, ctx.Repo.GitRepo)
 	}
 
-	issues(ctx, ctx.FormInt64("milestone"), ctx.FormInt64("project"), optional.Some(isPullList))
+	issues(ctx, ctx.FormInt64("milestone"), ctx.FormInt64("project"), optional.Some(isMergeRequestList))
 	if ctx.Written() {
 		return
 	}
@@ -776,7 +776,7 @@ func Issues(ctx *context.Context) {
 		return
 	}
 
-	ctx.Data["CanWriteIssuesOrPulls"] = ctx.Repo.CanWriteIssuesOrPulls(isPullList)
+	ctx.Data["CanWriteIssuesOrPulls"] = ctx.Repo.CanWriteIssuesOrPulls(isMergeRequestList)
 
 	ctx.HTML(http.StatusOK, tplIssues)
 }

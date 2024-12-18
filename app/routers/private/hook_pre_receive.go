@@ -81,7 +81,7 @@ func (ctx *preReceiveContext) CanCreatePullRequest() bool {
 		if !ctx.loadPusherAndPermission() {
 			return false
 		}
-		ctx.canCreatePullRequest = ctx.userPerm.CanRead(unit.TypePullRequests)
+		ctx.canCreatePullRequest = ctx.userPerm.CanRead(unit.TypeMergeRequests)
 		ctx.checkedCanCreatePullRequest = true
 	}
 	return ctx.canCreatePullRequest

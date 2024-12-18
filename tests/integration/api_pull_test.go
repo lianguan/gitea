@@ -41,7 +41,7 @@ func TestAPIViewPulls(t *testing.T) {
 
 	var pulls []*api.PullRequest
 	DecodeJSON(t, resp, &pulls)
-	expectedLen := unittest.GetCount(t, &issues_model.Issue{RepoID: repo.ID}, unittest.Cond("is_pull = ?", true))
+	expectedLen := unittest.GetCount(t, &issues_model.Issue{RepoID: repo.ID}, unittest.Cond("is_merge_request = ?", true))
 	assert.Len(t, pulls, expectedLen)
 
 	assert.Len(t, pulls, 3)

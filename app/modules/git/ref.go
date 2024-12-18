@@ -96,7 +96,7 @@ func (ref RefName) IsRemote() bool {
 	return strings.HasPrefix(string(ref), RemotePrefix)
 }
 
-func (ref RefName) IsPull() bool {
+func (ref RefName) IsMergeRequest() bool {
 	return strings.HasPrefix(string(ref), PullPrefix) && strings.IndexByte(string(ref)[len(PullPrefix):], '/') > -1
 }
 
@@ -151,7 +151,7 @@ func (ref RefName) ShortName() string {
 	if ref.IsRemote() {
 		return ref.RemoteName()
 	}
-	if ref.IsPull() {
+	if ref.IsMergeRequest() {
 		return ref.PullName()
 	}
 	if ref.IsFor() {
@@ -172,7 +172,7 @@ func (ref RefName) RefGroup() string {
 	if ref.IsRemote() {
 		return "remotes"
 	}
-	if ref.IsPull() {
+	if ref.IsMergeRequest() {
 		return "pull"
 	}
 	if ref.IsFor() {

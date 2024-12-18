@@ -163,8 +163,8 @@ func LinkedRepository(ctx context.Context, a *repo_model.Attachment) (*repo_mode
 		}
 		repo, err := repo_model.GetRepositoryByID(ctx, iss.RepoID)
 		unitType := unit.TypeIssues
-		if iss.IsPull {
-			unitType = unit.TypePullRequests
+		if iss.IsMergeRequest {
+			unitType = unit.TypeMergeRequests
 		}
 		return repo, unitType, err
 	} else if a.ReleaseID != 0 {

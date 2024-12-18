@@ -668,7 +668,7 @@ func AddReviewRequest(ctx context.Context, issue *Issue, reviewer, doer *user_mo
 			return nil, ErrReviewRequestOnClosedPR{}
 		}
 
-		if issue.IsPull {
+		if issue.IsMergeRequest {
 			if err := issue.LoadPullRequest(ctx); err != nil {
 				return nil, err
 			}
@@ -942,7 +942,7 @@ func CanMarkConversation(ctx context.Context, issue *Issue, doer *user_model.Use
 			return false, err
 		}
 
-		permResult = p.CanAccess(perm.AccessModeWrite, unit.TypePullRequests)
+		permResult = p.CanAccess(perm.AccessModeWrite, unit.TypeMergeRequests)
 		if !permResult {
 			if permResult, err = IsOfficialReviewer(ctx, issue, doer); err != nil {
 				return false, err

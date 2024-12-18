@@ -66,7 +66,7 @@ func (n *actionsNotifier) IssueChangeContent(ctx context.Context, doer *user_mod
 	}
 
 	permission, _ := access_model.GetUserRepoPermission(ctx, issue.Repo, issue.Poster)
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if err = issue.LoadPullRequest(ctx); err != nil {
 			log.Error("loadPullRequest: %v", err)
 			return
@@ -100,7 +100,7 @@ func (n *actionsNotifier) IssueChangeContent(ctx context.Context, doer *user_mod
 func (n *actionsNotifier) IssueChangeStatus(ctx context.Context, doer *user_model.User, commitID string, issue *issues_model.Issue, _ *issues_model.Comment, isClosed bool) {
 	ctx = withMethod(ctx, "IssueChangeStatus")
 	permission, _ := access_model.GetUserRepoPermission(ctx, issue.Repo, issue.Poster)
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if err := issue.LoadPullRequest(ctx); err != nil {
 			log.Error("LoadPullRequest: %v", err)
 			return
@@ -154,7 +154,7 @@ func (n *actionsNotifier) IssueChangeAssignee(ctx context.Context, doer *user_mo
 	}
 
 	hookEvent := webhook_module.HookEventIssueAssign
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		hookEvent = webhook_module.HookEventPullRequestAssign
 	}
 
@@ -173,7 +173,7 @@ func (n *actionsNotifier) IssueChangeMilestone(ctx context.Context, doer *user_m
 	}
 
 	hookEvent := webhook_module.HookEventIssueMilestone
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		hookEvent = webhook_module.HookEventPullRequestMilestone
 	}
 
@@ -186,7 +186,7 @@ func (n *actionsNotifier) IssueChangeLabels(ctx context.Context, doer *user_mode
 	ctx = withMethod(ctx, "IssueChangeLabels")
 
 	hookEvent := webhook_module.HookEventIssueLabel
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		hookEvent = webhook_module.HookEventPullRequestLabel
 	}
 
@@ -205,7 +205,7 @@ func notifyIssueChange(ctx context.Context, doer *user_model.User, issue *issues
 		return
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if err = issue.LoadPullRequest(ctx); err != nil {
 			log.Error("loadPullRequest: %v", err)
 			return
@@ -242,7 +242,7 @@ func (n *actionsNotifier) CreateIssueComment(ctx context.Context, doer *user_mod
 ) {
 	ctx = withMethod(ctx, "CreateIssueComment")
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		notifyIssueCommentChange(ctx, doer, comment, "", webhook_module.HookEventPullRequestComment, api.HookIssueCommentCreated)
 		return
 	}
@@ -257,7 +257,7 @@ func (n *actionsNotifier) UpdateComment(ctx context.Context, doer *user_model.Us
 		return
 	}
 
-	if c.Issue.IsPull {
+	if c.Issue.IsMergeRequest {
 		notifyIssueCommentChange(ctx, doer, c, oldContent, webhook_module.HookEventPullRequestComment, api.HookIssueCommentEdited)
 		return
 	}
@@ -272,7 +272,7 @@ func (n *actionsNotifier) DeleteComment(ctx context.Context, doer *user_model.Us
 		return
 	}
 
-	if comment.Issue.IsPull {
+	if comment.Issue.IsMergeRequest {
 		notifyIssueCommentChange(ctx, doer, comment, "", webhook_module.HookEventPullRequestComment, api.HookIssueCommentDeleted)
 		return
 	}
@@ -297,7 +297,7 @@ func notifyIssueCommentChange(ctx context.Context, doer *user_model.User, commen
 		Comment:    convert.ToAPIComment(ctx, comment.Issue.Repo, comment),
 		Repository: convert.ToRepo(ctx, comment.Issue.Repo, permission),
 		Sender:     convert.ToUser(ctx, doer, nil),
-		IsPull:     comment.Issue.IsPull,
+		IsMergeRequest:     comment.Issue.IsMergeRequest,
 	}
 
 	if action == api.HookIssueCommentEdited {
@@ -308,7 +308,7 @@ func notifyIssueCommentChange(ctx context.Context, doer *user_model.User, commen
 		}
 	}
 
-	if comment.Issue.IsPull {
+	if comment.Issue.IsMergeRequest {
 		if err := comment.Issue.LoadPullRequest(ctx); err != nil {
 			log.Error("LoadPullRequest: %v", err)
 			return
@@ -441,7 +441,7 @@ func (n *actionsNotifier) PullRequestReview(ctx context.Context, pr *issues_mode
 }
 
 func (n *actionsNotifier) PullRequestReviewRequest(ctx context.Context, doer *user_model.User, issue *issues_model.Issue, reviewer *user_model.User, isRequest bool, comment *issues_model.Comment) {
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		log.Warn("PullRequestReviewRequest: issue is not a pull request: %v", issue.ID)
 		return
 	}

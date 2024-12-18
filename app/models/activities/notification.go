@@ -158,7 +158,7 @@ func createIssueNotification(ctx context.Context, userID int64, issue *issues_mo
 		UpdatedBy: updatedByID,
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		notification.Source = NotificationSourcePullRequest
 	} else {
 		notification.Source = NotificationSourceIssue

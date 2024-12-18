@@ -224,7 +224,7 @@ type IssueCommentPayload struct {
 	Changes     *ChangesPayload        `json:"changes,omitempty"`
 	Repository  *Repository            `json:"repository"`
 	Sender      *User                  `json:"sender"`
-	IsPull      bool                   `json:"is_pull"`
+	IsMergeRequest      bool                   `json:"is_merge_request"`
 }
 
 // JSONPayload implements Payload

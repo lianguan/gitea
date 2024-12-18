@@ -109,7 +109,7 @@ func TestGiteaUploadRepo(t *testing.T) {
 
 	issues, err := issues_model.Issues(db.DefaultContext, &issues_model.IssuesOptions{
 		RepoIDs:  []int64{repo.ID},
-		IsPull:   optional.Some(false),
+		IsMergeRequest:   optional.Some(false),
 		SortType: "oldest",
 	})
 	assert.NoError(t, err)

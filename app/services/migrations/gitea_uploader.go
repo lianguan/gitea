@@ -772,7 +772,7 @@ func (g *GiteaLocalUploader) newPullRequest(pr *base.PullRequest) (*issues_model
 		Index:       pr.Number,
 		Content:     pr.Content,
 		MilestoneID: milestoneID,
-		IsPull:      true,
+		IsMergeRequest:      true,
 		IsClosed:    pr.State == "closed",
 		IsLocked:    pr.IsLocked,
 		Labels:      labels,

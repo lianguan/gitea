@@ -319,7 +319,7 @@ func (stats *ActivityStats) FillUnresolvedIssues(ctx context.Context, repoID int
 	}
 	sess := issuesForActivityStatement(ctx, repoID, fromTime, false, true)
 	if !issues || !prs {
-		sess.And("issue.is_pull = ?", prs)
+		sess.And("issue.is_merge_request = ?", prs)
 	}
 	sess.OrderBy("issue.updated_unix DESC")
 	stats.UnresolvedIssues = make(issues_model.IssueList, 0)
@@ -328,7 +328,7 @@ func (stats *ActivityStats) FillUnresolvedIssues(ctx context.Context, repoID int
 
 func newlyCreatedIssues(ctx context.Context, repoID int64, fromTime time.Time) *xorm.Session {
 	sess := db.GetEngine(ctx).Where("issue.repo_id = ?", repoID).
-		And("issue.is_pull = ?", false).                // Retain the is_pull check to exclude pull requests
+		And("issue.is_merge_request = ?", false).                // Retain the is_merge_request check to exclude pull requests
 		And("issue.created_unix >= ?", fromTime.Unix()) // Include all issues created after fromTime
 
 	return sess
@@ -336,7 +336,7 @@ func newlyCreatedIssues(ctx context.Context, repoID int64, fromTime time.Time) *
 
 func activeIssues(ctx context.Context, repoID int64, fromTime time.Time) *xorm.Session {
 	sess := db.GetEngine(ctx).Where("issue.repo_id = ?", repoID).
-		And("issue.is_pull = ?", false).
+		And("issue.is_merge_request = ?", false).
 		And("issue.created_unix >= ?", fromTime.Unix()).
 		Or("issue.closed_unix >= ?", fromTime.Unix())
 
@@ -348,7 +348,7 @@ func issuesForActivityStatement(ctx context.Context, repoID int64, fromTime time
 		And("issue.is_closed = ?", closed)
 
 	if !unresolved {
-		sess.And("issue.is_pull = ?", false)
+		sess.And("issue.is_merge_request = ?", false)
 		if closed {
 			sess.And("issue.closed_unix >= ?", fromTime.Unix())
 		} else {

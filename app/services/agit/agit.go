@@ -121,7 +121,7 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 				Title:    title,
 				PosterID: pusher.ID,
 				Poster:   pusher,
-				IsPull:   true,
+				IsMergeRequest:   true,
 				Content:  description,
 			}
 
@@ -154,7 +154,7 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 				OldOID:            objectFormat.EmptyObjectID().String(),
 				NewOID:            opts.NewCommitIDs[i],
 				IsCreatePR:        true,
-				URL:               fmt.Sprintf("%s/pulls/%d", repo.HTMLURL(), pr.Index),
+				URL:               fmt.Sprintf("%s/merge_requests/%d", repo.HTMLURL(), pr.Index),
 				ShouldShowMessage: setting.Git.PullRequestPushMessage && repo.AllowsPulls(ctx),
 				HeadBranch:        headBranch,
 			})
@@ -222,7 +222,7 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 			OriginalRef:       opts.RefFullNames[i],
 			IsForcePush:       isForcePush,
 			IsCreatePR:        false,
-			URL:               fmt.Sprintf("%s/pulls/%d", repo.HTMLURL(), pr.Index),
+			URL:               fmt.Sprintf("%s/merge_requests/%d", repo.HTMLURL(), pr.Index),
 			ShouldShowMessage: setting.Git.PullRequestPushMessage && repo.AllowsPulls(ctx),
 		})
 	}

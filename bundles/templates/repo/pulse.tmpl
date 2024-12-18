@@ -18,10 +18,10 @@
 	</div>
 </h2>
 
-{{if (or (.Permission.CanRead ctx.Consts.RepoUnitTypeIssues) (.Permission.CanRead ctx.Consts.RepoUnitTypePullRequests))}}
+{{if (or (.Permission.CanRead ctx.Consts.RepoUnitTypeIssues) (.Permission.CanRead ctx.Consts.RepoUnitTypeMergeRequests))}}
 <h4 class="ui top attached header">{{ctx.Locale.Tr "repo.activity.overview"}}</h4>
 <div class="ui attached segment two column grid">
-	{{if .Permission.CanRead ctx.Consts.RepoUnitTypePullRequests}}
+	{{if .Permission.CanRead ctx.Consts.RepoUnitTypeMergeRequests}}
 		<div class="column">
 			{{if gt .Activity.ActivePRCount 0}}
 			<div class="stats-table">
@@ -57,7 +57,7 @@
 	{{end}}
 </div>
 <div class="ui attached segment horizontal segments">
-	{{if .Permission.CanRead ctx.Consts.RepoUnitTypePullRequests}}
+	{{if .Permission.CanRead ctx.Consts.RepoUnitTypeMergeRequests}}
 		<a href="#merged-pull-requests" class="ui attached segment text center">
 			<span class="text purple">{{svg "octicon-git-pull-request"}}</span> <strong>{{.Activity.MergedPRCount}}</strong><br>
 			{{ctx.Locale.TrN .Activity.MergedPRCount "repo.activity.merged_prs_count_1" "repo.activity.merged_prs_count_n"}}
@@ -145,7 +145,7 @@
 		{{range .Activity.MergedPRs}}
 			<p class="desc">
 				<span class="ui purple label">{{ctx.Locale.Tr "repo.activity.merged_prs_label"}}</span>
-				#{{.Index}} <a class="title" href="{{$.RepoLink}}/pulls/{{.Index}}">{{.Issue.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
+				#{{.Index}} <a class="title" href="{{$.RepoLink}}/merge_requests/{{.Index}}">{{.Issue.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
 				{{DateUtils.TimeSince .MergedUnix}}
 			</p>
 		{{end}}
@@ -164,7 +164,7 @@
 		{{range .Activity.OpenedPRs}}
 			<p class="desc">
 				<span class="ui green label">{{ctx.Locale.Tr "repo.activity.opened_prs_label"}}</span>
-				#{{.Index}} <a class="title" href="{{$.RepoLink}}/pulls/{{.Index}}">{{.Issue.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
+				#{{.Index}} <a class="title" href="{{$.RepoLink}}/merge_requests/{{.Index}}">{{.Issue.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
 				{{DateUtils.TimeSince .Issue.CreatedUnix}}
 			</p>
 		{{end}}
@@ -219,8 +219,8 @@
 			<p class="desc">
 				<span class="ui green label">{{ctx.Locale.Tr "repo.activity.unresolved_conv_label"}}</span>
 				#{{.Index}}
-				{{if .IsPull}}
-				<a class="title" href="{{$.RepoLink}}/pulls/{{.Index}}">{{.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
+				{{if .IsMergeRequest}}
+				<a class="title" href="{{$.RepoLink}}/merge_requests/{{.Index}}">{{.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
 				{{else}}
 				<a class="title" href="{{$.RepoLink}}/issues/{{.Index}}">{{.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
 				{{end}}

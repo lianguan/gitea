@@ -56,7 +56,7 @@ const (
 			"content": { "type": "text", "index": true },
 			"comments": { "type" : "text", "index": true },
 
-			"is_pull": { "type": "boolean", "index": true },
+			"is_merge_request": { "type": "boolean", "index": true },
 			"is_closed": { "type": "boolean", "index": true },
 			"is_archived": { "type": "boolean", "index": true },
 			"label_ids": { "type": "integer", "index": true },
@@ -163,8 +163,8 @@ func (b *Indexer) Search(ctx context.Context, options *internal.SearchOptions) (
 		query.Must(q)
 	}
 
-	if options.IsPull.Has() {
-		query.Must(elastic.NewTermQuery("is_pull", options.IsPull.Value()))
+	if options.IsMergeRequest.Has() {
+		query.Must(elastic.NewTermQuery("is_merge_request", options.IsMergeRequest.Value()))
 	}
 	if options.IsClosed.Has() {
 		query.Must(elastic.NewTermQuery("is_closed", options.IsClosed.Value()))

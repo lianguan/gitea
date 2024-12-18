@@ -30,7 +30,7 @@ func fullIssuePatternProcessor(ctx *RenderContext, node *html.Node) {
 		}
 
 		mDiffView := globalVars().filesChangedFullPattern.FindStringSubmatchIndex(node.Data)
-		// leave it as it is if the link is from "Files Changed" tab in PR Diff View https://domain/org/repo/pulls/27/files
+		// leave it as it is if the link is from "Files Changed" tab in PR Diff View https://domain/org/repo/merge_requests/27/files
 		if mDiffView != nil {
 			return
 		}
@@ -120,7 +120,7 @@ func issueIndexPatternProcessor(ctx *RenderContext, node *html.Node) {
 
 		var link *html.Node
 		reftext := node.Data[ref.RefLocation.Start:ref.RefLocation.End]
-		if hasExtTrackFormat && !ref.IsPull {
+		if hasExtTrackFormat && !ref.IsMergeRequest {
 			ctx.RenderOptions.Metas["index"] = ref.Issue
 
 			res, err := vars.Expand(ctx.RenderOptions.Metas["format"], ctx.RenderOptions.Metas)
@@ -134,7 +134,7 @@ func issueIndexPatternProcessor(ctx *RenderContext, node *html.Node) {
 			// Path determines the type of link that will be rendered. It's unknown at this point whether
 			// the linked item is actually a PR or an issue. Luckily it's of no real consequence because
 			// Gitea will redirect on click as appropriate.
-			issuePath := util.Iif(ref.IsPull, "pulls", "issues")
+			issuePath := util.Iif(ref.IsMergeRequest, "merge_requests", "issues")
 			if ref.Owner == "" {
 				linkHref := ctx.RenderHelper.ResolveLink(util.URLJoin(ctx.RenderOptions.Metas["user"], ctx.RenderOptions.Metas["repo"], issuePath, ref.Issue), LinkTypeApp)
 				link = createLink(ctx, linkHref, reftext, "ref-issue")

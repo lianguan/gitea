@@ -153,25 +153,25 @@ func CheckRepoStats(ctx context.Context) error {
 		},
 		// Repository.NumIssues
 		{
-			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_issues!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_pull=?)", false),
+			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_issues!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_merge_request=?)", false),
 			repoStatsCorrectNumIssues,
 			"repository count 'num_issues'",
 		},
 		// Repository.NumClosedIssues
 		{
-			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_closed_issues!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_closed=? AND is_pull=?)", true, false),
+			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_closed_issues!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_closed=? AND is_merge_request=?)", true, false),
 			repoStatsCorrectNumClosedIssues,
 			"repository count 'num_closed_issues'",
 		},
 		// Repository.NumPulls
 		{
-			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_pulls!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_pull=?)", true),
+			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_pulls!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_merge_request=?)", true),
 			repoStatsCorrectNumPulls,
 			"repository count 'num_pulls'",
 		},
 		// Repository.NumClosedPulls
 		{
-			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_closed_pulls!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_closed=? AND is_pull=?)", true, true),
+			statsQuery("SELECT repo.id FROM `repository` repo WHERE repo.num_closed_pulls!=(SELECT COUNT(*) FROM `issue` WHERE repo_id=repo.id AND is_closed=? AND is_merge_request=?)", true, true),
 			repoStatsCorrectNumClosedPulls,
 			"repository count 'num_closed_pulls'",
 		},

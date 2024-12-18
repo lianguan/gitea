@@ -122,7 +122,7 @@ type Issue struct {
 	isAssigneeLoaded  bool             `xorm:"-"`
 	IsClosed          bool             `xorm:"INDEX"`
 	IsRead            bool             `xorm:"-"`
-	IsPull            bool             `xorm:"INDEX"` // Indicates whether is a pull request or not.
+	IsMergeRequest            bool             `xorm:"INDEX"` // Indicates whether is a pull request or not.
 	PullRequest       *PullRequest     `xorm:"-"`
 	NumComments       int
 
@@ -237,7 +237,7 @@ func (issue *Issue) LoadPoster(ctx context.Context) (err error) {
 
 // LoadPullRequest loads pull request info
 func (issue *Issue) LoadPullRequest(ctx context.Context) (err error) {
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if issue.PullRequest == nil && issue.ID != 0 {
 			issue.PullRequest, err = GetPullRequestByIssueID(ctx, issue.ID)
 			if err != nil {
@@ -406,8 +406,8 @@ func (issue *Issue) APIURL(ctx context.Context) string {
 // HTMLURL returns the absolute URL to this issue.
 func (issue *Issue) HTMLURL() string {
 	var path string
-	if issue.IsPull {
-		path = "pulls"
+	if issue.IsMergeRequest {
+		path = "merge_requests"
 	} else {
 		path = "issues"
 	}
@@ -417,8 +417,8 @@ func (issue *Issue) HTMLURL() string {
 // Link returns the issue's relative URL.
 func (issue *Issue) Link() string {
 	var path string
-	if issue.IsPull {
-		path = "pulls"
+	if issue.IsMergeRequest {
+		path = "merge_requests"
 	} else {
 		path = "issues"
 	}
@@ -427,16 +427,16 @@ func (issue *Issue) Link() string {
 
 // DiffURL returns the absolute URL to this diff
 func (issue *Issue) DiffURL() string {
-	if issue.IsPull {
-		return fmt.Sprintf("%s/pulls/%d.diff", issue.Repo.HTMLURL(), issue.Index)
+	if issue.IsMergeRequest {
+		return fmt.Sprintf("%s/merge_requests/%d.diff", issue.Repo.HTMLURL(), issue.Index)
 	}
 	return ""
 }
 
 // PatchURL returns the absolute URL to this patch
 func (issue *Issue) PatchURL() string {
-	if issue.IsPull {
-		return fmt.Sprintf("%s/pulls/%d.patch", issue.Repo.HTMLURL(), issue.Index)
+	if issue.IsMergeRequest {
+		return fmt.Sprintf("%s/merge_requests/%d.patch", issue.Repo.HTMLURL(), issue.Index)
 	}
 	return ""
 }
@@ -480,7 +480,7 @@ func (issue *Issue) GetLastEventTimestamp() timeutil.TimeStamp {
 // GetLastEventLabel returns the localization label for the current issue.
 func (issue *Issue) GetLastEventLabel() string {
 	if issue.IsClosed {
-		if issue.IsPull && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
 			return "repo.pulls.merged_by"
 		}
 		return "repo.issues.closed_by"
@@ -505,7 +505,7 @@ func (issue *Issue) GetLastComment(ctx context.Context) (*Comment, error) {
 // GetLastEventLabelFake returns the localization label for the current issue without providing a link in the username.
 func (issue *Issue) GetLastEventLabelFake() string {
 	if issue.IsClosed {
-		if issue.IsPull && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
 			return "repo.pulls.merged_by_fake"
 		}
 		return "repo.issues.closed_by_fake"
@@ -725,7 +725,7 @@ func (issue *Issue) Pin(ctx context.Context, user *user_model.User) error {
 	}
 
 	var maxPin int
-	_, err := db.GetEngine(ctx).SQL("SELECT MAX(pin_order) FROM issue WHERE repo_id = ? AND is_pull = ?", issue.RepoID, issue.IsPull).Get(&maxPin)
+	_, err := db.GetEngine(ctx).SQL("SELECT MAX(pin_order) FROM issue WHERE repo_id = ? AND is_merge_request = ?", issue.RepoID, issue.IsMergeRequest).Get(&maxPin)
 	if err != nil {
 		return err
 	}
@@ -766,7 +766,7 @@ func (issue *Issue) Unpin(ctx context.Context, user *user_model.User) error {
 	}
 
 	// This sets the Pin for all Issues that come after the unpined Issue to the correct value
-	_, err := db.GetEngine(ctx).Exec("UPDATE issue SET pin_order = pin_order - 1 WHERE repo_id = ? AND is_pull = ? AND pin_order > ?", issue.RepoID, issue.IsPull, issue.PinOrder)
+	_, err := db.GetEngine(ctx).Exec("UPDATE issue SET pin_order = pin_order - 1 WHERE repo_id = ? AND is_merge_request = ? AND pin_order > ?", issue.RepoID, issue.IsMergeRequest, issue.PinOrder)
 	if err != nil {
 		return err
 	}
@@ -821,7 +821,7 @@ func (issue *Issue) MovePin(ctx context.Context, newPosition int) error {
 	defer committer.Close()
 
 	var maxPin int
-	_, err = db.GetEngine(dbctx).SQL("SELECT MAX(pin_order) FROM issue WHERE repo_id = ? AND is_pull = ?", issue.RepoID, issue.IsPull).Get(&maxPin)
+	_, err = db.GetEngine(dbctx).SQL("SELECT MAX(pin_order) FROM issue WHERE repo_id = ? AND is_merge_request = ?", issue.RepoID, issue.IsMergeRequest).Get(&maxPin)
 	if err != nil {
 		return err
 	}
@@ -832,13 +832,13 @@ func (issue *Issue) MovePin(ctx context.Context, newPosition int) error {
 	}
 
 	// Lower the Position of all Pinned Issue that came after the current Position
-	_, err = db.GetEngine(dbctx).Exec("UPDATE issue SET pin_order = pin_order - 1 WHERE repo_id = ? AND is_pull = ? AND pin_order > ?", issue.RepoID, issue.IsPull, issue.PinOrder)
+	_, err = db.GetEngine(dbctx).Exec("UPDATE issue SET pin_order = pin_order - 1 WHERE repo_id = ? AND is_merge_request = ? AND pin_order > ?", issue.RepoID, issue.IsMergeRequest, issue.PinOrder)
 	if err != nil {
 		return err
 	}
 
 	// Higher the Position of all Pinned Issues that comes after the new Position
-	_, err = db.GetEngine(dbctx).Exec("UPDATE issue SET pin_order = pin_order + 1 WHERE repo_id = ? AND is_pull = ? AND pin_order >= ?", issue.RepoID, issue.IsPull, newPosition)
+	_, err = db.GetEngine(dbctx).Exec("UPDATE issue SET pin_order = pin_order + 1 WHERE repo_id = ? AND is_merge_request = ? AND pin_order >= ?", issue.RepoID, issue.IsMergeRequest, newPosition)
 	if err != nil {
 		return err
 	}
@@ -862,7 +862,7 @@ func GetPinnedIssues(ctx context.Context, repoID int64, isPull bool) (IssueList,
 	err := db.GetEngine(ctx).
 		Table("issue").
 		Where("repo_id = ?", repoID).
-		And("is_pull = ?", isPull).
+		And("is_merge_request = ?", isPull).
 		And("pin_order > 0").
 		OrderBy("pin_order").
 		Find(&issues)
@@ -881,7 +881,7 @@ func GetPinnedIssues(ctx context.Context, repoID int64, isPull bool) (IssueList,
 // IsNewPinAllowed returns if a new Issue or Pull request can be pinned
 func IsNewPinAllowed(ctx context.Context, repoID int64, isPull bool) (bool, error) {
 	var maxPin int
-	_, err := db.GetEngine(ctx).SQL("SELECT COUNT(pin_order) FROM issue WHERE repo_id = ? AND is_pull = ? AND pin_order > 0", repoID, isPull).Get(&maxPin)
+	_, err := db.GetEngine(ctx).SQL("SELECT COUNT(pin_order) FROM issue WHERE repo_id = ? AND is_merge_request = ? AND pin_order > 0", repoID, isPull).Get(&maxPin)
 	if err != nil {
 		return false, err
 	}

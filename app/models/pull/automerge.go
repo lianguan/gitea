@@ -16,7 +16,7 @@ import (
 // AutoMerge represents a pull request scheduled for merging when checks succeed
 type AutoMerge struct {
 	ID          int64                 `xorm:"pk autoincr"`
-	PullID      int64                 `xorm:"UNIQUE"`
+	MergeRequestID      int64                 `xorm:"UNIQUE"`
 	DoerID      int64                 `xorm:"INDEX NOT NULL"`
 	Doer        *user_model.User      `xorm:"-"`
 	MergeStyle  repo_model.MergeStyle `xorm:"varchar(30)"`
@@ -35,11 +35,11 @@ func init() {
 
 // ErrAlreadyScheduledToAutoMerge represents a "PullRequestHasMerged"-error
 type ErrAlreadyScheduledToAutoMerge struct {
-	PullID int64
+	MergeRequestID int64
 }
 
 func (err ErrAlreadyScheduledToAutoMerge) Error() string {
-	return fmt.Sprintf("pull request is already scheduled to auto merge when checks succeed [pull_id: %d]", err.PullID)
+	return fmt.Sprintf("pull request is already scheduled to auto merge when checks succeed [merge_request_id: %d]", err.MergeRequestID)
 }
 
 // IsErrAlreadyScheduledToAutoMerge checks if an error is a ErrAlreadyScheduledToAutoMerge.
@@ -49,27 +49,27 @@ func IsErrAlreadyScheduledToAutoMerge(err error) bool {
 }
 
 // ScheduleAutoMerge schedules a pull request to be merged when all checks succeed
-func ScheduleAutoMerge(ctx context.Context, doer *user_model.User, pullID int64, style repo_model.MergeStyle, message string) error {
+func ScheduleAutoMerge(ctx context.Context, doer *user_model.User, mergeRequestID int64, style repo_model.MergeStyle, message string) error {
 	// Check if we already have a merge scheduled for that pull request
-	if exists, _, err := GetScheduledMergeByPullID(ctx, pullID); err != nil {
+	if exists, _, err := GetScheduledMergeByMergeRequestID(ctx, mergeRequestID); err != nil {
 		return err
 	} else if exists {
-		return ErrAlreadyScheduledToAutoMerge{PullID: pullID}
+		return ErrAlreadyScheduledToAutoMerge{MergeRequestID: mergeRequestID}
 	}
 
 	_, err := db.GetEngine(ctx).Insert(&AutoMerge{
 		DoerID:     doer.ID,
-		PullID:     pullID,
+		MergeRequestID:     mergeRequestID,
 		MergeStyle: style,
 		Message:    message,
 	})
 	return err
 }
 
-// GetScheduledMergeByPullID gets a scheduled pull request merge by pull request id
-func GetScheduledMergeByPullID(ctx context.Context, pullID int64) (bool, *AutoMerge, error) {
+// GetScheduledMergeByMergeRequestID gets a scheduled pull request merge by pull request id
+func GetScheduledMergeByMergeRequestID(ctx context.Context, mergeRequestID int64) (bool, *AutoMerge, error) {
 	scheduledPRM := &AutoMerge{}
-	exists, err := db.GetEngine(ctx).Where("pull_id = ?", pullID).Get(scheduledPRM)
+	exists, err := db.GetEngine(ctx).Where("merge_request_id = ?", mergeRequestID).Get(scheduledPRM)
 	if err != nil || !exists {
 		return false, nil, err
 	}
@@ -84,12 +84,12 @@ func GetScheduledMergeByPullID(ctx context.Context, pullID int64) (bool, *AutoMe
 }
 
 // DeleteScheduledAutoMerge delete a scheduled pull request
-func DeleteScheduledAutoMerge(ctx context.Context, pullID int64) error {
-	exist, scheduledPRM, err := GetScheduledMergeByPullID(ctx, pullID)
+func DeleteScheduledAutoMerge(ctx context.Context, mergeRequestID int64) error {
+	exist, scheduledPRM, err := GetScheduledMergeByMergeRequestID(ctx, mergeRequestID)
 	if err != nil {
 		return err
 	} else if !exist {
-		return db.ErrNotExist{Resource: "auto_merge", ID: pullID}
+		return db.ErrNotExist{Resource: "auto_merge", ID: mergeRequestID}
 	}
 
 	_, err = db.GetEngine(ctx).ID(scheduledPRM.ID).Delete(&AutoMerge{})

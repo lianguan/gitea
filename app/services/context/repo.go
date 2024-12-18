@@ -157,7 +157,7 @@ func (r *Repository) CanUseTimetracker(ctx context.Context, issue *issues_model.
 	// 2. Is the user a contributor, admin, poster or assignee and do the repository policies require this?
 	isAssigned, _ := issues_model.IsUserAssignedToIssue(ctx, issue, user)
 	return r.Repository.IsTimetrackerEnabled(ctx) && (!r.Repository.AllowOnlyContributorsToTrackTime(ctx) ||
-		r.Permission.CanWriteIssuesOrPulls(issue.IsPull) || issue.IsPoster(user.ID) || isAssigned)
+		r.Permission.CanWriteIssuesOrPulls(issue.IsMergeRequest) || issue.IsPoster(user.ID) || isAssigned)
 }
 
 // CanCreateIssueDependencies returns whether or not a user can create dependencies.
@@ -541,7 +541,7 @@ func RepoAssignment(ctx *Context) context.CancelFunc {
 	ctx.Data["RepoOwnerIsOrganization"] = repo.Owner.IsOrganization()
 	ctx.Data["CanWriteCode"] = ctx.Repo.CanWrite(unit_model.TypeCode)
 	ctx.Data["CanWriteIssues"] = ctx.Repo.CanWrite(unit_model.TypeIssues)
-	ctx.Data["CanWritePulls"] = ctx.Repo.CanWrite(unit_model.TypePullRequests)
+	ctx.Data["CanWritePulls"] = ctx.Repo.CanWrite(unit_model.TypeMergeRequests)
 	ctx.Data["CanWriteActions"] = ctx.Repo.CanWrite(unit_model.TypeActions)
 
 	canSignedUserFork, err := repo_module.CanUserForkRepo(ctx, ctx.Doer, ctx.Repo.Repository)

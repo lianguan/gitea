@@ -250,7 +250,7 @@ func UserCreateIssueRepoCond(id string, userID int64, isPull bool) builder.Cond 
 			builder.Select("issue.repo_id").From("issue").
 				Where(builder.Eq{
 					"issue.poster_id": userID,
-					"issue.is_pull":   isPull,
+					"issue.is_merge_request":   isPull,
 				}),
 		),
 	)

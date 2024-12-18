@@ -242,7 +242,7 @@ func fixBrokenRepoUnit16961(repoUnit *repo_model.RepoUnit, bs []byte) (fixed boo
 		if fixed, err := fixExternalTrackerConfig16961(bs, cfg); !fixed {
 			return false, err
 		}
-	case unit.TypePullRequests:
+	case unit.TypeMergeRequests:
 		cfg := &repo_model.PullRequestsConfig{}
 		repoUnit.Config = cfg
 

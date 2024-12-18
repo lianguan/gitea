@@ -380,7 +380,7 @@ func ClearIssueLabels(ctx context.Context, issue *Issue, doer *user_model.User) 
 	if err != nil {
 		return err
 	}
-	if !perm.CanWriteIssuesOrPulls(issue.IsPull) {
+	if !perm.CanWriteIssuesOrPulls(issue.IsMergeRequest) {
 		return ErrRepoLabelNotExist{}
 	}
 

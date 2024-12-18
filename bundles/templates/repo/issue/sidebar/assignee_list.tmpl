@@ -29,7 +29,7 @@
 	<div class="ui list tw-flex tw-flex-row tw-gap-2">
 		<span class="item empty-list {{if $issueAssignees}}tw-hidden{{end}}">{{ctx.Locale.Tr "repo.issues.new.no_assignees"}}</span>
 		{{range $issueAssignees}}
-			<a class="item muted" href="{{$pageMeta.RepoLink}}/{{if $pageMeta.IsPullRequest}}pulls{{else}}issues{{end}}?assignee={{.ID}}">
+			<a class="item muted" href="{{$pageMeta.RepoLink}}/{{if $pageMeta.IsMergeRequest}}pulls{{else}}issues{{end}}?assignee={{.ID}}">
 					{{ctx.AvatarUtils.Avatar . 20}} {{.GetDisplayName}}
 			</a>
 		{{end}}

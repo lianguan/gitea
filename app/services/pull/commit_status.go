@@ -100,8 +100,8 @@ func IsCommitStatusContextSuccess(commitStatuses []*git_model.CommitStatus, requ
 	return true
 }
 
-// IsPullCommitStatusPass returns if all required status checks PASS
-func IsPullCommitStatusPass(ctx context.Context, pr *issues_model.PullRequest) (bool, error) {
+// IsMergeRequestCommitStatusPass returns if all required status checks PASS
+func IsMergeRequestCommitStatusPass(ctx context.Context, pr *issues_model.PullRequest) (bool, error) {
 	pb, err := git_model.GetFirstMatchProtectedBranchRule(ctx, pr.BaseRepoID, pr.BaseBranch)
 	if err != nil {
 		return false, errors.Wrap(err, "GetLatestCommitStatus")

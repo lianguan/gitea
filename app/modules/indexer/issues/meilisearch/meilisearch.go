@@ -59,7 +59,7 @@ func NewIndexer(url, apiKey, indexerName string) *Indexer {
 		FilterableAttributes: []string{
 			"repo_id",
 			"is_public",
-			"is_pull",
+			"is_merge_request",
 			"is_closed",
 			"is_archived",
 			"label_ids",
@@ -140,8 +140,8 @@ func (b *Indexer) Search(ctx context.Context, options *internal.SearchOptions) (
 		query.And(q)
 	}
 
-	if options.IsPull.Has() {
-		query.And(inner_meilisearch.NewFilterEq("is_pull", options.IsPull.Value()))
+	if options.IsMergeRequest.Has() {
+		query.And(inner_meilisearch.NewFilterEq("is_merge_request", options.IsMergeRequest.Value()))
 	}
 	if options.IsClosed.Has() {
 		query.And(inner_meilisearch.NewFilterEq("is_closed", options.IsClosed.Value()))

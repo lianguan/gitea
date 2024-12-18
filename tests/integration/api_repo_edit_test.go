@@ -66,7 +66,7 @@ func getRepoEditOptionFromRepo(repo *repo_model.Repository) *api.EditRepoOption 
 	allowRebaseMerge := false
 	allowSquash := false
 	allowFastForwardOnly := false
-	if unit, err := repo.GetUnit(db.DefaultContext, unit_model.TypePullRequests); err == nil {
+	if unit, err := repo.GetUnit(db.DefaultContext, unit_model.TypeMergeRequests); err == nil {
 		config := unit.PullRequestsConfig()
 		hasPullRequests = true
 		ignoreWhitespaceConflicts = config.IgnoreWhitespaceConflicts

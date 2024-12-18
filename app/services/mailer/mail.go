@@ -249,7 +249,7 @@ func composeIssueCommentMessages(ctx *mailCommentContext, lang string, recipient
 		"Link":            link,
 		"Issue":           ctx.Issue,
 		"Comment":         ctx.Comment,
-		"IsPull":          ctx.Issue.IsPull,
+		"IsMergeRequest":          ctx.Issue.IsMergeRequest,
 		"User":            ctx.Issue.Repo.MustOwner(ctx),
 		"Repo":            ctx.Issue.Repo.FullName(),
 		"Doer":            ctx.Doer,
@@ -358,8 +358,8 @@ func composeIssueCommentMessages(ctx *mailCommentContext, lang string, recipient
 
 func generateMessageIDForIssue(issue *issues_model.Issue, comment *issues_model.Comment, actionType activities_model.ActionType) string {
 	var path string
-	if issue.IsPull {
-		path = "pulls"
+	if issue.IsMergeRequest {
+		path = "merge_requests"
 	} else {
 		path = "issues"
 	}
@@ -472,7 +472,7 @@ func SendIssueAssignedMail(ctx context.Context, issue *issues_model.Issue, doer 
 func actionToTemplate(issue *issues_model.Issue, actionType activities_model.ActionType,
 	commentType issues_model.CommentType, reviewType issues_model.ReviewType,
 ) (typeName, name, template string) {
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		typeName = "pull"
 	} else {
 		typeName = "issue"

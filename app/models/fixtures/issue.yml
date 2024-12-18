@@ -9,7 +9,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 2
   created_unix: 946684800
   updated_unix: 978307200
@@ -26,7 +26,7 @@
   milestone_id: 1
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 946684810
   updated_unix: 978307190
@@ -43,7 +43,7 @@
   milestone_id: 3
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 946684820
   updated_unix: 978307180
@@ -60,7 +60,7 @@
   milestone_id: 0
   priority: 0
   is_closed: true
-  is_pull: false
+  is_merge_request: false
   num_comments: 1
   created_unix: 946684830
   updated_unix: 978307200
@@ -77,7 +77,7 @@
   milestone_id: 0
   priority: 0
   is_closed: true
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 946684840
   updated_unix: 978307200
@@ -94,7 +94,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 946684850
   updated_unix: 978307200
@@ -111,7 +111,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 946684830
   updated_unix: 978307200
@@ -128,7 +128,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 946684820
   updated_unix: 978307180
@@ -145,7 +145,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 946684820
   updated_unix: 978307180
@@ -162,7 +162,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   deadline_unix: 1019307200
   created_unix: 946684830
@@ -180,7 +180,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 1579194806
   updated_unix: 1579194806
@@ -197,7 +197,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -214,7 +214,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -231,7 +231,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -248,7 +248,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -265,7 +265,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -282,7 +282,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 1602935696
   updated_unix: 1602935696
@@ -299,7 +299,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: false
+  is_merge_request: false
   num_comments: 0
   created_unix: 946684830
   updated_unix: 978307200
@@ -316,7 +316,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 946684830
   updated_unix: 978307200
@@ -333,7 +333,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 978307210
   updated_unix: 978307210
@@ -350,7 +350,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 1707270422
   updated_unix: 1707270422
@@ -367,7 +367,7 @@
   milestone_id: 0
   priority: 0
   is_closed: false
-  is_pull: true
+  is_merge_request: true
   num_comments: 0
   created_unix: 1707270422
   updated_unix: 1707270422

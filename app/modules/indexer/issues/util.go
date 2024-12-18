@@ -99,7 +99,7 @@ func getIssueIndexerData(ctx context.Context, issueID int64) (*internal.IndexerD
 		Title:              issue.Title,
 		Content:            issue.Content,
 		Comments:           comments,
-		IsPull:             issue.IsPull,
+		IsMergeRequest:             issue.IsMergeRequest,
 		IsClosed:           issue.IsClosed,
 		IsArchived:         issue.Repo.IsArchived,
 		LabelIDs:           labels,

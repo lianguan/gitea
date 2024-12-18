@@ -80,7 +80,7 @@ func TestViewIssuesSortByType(t *testing.T) {
 	expectedNumIssues := unittest.GetCount(t,
 		&issues_model.Issue{RepoID: repo.ID, PosterID: user.ID},
 		unittest.Cond("is_closed=?", false),
-		unittest.Cond("is_pull=?", false),
+		unittest.Cond("is_merge_request=?", false),
 	)
 	if expectedNumIssues > setting.UI.IssuePagingNum {
 		expectedNumIssues = setting.UI.IssuePagingNum
@@ -113,7 +113,7 @@ func TestViewIssuesKeyword(t *testing.T) {
 	issuesSelection.Each(func(_ int, selection *goquery.Selection) {
 		issue := getIssue(t, repo.ID, selection)
 		assert.False(t, issue.IsClosed)
-		assert.False(t, issue.IsPull)
+		assert.False(t, issue.IsMergeRequest)
 		assertMatch(t, issue, keyword)
 	})
 }
@@ -362,7 +362,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    1,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: 0,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNone,
 	})
 
@@ -373,7 +373,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    1,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: 0,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNeutered,
 	})
 
@@ -384,7 +384,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    1,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: 0,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNone,
 	})
 
@@ -395,7 +395,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    1,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: 0,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNeutered,
 	})
 
@@ -407,7 +407,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    1,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: commentID,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNone,
 	}
 	unittest.AssertExistsAndLoadBean(t, comment)
@@ -419,7 +419,7 @@ func TestIssueCrossReference(t *testing.T) {
 		RefRepoID:    10,
 		RefIssueID:   issueRef.ID,
 		RefCommentID: 0,
-		RefIsPull:    false,
+		RefIsMergeRequest:    false,
 		RefAction:    references.XRefActionNone,
 	})
 }

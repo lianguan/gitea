@@ -55,7 +55,7 @@ func (m *mailNotifier) NewIssue(ctx context.Context, issue *issues_model.Issue, 
 
 func (m *mailNotifier) IssueChangeStatus(ctx context.Context, doer *user_model.User, commitID string, issue *issues_model.Issue, actionComment *issues_model.Comment, isClosed bool) {
 	var actionType activities_model.ActionType
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if isClosed {
 			actionType = activities_model.ActionClosePullRequest
 		} else {
@@ -79,7 +79,7 @@ func (m *mailNotifier) IssueChangeTitle(ctx context.Context, doer *user_model.Us
 		log.Error("issue.LoadPullRequest: %v", err)
 		return
 	}
-	if issue.IsPull && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.PullRequest.IsWorkInProgress(ctx) {
+	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.PullRequest.IsWorkInProgress(ctx) {
 		if err := MailParticipants(ctx, issue, doer, activities_model.ActionPullRequestReadyForReview, nil); err != nil {
 			log.Error("MailParticipants: %v", err)
 		}

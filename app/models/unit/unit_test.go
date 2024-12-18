@@ -29,7 +29,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		setting.Repository.DefaultForkRepoUnits = []string{"repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
-		assert.Equal(t, []Type{TypeCode, TypeReleases, TypePullRequests}, DefaultRepoUnits)
+		assert.Equal(t, []Type{TypeCode, TypeReleases, TypeMergeRequests}, DefaultRepoUnits)
 		assert.Equal(t, []Type{TypeReleases}, DefaultForkRepoUnits)
 	})
 	t.Run("invalid", func(t *testing.T) {
@@ -49,7 +49,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		setting.Repository.DefaultForkRepoUnits = []string{"invalid.3", "repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
-		assert.Equal(t, []Type{TypeCode, TypeReleases, TypePullRequests}, DefaultRepoUnits)
+		assert.Equal(t, []Type{TypeCode, TypeReleases, TypeMergeRequests}, DefaultRepoUnits)
 		assert.Equal(t, []Type{TypeReleases}, DefaultForkRepoUnits)
 	})
 	t.Run("duplicate", func(t *testing.T) {
@@ -69,7 +69,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		setting.Repository.DefaultForkRepoUnits = []string{"repo.releases", "repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
-		assert.Equal(t, []Type{TypeCode, TypeReleases, TypePullRequests}, DefaultRepoUnits)
+		assert.Equal(t, []Type{TypeCode, TypeReleases, TypeMergeRequests}, DefaultRepoUnits)
 		assert.Equal(t, []Type{TypeReleases}, DefaultForkRepoUnits)
 	})
 	t.Run("empty_default", func(t *testing.T) {
@@ -89,7 +89,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		setting.Repository.DefaultForkRepoUnits = []string{"repo.releases", "repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
-		assert.ElementsMatch(t, []Type{TypeCode, TypePullRequests, TypeReleases, TypeWiki, TypePackages, TypeProjects, TypeActions}, DefaultRepoUnits)
+		assert.ElementsMatch(t, []Type{TypeCode, TypeMergeRequests, TypeReleases, TypeWiki, TypePackages, TypeProjects, TypeActions}, DefaultRepoUnits)
 		assert.Equal(t, []Type{TypeReleases}, DefaultForkRepoUnits)
 	})
 }

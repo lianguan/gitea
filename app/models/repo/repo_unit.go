@@ -260,7 +260,7 @@ func (r *RepoUnit) BeforeSet(colName string, val xorm.Cell) {
 			r.Config = new(ExternalWikiConfig)
 		case unit.TypeExternalTracker:
 			r.Config = new(ExternalTrackerConfig)
-		case unit.TypePullRequests:
+		case unit.TypeMergeRequests:
 			r.Config = new(PullRequestsConfig)
 		case unit.TypeIssues:
 			r.Config = new(IssuesConfig)
@@ -286,7 +286,7 @@ func (r *RepoUnit) CodeConfig() *UnitConfig {
 	return r.Config.(*UnitConfig)
 }
 
-// PullRequestsConfig returns config for unit.TypePullRequests
+// PullRequestsConfig returns config for unit.TypeMergeRequests
 func (r *RepoUnit) PullRequestsConfig() *PullRequestsConfig {
 	return r.Config.(*PullRequestsConfig)
 }

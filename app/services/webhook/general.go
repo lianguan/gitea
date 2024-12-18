@@ -82,7 +82,7 @@ func getIssuesInfo(p *api.IssuePayload) (issueTitle, link, by, operator, operate
 func getIssuesCommentInfo(p *api.IssueCommentPayload) (title, link, by, operator string) {
 	title = fmt.Sprintf("[Comment-%s #%d]: %s\n%s", p.Repository.FullName, p.Issue.Index, p.Action, p.Issue.Title)
 	link = p.Issue.HTMLURL
-	if p.IsPull {
+	if p.IsMergeRequest {
 		by = fmt.Sprintf("PullRequest by %s", p.Issue.Poster.UserName)
 	} else {
 		by = fmt.Sprintf("Issue by %s", p.Issue.Poster.UserName)
@@ -260,7 +260,7 @@ func getIssueCommentPayloadInfo(p *api.IssueCommentPayload, linkFormatter linkFo
 	var text, typ, titleLink string
 	color := yellowColor
 
-	if p.IsPull {
+	if p.IsMergeRequest {
 		typ = "pull request"
 		titleLink = linkFormatter(p.Comment.PRURL, issueTitle)
 	} else {
@@ -271,7 +271,7 @@ func getIssueCommentPayloadInfo(p *api.IssueCommentPayload, linkFormatter linkFo
 	switch p.Action {
 	case api.HookIssueCommentCreated:
 		text = fmt.Sprintf("[%s] New comment on %s %s", repoLink, typ, titleLink)
-		if p.IsPull {
+		if p.IsMergeRequest {
 			color = greenColorLight
 		} else {
 			color = orangeColorLight

@@ -82,7 +82,7 @@ func mailIssueCommentToParticipants(ctx *mailCommentContext, mentions []*user_mo
 
 	// =========== Repo watchers ===========
 	// Make repo watchers last, since it's likely the list with the most users
-	if !(ctx.Issue.IsPull && ctx.Issue.PullRequest.IsWorkInProgress(ctx) && ctx.ActionType != activities_model.ActionCreatePullRequest) {
+	if !(ctx.Issue.IsMergeRequest && ctx.Issue.PullRequest.IsWorkInProgress(ctx) && ctx.ActionType != activities_model.ActionCreatePullRequest) {
 		ids, err = repo_model.GetRepoWatchersIDs(ctx, ctx.Issue.RepoID)
 		if err != nil {
 			return fmt.Errorf("GetRepoWatchersIDs(%d): %w", ctx.Issue.RepoID, err)
@@ -122,8 +122,8 @@ func mailIssueCommentToParticipants(ctx *mailCommentContext, mentions []*user_mo
 
 func mailIssueCommentBatch(ctx *mailCommentContext, users []*user_model.User, visited container.Set[int64], fromMention bool) error {
 	checkUnit := unit.TypeIssues
-	if ctx.Issue.IsPull {
-		checkUnit = unit.TypePullRequests
+	if ctx.Issue.IsMergeRequest {
+		checkUnit = unit.TypeMergeRequests
 	}
 
 	langMap := make(map[string][]*user_model.User)

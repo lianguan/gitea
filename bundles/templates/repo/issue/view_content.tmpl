@@ -67,7 +67,7 @@
 
 			{{template "repo/issue/view_content/comments" .}}
 
-			{{if and .Issue.IsPull (not $.Repository.IsArchived)}}
+			{{if and .Issue.IsMergeRequest (not $.Repository.IsArchived)}}
 				{{template "repo/issue/view_content/pull".}}
 			{{end}}
 
@@ -91,7 +91,7 @@
 												</button>
 											{{else}}
 												{{$closeTranslationKey := "repo.issues.close"}}
-												{{if .Issue.IsPull}}
+												{{if .Issue.IsMergeRequest}}
 													{{$closeTranslationKey = "repo.pulls.close"}}
 												{{end}}
 												<button id="status-button" class="ui red basic button" data-status="{{ctx.Locale.Tr $closeTranslationKey}}" data-status-and-comment="{{ctx.Locale.Tr "repo.issues.close_comment_issue"}}" name="status" value="close">
@@ -110,7 +110,7 @@
 				</div>
 				{{else if .Repository.IsArchived}}
 					<div class="ui warning message tw-text-center">
-						{{if .Issue.IsPull}}
+						{{if .Issue.IsMergeRequest}}
 							{{ctx.Locale.Tr "repo.archive.pull.nocomment"}}
 						{{else}}
 							{{ctx.Locale.Tr "repo.archive.issue.nocomment"}}
@@ -120,7 +120,7 @@
 			{{else}} {{/* not .IsSigned */}}
 				{{if .Repository.IsArchived}}
 					<div class="ui warning message tw-text-center">
-						{{if .Issue.IsPull}}
+						{{if .Issue.IsMergeRequest}}
 							{{ctx.Locale.Tr "repo.archive.pull.nocomment"}}
 						{{else}}
 							{{ctx.Locale.Tr "repo.archive.issue.nocomment"}}

@@ -72,12 +72,12 @@ func (h *ReplyHandler) Handle(ctx context.Context, content *MailContent, doer *u
 	}
 
 	// Locked issues require write permissions
-	if issue.IsLocked && !perm.CanWriteIssuesOrPulls(issue.IsPull) && !doer.IsAdmin {
+	if issue.IsLocked && !perm.CanWriteIssuesOrPulls(issue.IsMergeRequest) && !doer.IsAdmin {
 		log.Debug("can't write issue or pull")
 		return nil
 	}
 
-	if !perm.CanReadIssuesOrPulls(issue.IsPull) {
+	if !perm.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		log.Debug("can't read issue or pull")
 		return nil
 	}
@@ -168,7 +168,7 @@ func (h *UnsubscribeHandler) Handle(ctx context.Context, _ *MailContent, doer *u
 			return err
 		}
 
-		if !perm.CanReadIssuesOrPulls(issue.IsPull) {
+		if !perm.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 			log.Debug("can't read issue or pull")
 			return nil
 		}

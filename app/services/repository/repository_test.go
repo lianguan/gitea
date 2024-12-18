@@ -23,7 +23,7 @@ func TestLinkedRepository(t *testing.T) {
 		expectedUnitType unit.Type
 	}{
 		{"LinkedIssue", 1, &repo_model.Repository{ID: 1}, unit.TypeIssues},
-		{"LinkedComment", 3, &repo_model.Repository{ID: 1}, unit.TypePullRequests},
+		{"LinkedComment", 3, &repo_model.Repository{ID: 1}, unit.TypeMergeRequests},
 		{"LinkedRelease", 9, &repo_model.Repository{ID: 1}, unit.TypeReleases},
 		{"Notlinked", 10, nil, -1},
 	}

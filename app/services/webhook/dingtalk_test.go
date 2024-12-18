@@ -120,7 +120,7 @@ func TestDingTalkPayload(t *testing.T) {
 		assert.Equal(t, "[test/repo] Pull request opened: #12 Fix bug by user1\r\n\r\nfixes bug #2", pl.ActionCard.Text)
 		assert.Equal(t, "#12 Fix bug", pl.ActionCard.Title)
 		assert.Equal(t, "view pull request", pl.ActionCard.SingleTitle)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12", parseRealSingleURL(pl.ActionCard.SingleURL))
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12", parseRealSingleURL(pl.ActionCard.SingleURL))
 	})
 
 	t.Run("PullRequestComment", func(t *testing.T) {
@@ -132,7 +132,7 @@ func TestDingTalkPayload(t *testing.T) {
 		assert.Equal(t, "[test/repo] New comment on pull request #12 Fix bug by user1\r\n\r\nchanges requested", pl.ActionCard.Text)
 		assert.Equal(t, "#12 Fix bug", pl.ActionCard.Title)
 		assert.Equal(t, "view issue comment", pl.ActionCard.SingleTitle)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12#issuecomment-4", parseRealSingleURL(pl.ActionCard.SingleURL))
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12#issuecomment-4", parseRealSingleURL(pl.ActionCard.SingleURL))
 	})
 
 	t.Run("Review", func(t *testing.T) {
@@ -145,7 +145,7 @@ func TestDingTalkPayload(t *testing.T) {
 		assert.Equal(t, "[test/repo] Pull request review approved : #12 Fix bug\r\n\r\ngood job", pl.ActionCard.Text)
 		assert.Equal(t, "[test/repo] Pull request review approved : #12 Fix bug", pl.ActionCard.Title)
 		assert.Equal(t, "view pull request", pl.ActionCard.SingleTitle)
-		assert.Equal(t, "http://localhost:3000/test/repo/pulls/12", parseRealSingleURL(pl.ActionCard.SingleURL))
+		assert.Equal(t, "http://localhost:3000/test/repo/merge_requests/12", parseRealSingleURL(pl.ActionCard.SingleURL))
 	})
 
 	t.Run("Repository", func(t *testing.T) {

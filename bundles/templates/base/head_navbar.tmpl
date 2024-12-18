@@ -17,12 +17,12 @@
 					{{svg "octicon-issue-opened"}} {{ctx.Locale.Tr "issues"}}
 				</a>
 				{{end}}
-				{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
-				<a class="item" href="{{AppSubUrl}}/pulls">
+				{{if not ctx.Consts.RepoUnitTypeMergeRequests.UnitGlobalDisabled}}
+				<a class="item" href="{{AppSubUrl}}/merge_requests">
 					{{svg "octicon-git-pull-request"}} {{ctx.Locale.Tr "pull_requests"}}
 				</a>
 				{{end}}
-				{{if not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled)}}
+				{{if not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypeMergeRequests.UnitGlobalDisabled)}}
 					{{if .ShowMilestonesDashboardPage}}
 					<a class="item" href="{{AppSubUrl}}/milestones">
 					{{svg "octicon-milestone"}} {{ctx.Locale.Tr "milestones"}}
@@ -92,8 +92,8 @@
 			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
 				<a class="item not-mobile tw-mx-0{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues" data-tooltip-content="{{ctx.Locale.Tr "issues"}}" >{{svg "octicon-issue-opened"}}</a>
 			{{end}}
-			{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
-				<a class="item not-mobile tw-mx-0{{if .PageIsPulls}} active{{end}}" href="{{AppSubUrl}}/pulls" data-tooltip-content="{{ctx.Locale.Tr "pull_requests"}}" >{{svg "octicon-git-pull-request"}}</a>
+			{{if not ctx.Consts.RepoUnitTypeMergeRequests.UnitGlobalDisabled}}
+				<a class="item not-mobile tw-mx-0{{if .PageIsMergeRequests}} active{{end}}" href="{{AppSubUrl}}/merge_requests" data-tooltip-content="{{ctx.Locale.Tr "pull_requests"}}" >{{svg "octicon-git-pull-request"}}</a>
 			{{end}}
 			{{if and EnableTimetracking .ActiveStopwatch}}
 			<a class="item not-mobile active-stopwatch tw-mx-0" href="{{.ActiveStopwatch.IssueLink}}" title="{{ctx.Locale.Tr "active_stopwatch"}}" data-seconds="{{.ActiveStopwatch.Seconds}}">

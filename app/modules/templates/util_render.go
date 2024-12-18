@@ -211,8 +211,8 @@ func (ut *RenderUtils) MarkdownToHtml(input string) template.HTML { //nolint:rev
 }
 
 func (ut *RenderUtils) RenderLabels(labels []*issues_model.Label, repoLink string, issue *issues_model.Issue) template.HTML {
-	isPullRequest := issue != nil && issue.IsPull
-	baseLink := fmt.Sprintf("%s/%s", repoLink, util.Iif(isPullRequest, "pulls", "issues"))
+	isPullRequest := issue != nil && issue.IsMergeRequest
+	baseLink := fmt.Sprintf("%s/%s", repoLink, util.Iif(isPullRequest, "merge_requests", "issues"))
 	htmlCode := `<span class="labels-list">`
 	for _, label := range labels {
 		// Protect against nil value in labels - shouldn't happen but would cause a panic if so

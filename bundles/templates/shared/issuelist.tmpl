@@ -14,7 +14,7 @@
 				<div class="flex-item-header">
 					<div class="flex-item-title">
 						<a class="tw-no-underline issue-title" href="{{if .Link}}{{.Link}}{{else}}{{$.Link}}/{{.Index}}{{end}}">{{.Title | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
-						{{if .IsPull}}
+						{{if .IsMergeRequest}}
 							{{if (index $.CommitStatuses .PullRequest.ID)}}
 								{{template "repo/commit_statuses" dict "Status" (index $.CommitLastStatus .PullRequest.ID) "Statuses" (index $.CommitStatuses .PullRequest.ID)}}
 							{{end}}
@@ -68,7 +68,7 @@
 					{{else}}
 						{{ctx.Locale.Tr .GetLastEventLabelFake $timeStr .Poster.GetDisplayName}}
 					{{end}}
-					{{if .IsPull}}
+					{{if .IsMergeRequest}}
 						<div class="branches flex-text-inline">
 							<div class="branch">
 								<a href="{{.PullRequest.BaseRepo.Link}}/src/branch/{{PathEscapeSegments .PullRequest.BaseBranch}}">
@@ -121,7 +121,7 @@
 							</span>
 						</span>
 					{{end}}
-					{{if .IsPull}}
+					{{if .IsMergeRequest}}
 						{{$approveOfficial := call $approvalCounts .ID "approve"}}
 						{{$rejectOfficial := call $approvalCounts .ID "reject"}}
 						{{$waitingOfficial := call $approvalCounts .ID "waiting"}}

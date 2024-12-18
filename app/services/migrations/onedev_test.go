@@ -73,7 +73,7 @@ func TestOneDevDownloadRepo(t *testing.T) {
 				},
 			},
 			ForeignIndex: 398,
-			Context:      onedevIssueContext{IsPullRequest: false},
+			Context:      onedevIssueContext{IsMergeRequest: false},
 		},
 		{
 			Number:     3,
@@ -90,14 +90,14 @@ func TestOneDevDownloadRepo(t *testing.T) {
 				},
 			},
 			ForeignIndex: 397,
-			Context:      onedevIssueContext{IsPullRequest: false},
+			Context:      onedevIssueContext{IsMergeRequest: false},
 		},
 	}, issues)
 
 	comments, _, err := downloader.GetComments(&base.Issue{
 		Number:       4,
 		ForeignIndex: 398,
-		Context:      onedevIssueContext{IsPullRequest: false},
+		Context:      onedevIssueContext{IsMergeRequest: false},
 	})
 	assert.NoError(t, err)
 	assertCommentsEqual(t, []*base.Comment{
@@ -132,7 +132,7 @@ func TestOneDevDownloadRepo(t *testing.T) {
 				RepoName: "go-gitea-test_repo",
 			},
 			ForeignIndex: 186,
-			Context:      onedevIssueContext{IsPullRequest: true},
+			Context:      onedevIssueContext{IsMergeRequest: true},
 		},
 	}, prs)
 

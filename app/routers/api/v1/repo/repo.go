@@ -880,17 +880,17 @@ func updateRepoUnits(ctx *context.APIContext, opts api.EditRepoOption) error {
 		}
 	}
 
-	currHasPullRequests := repo.UnitEnabled(ctx, unit_model.TypePullRequests)
+	currHasPullRequests := repo.UnitEnabled(ctx, unit_model.TypeMergeRequests)
 	newHasPullRequests := currHasPullRequests
 	if opts.HasPullRequests != nil {
 		newHasPullRequests = *opts.HasPullRequests
 	}
 	if currHasPullRequests || newHasPullRequests {
-		if newHasPullRequests && !unit_model.TypePullRequests.UnitGlobalDisabled() {
+		if newHasPullRequests && !unit_model.TypeMergeRequests.UnitGlobalDisabled() {
 			// We do allow setting individual PR settings through the API, so
 			// we get the config settings and then set them
 			// if those settings were provided in the opts.
-			unit, err := repo.GetUnit(ctx, unit_model.TypePullRequests)
+			unit, err := repo.GetUnit(ctx, unit_model.TypeMergeRequests)
 			var config *repo_model.PullRequestsConfig
 			if err != nil {
 				// Unit type doesn't exist so we make a new config file with default values
@@ -951,11 +951,11 @@ func updateRepoUnits(ctx *context.APIContext, opts api.EditRepoOption) error {
 
 			units = append(units, repo_model.RepoUnit{
 				RepoID: repo.ID,
-				Type:   unit_model.TypePullRequests,
+				Type:   unit_model.TypeMergeRequests,
 				Config: config,
 			})
-		} else if !newHasPullRequests && !unit_model.TypePullRequests.UnitGlobalDisabled() {
-			deleteUnitTypes = append(deleteUnitTypes, unit_model.TypePullRequests)
+		} else if !newHasPullRequests && !unit_model.TypeMergeRequests.UnitGlobalDisabled() {
+			deleteUnitTypes = append(deleteUnitTypes, unit_model.TypeMergeRequests)
 		}
 	}
 

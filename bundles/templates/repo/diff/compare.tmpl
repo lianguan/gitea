@@ -190,7 +190,7 @@
 					{{ctx.RenderUtils.RenderIssueTitle .PullRequest.Issue.Title ($.Repository.ComposeMetas ctx)}}
 					<span class="index">#{{.PullRequest.Issue.Index}}</span>
 				</div>
-				<a href="{{$.RepoLink}}/pulls/{{.PullRequest.Issue.Index}}" class="ui compact button primary">
+				<a href="{{$.RepoLink}}/merge_requests/{{.PullRequest.Issue.Index}}" class="ui compact button primary">
 					{{ctx.Locale.Tr "repo.pulls.view"}}
 				</a>
 			</div>

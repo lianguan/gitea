@@ -133,7 +133,7 @@ func GetOrgAssignees(ctx context.Context, orgID int64) (_ []*user_model.User, er
 		Join("INNER", "team_unit", "`team_unit`.team_id = `team_user`.team_id").
 		Join("INNER", "repository", "`repository`.id = `team_repo`.repo_id").
 		Where("`repository`.owner_id = ? AND (`team_unit`.access_mode >= ? OR (`team_unit`.access_mode = ? AND `team_unit`.`type` = ?))",
-			orgID, perm.AccessModeWrite, perm.AccessModeRead, unit.TypePullRequests).
+			orgID, perm.AccessModeWrite, perm.AccessModeRead, unit.TypeMergeRequests).
 		Distinct("`team_user`.uid").
 		Select("`team_user`.uid").
 		Find(&additionalUserIDs); err != nil {

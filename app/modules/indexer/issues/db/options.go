@@ -63,7 +63,7 @@ func ToDBOptions(ctx context.Context, options *internal.SearchOptions) (*issue_m
 		ProjectID:          convertID(options.ProjectID),
 		ProjectColumnID:    convertID(options.ProjectColumnID),
 		IsClosed:           options.IsClosed,
-		IsPull:             options.IsPull,
+		IsMergeRequest:             options.IsMergeRequest,
 		IncludedLabelNames: nil,
 		ExcludedLabelNames: nil,
 		IncludeMilestones:  nil,

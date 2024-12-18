@@ -100,7 +100,7 @@ func roleDescriptor(ctx stdCtx.Context, repo *repo_model.Repository, poster *use
 		return roleDescriptor, err
 	} else if hasMergedPR {
 		roleDescriptor.RoleInRepo = issues_model.RoleRepoContributor
-	} else if issue.IsPull {
+	} else if issue.IsMergeRequest {
 		// only display first time contributor in the first opening pull request
 		roleDescriptor.RoleInRepo = issues_model.RoleRepoFirstTimeContributor
 	}
@@ -113,7 +113,7 @@ func getBranchData(ctx *context.Context, issue *issues_model.Issue) {
 	ctx.Data["HeadBranch"] = nil
 	ctx.Data["HeadUserName"] = nil
 	ctx.Data["BaseName"] = ctx.Repo.Repository.OwnerName
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		pull := issue.PullRequest
 		ctx.Data["BaseBranch"] = pull.BaseBranch
 		ctx.Data["HeadBranch"] = pull.HeadBranch
@@ -142,7 +142,7 @@ func checkBlockedByIssues(ctx *context.Context, blockers []*issues_model.Depende
 			}
 			repoPerms[blocker.RepoID] = perm
 		}
-		if perm.CanReadIssuesOrPulls(blocker.Issue.IsPull) {
+		if perm.CanReadIssuesOrPulls(blocker.Issue.IsMergeRequest) {
 			canRead = append(canRead, blocker)
 		} else {
 			notPermitted = append(notPermitted, blocker)
@@ -186,7 +186,7 @@ func filterXRefComments(ctx *context.Context, issue *issues_model.Issue) error {
 			if err != nil {
 				return err
 			}
-			if !perm.CanReadIssuesOrPulls(c.RefIsPull) {
+			if !perm.CanReadIssuesOrPulls(c.RefIsMergeRequest) {
 				issue.Comments = append(issue.Comments[:i], issue.Comments[i+1:]...)
 				continue
 			}
@@ -301,21 +301,21 @@ func ViewIssue(ctx *context.Context) {
 	}
 
 	// Make sure type and URL matches.
-	if ctx.PathParam(":type") == "issues" && issue.IsPull {
+	if ctx.PathParam(":type") == "issues" && issue.IsMergeRequest {
 		ctx.Redirect(issue.Link())
 		return
-	} else if ctx.PathParam(":type") == "pulls" && !issue.IsPull {
+	} else if ctx.PathParam(":type") == "pulls" && !issue.IsMergeRequest {
 		ctx.Redirect(issue.Link())
 		return
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		MustAllowPulls(ctx)
 		if ctx.Written() {
 			return
 		}
-		ctx.Data["PageIsPullList"] = true
-		ctx.Data["PageIsPullConversation"] = true
+		ctx.Data["PageIsMergeRequestList"] = true
+		ctx.Data["PageIsMergeRequestConversation"] = true
 	} else {
 		MustEnableIssues(ctx)
 		if ctx.Written() {
@@ -349,7 +349,7 @@ func ViewIssue(ctx *context.Context) {
 		}
 	}
 
-	pageMetaData := retrieveRepoIssueMetaData(ctx, ctx.Repo.Repository, issue, issue.IsPull)
+	pageMetaData := retrieveRepoIssueMetaData(ctx, ctx.Repo.Repository, issue, issue.IsMergeRequest)
 	if ctx.Written() {
 		return
 	}
@@ -376,18 +376,18 @@ func ViewIssue(ctx *context.Context) {
 	}
 
 	// Get more information if it's a pull request.
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if issue.PullRequest.HasMerged {
 			ctx.Data["DisableStatusChange"] = issue.PullRequest.HasMerged
 		} else {
-			ctx.Data["DisableStatusChange"] = ctx.Data["IsPullRequestBroken"] == true && issue.IsClosed
+			ctx.Data["DisableStatusChange"] = ctx.Data["IsMergeRequestBroken"] == true && issue.IsClosed
 		}
 	}
 
 	ctx.Data["Reference"] = issue.Ref
 	ctx.Data["SignInLink"] = setting.AppSubURL + "/user/login?redirect_to=" + url.QueryEscape(ctx.Data["Link"].(string))
 	ctx.Data["IsIssuePoster"] = ctx.IsSigned && issue.IsPoster(ctx.Doer.ID)
-	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)
+	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)
 	ctx.Data["HasProjectsWritePermission"] = ctx.Repo.CanWrite(unit.TypeProjects)
 	ctx.Data["IsRepoAdmin"] = ctx.IsSigned && (ctx.Repo.IsAdmin() || ctx.Doer.IsAdmin)
 	ctx.Data["LockReasons"] = setting.Repository.Issue.LockReasons
@@ -408,16 +408,16 @@ func ViewIssue(ctx *context.Context) {
 }
 
 func prepareIssueViewSidebarDependency(ctx *context.Context, issue *issues_model.Issue) {
-	if issue.IsPull && !ctx.Repo.CanRead(unit.TypeIssues) {
+	if issue.IsMergeRequest && !ctx.Repo.CanRead(unit.TypeIssues) {
 		ctx.Data["IssueDependencySearchType"] = "pulls"
-	} else if !issue.IsPull && !ctx.Repo.CanRead(unit.TypePullRequests) {
+	} else if !issue.IsMergeRequest && !ctx.Repo.CanRead(unit.TypeMergeRequests) {
 		ctx.Data["IssueDependencySearchType"] = "issues"
 	} else {
 		ctx.Data["IssueDependencySearchType"] = "all"
 	}
 
 	// Check if the user can use the dependencies
-	ctx.Data["CanCreateIssueDependencies"] = ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsPull)
+	ctx.Data["CanCreateIssueDependencies"] = ctx.Repo.CanCreateIssueDependencies(ctx, ctx.Doer, issue.IsMergeRequest)
 
 	// check if dependencies can be created across repositories
 	ctx.Data["AllowCrossRepositoryDependencies"] = setting.Service.AllowCrossRepositoryDependencies
@@ -443,7 +443,7 @@ func prepareIssueViewSidebarDependency(ctx *context.Context, issue *issues_model
 }
 
 func preparePullViewSigning(ctx *context.Context, issue *issues_model.Issue) {
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 	pull := issue.PullRequest
@@ -513,7 +513,7 @@ func prepareIssueViewSidebarTimeTracker(ctx *context.Context, issue *issues_mode
 }
 
 func preparePullViewDeleteBranch(ctx *context.Context, issue *issues_model.Issue, canDelete bool) {
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 	pull := issue.PullRequest
@@ -531,14 +531,14 @@ func preparePullViewDeleteBranch(ctx *context.Context, issue *issues_model.Issue
 
 		isPullBranchDeletable = !exist
 	}
-	ctx.Data["IsPullBranchDeletable"] = isPullBranchDeletable
+	ctx.Data["IsMergeRequestBranchDeletable"] = isPullBranchDeletable
 }
 
 func prepareIssueViewSidebarPin(ctx *context.Context, issue *issues_model.Issue) {
 	var pinAllowed bool
 	if !issue.IsPinned() {
 		var err error
-		pinAllowed, err = issues_model.IsNewPinAllowed(ctx, issue.RepoID, issue.IsPull)
+		pinAllowed, err = issues_model.IsNewPinAllowed(ctx, issue.RepoID, issue.IsMergeRequest)
 		if err != nil {
 			ctx.ServerError("IsNewPinAllowed", err)
 			return
@@ -768,7 +768,7 @@ func prepareIssueViewCommentsAndSidebarParticipants(ctx *context.Context, issue 
 
 func preparePullViewReviewAndMerge(ctx *context.Context, issue *issues_model.Issue) {
 	getBranchData(ctx, issue)
-	if !issue.IsPull {
+	if !issue.IsMergeRequest {
 		return
 	}
 
@@ -828,7 +828,7 @@ func preparePullViewReviewAndMerge(ctx *context.Context, issue *issues_model.Iss
 	ctx.Data["ShowMergeInstructions"] = canWriteToHeadRepo
 	ctx.Data["AllowMerge"] = allowMerge
 
-	prUnit, err := issue.Repo.GetUnit(ctx, unit.TypePullRequests)
+	prUnit, err := issue.Repo.GetUnit(ctx, unit.TypeMergeRequests)
 	if err != nil {
 		ctx.ServerError("GetUnit", err)
 		return
@@ -925,9 +925,9 @@ func preparePullViewReviewAndMerge(ctx *context.Context, issue *issues_model.Iss
 	ctx.Data["StillCanManualMerge"] = stillCanManualMerge()
 
 	// Check if there is a pending pr merge
-	ctx.Data["HasPendingPullRequestMerge"], ctx.Data["PendingPullRequestMerge"], err = pull_model.GetScheduledMergeByPullID(ctx, pull.ID)
+	ctx.Data["HasPendingPullRequestMerge"], ctx.Data["PendingPullRequestMerge"], err = pull_model.GetScheduledMergeByMergeRequestID(ctx, pull.ID)
 	if err != nil {
-		ctx.ServerError("GetScheduledMergeByPullID", err)
+		ctx.ServerError("GetScheduledMergeByMergeRequestID", err)
 		return
 	}
 }

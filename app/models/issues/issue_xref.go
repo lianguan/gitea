@@ -57,7 +57,7 @@ func neuterCrossReferencesIDs(ctx context.Context, ids []int64) error {
 // AddCrossReferences add cross repositories references.
 func (issue *Issue) AddCrossReferences(stdCtx context.Context, doer *user_model.User, removeOld bool) error {
 	var commentType CommentType
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		commentType = CommentTypePullRef
 	} else {
 		commentType = CommentTypeIssueRef
@@ -119,7 +119,7 @@ func (issue *Issue) createCrossReferences(stdCtx context.Context, ctx *crossRefe
 			RefIssueID:   ctx.OrigIssue.ID,
 			RefCommentID: refCommentID,
 			RefAction:    xref.Action,
-			RefIsPull:    ctx.OrigIssue.IsPull,
+			RefIsMergeRequest:    ctx.OrigIssue.IsMergeRequest,
 		}
 		_, err := CreateComment(stdCtx, opts)
 		if err != nil {
@@ -201,7 +201,7 @@ func (issue *Issue) verifyReferencedIssue(stdCtx context.Context, ctx *crossRefe
 	}
 
 	// Close/reopen actions can only be set from pull requests to issues
-	if refIssue.IsPull || !issue.IsPull {
+	if refIssue.IsMergeRequest || !issue.IsMergeRequest {
 		refAction = references.XRefActionNone
 	}
 
@@ -211,7 +211,7 @@ func (issue *Issue) verifyReferencedIssue(stdCtx context.Context, ctx *crossRefe
 		if err != nil {
 			return nil, references.XRefActionNone, err
 		}
-		if !perm.CanReadIssuesOrPulls(refIssue.IsPull) {
+		if !perm.CanReadIssuesOrPulls(refIssue.IsMergeRequest) {
 			return nil, references.XRefActionNone, nil
 		}
 		if user_model.IsUserBlockedBy(stdCtx, ctx.Doer, refIssue.PosterID, refIssue.Repo.OwnerID) {
@@ -224,7 +224,7 @@ func (issue *Issue) verifyReferencedIssue(stdCtx context.Context, ctx *crossRefe
 		// should be responsible for checking whether the reference should resolve.
 		if ref.Action != references.XRefActionNone &&
 			ctx.Doer.ID != refIssue.PosterID &&
-			!perm.CanWriteIssuesOrPulls(refIssue.IsPull) &&
+			!perm.CanWriteIssuesOrPulls(refIssue.IsMergeRequest) &&
 			(refIssue.RepoID != ctx.OrigIssue.RepoID || ctx.OrigComment != nil) {
 			refAction = references.XRefActionNone
 		}

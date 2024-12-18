@@ -95,7 +95,7 @@ func toIssue(ctx context.Context, doer *user_model.User, issue *issues_model.Iss
 		}
 		apiIssue.Assignee = ToUser(ctx, issue.Assignees[0], nil) // For compatibility, we're keeping the first assignee as `apiIssue.Assignee`
 	}
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		if err := issue.LoadPullRequest(ctx); err != nil {
 			return &api.Issue{}
 		}

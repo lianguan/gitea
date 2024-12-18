@@ -273,7 +273,7 @@ func (d *OneDevDownloader) GetLabels() ([]*base.Label, error) {
 }
 
 type onedevIssueContext struct {
-	IsPullRequest bool
+	IsMergeRequest bool
 }
 
 // GetIssues returns issues
@@ -358,7 +358,7 @@ func (d *OneDevDownloader) GetIssues(page, perPage int) ([]*base.Issue, bool, er
 			Updated:      issue.SubmitDate,
 			Labels:       []*base.Label{label},
 			ForeignIndex: issue.ID,
-			Context:      onedevIssueContext{IsPullRequest: false},
+			Context:      onedevIssueContext{IsMergeRequest: false},
 		})
 
 		if d.maxIssueIndex < issue.Number {
@@ -384,7 +384,7 @@ func (d *OneDevDownloader) GetComments(commentable base.Commentable) ([]*base.Co
 	}, 0, 100)
 
 	var endpoint string
-	if context.IsPullRequest {
+	if context.IsMergeRequest {
 		endpoint = fmt.Sprintf("/api/pull-requests/%d/comments", commentable.GetForeignIndex())
 	} else {
 		endpoint = fmt.Sprintf("/api/issues/%d/comments", commentable.GetForeignIndex())
@@ -405,7 +405,7 @@ func (d *OneDevDownloader) GetComments(commentable base.Commentable) ([]*base.Co
 		Data   map[string]any `json:"data"`
 	}, 0, 100)
 
-	if context.IsPullRequest {
+	if context.IsMergeRequest {
 		endpoint = fmt.Sprintf("/api/pull-requests/%d/changes", commentable.GetForeignIndex())
 	} else {
 		endpoint = fmt.Sprintf("/api/issues/%d/changes", commentable.GetForeignIndex())
@@ -551,7 +551,7 @@ func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 				RepoName: d.repoName,
 			},
 			ForeignIndex: pr.ID,
-			Context:      onedevIssueContext{IsPullRequest: true},
+			Context:      onedevIssueContext{IsMergeRequest: true},
 		})
 
 		// SECURITY: Ensure that the PR is safe

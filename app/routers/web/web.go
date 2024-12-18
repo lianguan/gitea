@@ -510,8 +510,7 @@ func registerRoutes(m *web.Router) {
 		m.Get("/search", repo.SearchIssues)
 	}, reqSignIn)
 
-	m.Get("/pulls", reqSignIn, user.Pulls)
-	m.Get("/merge_requests", reqSignIn, user.Pulls)
+	m.Get("/{type:merge_requests|pulls}", reqSignIn, user.Pulls)
 	m.Get("/milestones", reqSignIn, reqMilestonesDashboardPageEnabled, user.Milestones)
 
 	// ***** START: User *****
@@ -826,9 +825,9 @@ func registerRoutes(m *web.Router) {
 	reqRepoWikiReader := context.RequireRepoReader(unit.TypeWiki)
 	reqRepoWikiWriter := context.RequireRepoWriter(unit.TypeWiki)
 	reqRepoIssueReader := context.RequireRepoReader(unit.TypeIssues)
-	reqRepoPullsReader := context.RequireRepoReader(unit.TypePullRequests)
-	reqRepoIssuesOrPullsWriter := context.RequireRepoWriterOr(unit.TypeIssues, unit.TypePullRequests)
-	reqRepoIssuesOrPullsReader := context.RequireRepoReaderOr(unit.TypeIssues, unit.TypePullRequests)
+	reqRepoPullsReader := context.RequireRepoReader(unit.TypeMergeRequests)
+	reqRepoIssuesOrPullsWriter := context.RequireRepoWriterOr(unit.TypeIssues, unit.TypeMergeRequests)
+	reqRepoIssuesOrPullsReader := context.RequireRepoReaderOr(unit.TypeIssues, unit.TypeMergeRequests)
 	reqRepoProjectsReader := context.RequireRepoReader(unit.TypeProjects)
 	reqRepoProjectsWriter := context.RequireRepoWriter(unit.TypeProjects)
 	reqRepoActionsReader := context.RequireRepoReader(unit.TypeActions)
@@ -883,8 +882,8 @@ func registerRoutes(m *web.Router) {
 			m.Get("/dashboard/{team}", user.Dashboard)
 			m.Get("/issues", user.Issues)
 			m.Get("/issues/{team}", user.Issues)
-			m.Get("/pulls", user.Pulls)
-			m.Get("/pulls/{team}", user.Pulls)
+			m.Get("/{type:merge_requests|pulls}", user.Pulls)
+			m.Get("/{type:merge_requests|pulls}/{team}", user.Pulls)
 			m.Get("/milestones", reqMilestonesDashboardPageEnabled, user.Milestones)
 			m.Get("/milestones/{team}", reqMilestonesDashboardPageEnabled, user.Milestones)
 			m.Post("/members/action/{action}", org.MembersAction)
@@ -1153,7 +1152,7 @@ func registerRoutes(m *web.Router) {
 	m.Get("/{username}/{reponame}", optSignIn, context.RepoAssignment, context.RepoRef(), repo.SetEditorconfigIfExists, repo.Home)
 
 	// TODO: maybe it should relax the permission to allow "any access"
-	m.Post("/{username}/{reponame}/markup", optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypeCode, unit.TypeIssues, unit.TypePullRequests, unit.TypeReleases, unit.TypeWiki), web.Bind(structs.MarkupOption{}), misc.Markup)
+	m.Post("/{username}/{reponame}/markup", optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypeCode, unit.TypeIssues, unit.TypeMergeRequests, unit.TypeReleases, unit.TypeWiki), web.Bind(structs.MarkupOption{}), misc.Markup)
 
 	m.Group("/{username}/{reponame}", func() {
 		m.Get("/find/*", repo.FindFiles)
@@ -1171,12 +1170,12 @@ func registerRoutes(m *web.Router) {
 
 	m.Group("/{username}/{reponame}", func() {
 		m.Get("/issues/posters", repo.IssuePosters) // it can't use {type:issues|pulls} because it would conflict with other routes like "/pulls/{index}"
-		m.Get("/pulls/posters", repo.PullPosters)
+		m.Get("/{type:merge_requests|pulls}/posters", repo.PullPosters)
 		m.Get("/comments/{id}/attachments", repo.GetCommentAttachments)
 		m.Get("/labels", repo.RetrieveLabelsForList, repo.Labels)
 		m.Get("/milestones", repo.Milestones)
 		m.Get("/milestone/{id}", context.RepoRef(), repo.MilestoneIssuesAndPulls)
-		m.Group("/{type:issues|pulls}", func() {
+		m.Group("/{type:issues|merge_requests|pulls}", func() {
 			m.Group("/{index}", func() {
 				m.Get("/info", repo.GetIssueInfo)
 				m.Get("/attachments", repo.GetIssueAttachments)
@@ -1193,13 +1192,13 @@ func registerRoutes(m *web.Router) {
 	// end "/{username}/{reponame}": view milestone, label, issue, pull, etc
 
 	m.Group("/{username}/{reponame}", func() {
-		m.Group("/{type:issues|pulls}", func() {
+		m.Group("/{type:issues|merge_requests|pulls}", func() {
 			m.Get("", repo.Issues)
 			m.Group("/{index}", func() {
 				m.Get("", repo.ViewIssue)
 			})
 		})
-	}, optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypeIssues, unit.TypePullRequests, unit.TypeExternalTracker))
+	}, optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypeIssues, unit.TypeMergeRequests, unit.TypeExternalTracker))
 	// end "/{username}/{reponame}": issue/pull list, issue/pull view, external tracker
 
 	m.Group("/{username}/{reponame}", func() { // edit issues, pulls, labels, milestones, etc
@@ -1214,7 +1213,7 @@ func registerRoutes(m *web.Router) {
 
 		// FIXME: should use different URLs but mostly same logic for comments of issue and pull request.
 		// So they can apply their own enable/disable logic on routers.
-		m.Group("/{type:issues|pulls}", func() {
+		m.Group("/{type:issues|merge_requests|pulls}", func() {
 			m.Group("/{index}", func() {
 				m.Post("/title", repo.UpdateIssueTitle)
 				m.Post("/content", repo.UpdateIssueContent)
@@ -1468,13 +1467,13 @@ func registerRoutes(m *web.Router) {
 			m.Get("/data", repo.RecentCommitsData)
 		})
 	},
-		optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypePullRequests, unit.TypeIssues, unit.TypeReleases),
+		optSignIn, context.RepoAssignment, context.RequireRepoReaderOr(unit.TypeMergeRequests, unit.TypeIssues, unit.TypeReleases),
 		context.RepoRef(), repo.MustBeNotEmpty,
 	)
 	// end "/{username}/{reponame}/activity"
 
 	m.Group("/{username}/{reponame}", func() {
-		m.Group("/pulls/{index}", func() {
+		m.Group("/{type:merge_requests|pulls}/{index}", func() {
 			m.Get("", repo.SetWhitespaceBehavior, repo.GetPullDiffStats, repo.ViewIssue)
 			m.Get(".diff", repo.DownloadPullDiff)
 			m.Get(".patch", repo.DownloadPullPatch)

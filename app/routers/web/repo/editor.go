@@ -43,7 +43,7 @@ const (
 
 func canCreateBasePullRequest(ctx *context.Context) bool {
 	baseRepo := ctx.Repo.Repository.BaseRepo
-	return baseRepo != nil && baseRepo.UnitEnabled(ctx, unit.TypePullRequests)
+	return baseRepo != nil && baseRepo.UnitEnabled(ctx, unit.TypeMergeRequests)
 }
 
 func renderCommitRights(ctx *context.Context) bool {
@@ -52,7 +52,7 @@ func renderCommitRights(ctx *context.Context) bool {
 		log.Error("CanCommitToBranch: %v", err)
 	}
 	ctx.Data["CanCommitToBranch"] = canCommitToBranch
-	ctx.Data["CanCreatePullRequest"] = ctx.Repo.Repository.UnitEnabled(ctx, unit.TypePullRequests) || canCreateBasePullRequest(ctx)
+	ctx.Data["CanCreatePullRequest"] = ctx.Repo.Repository.UnitEnabled(ctx, unit.TypeMergeRequests) || canCreateBasePullRequest(ctx)
 
 	return canCommitToBranch.CanCommitToBranch
 }
@@ -65,7 +65,7 @@ func redirectForCommitChoice(ctx *context.Context, commitChoice, newBranchName, 
 		repo := ctx.Repo.Repository
 		baseBranch := ctx.Repo.BranchName
 		headBranch := newBranchName
-		if repo.UnitEnabled(ctx, unit.TypePullRequests) {
+		if repo.UnitEnabled(ctx, unit.TypeMergeRequests) {
 			redirectToPullRequest = true
 		} else if canCreateBasePullRequest(ctx) {
 			redirectToPullRequest = true

@@ -406,7 +406,7 @@ func (repo *Repository) MustGetUnit(ctx context.Context, tp unit.Type) *RepoUnit
 			Type:   tp,
 			Config: new(ExternalTrackerConfig),
 		}
-	} else if tp == unit.TypePullRequests {
+	} else if tp == unit.TypeMergeRequests {
 		return &RepoUnit{
 			Type:   tp,
 			Config: new(PullRequestsConfig),
@@ -607,7 +607,7 @@ func (repo *Repository) CanEnablePulls() bool {
 
 // AllowsPulls returns true if repository meets the requirements of accepting pulls and has them enabled.
 func (repo *Repository) AllowsPulls(ctx context.Context) bool {
-	return repo.CanEnablePulls() && repo.UnitEnabled(ctx, unit.TypePullRequests)
+	return repo.CanEnablePulls() && repo.UnitEnabled(ctx, unit.TypeMergeRequests)
 }
 
 // CanEnableEditor returns true if repository meets the requirements of web editor.
@@ -906,7 +906,7 @@ func UpdateRepoIssueNumbers(ctx context.Context, repoID int64, isPull, isClosed 
 	subQuery := builder.Select("count(*)").
 		From("issue").Where(builder.Eq{
 		"repo_id": repoID,
-		"is_pull": isPull,
+		"is_merge_request": isPull,
 	}.And(builder.If(isClosed, builder.Eq{"is_closed": isClosed})))
 
 	// builder.Update(cond) will generate SQL like UPDATE ... SET cond

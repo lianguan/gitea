@@ -91,7 +91,7 @@ func ChangeTitle(ctx context.Context, issue *issues_model.Issue, doer *user_mode
 	}
 
 	var reviewNotifiers []*ReviewRequestNotifier
-	if issue.IsPull && issues_model.HasWorkInProgressPrefix(oldTitle) && !issues_model.HasWorkInProgressPrefix(title) {
+	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issues_model.HasWorkInProgressPrefix(title) {
 		var err error
 		reviewNotifiers, err = PullRequestCodeOwnersReview(ctx, issue, issue.PullRequest)
 		if err != nil {
@@ -191,7 +191,7 @@ func DeleteIssue(ctx context.Context, doer *user_model.User, gitRepo *git.Reposi
 	}
 
 	// delete pull request related git data
-	if issue.IsPull && gitRepo != nil {
+	if issue.IsMergeRequest && gitRepo != nil {
 		if err := gitRepo.RemoveReference(fmt.Sprintf("%s%d/head", git.PullPrefix, issue.PullRequest.Index)); err != nil {
 			return err
 		}
@@ -227,7 +227,7 @@ func AddAssigneeIfNotAssigned(ctx context.Context, issue *issues_model.Issue, do
 		return nil, nil
 	}
 
-	valid, err := access_model.CanBeAssigned(ctx, assignee, issue.Repo, issue.IsPull)
+	valid, err := access_model.CanBeAssigned(ctx, assignee, issue.Repo, issue.IsMergeRequest)
 	if err != nil {
 		return nil, err
 	}
@@ -271,12 +271,12 @@ func deleteIssue(ctx context.Context, issue *issues_model.Issue) error {
 	}
 
 	// update the total issue numbers
-	if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsPull, false); err != nil {
+	if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsMergeRequest, false); err != nil {
 		return err
 	}
 	// if the issue is closed, update the closed issue numbers
 	if issue.IsClosed {
-		if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsPull, true); err != nil {
+		if err := repo_model.UpdateRepoIssueNumbers(ctx, issue.RepoID, issue.IsMergeRequest, true); err != nil {
 			return err
 		}
 	}

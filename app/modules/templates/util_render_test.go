@@ -205,8 +205,8 @@ func TestRenderLabels(t *testing.T) {
 	assert.Contains(t, ut.RenderLabels([]*issues.Label{label}, "/owner/repo", issue), expected)
 
 	label = &issues.Label{ID: 123, Name: "label-name", Color: "label-color"}
-	issue = &issues.Issue{IsPull: true}
-	expected = `/owner/repo/pulls?labels=123`
+	issue = &issues.Issue{IsMergeRequest: true}
+	expected = `/owner/repo/merge_requests?labels=123`
 	assert.Contains(t, ut.RenderLabels([]*issues.Label{label}, "/owner/repo", issue), expected)
 }
 

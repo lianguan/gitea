@@ -17,7 +17,7 @@
 							{{ctx.Locale.Tr "home.switch_dashboard_context"}}
 						</div>
 						<div class="scrolling menu items">
-							<a class="{{if eq .ContextUser.ID .SignedUser.ID}}active selected{{end}} item truncated-item-container" href="{{AppSubUrl}}/{{if .PageIsIssues}}issues{{else if .PageIsPulls}}pulls{{else if .PageIsMilestonesDashboard}}milestones{{end}}">
+							<a class="{{if eq .ContextUser.ID .SignedUser.ID}}active selected{{end}} item truncated-item-container" href="{{AppSubUrl}}/{{if .PageIsIssues}}issues{{else if .PageIsMergeRequests}}pulls{{else if .PageIsMilestonesDashboard}}milestones{{end}}">
 								{{ctx.AvatarUtils.Avatar .SignedUser}}
 								<span class="truncated-item-name">{{.SignedUser.ShortName 40}}</span>
 								<span class="org-visibility">
@@ -26,7 +26,7 @@
 								</span>
 							</a>
 							{{range .Orgs}}
-								<a class="{{if eq $.ContextUser.ID .ID}}active selected{{end}} item truncated-item-container" title="{{.Name}}" href="{{.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsPulls}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}">
+								<a class="{{if eq $.ContextUser.ID .ID}}active selected{{end}} item truncated-item-container" title="{{.Name}}" href="{{.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsMergeRequests}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}">
 									{{ctx.AvatarUtils.Avatar .}}
 									<span class="truncated-item-name">{{.ShortName 40}}</span>
 									<span class="org-visibility">
@@ -61,12 +61,12 @@
 								{{ctx.Locale.Tr "home.filter_by_team_repositories"}}
 							</div>
 							<div class="scrolling menu items">
-								<a class="{{if not $.Team}}active selected{{end}} item" title="{{ctx.Locale.Tr "all"}}" href="{{$.Org.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsPulls}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}">
+								<a class="{{if not $.Team}}active selected{{end}} item" title="{{ctx.Locale.Tr "all"}}" href="{{$.Org.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsMergeRequests}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}">
 									{{ctx.Locale.Tr "all"}}
 								</a>
 								{{range .Teams}}
 									{{if not .IncludesAllRepositories}}
-										<a class="{{if $.Team}}{{if eq $.Team.ID .ID}}active selected{{end}}{{end}} item" title="{{.Name}}" href="{{$.Org.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsPulls}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}/{{.Name}}">
+										<a class="{{if $.Team}}{{if eq $.Team.ID .ID}}active selected{{end}}{{end}} item" title="{{.Name}}" href="{{$.Org.OrganisationLink}}/{{if $.PageIsIssues}}issues{{else if $.PageIsMergeRequests}}pulls{{else if $.PageIsMilestonesDashboard}}milestones{{else}}dashboard{{end}}/{{.Name}}">
 											{{.Name}}
 										</a>
 									{{end}}
@@ -86,12 +86,12 @@
 					{{svg "octicon-issue-opened"}}&nbsp;{{ctx.Locale.Tr "issues"}}
 				</a>
 				{{end}}
-				{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
-				<a class="{{if .PageIsPulls}}active {{end}}item" href="{{.ContextUser.OrganisationLink}}/pulls{{if .Team}}/{{PathEscape .Team.Name}}{{end}}">
+				{{if not ctx.Consts.RepoUnitTypeMergeRequests.UnitGlobalDisabled}}
+				<a class="{{if .PageIsMergeRequests}}active {{end}}item" href="{{.ContextUser.OrganisationLink}}/merge_requests{{if .Team}}/{{PathEscape .Team.Name}}{{end}}">
 					{{svg "octicon-git-pull-request"}}&nbsp;{{ctx.Locale.Tr "pull_requests"}}
 				</a>
 				{{end}}
-				{{if and .ShowMilestonesDashboardPage (not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled))}}
+				{{if and .ShowMilestonesDashboardPage (not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypeMergeRequests.UnitGlobalDisabled))}}
 				<a class="{{if .PageIsMilestonesDashboard}}active {{end}}item" href="{{.ContextUser.OrganisationLink}}/milestones{{if .Team}}/{{PathEscape .Team.Name}}{{end}}">
 					{{svg "octicon-milestone"}}&nbsp;{{ctx.Locale.Tr "milestones"}}
 				</a>

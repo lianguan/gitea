@@ -81,7 +81,7 @@ func MustAllowUserComment(ctx *context.Context) {
 		return
 	}
 
-	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) && !ctx.Doer.IsAdmin {
+	if issue.IsLocked && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) && !ctx.Doer.IsAdmin {
 		ctx.Flash.Error(ctx.Tr("repo.issues.comment_on_locked"))
 		ctx.Redirect(issue.Link())
 		return
@@ -105,7 +105,7 @@ func MustEnableIssues(ctx *context.Context) {
 
 // MustAllowPulls check if repository enable pull requests and user have right to do that
 func MustAllowPulls(ctx *context.Context) {
-	if !ctx.Repo.Repository.CanEnablePulls() || !ctx.Repo.CanRead(unit.TypePullRequests) {
+	if !ctx.Repo.Repository.CanEnablePulls() || !ctx.Repo.CanRead(unit.TypeMergeRequests) {
 		ctx.NotFound("MustAllowPulls", nil)
 		return
 	}
@@ -200,8 +200,8 @@ func GetActionIssue(ctx *context.Context) *issues_model.Issue {
 }
 
 func checkIssueRights(ctx *context.Context, issue *issues_model.Issue) {
-	if issue.IsPull && !ctx.Repo.CanRead(unit.TypePullRequests) ||
-		!issue.IsPull && !ctx.Repo.CanRead(unit.TypeIssues) {
+	if issue.IsMergeRequest && !ctx.Repo.CanRead(unit.TypeMergeRequests) ||
+		!issue.IsMergeRequest && !ctx.Repo.CanRead(unit.TypeIssues) {
 		ctx.NotFound("IssueOrPullRequestUnitNotAllowed", nil)
 	}
 }
@@ -227,13 +227,13 @@ func getActionIssues(ctx *context.Context) issues_model.IssueList {
 	}
 	// Check access rights for all issues
 	issueUnitEnabled := ctx.Repo.CanRead(unit.TypeIssues)
-	prUnitEnabled := ctx.Repo.CanRead(unit.TypePullRequests)
+	prUnitEnabled := ctx.Repo.CanRead(unit.TypeMergeRequests)
 	for _, issue := range issues {
 		if issue.RepoID != ctx.Repo.Repository.ID {
 			ctx.NotFound("some issue's RepoID is incorrect", errors.New("some issue's RepoID is incorrect"))
 			return nil
 		}
-		if issue.IsPull && !prUnitEnabled || !issue.IsPull && !issueUnitEnabled {
+		if issue.IsMergeRequest && !prUnitEnabled || !issue.IsMergeRequest && !issueUnitEnabled {
 			ctx.NotFound("IssueOrPullRequestUnitNotAllowed", nil)
 			return nil
 		}
@@ -257,9 +257,9 @@ func GetIssueInfo(ctx *context.Context) {
 		return
 	}
 
-	if issue.IsPull {
+	if issue.IsMergeRequest {
 		// Need to check if Pulls are enabled and we can read Pulls
-		if !ctx.Repo.Repository.CanEnablePulls() || !ctx.Repo.CanRead(unit.TypePullRequests) {
+		if !ctx.Repo.Repository.CanEnablePulls() || !ctx.Repo.CanRead(unit.TypeMergeRequests) {
 			ctx.Error(http.StatusNotFound)
 			return
 		}
@@ -284,7 +284,7 @@ func UpdateIssueTitle(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)) {
 		ctx.Error(http.StatusForbidden)
 		return
 	}
@@ -312,7 +312,7 @@ func UpdateIssueRef(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)) || issue.IsPull {
+	if !ctx.IsSigned || (!issue.IsPoster(ctx.Doer.ID) && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)) || issue.IsMergeRequest {
 		ctx.Error(http.StatusForbidden)
 		return
 	}
@@ -336,7 +336,7 @@ func UpdateIssueContent(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest)) {
 		ctx.Error(http.StatusForbidden)
 		return
 	}
@@ -345,7 +345,7 @@ func UpdateIssueContent(ctx *context.Context) {
 		if errors.Is(err, user_model.ErrBlockedUser) {
 			ctx.JSONError(ctx.Tr("repo.issues.edit.blocked_user"))
 		} else if errors.Is(err, issues_model.ErrIssueAlreadyChanged) {
-			if issue.IsPull {
+			if issue.IsMergeRequest {
 				ctx.JSONError(ctx.Tr("repo.pulls.edit.already_changed"))
 			} else {
 				ctx.JSONError(ctx.Tr("repo.issues.edit.already_changed"))
@@ -390,7 +390,7 @@ func UpdateIssueDeadline(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.Error(http.StatusForbidden, "", "Not repo writer")
 		return
 	}
@@ -451,7 +451,7 @@ func UpdateIssueAssignee(ctx *context.Context) {
 				return
 			}
 
-			valid, err := access_model.CanBeAssigned(ctx, assignee, issue.Repo, issue.IsPull)
+			valid, err := access_model.CanBeAssigned(ctx, assignee, issue.Repo, issue.IsMergeRequest)
 			if err != nil {
 				ctx.ServerError("canBeAssigned", err)
 				return
@@ -479,11 +479,11 @@ func ChangeIssueReaction(ctx *context.Context) {
 		return
 	}
 
-	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsPull)) {
+	if !ctx.IsSigned || (ctx.Doer.ID != issue.PosterID && !ctx.Repo.CanReadIssuesOrPulls(issue.IsMergeRequest)) {
 		if log.IsTrace() {
 			if ctx.IsSigned {
 				issueType := "issues"
-				if issue.IsPull {
+				if issue.IsMergeRequest {
 					issueType = "pulls"
 				}
 				log.Trace("Permission Denied: User %-v not the Poster (ID: %d) and cannot read %s in Repo %-v.\n"+

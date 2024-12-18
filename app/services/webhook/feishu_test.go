@@ -85,7 +85,7 @@ func TestFeishuPayload(t *testing.T) {
 		pl, err := fc.PullRequest(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, "[PullRequest-test/repo #12]: opened\nFix bug\nhttp://localhost:3000/test/repo/pulls/12\nPullRequest by user1\nOperator: user1\nAssignees: user1\n\nfixes bug #2", pl.Content.Text)
+		assert.Equal(t, "[PullRequest-test/repo #12]: opened\nFix bug\nhttp://localhost:3000/test/repo/merge_requests/12\nPullRequest by user1\nOperator: user1\nAssignees: user1\n\nfixes bug #2", pl.Content.Text)
 	})
 
 	t.Run("PullRequestComment", func(t *testing.T) {
@@ -94,7 +94,7 @@ func TestFeishuPayload(t *testing.T) {
 		pl, err := fc.IssueComment(p)
 		require.NoError(t, err)
 
-		assert.Equal(t, "[Comment-test/repo #12]: created\nFix bug\nhttp://localhost:3000/test/repo/pulls/12\nPullRequest by user1\nOperator: user1\n\nchanges requested", pl.Content.Text)
+		assert.Equal(t, "[Comment-test/repo #12]: created\nFix bug\nhttp://localhost:3000/test/repo/merge_requests/12\nPullRequest by user1\nOperator: user1\n\nchanges requested", pl.Content.Text)
 	})
 
 	t.Run("Review", func(t *testing.T) {

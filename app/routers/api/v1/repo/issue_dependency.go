@@ -72,7 +72,7 @@ func GetIssueDependencies(ctx *context.APIContext) {
 	}
 
 	// 1. We must be able to read this issue
-	if !ctx.Repo.Permission.CanReadIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.Permission.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
@@ -88,7 +88,7 @@ func GetIssueDependencies(ctx *context.APIContext) {
 		limit = setting.API.MaxResponseItems
 	}
 
-	canWrite := ctx.Repo.Permission.CanWriteIssuesOrPulls(issue.IsPull)
+	canWrite := ctx.Repo.Permission.CanWriteIssuesOrPulls(issue.IsMergeRequest)
 
 	blockerIssues := make([]*issues_model.Issue, 0, limit)
 
@@ -123,7 +123,7 @@ func GetIssueDependencies(ctx *context.APIContext) {
 		}
 
 		// check permission
-		if !perm.CanReadIssuesOrPulls(blocker.Issue.IsPull) {
+		if !perm.CanReadIssuesOrPulls(blocker.Issue.IsMergeRequest) {
 			if !canWrite {
 				hiddenBlocker := &issues_model.DependencyInfo{
 					Issue: issues_model.Issue{
@@ -138,7 +138,7 @@ func GetIssueDependencies(ctx *context.APIContext) {
 						Index:    blocker.Index,
 						Title:    blocker.Title,
 						IsClosed: blocker.IsClosed,
-						IsPull:   blocker.IsPull,
+						IsMergeRequest:   blocker.IsMergeRequest,
 					},
 					Repository: repo_model.Repository{
 						ID:        blocker.Issue.Repo.ID,
@@ -323,7 +323,7 @@ func GetIssueBlocks(ctx *context.APIContext) {
 		return
 	}
 
-	if !ctx.Repo.Permission.CanReadIssuesOrPulls(issue.IsPull) {
+	if !ctx.Repo.Permission.CanReadIssuesOrPulls(issue.IsMergeRequest) {
 		ctx.NotFound()
 		return
 	}
@@ -373,7 +373,7 @@ func GetIssueBlocks(ctx *context.APIContext) {
 			repoPerms[depMeta.RepoID] = perm
 		}
 
-		if !perm.CanReadIssuesOrPulls(depMeta.Issue.IsPull) {
+		if !perm.CanReadIssuesOrPulls(depMeta.Issue.IsMergeRequest) {
 			continue
 		}
 
@@ -567,13 +567,13 @@ func createIssueDependency(ctx *context.APIContext, target, dependency *issues_m
 		return
 	}
 
-	if !targetPerm.CanWriteIssuesOrPulls(target.IsPull) {
+	if !targetPerm.CanWriteIssuesOrPulls(target.IsMergeRequest) {
 		// We can't write to the target
 		ctx.NotFound()
 		return
 	}
 
-	if !dependencyPerm.CanReadIssuesOrPulls(dependency.IsPull) {
+	if !dependencyPerm.CanReadIssuesOrPulls(dependency.IsMergeRequest) {
 		// We can't read the dependency
 		ctx.NotFound()
 		return
@@ -593,13 +593,13 @@ func removeIssueDependency(ctx *context.APIContext, target, dependency *issues_m
 		return
 	}
 
-	if !targetPerm.CanWriteIssuesOrPulls(target.IsPull) {
+	if !targetPerm.CanWriteIssuesOrPulls(target.IsMergeRequest) {
 		// We can't write to the target
 		ctx.NotFound()
 		return
 	}
 
-	if !dependencyPerm.CanReadIssuesOrPulls(dependency.IsPull) {
+	if !dependencyPerm.CanReadIssuesOrPulls(dependency.IsMergeRequest) {
 		// We can't read the dependency
 		ctx.NotFound()
 		return

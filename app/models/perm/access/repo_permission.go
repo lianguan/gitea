@@ -122,7 +122,7 @@ func (p *Permission) CanReadAny(unitTypes ...unit.Type) bool {
 // returns true if isPull is false and user could read to issues
 func (p *Permission) CanReadIssuesOrPulls(isPull bool) bool {
 	if isPull {
-		return p.CanRead(unit.TypePullRequests)
+		return p.CanRead(unit.TypeMergeRequests)
 	}
 	return p.CanRead(unit.TypeIssues)
 }
@@ -136,7 +136,7 @@ func (p *Permission) CanWrite(unitType unit.Type) bool {
 // returns true if isPull is false and user could write to issues
 func (p *Permission) CanWriteIssuesOrPulls(isPull bool) bool {
 	if isPull {
-		return p.CanWrite(unit.TypePullRequests)
+		return p.CanWrite(unit.TypeMergeRequests)
 	}
 	return p.CanWrite(unit.TypeIssues)
 }
@@ -388,7 +388,7 @@ func CanBeAssigned(ctx context.Context, user *user_model.User, repo *repo_model.
 		return false, err
 	}
 	return perm.CanAccessAny(perm_model.AccessModeWrite, unit.AllRepoUnitTypes...) ||
-		perm.CanAccessAny(perm_model.AccessModeRead, unit.TypePullRequests), nil
+		perm.CanAccessAny(perm_model.AccessModeRead, unit.TypeMergeRequests), nil
 }
 
 // HasAnyUnitAccess see the comment of "perm.HasAnyUnitAccess"

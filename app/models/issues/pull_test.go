@@ -344,7 +344,7 @@ func TestMigrate_InsertPullRequests(t *testing.T) {
 		Repo:     repo,
 		Title:    "title1",
 		Content:  "issuecontent1",
-		IsPull:   true,
+		IsMergeRequest:   true,
 		PosterID: owner.ID,
 		Poster:   owner,
 	}

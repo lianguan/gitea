@@ -653,19 +653,19 @@ func mustEnableIssues(ctx *context.APIContext) {
 }
 
 func mustAllowPulls(ctx *context.APIContext) {
-	if !(ctx.Repo.Repository.CanEnablePulls() && ctx.Repo.CanRead(unit.TypePullRequests)) {
+	if !(ctx.Repo.Repository.CanEnablePulls() && ctx.Repo.CanRead(unit.TypeMergeRequests)) {
 		if ctx.Repo.Repository.CanEnablePulls() && log.IsTrace() {
 			if ctx.IsSigned {
 				log.Trace("Permission Denied: User %-v cannot read %-v in Repo %-v\n"+
 					"User in Repo has Permissions: %-+v",
 					ctx.Doer,
-					unit.TypePullRequests,
+					unit.TypeMergeRequests,
 					ctx.Repo.Repository,
 					ctx.Repo.Permission)
 			} else {
 				log.Trace("Permission Denied: Anonymous user cannot read %-v in Repo %-v\n"+
 					"Anonymous user in Repo has Permissions: %-+v",
-					unit.TypePullRequests,
+					unit.TypeMergeRequests,
 					ctx.Repo.Repository,
 					ctx.Repo.Permission)
 			}
@@ -677,21 +677,21 @@ func mustAllowPulls(ctx *context.APIContext) {
 
 func mustEnableIssuesOrPulls(ctx *context.APIContext) {
 	if !ctx.Repo.CanRead(unit.TypeIssues) &&
-		!(ctx.Repo.Repository.CanEnablePulls() && ctx.Repo.CanRead(unit.TypePullRequests)) {
+		!(ctx.Repo.Repository.CanEnablePulls() && ctx.Repo.CanRead(unit.TypeMergeRequests)) {
 		if ctx.Repo.Repository.CanEnablePulls() && log.IsTrace() {
 			if ctx.IsSigned {
 				log.Trace("Permission Denied: User %-v cannot read %-v and %-v in Repo %-v\n"+
 					"User in Repo has Permissions: %-+v",
 					ctx.Doer,
 					unit.TypeIssues,
-					unit.TypePullRequests,
+					unit.TypeMergeRequests,
 					ctx.Repo.Repository,
 					ctx.Repo.Permission)
 			} else {
 				log.Trace("Permission Denied: Anonymous user cannot read %-v and %-v in Repo %-v\n"+
 					"Anonymous user in Repo has Permissions: %-+v",
 					unit.TypeIssues,
-					unit.TypePullRequests,
+					unit.TypeMergeRequests,
 					ctx.Repo.Repository,
 					ctx.Repo.Permission)
 			}
@@ -1287,7 +1287,7 @@ func Routes() *web.Router {
 				}, reqAdmin(), reqToken())
 
 				m.Get("/editorconfig/{filename}", context.ReferencesGitRepo(), context.RepoRefForAPI, reqRepoReader(unit.TypeCode), repo.GetEditorconfig)
-				m.Group("/pulls", func() {
+				m.Group("/merge_requests", func() {
 					m.Combo("").Get(repo.ListPullRequests).
 						Post(reqToken(), mustNotBeArchived, bind(api.CreatePullRequestOption{}), repo.CreatePullRequest)
 					m.Get("/pinned", repo.ListPinnedPullRequests)
@@ -1298,7 +1298,7 @@ func Routes() *web.Router {
 						m.Post("/update", reqToken(), repo.UpdatePullRequest)
 						m.Get("/commits", repo.GetPullRequestCommits)
 						m.Get("/files", repo.GetPullRequestFiles)
-						m.Combo("/merge").Get(repo.IsPullRequestMerged).
+						m.Combo("/merge").Get(repo.IsMergeRequestMerged).
 							Post(reqToken(), mustNotBeArchived, bind(forms.MergePullRequestForm{}), repo.MergePullRequest).
 							Delete(reqToken(), mustNotBeArchived, repo.CancelScheduledAutoMerge)
 						m.Group("/reviews", func() {
@@ -1492,17 +1492,17 @@ func Routes() *web.Router {
 				}, mustEnableIssuesOrPulls)
 				m.Group("/labels", func() {
 					m.Combo("").Get(repo.ListLabels).
-						Post(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), bind(api.CreateLabelOption{}), repo.CreateLabel)
+						Post(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), bind(api.CreateLabelOption{}), repo.CreateLabel)
 					m.Combo("/{id}").Get(repo.GetLabel).
-						Patch(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), bind(api.EditLabelOption{}), repo.EditLabel).
-						Delete(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), repo.DeleteLabel)
+						Patch(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), bind(api.EditLabelOption{}), repo.EditLabel).
+						Delete(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), repo.DeleteLabel)
 				})
 				m.Group("/milestones", func() {
 					m.Combo("").Get(repo.ListMilestones).
-						Post(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), bind(api.CreateMilestoneOption{}), repo.CreateMilestone)
+						Post(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), bind(api.CreateMilestoneOption{}), repo.CreateMilestone)
 					m.Combo("/{id}").Get(repo.GetMilestone).
-						Patch(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), bind(api.EditMilestoneOption{}), repo.EditMilestone).
-						Delete(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypePullRequests), repo.DeleteMilestone)
+						Patch(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), bind(api.EditMilestoneOption{}), repo.EditMilestone).
+						Delete(reqToken(), reqRepoWriter(unit.TypeIssues, unit.TypeMergeRequests), repo.DeleteMilestone)
 				})
 			}, repoAssignment(), checkTokenPublicOnly())
 		}, tokenRequiresScopes(auth_model.AccessTokenScopeCategoryIssue))

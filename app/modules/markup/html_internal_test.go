@@ -106,8 +106,8 @@ func TestRender_IssueIndexPattern2(t *testing.T) {
 		var path, prefix string
 		isExternal := false
 		if marker == "!" {
-			path = "pulls"
-			prefix = "http://localhost:3000/someUser/someRepo/pulls/"
+			path = "merge_requests"
+			prefix = "http://localhost:3000/someUser/someRepo/merge_requests/"
 		} else {
 			path = "issues"
 			prefix = "https://someurl.com/someUser/someRepo/"
@@ -311,8 +311,8 @@ func TestRender_FullIssueURLs(t *testing.T) {
 		assert.NoError(t, err)
 		assert.Equal(t, expected, result.String())
 	}
-	test("Here is a link https://git.osgeo.org/gogs/postgis/postgis/pulls/6",
-		"Here is a link https://git.osgeo.org/gogs/postgis/postgis/pulls/6")
+	test("Here is a link https://git.osgeo.org/gogs/postgis/postgis/merge_requests/6",
+		"Here is a link https://git.osgeo.org/gogs/postgis/postgis/merge_requests/6")
 	test("Look here http://localhost:3000/person/repo/issues/4",
 		`Look here <a href="http://localhost:3000/person/repo/issues/4" class="ref-issue">person/repo#4</a>`)
 	test("http://localhost:3000/person/repo/issues/4#issuecomment-1234",
@@ -323,10 +323,10 @@ func TestRender_FullIssueURLs(t *testing.T) {
 		`<a href="http://localhost:3000/test-owner/test-repo/issues/4" class="ref-issue">#4</a> test`)
 	test("http://localhost:3000/test-owner/test-repo/issues/4?a=1&b=2#comment-123 test",
 		`<a href="http://localhost:3000/test-owner/test-repo/issues/4?a=1&amp;b=2#comment-123" class="ref-issue">#4 (comment)</a> test`)
-	test("http://localhost:3000/testOrg/testOrgRepo/pulls/2/files#issuecomment-24",
-		"http://localhost:3000/testOrg/testOrgRepo/pulls/2/files#issuecomment-24")
-	test("http://localhost:3000/testOrg/testOrgRepo/pulls/2/files",
-		"http://localhost:3000/testOrg/testOrgRepo/pulls/2/files")
+	test("http://localhost:3000/testOrg/testOrgRepo/merge_requests/2/files#issuecomment-24",
+		"http://localhost:3000/testOrg/testOrgRepo/merge_requests/2/files#issuecomment-24")
+	test("http://localhost:3000/testOrg/testOrgRepo/merge_requests/2/files",
+		"http://localhost:3000/testOrg/testOrgRepo/merge_requests/2/files")
 }
 
 func TestRegExp_sha1CurrentPattern(t *testing.T) {

@@ -1,4 +1,4 @@
-{{if and (gt $.Issue.PullRequest.CommitsBehind 0) (not $.Issue.IsClosed) (not $.Issue.PullRequest.IsChecking) (not $.IsPullFilesConflicted) (not $.IsPullRequestBroken)}}
+{{if and (gt $.Issue.PullRequest.CommitsBehind 0) (not $.Issue.IsClosed) (not $.Issue.PullRequest.IsChecking) (not $.IsMergeRequestFilesConflicted) (not $.IsMergeRequestBroken)}}
 	<div class="divider"></div>
 	<div class="item item-section">
 		<div class="item-section-left flex-text-inline">

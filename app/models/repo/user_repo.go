@@ -118,7 +118,7 @@ func GetRepoAssignees(ctx context.Context, repo *Repository) (_ []*user_model.Us
 			Join("INNER", "team_repo", "`team_repo`.team_id = `team_user`.team_id").
 			Join("INNER", "team_unit", "`team_unit`.team_id = `team_user`.team_id").
 			Where("`team_repo`.repo_id = ? AND (`team_unit`.access_mode >= ? OR (`team_unit`.access_mode = ? AND `team_unit`.`type` = ?))",
-				repo.ID, perm.AccessModeWrite, perm.AccessModeRead, unit.TypePullRequests).
+				repo.ID, perm.AccessModeWrite, perm.AccessModeRead, unit.TypeMergeRequests).
 			Distinct("`team_user`.uid").
 			Select("`team_user`.uid").
 			Find(&additionalUserIDs); err != nil {
@@ -157,7 +157,7 @@ func GetIssuePostersWithSearch(ctx context.Context, repo *Repository, isPull boo
 	cond := builder.In("`user`.id",
 		builder.Select("poster_id").From("issue").Where(
 			builder.Eq{"repo_id": repo.ID}.
-				And(builder.Eq{"is_pull": isPull}),
+				And(builder.Eq{"is_merge_request": isPull}),
 		).GroupBy("poster_id")).And(prefixCond)
 
 	return users, db.GetEngine(ctx).

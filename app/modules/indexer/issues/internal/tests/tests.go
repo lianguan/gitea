@@ -173,14 +173,14 @@ var cases = []*testIndexerCase{
 			Paginator: &db.ListOptions{
 				PageSize: 5,
 			},
-			IsPull: optional.Some(false),
+			IsMergeRequest: optional.Some(false),
 		},
 		Expected: func(t *testing.T, data map[int64]*internal.IndexerData, result *internal.SearchResult) {
 			assert.Len(t, result.Hits, 5)
 			for _, v := range result.Hits {
-				assert.False(t, data[v.ID].IsPull)
+				assert.False(t, data[v.ID].IsMergeRequest)
 			}
-			assert.Equal(t, countIndexerData(data, func(v *internal.IndexerData) bool { return !v.IsPull }), result.Total)
+			assert.Equal(t, countIndexerData(data, func(v *internal.IndexerData) bool { return !v.IsMergeRequest }), result.Total)
 		},
 	},
 	{
@@ -189,14 +189,14 @@ var cases = []*testIndexerCase{
 			Paginator: &db.ListOptions{
 				PageSize: 5,
 			},
-			IsPull: optional.Some(true),
+			IsMergeRequest: optional.Some(true),
 		},
 		Expected: func(t *testing.T, data map[int64]*internal.IndexerData, result *internal.SearchResult) {
 			assert.Len(t, result.Hits, 5)
 			for _, v := range result.Hits {
-				assert.True(t, data[v.ID].IsPull)
+				assert.True(t, data[v.ID].IsMergeRequest)
 			}
-			assert.Equal(t, countIndexerData(data, func(v *internal.IndexerData) bool { return v.IsPull }), result.Total)
+			assert.Equal(t, countIndexerData(data, func(v *internal.IndexerData) bool { return v.IsMergeRequest }), result.Total)
 		},
 	},
 	{
@@ -700,7 +700,7 @@ func generateDefaultIndexerData() []*internal.IndexerData {
 				Title:              fmt.Sprintf("issue%d of repo%d", issueIndex, repoID),
 				Content:            fmt.Sprintf("content%d", issueIndex),
 				Comments:           comments,
-				IsPull:             issueIndex%2 == 0,
+				IsMergeRequest:             issueIndex%2 == 0,
 				IsClosed:           issueIndex%3 == 0,
 				LabelIDs:           labelIDs,
 				NoLabel:            len(labelIDs) == 0,

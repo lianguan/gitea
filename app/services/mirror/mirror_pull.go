@@ -475,7 +475,7 @@ func SyncPullMirror(ctx context.Context, repoID int64) bool {
 
 	for _, result := range results {
 		// Discard GitHub pull requests, i.e. refs/pull/*
-		if result.refName.IsPull() {
+		if result.refName.IsMergeRequest() {
 			continue
 		}
 

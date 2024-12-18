@@ -87,15 +87,15 @@ type IssueReference struct {
 }
 
 // RenderizableReference contains an unverified cross-reference to with rendering information
-// The IsPull member means that a `!num` reference was used instead of `#num`.
-// This kind of reference is used to make pulls available when an external issue tracker
+// The IsMergeRequest member means that a `!num` reference was used instead of `#num`.
+// This kind of reference is used to make merge_requests available when an external issue tracker
 // is used. Otherwise, `#` and `!` are completely interchangeable.
 type RenderizableReference struct {
 	Issue          string
 	Owner          string
 	Name           string
 	CommitSha      string
-	IsPull         bool
+	IsMergeRequest bool
 	RefLocation    *RefSpan
 	Action         XRefAction
 	ActionLocation *RefSpan
@@ -178,7 +178,7 @@ func getGiteaHostName() string {
 				`(\s|^|\(|\[)` +
 					regexp.QuoteMeta(strings.TrimSpace(setting.AppURL)) +
 					`([0-9a-zA-Z-_\.]+/[0-9a-zA-Z-_\.]+)/` +
-					`((?:issues)|(?:pulls))/([0-9]+)(?:\s|$|\)|\]|[:;,.?!]\s|[:;,.?!]$)`)
+					`((?:issues)|(?:merge_requests))/([0-9]+)(?:\s|$|\)|\]|[:;,.?!]\s|[:;,.?!]$)`)
 		} else {
 			giteaHost = ""
 			giteaIssuePullPattern = nil
@@ -257,7 +257,7 @@ func convertFullHTMLReferencesToShortRefs(re *regexp.Regexp, contentBytes *[]byt
 	// We want to transform something like:
 	//
 	// this is a https://ourgitea.com/git/owner/repo/issues/123456789, foo
-	// https://ourgitea.com/git/owner/repo/pulls/123456789
+	// https://ourgitea.com/git/owner/repo/merge_reqests/123456789
 	//
 	// Into something like:
 	//
@@ -295,7 +295,7 @@ func convertFullHTMLReferencesToShortRefs(re *regexp.Regexp, contentBytes *[]byt
 		//
 		// match[6]-match[7] == 'issues'
 		(*contentBytes)[pos] = '#'
-		if string((*contentBytes)[match[6]:match[7]]) == "pulls" {
+		if string((*contentBytes)[match[6]:match[7]]) == "merge_requests" {
 			(*contentBytes)[pos] = '!'
 		}
 		pos++
@@ -349,7 +349,7 @@ func FindRenderizableReferenceNumeric(content string, prOnly, crossLinkOnly bool
 		Issue:          r.issue,
 		Owner:          r.owner,
 		Name:           r.name,
-		IsPull:         r.isPull,
+		IsMergeRequest: r.isPull,
 		RefLocation:    r.refLocation,
 		Action:         r.action,
 		ActionLocation: r.actionLocation,
@@ -385,7 +385,7 @@ func FindRenderizableReferenceRegexp(content string, pattern *regexp.Regexp) (bo
 		RefLocation:    &RefSpan{Start: match[0], End: match[1]},
 		Action:         action,
 		ActionLocation: location,
-		IsPull:         false,
+		IsMergeRequest: false,
 	}
 }
 
@@ -403,7 +403,7 @@ func FindRenderizableReferenceAlphanumeric(content string) (bool, *RenderizableR
 		RefLocation:    &RefSpan{Start: match[2], End: match[3]},
 		Action:         action,
 		ActionLocation: location,
-		IsPull:         false,
+		IsMergeRequest: false,
 	}
 }
 
@@ -466,7 +466,7 @@ func findAllIssueReferencesBytes(content []byte, links []string) []*rawReference
 			var sep string
 			if parts[3] == "issues" {
 				sep = "#"
-			} else if parts[3] == "pulls" {
+			} else if parts[3] == "merge_requests" {
 				sep = "!"
 			} else {
 				continue
