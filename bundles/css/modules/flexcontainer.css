@@ -8,7 +8,7 @@
 
 /* small options menu on the left, used in settings/admin pages */
 .flex-container-nav {
-  width: 240px;
+  width: 25%;
 }
 
 /* wide sidebar on the right, used in frontpage */
