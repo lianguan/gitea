@@ -9,7 +9,7 @@ import (
 	"io"
 	"reflect"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 const (

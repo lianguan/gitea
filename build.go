@@ -16,7 +16,7 @@ import (
 	_ "golang.org/x/tools/cover"
 
 	// for vet
-	_ "code.gitea.io/gitea-vet"
+	_ "gitmin.com/gitmin-vet"
 
 	// for swagger
 	_ "github.com/go-swagger/go-swagger/cmd/swagger"

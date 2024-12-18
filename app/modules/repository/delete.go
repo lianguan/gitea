@@ -6,9 +6,9 @@ package repository
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/organization"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
+	"gitmin.com/gitmin/app/models/organization"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
 )
 
 // CanUserDelete returns true if user could delete the repository

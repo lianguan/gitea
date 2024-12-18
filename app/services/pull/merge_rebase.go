@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"strings"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/modules/log"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // getRebaseAmendMessage composes the message to amend commits in rebase merge of a pull request.

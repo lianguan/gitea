@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"time"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	actions_module "code.gitea.io/gitea/app/modules/actions"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	actions_module "gitmin.com/gitmin/app/modules/actions"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	"gitmin.com/gitmin/app/modules/timeutil"
 )
 
 // Cleanup removes expired actions logs, data and artifacts

@@ -6,12 +6,12 @@ package repository
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
-	git_model "code.gitea.io/gitea/app/models/git"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	"gitmin.com/gitmin/app/models/db"
+	git_model "gitmin.com/gitmin/app/models/git"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 // GenerateIssueLabels generates issue labels from a template repository

@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/json"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/json"
 
 	"github.com/stretchr/testify/assert"
 	"xorm.io/xorm/schemas"

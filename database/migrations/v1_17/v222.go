@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"xorm.io/xorm"
 )

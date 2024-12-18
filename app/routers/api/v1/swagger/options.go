@@ -4,8 +4,8 @@
 package swagger
 
 import (
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/forms"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 // not actually a response, just a hack to get go-swagger to include definitions

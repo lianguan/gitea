@@ -6,8 +6,8 @@ package web
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 type passkeyEndpointsType struct {

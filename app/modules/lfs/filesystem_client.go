@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // FilesystemClient is used to read LFS data from a filesystem path

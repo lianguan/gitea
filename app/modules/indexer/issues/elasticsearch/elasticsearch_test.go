@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal/tests"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal/tests"
 )
 
 func TestElasticsearchIndexer(t *testing.T) {

@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/git"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
+	"gitmin.com/gitmin/app/modules/git"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
 )
 
 // GetNote Get a note corresponding to a single commit from a repository

@@ -7,8 +7,8 @@ package convert
 import (
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/structs"
 )
 
 // ToCorrectPageSize makes sure page size is in allowed range.

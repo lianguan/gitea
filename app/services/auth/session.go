@@ -6,8 +6,8 @@ package auth
 import (
 	"net/http"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // Ensure the struct implements the interface.

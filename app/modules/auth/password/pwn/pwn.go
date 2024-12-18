@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 const passwordURL = "https://api.pwnedpasswords.com/range/"

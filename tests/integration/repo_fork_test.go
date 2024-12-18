@@ -9,13 +9,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	org_model "code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/structs"
-	org_service "code.gitea.io/gitea/app/services/org"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	org_model "gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/structs"
+	org_service "gitmin.com/gitmin/app/services/org"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

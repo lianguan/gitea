@@ -7,12 +7,12 @@ import (
 	"testing"
 	"time"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"github.com/stretchr/testify/assert"
 )

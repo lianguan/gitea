@@ -6,13 +6,13 @@ package security
 import (
 	"net/http"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/auth/openid"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/forms"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/auth/openid"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 // OpenIDPost response for change user's openid

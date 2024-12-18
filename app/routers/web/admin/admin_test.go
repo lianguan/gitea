@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/services/contexttest"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"
 )

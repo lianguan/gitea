@@ -6,18 +6,18 @@ package activities
 import (
 	"context"
 
-	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	git_model "code.gitea.io/gitea/app/models/git"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/models/organization"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	project_model "code.gitea.io/gitea/app/models/project"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/setting"
+	asymkey_model "gitmin.com/gitmin/app/models/asymkey"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	git_model "gitmin.com/gitmin/app/models/git"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/models/organization"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	project_model "gitmin.com/gitmin/app/models/project"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // Statistic contains the database statistics

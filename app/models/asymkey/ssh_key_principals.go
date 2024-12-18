@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // CheckPrincipalKeyString strips spaces and returns an error if the given principal contains newlines

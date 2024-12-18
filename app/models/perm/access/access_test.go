@@ -6,12 +6,12 @@ package access_test
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	perm_model "code.gitea.io/gitea/app/models/perm"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
+	"gitmin.com/gitmin/app/models/db"
+	perm_model "gitmin.com/gitmin/app/models/perm"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
 
 	"github.com/stretchr/testify/assert"
 )

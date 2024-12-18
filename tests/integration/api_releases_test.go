@@ -13,14 +13,14 @@ import (
 	"strings"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/tests"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

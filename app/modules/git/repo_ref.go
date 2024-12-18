@@ -7,7 +7,7 @@ import (
 	"context"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // GetRefs returns all references of the repository.

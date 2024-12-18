@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/jaytaylor/html2text"
 	gomail "github.com/wneessen/go-mail"

@@ -12,9 +12,9 @@ import (
 	"io"
 	"time"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 func generateSaltedToken() (string, string, string, string, error) {

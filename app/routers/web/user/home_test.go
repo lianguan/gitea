@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/templates"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/contexttest"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/templates"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -8,16 +8,16 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/perm"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	unit_model "code.gitea.io/gitea/app/models/unit"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/mailer"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/perm"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	unit_model "gitmin.com/gitmin/app/models/unit"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/mailer"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 )
 
 // Collaboration render a repository's collaboration page

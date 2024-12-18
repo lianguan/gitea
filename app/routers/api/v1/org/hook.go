@@ -6,11 +6,11 @@ package org
 import (
 	"net/http"
 
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	webhook_service "code.gitea.io/gitea/app/services/webhook"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	webhook_service "gitmin.com/gitmin/app/services/webhook"
 )
 
 // ListHooks list an organziation's webhooks

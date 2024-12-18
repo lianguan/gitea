@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // CamoEncode encodes a lnk to fit with the go-camo and camo proxy links. The purposes of camo-proxy are:

@@ -7,7 +7,7 @@ import (
 	"encoding/xml"
 	"io"
 
-	"code.gitea.io/gitea/app/modules/validation"
+	"gitmin.com/gitmin/app/modules/validation"
 
 	"golang.org/x/net/html/charset"
 )

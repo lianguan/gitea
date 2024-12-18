@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/session"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/session"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // SetRedirectToCookie convenience function to set the RedirectTo cookie consistently

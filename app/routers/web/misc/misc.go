@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"path"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/httpcache"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/httpcache"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 func SSHInfo(rw http.ResponseWriter, req *http.Request) {

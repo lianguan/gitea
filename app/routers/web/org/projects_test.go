@@ -6,9 +6,9 @@ package org_test
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/routers/web/org"
-	"code.gitea.io/gitea/app/services/contexttest"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/routers/web/org"
+	"gitmin.com/gitmin/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"
 )

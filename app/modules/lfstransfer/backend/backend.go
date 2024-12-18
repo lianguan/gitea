@@ -13,9 +13,9 @@ import (
 	"net/url"
 	"strconv"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/lfs"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/lfs"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/charmbracelet/git-lfs-transfer/transfer"
 )

@@ -6,11 +6,11 @@ package repo
 import (
 	"net/http"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
 )
 
 // ListStargazers list a repository's stargazers

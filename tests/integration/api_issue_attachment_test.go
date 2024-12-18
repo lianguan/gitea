@@ -11,13 +11,13 @@ import (
 	"net/http"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/tests"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

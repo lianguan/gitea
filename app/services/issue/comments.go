@@ -7,13 +7,13 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	"gitmin.com/gitmin/app/models/db"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 // CreateRefComment creates a commit reference comment to issue.

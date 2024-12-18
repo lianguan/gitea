@@ -7,11 +7,11 @@ import (
 	"io"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/httpcache"
-	"code.gitea.io/gitea/app/modules/httplib"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/httpcache"
+	"gitmin.com/gitmin/app/modules/httplib"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // ServeBlob download a git.Blob

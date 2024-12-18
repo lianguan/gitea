@@ -6,7 +6,7 @@ package packages
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 
 	"xorm.io/builder"
 )

@@ -7,9 +7,9 @@ import (
 	"context"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/forms"
-	issue_service "code.gitea.io/gitea/app/services/issue"
+	"gitmin.com/gitmin/app/models/db"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/forms"
+	issue_service "gitmin.com/gitmin/app/services/issue"
 )
 
 // AddTimeManually tracks time manually

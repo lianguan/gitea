@@ -10,10 +10,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/modules/badge"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/context"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/modules/badge"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func GetWorkflowBadge(ctx *context.Context) {

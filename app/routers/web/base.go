@@ -11,12 +11,12 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/httpcache"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/web/routing"
+	"gitmin.com/gitmin/app/modules/httpcache"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/web/routing"
 )
 
 func storageHandler(storageSetting *setting.Storage, prefix string, objStore storage.ObjectStorage) http.HandlerFunc {

@@ -4,8 +4,8 @@
 package v1_17 //nolint
 
 import (
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	container_module "code.gitea.io/gitea/app/modules/packages/container"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	container_module "gitmin.com/gitmin/app/modules/packages/container"
 
 	"xorm.io/xorm"
 	"xorm.io/xorm/schemas"

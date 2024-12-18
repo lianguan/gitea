@@ -15,14 +15,14 @@ import (
 
 	_ "net/http/pprof" // Used for debugging if enabled and a web server is running
 
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/modules/public"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/routers"
-	"code.gitea.io/gitea/app/routers/install"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/modules/public"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/routers"
+	"gitmin.com/gitmin/app/routers/install"
 
 	"github.com/felixge/fgprof"
 	"github.com/urfave/cli/v2"

@@ -7,7 +7,7 @@ import (
 	"context"
 	"html/template"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 type LinkType string

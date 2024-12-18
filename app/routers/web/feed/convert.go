@@ -12,14 +12,14 @@ import (
 	"strconv"
 	"strings"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/renderhelper"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/templates"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/context"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/templates"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/context"
 
 	"github.com/gorilla/feeds"
 )

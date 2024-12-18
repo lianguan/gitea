@@ -6,7 +6,7 @@ package user
 import (
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // ErrUserAlreadyExist represents a "user already exists" error.

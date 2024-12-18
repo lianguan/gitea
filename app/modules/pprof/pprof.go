@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // DumpMemProfileForUsername dumps a memory profile at pprofDataPath as memprofile_<username>_<temporary id>

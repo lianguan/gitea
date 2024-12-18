@@ -9,12 +9,12 @@ import (
 	"errors"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"xorm.io/builder"
 )

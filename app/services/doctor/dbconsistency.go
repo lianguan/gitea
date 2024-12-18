@@ -6,14 +6,14 @@ package doctor
 import (
 	"context"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/db"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/database/migrations"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/db"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/database/migrations"
 )
 
 type consistencyCheck struct {

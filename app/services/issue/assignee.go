@@ -6,15 +6,15 @@ package issue
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/perm"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/perm"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 // DeleteNotPassedAssignee deletes all assignees who aren't passed via the "assignees" array

@@ -6,7 +6,7 @@ package repo
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 )
 
 // MergeStyle represents the approach to merge commits into base branch.

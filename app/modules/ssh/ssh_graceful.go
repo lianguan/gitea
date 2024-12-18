@@ -4,9 +4,9 @@
 package ssh
 
 import (
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/gliderlabs/ssh"
 )

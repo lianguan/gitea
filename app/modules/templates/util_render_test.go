@@ -10,13 +10,13 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/modules/translation"
+	"gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/modules/translation"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -9,12 +9,12 @@ import (
 	"html/template"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/optional"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/optional"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"xorm.io/builder"
 )

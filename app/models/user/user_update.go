@@ -6,7 +6,7 @@ package user
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 )
 
 func IncrUserRepoNum(ctx context.Context, userID int64) error {

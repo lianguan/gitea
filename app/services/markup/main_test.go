@@ -6,7 +6,7 @@ package markup
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
+	"gitmin.com/gitmin/app/models/unittest"
 )
 
 func TestMain(m *testing.M) {

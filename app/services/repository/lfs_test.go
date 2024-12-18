@@ -9,14 +9,14 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	git_model "code.gitea.io/gitea/app/models/git"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/lfs"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	"gitmin.com/gitmin/app/models/db"
+	git_model "gitmin.com/gitmin/app/models/git"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/lfs"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 
 	"github.com/stretchr/testify/assert"
 )

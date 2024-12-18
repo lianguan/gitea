@@ -6,7 +6,7 @@ package oauth2_provider //nolint
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // Init initializes the oauth source

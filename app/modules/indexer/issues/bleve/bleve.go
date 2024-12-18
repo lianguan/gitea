@@ -6,9 +6,9 @@ package bleve
 import (
 	"context"
 
-	indexer_internal "code.gitea.io/gitea/app/modules/indexer/internal"
-	inner_bleve "code.gitea.io/gitea/app/modules/indexer/internal/bleve"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
+	indexer_internal "gitmin.com/gitmin/app/modules/indexer/internal"
+	inner_bleve "gitmin.com/gitmin/app/modules/indexer/internal/bleve"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
 
 	"github.com/blevesearch/bleve/v2"
 	"github.com/blevesearch/bleve/v2/analysis/analyzer/custom"

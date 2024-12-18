@@ -6,9 +6,9 @@ package convert
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
+	"gitmin.com/gitmin/app/models/unittest"
 
-	_ "code.gitea.io/gitea/app/models/actions"
+	_ "gitmin.com/gitmin/app/models/actions"
 )
 
 func TestMain(m *testing.M) {

@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"time"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	org_model "code.gitea.io/gitea/app/models/organization"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	org_model "gitmin.com/gitmin/app/models/organization"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func getMergeBase(repo *git.Repository, pr *issues_model.PullRequest, baseBranch, headBranch string) (string, error) {

@@ -6,9 +6,9 @@ package auth_test
 import (
 	"testing"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/unittest"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/unittest"
 
 	"github.com/go-webauthn/webauthn/webauthn"
 	"github.com/stretchr/testify/assert"

@@ -16,7 +16,7 @@ import (
 	"sort"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/modules/container"
 )
 
 // regexp is based on go-license, excluding README and NOTICE
@@ -88,9 +88,9 @@ func main() {
 		pkgName := path.Dir(pkgPath)
 
 		// There might be a bug somewhere in go-licenses that sometimes interprets the
-		// root package as "." and sometimes as "code.gitea.io/gitea". Workaround by
+		// root package as "." and sometimes as "gitmin.com/gitmin". Workaround by
 		// removing both of them for the sake of stable output.
-		if pkgName == "." || pkgName == "code.gitea.io/gitea" {
+		if pkgName == "." || pkgName == "gitmin.com/gitmin" {
 			continue
 		}
 

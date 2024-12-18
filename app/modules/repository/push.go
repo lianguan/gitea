@@ -4,7 +4,7 @@
 package repository
 
 import (
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 )
 
 // PushUpdateOptions defines the push update options

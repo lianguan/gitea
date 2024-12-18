@@ -13,10 +13,10 @@ import (
 	"strings"
 	"sync"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 //  _____          __  .__                 .__                  .___

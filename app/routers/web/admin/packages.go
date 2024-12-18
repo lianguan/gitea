@@ -8,14 +8,14 @@ import (
 	"net/url"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
-	packages_service "code.gitea.io/gitea/app/services/packages"
-	packages_cleanup_service "code.gitea.io/gitea/app/services/packages/cleanup"
+	"gitmin.com/gitmin/app/models/db"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
+	packages_service "gitmin.com/gitmin/app/services/packages"
+	packages_cleanup_service "gitmin.com/gitmin/app/services/packages/cleanup"
 )
 
 const (

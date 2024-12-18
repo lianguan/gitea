@@ -20,7 +20,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 )
 
 const (

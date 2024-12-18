@@ -6,11 +6,11 @@ package v1_19 //nolint
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/secret"
-	"code.gitea.io/gitea/app/modules/setting"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/secret"
+	"gitmin.com/gitmin/app/modules/setting"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -7,8 +7,8 @@ import (
 	"context"
 	"testing"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/unittest"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/unittest"
 
 	"github.com/stretchr/testify/assert"
 )

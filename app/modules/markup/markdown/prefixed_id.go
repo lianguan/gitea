@@ -7,9 +7,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/markup/common"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/markup/common"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"github.com/yuin/goldmark/ast"
 )

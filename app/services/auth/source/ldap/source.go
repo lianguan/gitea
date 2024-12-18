@@ -6,10 +6,10 @@ package ldap
 import (
 	"strings"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/secret"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/secret"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // .____     ________      _____ __________

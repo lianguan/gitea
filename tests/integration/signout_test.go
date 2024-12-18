@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/tests"
 )
 
 func TestSignOut(t *testing.T) {

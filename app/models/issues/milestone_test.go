@@ -7,14 +7,14 @@ import (
 	"sort"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/db"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"github.com/stretchr/testify/assert"
 )

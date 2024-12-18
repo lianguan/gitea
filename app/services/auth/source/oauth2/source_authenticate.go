@@ -6,8 +6,8 @@ package oauth2
 import (
 	"context"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/services/auth/source/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/services/auth/source/db"
 )
 
 // Authenticate falls back to the db authenticator

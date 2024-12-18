@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/repository"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/repository"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // Git environment variables

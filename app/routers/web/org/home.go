@@ -9,17 +9,17 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/renderhelper"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
-	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
+	shared_user "gitmin.com/gitmin/app/routers/web/shared/user"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 const (

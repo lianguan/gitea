@@ -23,10 +23,10 @@ import (
 	"strings"
 	"time"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	chef_module "code.gitea.io/gitea/app/modules/packages/chef"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	chef_module "gitmin.com/gitmin/app/modules/packages/chef"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/auth"
 )
 
 const (

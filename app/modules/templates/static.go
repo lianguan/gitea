@@ -8,8 +8,8 @@ package templates
 import (
 	"time"
 
-	"code.gitea.io/gitea/app/modules/assetfs"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/assetfs"
+	"gitmin.com/gitmin/app/modules/timeutil"
 )
 
 // GlobalModTime provide a global mod time for embedded asset files

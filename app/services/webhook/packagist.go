@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"net/http"
 
-	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	api "code.gitea.io/gitea/app/modules/structs"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	webhook_model "gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	api "gitmin.com/gitmin/app/modules/structs"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 type (

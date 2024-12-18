@@ -6,12 +6,12 @@ package integration
 import (
 	"strings"
 
-	"code.gitea.io/gitea/app/models"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	api "code.gitea.io/gitea/app/modules/structs"
-	files_service "code.gitea.io/gitea/app/services/repository/files"
+	"gitmin.com/gitmin/app/models"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	api "gitmin.com/gitmin/app/modules/structs"
+	files_service "gitmin.com/gitmin/app/services/repository/files"
 )
 
 func createFileInBranch(user *user_model.User, repo *repo_model.Repository, treePath, branchName, content string) (*api.FilesResponse, error) {

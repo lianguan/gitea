@@ -7,14 +7,14 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/db"
-	git_model "code.gitea.io/gitea/app/models/git"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	commitstatus_service "code.gitea.io/gitea/app/services/repository/commitstatus"
+	"gitmin.com/gitmin/app/models/db"
+	git_model "gitmin.com/gitmin/app/models/git"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	commitstatus_service "gitmin.com/gitmin/app/services/repository/commitstatus"
 )
 
 // NewCommitStatus creates a new CommitStatus

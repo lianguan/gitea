@@ -6,14 +6,14 @@ package repo
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/test"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/test"
 
 	"github.com/stretchr/testify/assert"
 )

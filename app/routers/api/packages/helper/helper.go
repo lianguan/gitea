@@ -9,10 +9,10 @@ import (
 	"net/http"
 	"net/url"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // LogAndProcessError logs an error and calls a custom callback with the processed error message.

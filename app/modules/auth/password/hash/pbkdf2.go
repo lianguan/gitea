@@ -8,7 +8,7 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 
 	"golang.org/x/crypto/pbkdf2"
 )

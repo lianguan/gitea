@@ -6,9 +6,9 @@ package repo
 import (
 	"net/http"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/services/context"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // GetLicenses returns licenses

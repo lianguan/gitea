@@ -10,10 +10,10 @@ import (
 	"path/filepath"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/routers"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/routers"
+	"gitmin.com/gitmin/tests"
 
 	"gitea.com/go-chi/session"
 	"github.com/stretchr/testify/assert"

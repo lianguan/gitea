@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // SessionConfig defines Session settings

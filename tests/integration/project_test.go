@@ -8,12 +8,12 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	project_model "code.gitea.io/gitea/app/models/project"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	project_model "gitmin.com/gitmin/app/models/project"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

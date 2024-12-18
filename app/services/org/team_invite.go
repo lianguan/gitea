@@ -6,9 +6,9 @@ package org
 import (
 	"context"
 
-	org_model "code.gitea.io/gitea/app/models/organization"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/services/mailer"
+	org_model "gitmin.com/gitmin/app/models/organization"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/services/mailer"
 )
 
 // CreateTeamInvite make a persistent invite in db and mail it

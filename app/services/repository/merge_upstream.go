@@ -7,14 +7,14 @@ import (
 	"context"
 	"fmt"
 
-	git_model "code.gitea.io/gitea/app/models/git"
-	issue_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	repo_module "code.gitea.io/gitea/app/modules/repository"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/pull"
+	git_model "gitmin.com/gitmin/app/models/git"
+	issue_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/pull"
 )
 
 type UpstreamDivergingInfo struct {

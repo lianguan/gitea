@@ -6,10 +6,10 @@ package stats
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // Indexer defines an interface to index repository stats

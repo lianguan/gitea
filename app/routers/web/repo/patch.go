@@ -6,16 +6,16 @@ package repo
 import (
 	"strings"
 
-	"code.gitea.io/gitea/app/models"
-	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/forms"
-	"code.gitea.io/gitea/app/services/repository/files"
+	"gitmin.com/gitmin/app/models"
+	git_model "gitmin.com/gitmin/app/models/git"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/forms"
+	"gitmin.com/gitmin/app/services/repository/files"
 )
 
 const (

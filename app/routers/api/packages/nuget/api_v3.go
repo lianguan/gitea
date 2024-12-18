@@ -7,8 +7,8 @@ import (
 	"sort"
 	"time"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	nuget_module "code.gitea.io/gitea/app/modules/packages/nuget"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	nuget_module "gitmin.com/gitmin/app/modules/packages/nuget"
 
 	"golang.org/x/text/collate"
 	"golang.org/x/text/language"

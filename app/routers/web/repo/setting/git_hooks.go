@@ -6,8 +6,8 @@ package setting
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // GitHooks hooks of a repository

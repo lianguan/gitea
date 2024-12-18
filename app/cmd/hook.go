@@ -14,11 +14,11 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/private"
-	repo_module "code.gitea.io/gitea/app/modules/repository"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/private"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/urfave/cli/v2"
 )

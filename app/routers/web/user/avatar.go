@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/models/avatars"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/httpcache"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/avatars"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/httpcache"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func cacheableRedirect(ctx *context.Context, location string) {

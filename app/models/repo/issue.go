@@ -6,9 +6,9 @@ package repo
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // ___________.__             ___________                     __

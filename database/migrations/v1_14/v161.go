@@ -6,7 +6,7 @@ package v1_14 //nolint
 import (
 	"context"
 
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"xorm.io/xorm"
 )

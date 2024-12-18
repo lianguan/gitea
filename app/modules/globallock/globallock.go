@@ -7,7 +7,7 @@ import (
 	"context"
 	"sync"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 var (

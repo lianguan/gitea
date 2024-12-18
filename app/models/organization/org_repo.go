@@ -6,8 +6,8 @@ package organization
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
 )
 
 // GetOrgRepositories get repos belonging to the given organization

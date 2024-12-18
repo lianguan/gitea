@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/stretchr/testify/assert"
 )

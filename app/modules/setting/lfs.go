@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/generate"
+	"gitmin.com/gitmin/app/modules/generate"
 )
 
 // LFS represents the server-side configuration for Git LFS.

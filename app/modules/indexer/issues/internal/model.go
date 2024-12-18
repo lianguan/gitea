@@ -6,9 +6,9 @@ package internal
 import (
 	"strconv"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/timeutil"
 )
 
 // IndexerData data stored in the issue indexer

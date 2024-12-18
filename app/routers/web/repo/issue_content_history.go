@@ -9,12 +9,12 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/avatars"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/templates"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/avatars"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/templates"
+	"gitmin.com/gitmin/app/services/context"
 
 	"github.com/sergi/go-diff/diffmatchpatch"
 )

@@ -10,15 +10,15 @@ import (
 	"strings"
 	"time"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/web/middleware"
-	"code.gitea.io/gitea/app/services/actions"
-	"code.gitea.io/gitea/app/services/oauth2_provider"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/web/middleware"
+	"gitmin.com/gitmin/app/services/actions"
+	"gitmin.com/gitmin/app/services/oauth2_provider"
 )
 
 // Ensure the struct implements the interface.

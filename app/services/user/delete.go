@@ -10,19 +10,19 @@ import (
 
 	_ "image/jpeg" // Needed for jpeg support
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	git_model "code.gitea.io/gitea/app/models/git"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/models/organization"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	pull_model "code.gitea.io/gitea/app/models/pull"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/setting"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	asymkey_model "gitmin.com/gitmin/app/models/asymkey"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	git_model "gitmin.com/gitmin/app/models/git"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/models/organization"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	pull_model "gitmin.com/gitmin/app/models/pull"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"xorm.io/builder"
 )

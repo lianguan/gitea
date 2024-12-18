@@ -11,9 +11,9 @@ import (
 	"net/url"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/modules/web/middleware"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/modules/web/middleware"
 
 	"github.com/stretchr/testify/assert"
 )

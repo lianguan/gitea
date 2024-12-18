@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // hookNames is a list of Git server hooks' name that are supported.

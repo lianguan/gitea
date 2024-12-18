@@ -6,7 +6,7 @@
 package options
 
 import (
-	"code.gitea.io/gitea/app/modules/assetfs"
+	"gitmin.com/gitmin/app/modules/assetfs"
 )
 
 func BuiltinAssets() *assetfs.Layer {

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/templates"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/templates"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // List all devtest templates, they will be used for e2e tests for the UI components

@@ -13,15 +13,15 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/renderhelper"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/charset"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/charset"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // locate a README for a tree in one of the supported paths.

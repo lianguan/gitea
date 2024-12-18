@@ -7,16 +7,16 @@ import (
 	"context"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/setting"
 
-	_ "code.gitea.io/gitea/app/models"
-	_ "code.gitea.io/gitea/app/models/actions"
-	_ "code.gitea.io/gitea/app/models/activities"
+	_ "gitmin.com/gitmin/app/models"
+	_ "gitmin.com/gitmin/app/models/actions"
+	_ "gitmin.com/gitmin/app/models/activities"
 
 	"github.com/stretchr/testify/assert"
 )

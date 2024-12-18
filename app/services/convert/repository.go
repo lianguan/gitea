@@ -7,14 +7,14 @@ import (
 	"context"
 	"time"
 
-	"code.gitea.io/gitea/app/models"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/perm"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	unit_model "code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/log"
-	api "code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/models"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/perm"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	unit_model "gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/log"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 // ToRepo converts a Repository to api.Repository

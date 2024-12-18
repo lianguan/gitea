@@ -4,9 +4,9 @@
 package project
 
 import (
-	project_model "code.gitea.io/gitea/app/models/project"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/services/context"
+	project_model "gitmin.com/gitmin/app/models/project"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // MoveColumns moves or keeps columns in a project and sorts them inside that project

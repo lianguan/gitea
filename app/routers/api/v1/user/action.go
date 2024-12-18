@@ -7,15 +7,15 @@ import (
 	"errors"
 	"net/http"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	actions_service "code.gitea.io/gitea/app/services/actions"
-	"code.gitea.io/gitea/app/services/context"
-	secret_service "code.gitea.io/gitea/app/services/secrets"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	actions_service "gitmin.com/gitmin/app/services/actions"
+	"gitmin.com/gitmin/app/services/context"
+	secret_service "gitmin.com/gitmin/app/services/secrets"
 )
 
 // create or update one secret of the user scope

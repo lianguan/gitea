@@ -10,14 +10,14 @@ import (
 	"os"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	base "code.gitea.io/gitea/app/modules/migration"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/convert"
-	"code.gitea.io/gitea/app/services/migrations"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	base "gitmin.com/gitmin/app/modules/migration"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/convert"
+	"gitmin.com/gitmin/app/services/migrations"
 
 	"github.com/urfave/cli/v2"
 )

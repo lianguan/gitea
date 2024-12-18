@@ -7,15 +7,15 @@ import (
 	"context"
 	"fmt"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func fallbackMailSubject(issue *issues_model.Issue) string {

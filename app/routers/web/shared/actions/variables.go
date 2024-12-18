@@ -4,13 +4,13 @@
 package actions
 
 import (
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/web"
-	actions_service "code.gitea.io/gitea/app/services/actions"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/forms"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/web"
+	actions_service "gitmin.com/gitmin/app/services/actions"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 func SetVariablesContext(ctx *context.Context, ownerID, repoID int64) {

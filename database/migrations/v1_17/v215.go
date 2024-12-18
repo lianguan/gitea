@@ -4,8 +4,8 @@
 package v1_17 //nolint
 
 import (
-	"code.gitea.io/gitea/app/models/pull"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/pull"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"xorm.io/xorm"
 )

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode"
 
-	"code.gitea.io/gitea/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/optional"
 )
 
 const (

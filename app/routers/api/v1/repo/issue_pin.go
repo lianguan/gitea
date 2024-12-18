@@ -6,10 +6,10 @@ package repo
 import (
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
 )
 
 // PinIssue pins a issue

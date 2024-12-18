@@ -7,14 +7,14 @@ import (
 	"errors"
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/auth"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/externalaccount"
-	"code.gitea.io/gitea/app/services/forms"
+	"gitmin.com/gitmin/app/models/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/externalaccount"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 var (

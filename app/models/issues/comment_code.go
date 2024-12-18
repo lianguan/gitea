@@ -6,10 +6,10 @@ package issues
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/renderhelper"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
 
 	"xorm.io/builder"
 )

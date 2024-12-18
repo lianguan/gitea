@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"code.gitea.io/gitea/app/modules/generate"
+	"gitmin.com/gitmin/app/modules/generate"
 
 	"github.com/mattn/go-isatty"
 	"github.com/urfave/cli/v2"

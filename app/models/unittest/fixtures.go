@@ -9,9 +9,9 @@ import (
 	"os"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/auth/password/hash"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/auth/password/hash"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/go-testfixtures/testfixtures/v3"
 	"xorm.io/xorm"

@@ -9,9 +9,9 @@ import (
 	"html/template"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/highlight"
-	"code.gitea.io/gitea/app/modules/indexer/code/internal"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/highlight"
+	"gitmin.com/gitmin/app/modules/indexer/code/internal"
+	"gitmin.com/gitmin/app/modules/timeutil"
 )
 
 // Result a search result to display

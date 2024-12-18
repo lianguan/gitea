@@ -6,10 +6,10 @@ package repository
 import (
 	"testing"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
 
 	"github.com/stretchr/testify/assert"
 )

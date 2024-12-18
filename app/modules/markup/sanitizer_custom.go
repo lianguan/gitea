@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/microcosm-cc/bluemonday"
 )

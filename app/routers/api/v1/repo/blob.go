@@ -6,8 +6,8 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/services/context"
-	files_service "code.gitea.io/gitea/app/services/repository/files"
+	"gitmin.com/gitmin/app/services/context"
+	files_service "gitmin.com/gitmin/app/services/repository/files"
 )
 
 // GetBlob get the blob of a repository file.

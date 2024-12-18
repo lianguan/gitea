@@ -9,10 +9,10 @@ import (
 	"net/http"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/modules/web"
-	web_types "code.gitea.io/gitea/app/modules/web/types"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/modules/web"
+	web_types "gitmin.com/gitmin/app/modules/web/types"
 )
 
 // PrivateContext represents a context for private routes

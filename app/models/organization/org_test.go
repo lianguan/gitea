@@ -8,12 +8,12 @@ import (
 	"sort"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/organization"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/organization"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/stretchr/testify/assert"
 )

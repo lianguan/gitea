@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/modules/container"
 )
 
 var errChannelClosed = errors.New("channel is closed")

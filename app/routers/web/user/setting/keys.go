@@ -8,15 +8,15 @@ import (
 	"fmt"
 	"net/http"
 
-	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/web"
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/forms"
+	asymkey_model "gitmin.com/gitmin/app/models/asymkey"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/web"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 const (

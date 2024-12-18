@@ -7,9 +7,9 @@ import (
 	"context"
 	"net/http"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/session"
-	"code.gitea.io/gitea/app/modules/web/middleware"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/session"
+	"gitmin.com/gitmin/app/modules/web/middleware"
 )
 
 // DataStore represents a data store

@@ -14,10 +14,10 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

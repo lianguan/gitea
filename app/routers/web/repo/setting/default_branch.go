@@ -6,12 +6,12 @@ package setting
 import (
 	"net/http"
 
-	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/routers/web/repo"
-	"code.gitea.io/gitea/app/services/context"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	git_model "gitmin.com/gitmin/app/models/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/routers/web/repo"
+	"gitmin.com/gitmin/app/services/context"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 )
 
 // SetDefaultBranchPost set default branch

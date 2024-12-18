@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	repo_module "code.gitea.io/gitea/app/modules/repository"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/tests"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

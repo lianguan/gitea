@@ -9,9 +9,9 @@ import (
 	"slices"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"github.com/gobwas/glob"
 )

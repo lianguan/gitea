@@ -14,15 +14,15 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/models/avatars"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/cache"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/log"
-	api "code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/models/avatars"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/cache"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/log"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 const (

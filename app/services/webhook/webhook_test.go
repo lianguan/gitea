@@ -6,12 +6,12 @@ package webhook
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	api "code.gitea.io/gitea/app/modules/structs"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	webhook_model "gitmin.com/gitmin/app/models/webhook"
+	api "gitmin.com/gitmin/app/modules/structs"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 
 	"github.com/stretchr/testify/assert"
 )

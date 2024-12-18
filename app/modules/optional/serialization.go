@@ -4,7 +4,7 @@
 package optional
 
 import (
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 
 	"gopkg.in/yaml.v3"
 )

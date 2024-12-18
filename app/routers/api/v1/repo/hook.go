@@ -7,19 +7,19 @@ package repo
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/perm"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	"code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	webhook_service "code.gitea.io/gitea/app/services/webhook"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/perm"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	"gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	webhook_service "gitmin.com/gitmin/app/services/webhook"
 )
 
 // ListHooks list all hooks of a repository

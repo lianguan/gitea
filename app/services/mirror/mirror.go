@@ -7,10 +7,10 @@ import (
 	"context"
 	"fmt"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/queue"
-	"code.gitea.io/gitea/app/modules/setting"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/queue"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // doMirrorSync causes this request to mirror itself

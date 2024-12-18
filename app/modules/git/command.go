@@ -16,10 +16,10 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/git/internal" //nolint:depguard // only this file can use the internal type CmdArg, other files and packages should use AddXxx functions
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/git/internal" //nolint:depguard // only this file can use the internal type CmdArg, other files and packages should use AddXxx functions
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // TrustedCmdArgs returns the trusted arguments for git command.

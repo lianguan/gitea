@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // Renderer defines an interface for rendering markup file to HTML

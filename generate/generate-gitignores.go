@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 func main() {

@@ -9,17 +9,17 @@ import (
 	"net/http"
 	"strings"
 
-	"code.gitea.io/gitea/app/models"
-	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/app/models/organization"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	releaseservice "code.gitea.io/gitea/app/services/release"
+	"gitmin.com/gitmin/app/models"
+	git_model "gitmin.com/gitmin/app/models/git"
+	"gitmin.com/gitmin/app/models/organization"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	releaseservice "gitmin.com/gitmin/app/services/release"
 )
 
 // ListTags list all the tags of a repository

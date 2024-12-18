@@ -6,10 +6,10 @@ package markup
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/templates"
-	"code.gitea.io/gitea/app/services/contexttest"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/templates"
+	"gitmin.com/gitmin/app/services/contexttest"
 
 	"github.com/stretchr/testify/assert"
 )

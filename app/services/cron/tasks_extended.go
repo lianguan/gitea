@@ -7,17 +7,17 @@ import (
 	"context"
 	"time"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/system"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	issue_indexer "code.gitea.io/gitea/app/modules/indexer/issues"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/updatechecker"
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
-	repo_service "code.gitea.io/gitea/app/services/repository"
-	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
-	user_service "code.gitea.io/gitea/app/services/user"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/system"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	issue_indexer "gitmin.com/gitmin/app/modules/indexer/issues"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/updatechecker"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
+	repo_service "gitmin.com/gitmin/app/services/repository"
+	archiver_service "gitmin.com/gitmin/app/services/repository/archiver"
+	user_service "gitmin.com/gitmin/app/services/user"
 )
 
 func registerDeleteInactiveUsers() {

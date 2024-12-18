@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"strings"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/base"
-	chef_module "code.gitea.io/gitea/app/modules/packages/chef"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
-	shared "code.gitea.io/gitea/app/routers/web/shared/packages"
-	"code.gitea.io/gitea/app/services/context"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/base"
+	chef_module "gitmin.com/gitmin/app/modules/packages/chef"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
+	shared "gitmin.com/gitmin/app/routers/web/shared/packages"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 const (

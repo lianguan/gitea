@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"xorm.io/xorm"
 )

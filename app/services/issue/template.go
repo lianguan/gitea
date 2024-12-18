@@ -10,11 +10,11 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/issue/template"
-	"code.gitea.io/gitea/app/modules/log"
-	api "code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/issue/template"
+	"gitmin.com/gitmin/app/modules/log"
+	api "gitmin.com/gitmin/app/modules/structs"
 
 	"gopkg.in/yaml.v3"
 )

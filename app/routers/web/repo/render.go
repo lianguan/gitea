@@ -9,14 +9,14 @@ import (
 	"net/http"
 	"path"
 
-	"code.gitea.io/gitea/app/models/renderhelper"
-	"code.gitea.io/gitea/app/modules/charset"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/typesniffer"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	"gitmin.com/gitmin/app/modules/charset"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/typesniffer"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // RenderFile renders a file by repos path

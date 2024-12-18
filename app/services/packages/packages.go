@@ -12,17 +12,17 @@ import (
 	"net/url"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/optional"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	"gitmin.com/gitmin/app/models/db"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/optional"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 var (

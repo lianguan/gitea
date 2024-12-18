@@ -6,9 +6,9 @@ package markup
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/markup"
-	gitea_context "code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/markup"
+	gitea_context "gitmin.com/gitmin/app/services/context"
 )
 
 func ProcessorHelper() *markup.RenderHelperFuncs {

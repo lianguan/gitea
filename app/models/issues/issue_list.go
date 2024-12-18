@@ -7,11 +7,11 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	project_model "code.gitea.io/gitea/app/models/project"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/models/db"
+	project_model "gitmin.com/gitmin/app/models/project"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/container"
 
 	"xorm.io/builder"
 )

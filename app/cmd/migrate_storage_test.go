@@ -9,14 +9,14 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	packages_service "code.gitea.io/gitea/app/services/packages"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	packages_service "gitmin.com/gitmin/app/services/packages"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -6,9 +6,9 @@ package metrics
 import (
 	"runtime"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/setting"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/prometheus/client_golang/prometheus"
 )

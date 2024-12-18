@@ -6,11 +6,11 @@ package feed
 import (
 	"time"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/renderhelper"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/services/context"
-	feed_service "code.gitea.io/gitea/app/services/feed"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/renderhelper"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/services/context"
+	feed_service "gitmin.com/gitmin/app/services/feed"
 
 	"github.com/gorilla/feeds"
 )

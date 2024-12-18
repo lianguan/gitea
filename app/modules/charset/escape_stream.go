@@ -10,7 +10,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"code.gitea.io/gitea/app/modules/translation"
+	"gitmin.com/gitmin/app/modules/translation"
 
 	"golang.org/x/net/html"
 )

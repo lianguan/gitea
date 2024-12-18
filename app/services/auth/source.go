@@ -6,9 +6,9 @@ package auth
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
 )
 
 // DeleteSource deletes a AuthSource record in DB.

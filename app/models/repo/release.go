@@ -13,13 +13,13 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"xorm.io/builder"
 )

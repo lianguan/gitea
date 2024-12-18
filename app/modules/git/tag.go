@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"sort"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // Tag represents a Git tag.

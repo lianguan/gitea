@@ -4,8 +4,8 @@
 package admin
 
 import (
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func RedirectToDefaultSetting(ctx *context.Context) {

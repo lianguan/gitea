@@ -4,7 +4,7 @@
 package setting
 
 import (
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 
 	"github.com/42wim/httpsig"
 )

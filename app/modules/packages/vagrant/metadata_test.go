@@ -10,7 +10,7 @@ import (
 	"io"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 
 	"github.com/stretchr/testify/assert"
 )

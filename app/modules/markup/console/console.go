@@ -8,8 +8,8 @@ import (
 	"io"
 	"path"
 
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	trend "github.com/buildkite/terminal-to-html/v3"
 	"github.com/go-enry/go-enry/v2"

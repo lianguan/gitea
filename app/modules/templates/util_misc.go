@@ -12,14 +12,14 @@ import (
 	"strings"
 	"time"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	giturl "code.gitea.io/gitea/app/modules/git/url"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/repository"
-	"code.gitea.io/gitea/app/modules/svg"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	giturl "gitmin.com/gitmin/app/modules/git/url"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/repository"
+	"gitmin.com/gitmin/app/modules/svg"
 
 	"github.com/editorconfig/editorconfig-core-go/v2"
 )

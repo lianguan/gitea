@@ -11,14 +11,14 @@ import (
 	neturl "net/url"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	composer_module "code.gitea.io/gitea/app/modules/packages/composer"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/routers/api/packages/composer"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	composer_module "gitmin.com/gitmin/app/modules/packages/composer"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/routers/api/packages/composer"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

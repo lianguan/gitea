@@ -6,7 +6,7 @@ package templates
 import (
 	"bytes"
 
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 )
 
 type JsonUtils struct{} //nolint:revive

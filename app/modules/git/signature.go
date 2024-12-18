@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // Helper to get a signature from the commit line, which looks like:

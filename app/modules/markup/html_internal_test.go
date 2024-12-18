@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	testModule "code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/setting"
+	testModule "gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"github.com/stretchr/testify/assert"
 )

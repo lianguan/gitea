@@ -10,14 +10,14 @@ import (
 	"net/http"
 	"strings"
 
-	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/markup"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	webhook_model "gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/markup"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 type (

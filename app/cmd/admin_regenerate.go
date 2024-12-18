@@ -4,9 +4,9 @@
 package cmd
 
 import (
-	"code.gitea.io/gitea/app/modules/graceful"
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	"gitmin.com/gitmin/app/modules/graceful"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 
 	"github.com/urfave/cli/v2"
 )

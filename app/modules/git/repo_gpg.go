@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/process"
+	"gitmin.com/gitmin/app/modules/process"
 )
 
 // LoadPublicKeyContent will load the key from gpg

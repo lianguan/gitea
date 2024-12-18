@@ -17,8 +17,8 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/proxy"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/proxy"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // GPGSettings represents the default GPG settings for this repository

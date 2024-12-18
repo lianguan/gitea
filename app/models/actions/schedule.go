@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 // ActionSchedule represents a schedule of a workflow file

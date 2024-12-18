@@ -7,12 +7,12 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/modules/log"
-	repo_module "code.gitea.io/gitea/app/modules/repository"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/modules/log"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
 
 	"xorm.io/builder"
 )

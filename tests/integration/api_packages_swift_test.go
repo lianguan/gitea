@@ -13,14 +13,14 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	swift_module "code.gitea.io/gitea/app/modules/packages/swift"
-	"code.gitea.io/gitea/app/modules/setting"
-	swift_router "code.gitea.io/gitea/app/routers/api/packages/swift"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	swift_module "gitmin.com/gitmin/app/modules/packages/swift"
+	"gitmin.com/gitmin/app/modules/setting"
+	swift_router "gitmin.com/gitmin/app/routers/api/packages/swift"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

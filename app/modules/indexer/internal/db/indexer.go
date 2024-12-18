@@ -6,7 +6,7 @@ package db
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/modules/indexer/internal"
+	"gitmin.com/gitmin/app/modules/indexer/internal"
 )
 
 var _ internal.Indexer = &Indexer{}

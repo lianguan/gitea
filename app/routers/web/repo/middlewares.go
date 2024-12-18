@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"strconv"
 
-	system_model "code.gitea.io/gitea/app/models/system"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/services/context"
-	user_service "code.gitea.io/gitea/app/services/user"
+	system_model "gitmin.com/gitmin/app/models/system"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/services/context"
+	user_service "gitmin.com/gitmin/app/services/user"
 )
 
 // SetEditorconfigIfExists set editor config as render variable

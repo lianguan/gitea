@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 
 	xormlog "xorm.io/xorm/log"
 )

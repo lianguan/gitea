@@ -9,9 +9,9 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // BlobHash256Key is the key to address a blob content

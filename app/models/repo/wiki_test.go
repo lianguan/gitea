@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/setting"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/stretchr/testify/assert"
 )

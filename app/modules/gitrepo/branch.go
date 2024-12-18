@@ -6,7 +6,7 @@ package gitrepo
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 )
 
 // GetBranchesByPath returns a branch by its path

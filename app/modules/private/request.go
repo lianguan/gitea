@@ -8,8 +8,8 @@ import (
 	"io"
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/httplib"
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/httplib"
+	"gitmin.com/gitmin/app/modules/json"
 )
 
 // ResponseText is used to get the response as text, instead of parsing it as JSON.

@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/httplib"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/proxyprotocol"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/httplib"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/proxyprotocol"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // Response is used for internal request response (for user message and error message)

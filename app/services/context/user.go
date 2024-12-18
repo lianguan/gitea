@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	user_model "code.gitea.io/gitea/app/models/user"
+	user_model "gitmin.com/gitmin/app/models/user"
 )
 
 // UserAssignmentWeb returns a middleware to handle context-user assignment for web routes

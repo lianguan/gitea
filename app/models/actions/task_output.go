@@ -6,7 +6,7 @@ package actions
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 )
 
 // ActionTaskOutput represents an output of ActionTask.

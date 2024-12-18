@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"strings"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/storage"
-	user_service "code.gitea.io/gitea/app/services/user"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/storage"
+	user_service "gitmin.com/gitmin/app/services/user"
 
 	"github.com/urfave/cli/v2"
 )

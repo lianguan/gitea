@@ -6,9 +6,9 @@ package settings
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // GetGeneralUISettings returns instance's global settings for ui

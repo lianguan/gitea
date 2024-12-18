@@ -11,7 +11,7 @@ import (
 	"io"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // ResolveReference resolves a name to a reference

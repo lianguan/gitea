@@ -7,11 +7,11 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/avatars"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/avatars"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"xorm.io/builder"
 )

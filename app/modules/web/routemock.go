@@ -6,7 +6,7 @@ package web
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // MockAfterMiddlewares is a general mock point, it's between middlewares and the handler

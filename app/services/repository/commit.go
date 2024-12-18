@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/util"
-	gitea_ctx "code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/util"
+	gitea_ctx "gitmin.com/gitmin/app/services/context"
 )
 
 type ContainedLinks struct { // TODO: better name?

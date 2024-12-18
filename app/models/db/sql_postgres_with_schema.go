@@ -8,7 +8,7 @@ import (
 	"database/sql/driver"
 	"sync"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"github.com/lib/pq"
 	"xorm.io/xorm/dialects"

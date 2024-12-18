@@ -6,11 +6,11 @@ package nuget
 import (
 	"net/http"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/services/auth"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/services/auth"
 )
 
 var _ auth.Method = &Auth{}

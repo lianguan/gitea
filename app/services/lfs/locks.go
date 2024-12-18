@@ -8,16 +8,16 @@ import (
 	"strconv"
 	"strings"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	git_model "code.gitea.io/gitea/app/models/git"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/json"
-	lfs_module "code.gitea.io/gitea/app/modules/lfs"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	git_model "gitmin.com/gitmin/app/models/git"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/json"
+	lfs_module "gitmin.com/gitmin/app/modules/lfs"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
 )
 
 func handleLockListOut(ctx *context.Context, repo *repo_model.Repository, lock *git_model.LFSLock, err error) {

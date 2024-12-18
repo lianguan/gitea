@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"runtime"
 
-	"code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // Stacktrace show admin monitor goroutines page

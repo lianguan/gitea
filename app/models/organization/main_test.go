@@ -6,14 +6,14 @@ package organization_test
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/unittest"
+	"gitmin.com/gitmin/app/models/unittest"
 
-	_ "code.gitea.io/gitea/app/models"
-	_ "code.gitea.io/gitea/app/models/actions"
-	_ "code.gitea.io/gitea/app/models/activities"
-	_ "code.gitea.io/gitea/app/models/organization"
-	_ "code.gitea.io/gitea/app/models/repo"
-	_ "code.gitea.io/gitea/app/models/user"
+	_ "gitmin.com/gitmin/app/models"
+	_ "gitmin.com/gitmin/app/models/actions"
+	_ "gitmin.com/gitmin/app/models/activities"
+	_ "gitmin.com/gitmin/app/models/organization"
+	_ "gitmin.com/gitmin/app/models/repo"
+	_ "gitmin.com/gitmin/app/models/user"
 )
 
 func TestMain(m *testing.M) {

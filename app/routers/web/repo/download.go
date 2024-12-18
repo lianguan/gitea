@@ -8,15 +8,15 @@ import (
 	"path"
 	"time"
 
-	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/httpcache"
-	"code.gitea.io/gitea/app/modules/lfs"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/storage"
-	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/app/services/context"
+	git_model "gitmin.com/gitmin/app/models/git"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/httpcache"
+	"gitmin.com/gitmin/app/modules/lfs"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/storage"
+	"gitmin.com/gitmin/app/routers/common"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // ServeBlobOrLFS download a git.Blob redirecting to LFS if necessary

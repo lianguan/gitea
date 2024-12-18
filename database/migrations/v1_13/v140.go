@@ -6,8 +6,8 @@ package v1_13 //nolint
 import (
 	"fmt"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"xorm.io/xorm"
 )

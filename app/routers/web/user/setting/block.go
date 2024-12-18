@@ -6,11 +6,11 @@ package setting
 import (
 	"net/http"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/setting"
-	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/app/services/context"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	shared_user "gitmin.com/gitmin/app/routers/web/shared/user"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 const (

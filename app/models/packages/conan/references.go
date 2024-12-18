@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	conan_module "code.gitea.io/gitea/app/modules/packages/conan"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	conan_module "gitmin.com/gitmin/app/modules/packages/conan"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"xorm.io/builder"
 )

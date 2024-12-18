@@ -11,13 +11,13 @@ import (
 	"sort"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	vagrant_module "code.gitea.io/gitea/app/modules/packages/vagrant"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/app/services/context"
-	packages_service "code.gitea.io/gitea/app/services/packages"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	vagrant_module "gitmin.com/gitmin/app/modules/packages/vagrant"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/routers/api/packages/helper"
+	"gitmin.com/gitmin/app/services/context"
+	packages_service "gitmin.com/gitmin/app/services/packages"
 
 	"github.com/hashicorp/go-version"
 )

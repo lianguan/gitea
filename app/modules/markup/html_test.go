@@ -8,12 +8,12 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/emoji"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/modules/setting"
-	testModule "code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/emoji"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/modules/setting"
+	testModule "gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"github.com/stretchr/testify/assert"
 )

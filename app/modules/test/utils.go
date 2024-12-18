@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 )
 
 // RedirectURL returns the redirect URL of a http response.

@@ -8,8 +8,8 @@ import (
 	"html/template"
 	"slices"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // This file implements the static LocaleStore that will not watch for changes

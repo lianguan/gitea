@@ -4,7 +4,7 @@
 package context
 
 import (
-	"code.gitea.io/gitea/app/models/unit"
+	"gitmin.com/gitmin/app/models/unit"
 )
 
 // IsUserSiteAdmin returns true if current user is a site admin

@@ -6,7 +6,7 @@ package common
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/httplib"
+	"gitmin.com/gitmin/app/modules/httplib"
 )
 
 // FetchRedirectDelegate helps the "fetch" requests to redirect to the correct location

@@ -11,14 +11,14 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	system_model "code.gitea.io/gitea/app/models/system"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/translation"
+	"gitmin.com/gitmin/app/models/db"
+	system_model "gitmin.com/gitmin/app/models/system"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/translation"
 )
 
 var (

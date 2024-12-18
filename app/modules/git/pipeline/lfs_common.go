@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 )
 
 // LFSResult represents commits found using a provided pointer file hash

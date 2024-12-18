@@ -6,7 +6,7 @@ package translation
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/translation/i18n"
+	"gitmin.com/gitmin/app/modules/translation/i18n"
 
 	"github.com/stretchr/testify/assert"
 )

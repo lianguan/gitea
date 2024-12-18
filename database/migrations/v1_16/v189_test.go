@@ -6,8 +6,8 @@ package v1_16 //nolint
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"github.com/stretchr/testify/assert"
 )

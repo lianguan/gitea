@@ -6,8 +6,8 @@
 package public
 
 import (
-	"code.gitea.io/gitea/app/modules/assetfs"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/assetfs"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func BuiltinAssets() *assetfs.Layer {

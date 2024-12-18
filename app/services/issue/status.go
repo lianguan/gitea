@@ -6,10 +6,10 @@ package issue
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 // ChangeStatus changes issue status to open or closed.

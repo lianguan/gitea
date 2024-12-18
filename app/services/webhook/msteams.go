@@ -10,11 +10,11 @@ import (
 	"net/url"
 	"strings"
 
-	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/git"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	webhook_model "gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/git"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 type (

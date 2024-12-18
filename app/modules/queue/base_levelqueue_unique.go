@@ -8,8 +8,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"code.gitea.io/gitea/app/modules/nosql"
-	"code.gitea.io/gitea/app/modules/queue/lqinternal"
+	"gitmin.com/gitmin/app/modules/nosql"
+	"gitmin.com/gitmin/app/modules/queue/lqinternal"
 
 	"gitea.com/lunny/levelqueue"
 	"github.com/syndtr/goleveldb/leveldb"

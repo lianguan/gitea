@@ -6,7 +6,7 @@ package v1_21 //nolint
 import (
 	"testing"
 
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/database/migrations/base"
 )
 
 func TestMain(m *testing.M) {

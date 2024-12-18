@@ -6,11 +6,11 @@ package db
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/db"
-	issue_model "code.gitea.io/gitea/app/models/issues"
-	indexer_internal "code.gitea.io/gitea/app/modules/indexer/internal"
-	inner_db "code.gitea.io/gitea/app/modules/indexer/internal/db"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
+	"gitmin.com/gitmin/app/models/db"
+	issue_model "gitmin.com/gitmin/app/models/issues"
+	indexer_internal "gitmin.com/gitmin/app/modules/indexer/internal"
+	inner_db "gitmin.com/gitmin/app/modules/indexer/internal/db"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
 
 	"xorm.io/builder"
 )

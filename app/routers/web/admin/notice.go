@@ -8,12 +8,12 @@ import (
 	"net/http"
 	"strconv"
 
-	"code.gitea.io/gitea/app/models/db"
-	system_model "code.gitea.io/gitea/app/models/system"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/db"
+	system_model "gitmin.com/gitmin/app/models/system"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 const (

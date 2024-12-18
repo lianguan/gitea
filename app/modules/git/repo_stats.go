@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/modules/container"
 )
 
 // CodeActivityStats represents git statistics data

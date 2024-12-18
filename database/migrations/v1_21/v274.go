@@ -5,7 +5,7 @@ package v1_21 //nolint
 import (
 	"time"
 
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"xorm.io/xorm"
 )

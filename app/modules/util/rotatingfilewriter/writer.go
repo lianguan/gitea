@@ -14,8 +14,8 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/graceful/releasereopen"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/graceful/releasereopen"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 type Options struct {

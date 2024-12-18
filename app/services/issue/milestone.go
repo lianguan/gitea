@@ -7,10 +7,10 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	user_model "code.gitea.io/gitea/app/models/user"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	"gitmin.com/gitmin/app/models/db"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	user_model "gitmin.com/gitmin/app/models/user"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 func changeMilestoneAssign(ctx context.Context, doer *user_model.User, issue *issues_model.Issue, oldMilestoneID int64) error {

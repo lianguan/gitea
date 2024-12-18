@@ -7,14 +7,14 @@ package org
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/organization"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
-	shared_user "code.gitea.io/gitea/app/routers/web/shared/user"
-	"code.gitea.io/gitea/app/services/context"
-	org_service "code.gitea.io/gitea/app/services/org"
+	"gitmin.com/gitmin/app/models/organization"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
+	shared_user "gitmin.com/gitmin/app/routers/web/shared/user"
+	"gitmin.com/gitmin/app/services/context"
+	org_service "gitmin.com/gitmin/app/services/org"
 )
 
 const (

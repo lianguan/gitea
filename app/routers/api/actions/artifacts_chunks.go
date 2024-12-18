@@ -17,10 +17,10 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/storage"
+	"gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/storage"
 )
 
 func saveUploadChunkBase(st storage.ObjectStorage, ctx *ArtifactContext,

@@ -13,7 +13,7 @@ import (
 	"slices"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // Use at most this many bytes to determine Content Type.

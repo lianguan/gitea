@@ -4,7 +4,7 @@
 package swagger
 
 import (
-	api "code.gitea.io/gitea/app/modules/structs"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 // Repository

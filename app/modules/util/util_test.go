@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/optional"
 
 	"github.com/stretchr/testify/assert"
 )

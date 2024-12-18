@@ -4,8 +4,8 @@
 package convert
 
 import (
-	secret_model "code.gitea.io/gitea/app/models/secret"
-	api "code.gitea.io/gitea/app/modules/structs"
+	secret_model "gitmin.com/gitmin/app/models/secret"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 // ToSecret converts Secret to API format

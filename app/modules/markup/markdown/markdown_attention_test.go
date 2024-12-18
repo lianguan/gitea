@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/modules/svg"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/modules/svg"
 
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/text/cases"

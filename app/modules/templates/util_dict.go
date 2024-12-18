@@ -9,9 +9,9 @@ import (
 	"html/template"
 	"reflect"
 
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func dictMerge(base map[string]any, arg any) bool {

@@ -6,11 +6,11 @@ package files
 import (
 	"testing"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/services/contexttest"
-	"code.gitea.io/gitea/app/services/gitdiff"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/services/contexttest"
+	"gitmin.com/gitmin/app/services/gitdiff"
 
 	"github.com/stretchr/testify/assert"
 )

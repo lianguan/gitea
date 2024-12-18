@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"time"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 
 	"github.com/nektos/act/pkg/jobparser"
 )

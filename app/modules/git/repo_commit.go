@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/cache"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/cache"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // GetBranchCommitID returns last commit ID string of given branch.

@@ -6,9 +6,9 @@ package auth
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // SyncExternalUsers is used to synchronize users with external authorization source

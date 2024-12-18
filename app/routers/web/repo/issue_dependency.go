@@ -6,10 +6,10 @@ package repo
 import (
 	"net/http"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/services/context"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // AddDependency adds new dependencies

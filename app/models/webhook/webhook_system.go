@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/optional"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/optional"
 )
 
 // GetDefaultWebhooks returns all admin-default webhooks.

@@ -6,12 +6,12 @@ package admin
 import (
 	"net/http"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 )
 
 // ListUnadoptedRepositories lists the unadopted repositories that match the provided names

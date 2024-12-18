@@ -11,12 +11,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	git_model "code.gitea.io/gitea/app/models/git"
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	repo_module "code.gitea.io/gitea/app/modules/repository"
+	git_model "gitmin.com/gitmin/app/models/git"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
 )
 
 // Temporary repos created here use standard branch names to help simplify

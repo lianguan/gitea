@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/log"
-	session_module "code.gitea.io/gitea/app/modules/session"
+	"gitmin.com/gitmin/app/modules/log"
+	session_module "gitmin.com/gitmin/app/modules/session"
 
 	chiSession "gitea.com/go-chi/session"
 	"github.com/gorilla/sessions"

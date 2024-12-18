@@ -13,7 +13,7 @@ import (
 	"strings"
 	"sync"
 
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 )
 
 // FindLFSFile finds commits that contain a provided pointer file hash

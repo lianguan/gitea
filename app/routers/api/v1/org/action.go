@@ -7,17 +7,17 @@ import (
 	"errors"
 	"net/http"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	secret_model "code.gitea.io/gitea/app/models/secret"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/shared"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	actions_service "code.gitea.io/gitea/app/services/actions"
-	"code.gitea.io/gitea/app/services/context"
-	secret_service "code.gitea.io/gitea/app/services/secrets"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	secret_model "gitmin.com/gitmin/app/models/secret"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/shared"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	actions_service "gitmin.com/gitmin/app/services/actions"
+	"gitmin.com/gitmin/app/services/context"
+	secret_service "gitmin.com/gitmin/app/services/secrets"
 )
 
 // ListActionsSecrets list an organization's actions secrets

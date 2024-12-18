@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/modules/process"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/modules/process"
 )
 
 // Event indicates when the printer is triggered

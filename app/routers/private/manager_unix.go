@@ -8,8 +8,8 @@ package private
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/graceful"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/graceful"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // Restart causes the server to perform a graceful restart

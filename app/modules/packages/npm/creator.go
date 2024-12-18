@@ -14,9 +14,9 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/modules/validation"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/modules/validation"
 
 	"github.com/hashicorp/go-version"
 )

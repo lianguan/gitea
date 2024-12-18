@@ -8,14 +8,14 @@ import (
 	"fmt"
 	"strings"
 
-	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
-	"code.gitea.io/gitea/app/models/auth"
-	user_model "code.gitea.io/gitea/app/models/user"
-	auth_module "code.gitea.io/gitea/app/modules/auth"
-	"code.gitea.io/gitea/app/modules/optional"
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
-	source_service "code.gitea.io/gitea/app/services/auth/source"
-	user_service "code.gitea.io/gitea/app/services/user"
+	asymkey_model "gitmin.com/gitmin/app/models/asymkey"
+	"gitmin.com/gitmin/app/models/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	auth_module "gitmin.com/gitmin/app/modules/auth"
+	"gitmin.com/gitmin/app/modules/optional"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
+	source_service "gitmin.com/gitmin/app/services/auth/source"
+	user_service "gitmin.com/gitmin/app/services/user"
 )
 
 // Authenticate queries if login/password is valid against the LDAP directory pool,

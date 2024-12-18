@@ -7,15 +7,15 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models"
-	"code.gitea.io/gitea/app/models/db"
-	org_model "code.gitea.io/gitea/app/models/organization"
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/storage"
-	"code.gitea.io/gitea/app/modules/util"
-	repo_service "code.gitea.io/gitea/app/services/repository"
+	"gitmin.com/gitmin/app/models"
+	"gitmin.com/gitmin/app/models/db"
+	org_model "gitmin.com/gitmin/app/models/organization"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/storage"
+	"gitmin.com/gitmin/app/modules/util"
+	repo_service "gitmin.com/gitmin/app/services/repository"
 )
 
 // DeleteOrganization completely and permanently deletes everything of organization.

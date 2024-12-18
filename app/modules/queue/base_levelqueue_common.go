@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/nosql"
+	"gitmin.com/gitmin/app/modules/nosql"
 
 	"gitea.com/lunny/levelqueue"
 	"github.com/syndtr/goleveldb/leveldb"

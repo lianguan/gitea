@@ -9,8 +9,8 @@ import (
 	"runtime/pprof"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/httplib"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/httplib"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func MonitorDiagnosis(ctx *context.Context) {

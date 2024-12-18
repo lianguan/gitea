@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
 )
 
 // UserList is a list of user.

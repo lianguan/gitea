@@ -7,7 +7,7 @@ package migration
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/structs"
 )
 
 // Downloader downloads the site repo information

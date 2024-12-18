@@ -11,8 +11,8 @@ import (
 	"context"
 	"path/filepath"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 const isGogit = false

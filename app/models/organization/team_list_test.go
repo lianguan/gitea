@@ -6,9 +6,9 @@ package organization_test
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	org_model "code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/unittest"
+	"gitmin.com/gitmin/app/models/db"
+	org_model "gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/unittest"
 
 	"github.com/stretchr/testify/assert"
 )

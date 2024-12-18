@@ -7,14 +7,14 @@ import (
 	"net/http"
 	"net/url"
 
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/routers/api/v1/user"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	org_service "code.gitea.io/gitea/app/services/org"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/routers/api/v1/user"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	org_service "gitmin.com/gitmin/app/services/org"
 )
 
 // listMembers list an organization's members

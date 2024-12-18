@@ -12,10 +12,10 @@ import (
 	"net/http"
 	"net/url"
 
-	"code.gitea.io/gitea/app/modules/activitypub"
-	"code.gitea.io/gitea/app/modules/httplib"
-	"code.gitea.io/gitea/app/modules/setting"
-	gitea_context "code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/activitypub"
+	"gitmin.com/gitmin/app/modules/httplib"
+	"gitmin.com/gitmin/app/modules/setting"
+	gitea_context "gitmin.com/gitmin/app/services/context"
 
 	"github.com/42wim/httpsig"
 	ap "github.com/go-ap/activitypub"

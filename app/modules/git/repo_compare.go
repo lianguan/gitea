@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	logger "code.gitea.io/gitea/app/modules/log"
+	logger "gitmin.com/gitmin/app/modules/log"
 )
 
 // CompareInfo represents needed information for comparing references.

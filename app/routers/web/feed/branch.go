@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/services/context"
 
 	"github.com/gorilla/feeds"
 )

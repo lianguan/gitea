@@ -4,7 +4,7 @@
 package actions
 
 import (
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 const (

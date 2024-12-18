@@ -4,8 +4,8 @@
 package options
 
 import (
-	"code.gitea.io/gitea/app/modules/assetfs"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/assetfs"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func CustomAssets() *assetfs.Layer {

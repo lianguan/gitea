@@ -11,11 +11,11 @@ import (
 	"strings"
 	"testing"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	git_model "code.gitea.io/gitea/app/models/git"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	api "code.gitea.io/gitea/app/modules/structs"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	git_model "gitmin.com/gitmin/app/models/git"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	api "gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/stretchr/testify/assert"
 )

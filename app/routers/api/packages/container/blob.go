@@ -11,15 +11,15 @@ import (
 	"os"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	container_model "code.gitea.io/gitea/app/models/packages/container"
-	"code.gitea.io/gitea/app/modules/globallock"
-	"code.gitea.io/gitea/app/modules/log"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	container_module "code.gitea.io/gitea/app/modules/packages/container"
-	"code.gitea.io/gitea/app/modules/util"
-	packages_service "code.gitea.io/gitea/app/services/packages"
+	"gitmin.com/gitmin/app/models/db"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	container_model "gitmin.com/gitmin/app/models/packages/container"
+	"gitmin.com/gitmin/app/modules/globallock"
+	"gitmin.com/gitmin/app/modules/log"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	container_module "gitmin.com/gitmin/app/modules/packages/container"
+	"gitmin.com/gitmin/app/modules/util"
+	packages_service "gitmin.com/gitmin/app/services/packages"
 )
 
 // saveAsPackageBlob creates a package blob from an upload

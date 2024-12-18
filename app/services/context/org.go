@@ -7,14 +7,14 @@ package context
 import (
 	"strings"
 
-	"code.gitea.io/gitea/app/models/organization"
-	"code.gitea.io/gitea/app/models/perm"
-	"code.gitea.io/gitea/app/models/unit"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/markup"
-	"code.gitea.io/gitea/app/modules/markup/markdown"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/models/organization"
+	"gitmin.com/gitmin/app/models/perm"
+	"gitmin.com/gitmin/app/models/unit"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/markup"
+	"gitmin.com/gitmin/app/modules/markup/markdown"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/structs"
 )
 
 // Organization contains organization context

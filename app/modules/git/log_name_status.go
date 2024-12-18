@@ -13,7 +13,7 @@ import (
 	"sort"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/modules/container"
 
 	"github.com/djherbis/buffer"
 	"github.com/djherbis/nio/v3"

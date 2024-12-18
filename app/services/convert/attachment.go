@@ -4,8 +4,8 @@
 package convert
 
 import (
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	api "code.gitea.io/gitea/app/modules/structs"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 func WebAssetDownloadURL(repo *repo_model.Repository, attach *repo_model.Attachment) string {

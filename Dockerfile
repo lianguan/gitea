@@ -18,8 +18,8 @@ RUN apk --no-cache add \
     && rm -rf /var/cache/apk/*
 
 # Setup repo
-COPY . ${GOPATH}/src/code.gitea.io/gitea
-WORKDIR ${GOPATH}/src/code.gitea.io/gitea
+COPY . ${GOPATH}/src/gitmin.com/gitmin
+WORKDIR ${GOPATH}/src/gitmin.com/gitmin
 
 # Checkout version if set
 RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
@@ -37,9 +37,9 @@ RUN chmod 755 /tmp/local/usr/bin/entrypoint \
               /tmp/local/etc/s6/gitea/* \
               /tmp/local/etc/s6/openssh/* \
               /tmp/local/etc/s6/.s6-svscan/* \
-              /go/src/code.gitea.io/gitea/gitea \
-              /go/src/code.gitea.io/gitea/environment-to-ini
-RUN chmod 644 /go/src/code.gitea.io/gitea/scripts/autocompletion/bash_autocomplete
+              /go/src/gitmin.com/gitmin/gitea \
+              /go/src/gitmin.com/gitmin/environment-to-ini
+RUN chmod 644 /go/src/gitmin.com/gitmin/scripts/autocompletion/bash_autocomplete
 
 FROM docker.io/library/alpine:3.20
 LABEL maintainer="maintainers@gitea.io"
@@ -81,6 +81,6 @@ ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
 
 COPY --from=build-env /tmp/local /
-COPY --from=build-env /go/src/code.gitea.io/gitea/gitea /app/gitea/gitea
-COPY --from=build-env /go/src/code.gitea.io/gitea/environment-to-ini /usr/local/bin/environment-to-ini
-COPY --from=build-env /go/src/code.gitea.io/gitea/scripts/autocompletion/bash_autocomplete /etc/profile.d/gitea_bash_autocomplete.sh
+COPY --from=build-env /go/src/gitmin.com/gitmin/gitea /app/gitea/gitea
+COPY --from=build-env /go/src/gitmin.com/gitmin/environment-to-ini /usr/local/bin/environment-to-ini
+COPY --from=build-env /go/src/gitmin.com/gitmin/scripts/autocompletion/bash_autocomplete /etc/profile.d/gitea_bash_autocomplete.sh

@@ -6,7 +6,7 @@ package setting
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/gobwas/glob"
 	"github.com/stretchr/testify/assert"

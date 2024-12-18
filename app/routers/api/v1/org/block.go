@@ -4,8 +4,8 @@
 package org
 
 import (
-	"code.gitea.io/gitea/app/routers/api/v1/shared"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/routers/api/v1/shared"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func ListBlocks(ctx *context.APIContext) {

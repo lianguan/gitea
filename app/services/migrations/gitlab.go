@@ -15,11 +15,11 @@ import (
 	"strings"
 	"time"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/modules/container"
-	"code.gitea.io/gitea/app/modules/log"
-	base "code.gitea.io/gitea/app/modules/migration"
-	"code.gitea.io/gitea/app/modules/structs"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/modules/container"
+	"gitmin.com/gitmin/app/modules/log"
+	base "gitmin.com/gitmin/app/modules/migration"
+	"gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/xanzy/go-gitlab"
 )

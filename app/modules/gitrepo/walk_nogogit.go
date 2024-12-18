@@ -8,7 +8,7 @@ package gitrepo
 import (
 	"context"
 
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 )
 
 // WalkReferences walks all the references from the repository

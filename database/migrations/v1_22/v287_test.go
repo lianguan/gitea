@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"testing"
 
-	"code.gitea.io/gitea/database/migrations/base"
+	"gitmin.com/gitmin/database/migrations/base"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -6,8 +6,8 @@ package arch
 import (
 	"context"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	arch_module "code.gitea.io/gitea/app/modules/packages/arch"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	arch_module "gitmin.com/gitmin/app/modules/packages/arch"
 )
 
 // GetRepositories gets all available repositories

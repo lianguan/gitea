@@ -12,15 +12,15 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.gitea.io/gitea/app/models"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	system_model "code.gitea.io/gitea/app/models/system"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/hostmatcher"
-	"code.gitea.io/gitea/app/modules/log"
-	base "code.gitea.io/gitea/app/modules/migration"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	system_model "gitmin.com/gitmin/app/models/system"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/hostmatcher"
+	"gitmin.com/gitmin/app/modules/log"
+	base "gitmin.com/gitmin/app/modules/migration"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // MigrateOptions is equal to base.MigrateOptions

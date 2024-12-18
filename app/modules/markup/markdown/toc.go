@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"code.gitea.io/gitea/app/modules/translation"
+	"gitmin.com/gitmin/app/modules/translation"
 
 	"github.com/yuin/goldmark/ast"
 )

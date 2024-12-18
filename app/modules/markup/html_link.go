@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/markup/common"
+	"gitmin.com/gitmin/app/modules/markup/common"
 
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"

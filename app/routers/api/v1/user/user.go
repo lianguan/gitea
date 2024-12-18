@@ -7,13 +7,13 @@ package user
 import (
 	"net/http"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	feed_service "code.gitea.io/gitea/app/services/feed"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	feed_service "gitmin.com/gitmin/app/services/feed"
 )
 
 // Search search users

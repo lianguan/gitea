@@ -11,10 +11,10 @@ import (
 	"runtime"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/private"
-	process_module "code.gitea.io/gitea/app/modules/process"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/private"
+	process_module "gitmin.com/gitmin/app/modules/process"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // Processes prints out the processes

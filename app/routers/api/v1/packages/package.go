@@ -6,13 +6,13 @@ package packages
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/modules/optional"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/routers/api/v1/utils"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
-	packages_service "code.gitea.io/gitea/app/services/packages"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/modules/optional"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/routers/api/v1/utils"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
+	packages_service "gitmin.com/gitmin/app/services/packages"
 )
 
 // ListPackages gets all packages of an owner

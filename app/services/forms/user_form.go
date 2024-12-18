@@ -9,11 +9,11 @@ import (
 	"net/http"
 	"strings"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web/middleware"
-	"code.gitea.io/gitea/app/services/context"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web/middleware"
+	"gitmin.com/gitmin/app/services/context"
 
 	"gitea.com/go-chi/binding"
 )

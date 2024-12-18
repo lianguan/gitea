@@ -4,7 +4,7 @@
 package bleve
 
 import (
-	"code.gitea.io/gitea/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/optional"
 
 	"github.com/blevesearch/bleve/v2"
 	"github.com/blevesearch/bleve/v2/search/query"

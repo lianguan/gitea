@@ -7,8 +7,8 @@ import (
 	"slices"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/assetfs"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/assetfs"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 func AssetFS() *assetfs.LayeredFS {

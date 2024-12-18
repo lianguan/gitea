@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"testing"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	api "code.gitea.io/gitea/app/modules/structs"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 // StringWithCharset random string (from https://www.calhoun.io/creating-random-strings-in-go/)

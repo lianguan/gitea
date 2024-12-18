@@ -4,10 +4,10 @@
 package admin
 
 import (
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/api/v1/repo"
-	"code.gitea.io/gitea/app/services/context"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/api/v1/repo"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // CreateRepo api for creating a repository

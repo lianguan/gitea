@@ -6,7 +6,7 @@ package unittest
 import (
 	"math"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

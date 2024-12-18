@@ -6,7 +6,7 @@ package repository
 import (
 	"testing"
 
-	"code.gitea.io/gitea/app/modules/git"
+	"gitmin.com/gitmin/app/modules/git"
 
 	"github.com/stretchr/testify/assert"
 )

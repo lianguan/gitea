@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/setting"
-	user_setting "code.gitea.io/gitea/app/routers/web/user/setting"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/setting"
+	user_setting "gitmin.com/gitmin/app/routers/web/user/setting"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 var (

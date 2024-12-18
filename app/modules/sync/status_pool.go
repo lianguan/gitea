@@ -6,7 +6,7 @@ package sync
 import (
 	"sync"
 
-	"code.gitea.io/gitea/app/modules/container"
+	"gitmin.com/gitmin/app/modules/container"
 )
 
 // StatusTable is a table maintains true/false values.

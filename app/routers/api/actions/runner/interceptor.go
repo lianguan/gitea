@@ -9,11 +9,11 @@ import (
 	"errors"
 	"strings"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"connectrpc.com/connect"
 	"google.golang.org/grpc/codes"

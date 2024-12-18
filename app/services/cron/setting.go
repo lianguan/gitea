@@ -6,7 +6,7 @@ package cron
 import (
 	"time"
 
-	"code.gitea.io/gitea/app/modules/translation"
+	"gitmin.com/gitmin/app/modules/translation"
 )
 
 // Config represents a basic configuration interface that cron task

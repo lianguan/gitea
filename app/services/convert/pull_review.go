@@ -7,9 +7,9 @@ import (
 	"context"
 	"strings"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	user_model "code.gitea.io/gitea/app/models/user"
-	api "code.gitea.io/gitea/app/modules/structs"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	user_model "gitmin.com/gitmin/app/models/user"
+	api "gitmin.com/gitmin/app/modules/structs"
 )
 
 // ToPullReview convert a review to api format

@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"net/http"
 
-	webhook_model "code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/json"
-	api "code.gitea.io/gitea/app/modules/structs"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
+	webhook_model "gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/json"
+	api "gitmin.com/gitmin/app/modules/structs"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
 )
 
 // payloadConvertor defines the interface to convert system payload to webhook payload

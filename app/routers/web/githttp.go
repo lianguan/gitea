@@ -6,10 +6,10 @@ package web
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/web/repo"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/web/repo"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 func addOwnerRepoGitHTTPRouters(m *web.Router) {

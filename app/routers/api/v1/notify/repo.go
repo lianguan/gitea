@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	activities_model "code.gitea.io/gitea/app/models/activities"
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/app/services/convert"
+	activities_model "gitmin.com/gitmin/app/models/activities"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/app/services/convert"
 )
 
 func statusStringToNotificationStatus(status string) activities_model.NotificationStatus {

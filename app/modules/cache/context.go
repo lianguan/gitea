@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // cacheContext is a context that can be used to cache data in a request level context

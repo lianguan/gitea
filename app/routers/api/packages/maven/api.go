@@ -7,8 +7,8 @@ import (
 	"encoding/xml"
 	"strings"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	maven_module "code.gitea.io/gitea/app/modules/packages/maven"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	maven_module "gitmin.com/gitmin/app/modules/packages/maven"
 )
 
 // MetadataResponse https://maven.apache.org/ref/3.2.5/maven-repository-metadata/repository-metadata.html

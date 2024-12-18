@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/services/context"
-	archiver_service "code.gitea.io/gitea/app/services/repository/archiver"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/services/context"
+	archiver_service "gitmin.com/gitmin/app/services/repository/archiver"
 )
 
 func DownloadArchive(ctx *context.APIContext) {

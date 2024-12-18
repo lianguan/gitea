@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strconv"
 
-	base "code.gitea.io/gitea/app/modules/migration"
+	base "gitmin.com/gitmin/app/modules/migration"
 
 	"gopkg.in/yaml.v3"
 )

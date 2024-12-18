@@ -4,7 +4,7 @@
 package v1_12 //nolint
 
 import (
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 
 	"xorm.io/xorm"
 )

@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // ExternalMarkupRenderers represents the external markup renderers

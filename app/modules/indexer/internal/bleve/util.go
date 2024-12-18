@@ -8,8 +8,8 @@ import (
 	"os"
 	"unicode"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"github.com/blevesearch/bleve/v2"
 	unicode_tokenizer "github.com/blevesearch/bleve/v2/analysis/tokenizer/unicode"

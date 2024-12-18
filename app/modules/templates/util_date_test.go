@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/test"
-	"code.gitea.io/gitea/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/test"
+	"gitmin.com/gitmin/app/modules/timeutil"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -4,7 +4,7 @@
 package actions
 
 import (
-	actions_model "code.gitea.io/gitea/app/models/actions"
+	actions_model "gitmin.com/gitmin/app/models/actions"
 )
 
 const (

@@ -9,10 +9,10 @@ import (
 	"io"
 	"os"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 var (

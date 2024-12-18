@@ -8,15 +8,15 @@ import (
 	"fmt"
 	"strings"
 
-	"code.gitea.io/gitea/app/models"
-	git_model "code.gitea.io/gitea/app/models/git"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/gitrepo"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/structs"
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
+	"gitmin.com/gitmin/app/models"
+	git_model "gitmin.com/gitmin/app/models/git"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/gitrepo"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/structs"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
 )
 
 // ApplyDiffPatchOptions holds the repository diff patch update options

@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/graceful"
-	indexer_internal "code.gitea.io/gitea/app/modules/indexer/internal"
-	inner_elasticsearch "code.gitea.io/gitea/app/modules/indexer/internal/elasticsearch"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
+	"gitmin.com/gitmin/app/modules/graceful"
+	indexer_internal "gitmin.com/gitmin/app/modules/indexer/internal"
+	inner_elasticsearch "gitmin.com/gitmin/app/modules/indexer/internal/elasticsearch"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
 
 	"github.com/olivere/elastic/v7"
 )

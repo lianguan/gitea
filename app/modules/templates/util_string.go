@@ -8,7 +8,7 @@ import (
 	"html/template"
 	"strings"
 
-	"code.gitea.io/gitea/app/modules/base"
+	"gitmin.com/gitmin/app/modules/base"
 )
 
 type StringUtils struct{}

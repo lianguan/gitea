@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/private"
+	"gitmin.com/gitmin/app/modules/private"
 
 	"github.com/urfave/cli/v2"
 )

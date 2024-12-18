@@ -7,7 +7,7 @@ package structs
 import (
 	"time"
 
-	"code.gitea.io/gitea/app/modules/json"
+	"gitmin.com/gitmin/app/modules/json"
 )
 
 // User represents a user

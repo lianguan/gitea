@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/test"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/test"
 
 	"github.com/stretchr/testify/assert"
 )

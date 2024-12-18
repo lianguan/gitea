@@ -6,8 +6,8 @@ package rpm
 import (
 	"context"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	rpm_module "code.gitea.io/gitea/app/modules/packages/rpm"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	rpm_module "gitmin.com/gitmin/app/modules/packages/rpm"
 )
 
 // GetGroups gets all available groups

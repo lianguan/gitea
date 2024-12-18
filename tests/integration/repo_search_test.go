@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	code_indexer "code.gitea.io/gitea/app/modules/indexer/code"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	code_indexer "gitmin.com/gitmin/app/modules/indexer/code"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/stretchr/testify/assert"

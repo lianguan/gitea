@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/services/auth/source/ldap"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/services/auth/source/ldap"
 
 	"github.com/urfave/cli/v2"
 )

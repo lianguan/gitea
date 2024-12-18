@@ -4,10 +4,10 @@
 package common
 
 import (
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/web/middleware"
-	auth_service "code.gitea.io/gitea/app/services/auth"
-	"code.gitea.io/gitea/app/services/context"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/web/middleware"
+	auth_service "gitmin.com/gitmin/app/services/auth"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 type AuthResult struct {

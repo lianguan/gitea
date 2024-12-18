@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/util"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 // ErrWikiAlreadyExist represents a "WikiAlreadyExist" kind of error.

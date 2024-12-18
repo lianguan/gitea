@@ -6,7 +6,7 @@ package packages
 import (
 	"io"
 
-	"code.gitea.io/gitea/app/modules/util/filebuffer"
+	"gitmin.com/gitmin/app/modules/util/filebuffer"
 )
 
 // HashedSizeReader provide methods to read, sum hashes and a Size method

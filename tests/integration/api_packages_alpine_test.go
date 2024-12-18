@@ -14,13 +14,13 @@ import (
 	"net/http"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	alpine_module "code.gitea.io/gitea/app/modules/packages/alpine"
-	alpine_service "code.gitea.io/gitea/app/services/packages/alpine"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	alpine_module "gitmin.com/gitmin/app/modules/packages/alpine"
+	alpine_service "gitmin.com/gitmin/app/services/packages/alpine"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

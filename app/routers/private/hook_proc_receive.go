@@ -6,13 +6,13 @@ package private
 import (
 	"net/http"
 
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/private"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/services/agit"
-	gitea_context "code.gitea.io/gitea/app/services/context"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/private"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/services/agit"
+	gitea_context "gitmin.com/gitmin/app/services/context"
 )
 
 // HookProcReceive proc-receive hook - only handles agit Proc-Receive requests at present

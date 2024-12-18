@@ -13,16 +13,16 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/modules/optional"
-	packages_module "code.gitea.io/gitea/app/modules/packages"
-	chef_module "code.gitea.io/gitea/app/modules/packages/chef"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/routers/api/packages/helper"
-	"code.gitea.io/gitea/app/services/context"
-	packages_service "code.gitea.io/gitea/app/services/packages"
+	"gitmin.com/gitmin/app/models/db"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/modules/optional"
+	packages_module "gitmin.com/gitmin/app/modules/packages"
+	chef_module "gitmin.com/gitmin/app/modules/packages/chef"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/routers/api/packages/helper"
+	"gitmin.com/gitmin/app/services/context"
+	packages_service "gitmin.com/gitmin/app/services/packages"
 )
 
 func apiError(ctx *context.Context, status int, obj any) {

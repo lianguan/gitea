@@ -6,11 +6,11 @@ package misc
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/options"
-	repo_module "code.gitea.io/gitea/app/modules/repository"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/options"
+	repo_module "gitmin.com/gitmin/app/modules/repository"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // Shows a list of all Gitignore templates

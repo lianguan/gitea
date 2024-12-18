@@ -8,14 +8,14 @@ import (
 	"fmt"
 	"strings"
 
-	actions_model "code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/models/db"
-	actions_module "code.gitea.io/gitea/app/modules/actions"
-	"code.gitea.io/gitea/app/modules/log"
-	secret_module "code.gitea.io/gitea/app/modules/secret"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/timeutil"
-	"code.gitea.io/gitea/app/modules/util"
+	actions_model "gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/models/db"
+	actions_module "gitmin.com/gitmin/app/modules/actions"
+	"gitmin.com/gitmin/app/modules/log"
+	secret_module "gitmin.com/gitmin/app/modules/secret"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/timeutil"
+	"gitmin.com/gitmin/app/modules/util"
 
 	"xorm.io/builder"
 )

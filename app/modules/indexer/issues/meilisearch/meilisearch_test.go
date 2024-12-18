@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal"
-	"code.gitea.io/gitea/app/modules/indexer/issues/internal/tests"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal"
+	"gitmin.com/gitmin/app/modules/indexer/issues/internal/tests"
 
 	"github.com/meilisearch/meilisearch-go"
 	"github.com/stretchr/testify/assert"

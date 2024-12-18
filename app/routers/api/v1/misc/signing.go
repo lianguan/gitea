@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	asymkey_service "code.gitea.io/gitea/app/services/asymkey"
-	"code.gitea.io/gitea/app/services/context"
+	asymkey_service "gitmin.com/gitmin/app/services/asymkey"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // SigningKey returns the public key of the default signing key if it exists

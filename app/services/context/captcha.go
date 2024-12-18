@@ -7,14 +7,14 @@ import (
 	"fmt"
 	"sync"
 
-	"code.gitea.io/gitea/app/modules/base"
-	"code.gitea.io/gitea/app/modules/cache"
-	"code.gitea.io/gitea/app/modules/hcaptcha"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/mcaptcha"
-	"code.gitea.io/gitea/app/modules/recaptcha"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/turnstile"
+	"gitmin.com/gitmin/app/modules/base"
+	"gitmin.com/gitmin/app/modules/cache"
+	"gitmin.com/gitmin/app/modules/hcaptcha"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/mcaptcha"
+	"gitmin.com/gitmin/app/modules/recaptcha"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/turnstile"
 
 	"gitea.com/go-chi/captcha"
 )

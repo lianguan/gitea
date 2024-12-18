@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"code.gitea.io/gitea/app/modules/log"
-	base "code.gitea.io/gitea/app/modules/migration"
-	"code.gitea.io/gitea/app/modules/proxy"
-	"code.gitea.io/gitea/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/log"
+	base "gitmin.com/gitmin/app/modules/migration"
+	"gitmin.com/gitmin/app/modules/proxy"
+	"gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/gogs/go-gogs-client"
 )

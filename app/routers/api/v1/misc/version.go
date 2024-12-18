@@ -6,9 +6,9 @@ package misc
 import (
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/services/context"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/services/context"
 )
 
 // Version shows the version of the Gitea server

@@ -9,16 +9,16 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/models/webhook"
-	"code.gitea.io/gitea/app/modules/json"
-	"code.gitea.io/gitea/app/modules/setting"
-	api "code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	webhook_module "code.gitea.io/gitea/app/modules/webhook"
-	"code.gitea.io/gitea/app/services/context"
-	webhook_service "code.gitea.io/gitea/app/services/webhook"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/models/webhook"
+	"gitmin.com/gitmin/app/modules/json"
+	"gitmin.com/gitmin/app/modules/setting"
+	api "gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	webhook_module "gitmin.com/gitmin/app/modules/webhook"
+	"gitmin.com/gitmin/app/services/context"
+	webhook_service "gitmin.com/gitmin/app/services/webhook"
 )
 
 // ListOwnerHooks lists the webhooks of the provided owner

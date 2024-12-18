@@ -6,10 +6,10 @@ package context
 import (
 	"net/http"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	"code.gitea.io/gitea/app/modules/log"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // RequireRepoAdmin returns a middleware for requiring repository admin permission

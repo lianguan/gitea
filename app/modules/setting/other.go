@@ -3,7 +3,7 @@
 
 package setting
 
-import "code.gitea.io/gitea/app/modules/log"
+import "gitmin.com/gitmin/app/modules/log"
 
 type OtherConfig struct {
 	ShowFooterVersion          bool

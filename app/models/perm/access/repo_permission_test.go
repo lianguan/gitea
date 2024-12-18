@@ -6,10 +6,10 @@ package access
 import (
 	"testing"
 
-	perm_model "code.gitea.io/gitea/app/models/perm"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unit"
-	user_model "code.gitea.io/gitea/app/models/user"
+	perm_model "gitmin.com/gitmin/app/models/perm"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unit"
+	user_model "gitmin.com/gitmin/app/models/user"
 
 	"github.com/stretchr/testify/assert"
 )

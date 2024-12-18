@@ -7,18 +7,18 @@ import (
 	"context"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/auth"
-	"code.gitea.io/gitea/app/models/db"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/optional"
-	"code.gitea.io/gitea/app/services/auth/source/oauth2"
-	"code.gitea.io/gitea/app/services/auth/source/smtp"
+	"gitmin.com/gitmin/app/models/auth"
+	"gitmin.com/gitmin/app/models/db"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/optional"
+	"gitmin.com/gitmin/app/services/auth/source/oauth2"
+	"gitmin.com/gitmin/app/services/auth/source/smtp"
 
-	_ "code.gitea.io/gitea/app/services/auth/source/db"   // register the sources (and below)
-	_ "code.gitea.io/gitea/app/services/auth/source/ldap" // register the ldap source
-	_ "code.gitea.io/gitea/app/services/auth/source/pam"  // register the pam source
-	_ "code.gitea.io/gitea/app/services/auth/source/sspi" // register the sspi source
+	_ "gitmin.com/gitmin/app/services/auth/source/db"   // register the sources (and below)
+	_ "gitmin.com/gitmin/app/services/auth/source/ldap" // register the ldap source
+	_ "gitmin.com/gitmin/app/services/auth/source/pam"  // register the pam source
+	_ "gitmin.com/gitmin/app/services/auth/source/sspi" // register the sspi source
 )
 
 // UserSignIn validates user name and password.

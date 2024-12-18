@@ -8,12 +8,12 @@ import (
 	"html"
 	"net/http"
 
-	"code.gitea.io/gitea/app/modules/public"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/web"
-	"code.gitea.io/gitea/app/routers/common"
-	"code.gitea.io/gitea/app/routers/web/healthcheck"
-	"code.gitea.io/gitea/app/services/forms"
+	"gitmin.com/gitmin/app/modules/public"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/web"
+	"gitmin.com/gitmin/app/routers/common"
+	"gitmin.com/gitmin/app/routers/web/healthcheck"
+	"gitmin.com/gitmin/app/services/forms"
 )
 
 // Routes registers the installation routes

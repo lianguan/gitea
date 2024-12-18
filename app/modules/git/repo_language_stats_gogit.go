@@ -9,8 +9,8 @@ import (
 	"bytes"
 	"io"
 
-	"code.gitea.io/gitea/app/modules/analyze"
-	"code.gitea.io/gitea/app/modules/optional"
+	"gitmin.com/gitmin/app/modules/analyze"
+	"gitmin.com/gitmin/app/modules/optional"
 
 	"github.com/go-enry/go-enry/v2"
 	"github.com/go-git/go-git/v5"

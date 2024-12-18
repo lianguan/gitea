@@ -10,7 +10,7 @@ import (
 	"bytes"
 	"io"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // Blob represents a Git object.

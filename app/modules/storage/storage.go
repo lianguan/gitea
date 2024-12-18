@@ -11,8 +11,8 @@ import (
 	"net/url"
 	"os"
 
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // ErrURLNotSupported represents url is not supported

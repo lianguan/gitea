@@ -6,10 +6,10 @@ package files
 import (
 	"context"
 
-	asymkey_model "code.gitea.io/gitea/app/models/asymkey"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/structs"
+	asymkey_model "gitmin.com/gitmin/app/models/asymkey"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/structs"
 )
 
 // CountDivergingCommits determines how many commits a branch is ahead or behind the repository's base branch

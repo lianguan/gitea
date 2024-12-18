@@ -6,10 +6,10 @@ package issue
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	access_model "code.gitea.io/gitea/app/models/perm/access"
-	user_model "code.gitea.io/gitea/app/models/user"
-	notify_service "code.gitea.io/gitea/app/services/notify"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	access_model "gitmin.com/gitmin/app/models/perm/access"
+	user_model "gitmin.com/gitmin/app/models/user"
+	notify_service "gitmin.com/gitmin/app/services/notify"
 )
 
 // ChangeContent changes issue content, as the given user.

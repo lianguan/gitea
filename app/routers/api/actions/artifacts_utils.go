@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"strings"
 
-	"code.gitea.io/gitea/app/models/actions"
-	"code.gitea.io/gitea/app/modules/log"
-	"code.gitea.io/gitea/app/modules/util"
+	"gitmin.com/gitmin/app/models/actions"
+	"gitmin.com/gitmin/app/modules/log"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 const (

@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	auth_model "code.gitea.io/gitea/app/models/auth"
-	api "code.gitea.io/gitea/app/modules/structs"
+	auth_model "gitmin.com/gitmin/app/models/auth"
+	api "gitmin.com/gitmin/app/modules/structs"
 
 	"github.com/stretchr/testify/assert"
 )

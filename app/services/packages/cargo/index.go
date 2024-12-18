@@ -13,17 +13,17 @@ import (
 	"strconv"
 	"time"
 
-	packages_model "code.gitea.io/gitea/app/models/packages"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	user_model "code.gitea.io/gitea/app/models/user"
-	"code.gitea.io/gitea/app/modules/git"
-	"code.gitea.io/gitea/app/modules/json"
-	cargo_module "code.gitea.io/gitea/app/modules/packages/cargo"
-	"code.gitea.io/gitea/app/modules/setting"
-	"code.gitea.io/gitea/app/modules/structs"
-	"code.gitea.io/gitea/app/modules/util"
-	repo_service "code.gitea.io/gitea/app/services/repository"
-	files_service "code.gitea.io/gitea/app/services/repository/files"
+	packages_model "gitmin.com/gitmin/app/models/packages"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	user_model "gitmin.com/gitmin/app/models/user"
+	"gitmin.com/gitmin/app/modules/git"
+	"gitmin.com/gitmin/app/modules/json"
+	cargo_module "gitmin.com/gitmin/app/modules/packages/cargo"
+	"gitmin.com/gitmin/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/structs"
+	"gitmin.com/gitmin/app/modules/util"
+	repo_service "gitmin.com/gitmin/app/services/repository"
+	files_service "gitmin.com/gitmin/app/services/repository/files"
 )
 
 const (

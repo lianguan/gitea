@@ -6,7 +6,7 @@ package setting
 import (
 	"strconv"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 var Camo = struct {

@@ -25,14 +25,14 @@ import (
 	"testing"
 	"time"
 
-	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/app/models/packages"
-	"code.gitea.io/gitea/app/models/unittest"
-	user_model "code.gitea.io/gitea/app/models/user"
-	chef_module "code.gitea.io/gitea/app/modules/packages/chef"
-	"code.gitea.io/gitea/app/modules/setting"
-	chef_router "code.gitea.io/gitea/app/routers/api/packages/chef"
-	"code.gitea.io/gitea/tests"
+	"gitmin.com/gitmin/app/models/db"
+	"gitmin.com/gitmin/app/models/packages"
+	"gitmin.com/gitmin/app/models/unittest"
+	user_model "gitmin.com/gitmin/app/models/user"
+	chef_module "gitmin.com/gitmin/app/modules/packages/chef"
+	"gitmin.com/gitmin/app/modules/setting"
+	chef_router "gitmin.com/gitmin/app/routers/api/packages/chef"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )

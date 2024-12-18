@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"code.gitea.io/gitea/app/models/db"
+	"gitmin.com/gitmin/app/models/db"
 
 	"github.com/stretchr/testify/assert"
 )

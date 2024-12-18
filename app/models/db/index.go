@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 // ResourceIndex represents a resource index which could be used as issue/release and others

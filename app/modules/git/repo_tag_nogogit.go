@@ -10,7 +10,7 @@ import (
 	"errors"
 	"io"
 
-	"code.gitea.io/gitea/app/modules/log"
+	"gitmin.com/gitmin/app/modules/log"
 )
 
 // IsTagExist returns true if given tag exists in the repository.

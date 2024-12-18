@@ -6,8 +6,8 @@ package payload
 import (
 	"context"
 
-	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/app/modules/util"
+	issues_model "gitmin.com/gitmin/app/models/issues"
+	"gitmin.com/gitmin/app/modules/util"
 )
 
 const replyPayloadVersion1 byte = 1

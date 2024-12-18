@@ -1,4 +1,4 @@
-module code.gitea.io/gitea
+module gitmin.com/gitmin
 
 go 1.23
 
@@ -9,7 +9,7 @@ godebug x509negativeserial=1
 
 require (
 	code.gitea.io/actions-proto-go v0.4.0
-	code.gitea.io/gitea-vet v0.2.3
+	gitmin.com/gitmin-vet v0.2.3
 	code.gitea.io/sdk/gitea v0.19.0
 	codeberg.org/gusted/mcaptcha v0.0.0-20220723083913-4f3072e1d570
 	connectrpc.com/connect v1.17.0

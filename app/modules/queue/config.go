@@ -4,7 +4,7 @@
 package queue
 
 import (
-	"code.gitea.io/gitea/app/modules/setting"
+	"gitmin.com/gitmin/app/modules/setting"
 )
 
 type BaseConfig struct {

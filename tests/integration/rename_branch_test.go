@@ -8,11 +8,11 @@ import (
 	"net/url"
 	"testing"
 
-	git_model "code.gitea.io/gitea/app/models/git"
-	repo_model "code.gitea.io/gitea/app/models/repo"
-	"code.gitea.io/gitea/app/models/unittest"
-	gitea_context "code.gitea.io/gitea/app/services/context"
-	"code.gitea.io/gitea/tests"
+	git_model "gitmin.com/gitmin/app/models/git"
+	repo_model "gitmin.com/gitmin/app/models/repo"
+	"gitmin.com/gitmin/app/models/unittest"
+	gitea_context "gitmin.com/gitmin/app/services/context"
+	"gitmin.com/gitmin/tests"
 
 	"github.com/stretchr/testify/assert"
 )
