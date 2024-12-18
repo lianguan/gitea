@@ -16,7 +16,7 @@ else
 
 DIST := dist
 DIST_DIRS := $(DIST)/binaries $(DIST)/release
-IMPORT := gitmin.com/gitmin
+IMPORT := code.gitea.io/gitea
 
 GO ?= go
 SHASUM ?= shasum -a 256
@@ -426,7 +426,7 @@ lint-go-windows:
 .PHONY: lint-go-vet
 lint-go-vet:
 	@echo "Running go vet..."
-	@GOOS= GOARCH= $(GO) build gitmin.com/gitmin-vet
+	@GOOS= GOARCH= $(GO) build code.gitea.io/gitea-vet
 	@$(GO) vet -vettool=gitea-vet ./...
 
 .PHONY: lint-go-gopls
