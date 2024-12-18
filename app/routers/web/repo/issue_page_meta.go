@@ -204,7 +204,7 @@ func (d *IssuePageMetaData) retrieveReviewersData(ctx *context.Context) {
 			posterID = 0 // for migrated PRs, no poster ID
 		}
 
-		isClosed = d.Issue.IsClosed || d.Issue.PullRequest.HasMerged
+		isClosed = d.Issue.IsClosed || d.Issue.MergeRequest.HasMerged
 
 		originalAuthorReviews, err := issues_model.GetReviewersFromOriginalAuthorsByIssueID(ctx, d.Issue.ID)
 		if err != nil {

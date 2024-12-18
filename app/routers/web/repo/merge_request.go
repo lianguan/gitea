@@ -139,7 +139,7 @@ func getPullInfo(ctx *context.Context) (issue *issues_model.Issue, ok bool) {
 		return nil, false
 	}
 
-	if err = issue.PullRequest.LoadHeadRepo(ctx); err != nil {
+	if err = issue.MergeRequest.LoadHeadRepo(ctx); err != nil {
 		ctx.ServerError("LoadHeadRepo", err)
 		return nil, false
 	}
@@ -155,7 +155,7 @@ func getPullInfo(ctx *context.Context) (issue *issues_model.Issue, ok bool) {
 	return issue, true
 }
 
-func setMergeTarget(ctx *context.Context, pull *issues_model.PullRequest) {
+func setMergeTarget(ctx *context.Context, pull *issues_model.MergeRequest) {
 	if ctx.Repo.Owner.Name == pull.MustHeadUserName(ctx) {
 		ctx.Data["HeadTarget"] = pull.HeadBranch
 	} else if pull.HeadRepo == nil {
@@ -165,7 +165,7 @@ func setMergeTarget(ctx *context.Context, pull *issues_model.PullRequest) {
 	}
 	ctx.Data["BaseTarget"] = pull.BaseBranch
 	headBranchLink := ""
-	if pull.Flow == issues_model.PullRequestFlowGithub {
+	if pull.Flow == issues_model.MergeRequestFlowGithub {
 		b, err := git_model.GetBranch(ctx, pull.HeadRepoID, pull.HeadBranch)
 		switch {
 		case err == nil:
@@ -186,7 +186,7 @@ func GetPullDiffStats(ctx *context.Context) {
 	if !ok {
 		return
 	}
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	mergeBaseCommitID := GetMergedBaseCommitID(ctx, issue)
 
@@ -220,7 +220,7 @@ func GetPullDiffStats(ctx *context.Context) {
 }
 
 func GetMergedBaseCommitID(ctx *context.Context, issue *issues_model.Issue) string {
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	var baseCommit string
 	// Some migrated PR won't have any Base SHA and lose history, try to get one
@@ -267,7 +267,7 @@ func preparePullViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *g
 	if !issue.IsMergeRequest {
 		return nil
 	}
-	if issue.PullRequest.HasMerged {
+	if issue.MergeRequest.HasMerged {
 		return prepareMergedViewPullInfo(ctx, issue)
 	}
 	return prepareViewPullInfo(ctx, issue)
@@ -275,7 +275,7 @@ func preparePullViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *g
 
 // prepareMergedViewPullInfo show meta information for a merged pull request view page
 func prepareMergedViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.CompareInfo {
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	setMergeTarget(ctx, pull)
 	ctx.Data["HasMerged"] = true
@@ -324,7 +324,7 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 	ctx.Data["PullRequestWorkInProgressPrefixes"] = setting.Repository.PullRequest.WorkInProgressPrefixes
 
 	repo := ctx.Repo.Repository
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	if err := pull.LoadHeadRepo(ctx); err != nil {
 		ctx.ServerError("LoadHeadRepo", err)
@@ -413,14 +413,14 @@ func prepareViewPullInfo(ctx *context.Context, issue *issues_model.Issue) *git.C
 		}
 		defer closer.Close()
 
-		if pull.Flow == issues_model.PullRequestFlowGithub {
+		if pull.Flow == issues_model.MergeRequestFlowGithub {
 			headBranchExist = headGitRepo.IsBranchExist(pull.HeadBranch)
 		} else {
 			headBranchExist = git.IsReferenceExist(ctx, baseGitRepo.Path, pull.GetGitRefName())
 		}
 
 		if headBranchExist {
-			if pull.Flow != issues_model.PullRequestFlowGithub {
+			if pull.Flow != issues_model.MergeRequestFlowGithub {
 				headBranchSha, err = baseGitRepo.GetRefCommitID(pull.GetGitRefName())
 			} else {
 				headBranchSha, err = headGitRepo.GetBranchCommitID(pull.HeadBranch)
@@ -657,7 +657,7 @@ func viewPullFiles(ctx *context.Context, specifiedStartCommit, specifiedEndCommi
 	if !ok {
 		return
 	}
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	var (
 		startCommitID string
@@ -884,7 +884,7 @@ func viewPullFiles(ctx *context.Context, specifiedStartCommit, specifiedEndCommi
 	ctx.Data["CanBlockUser"] = func(blocker, blockee *user_model.User) bool {
 		return user_service.CanBlockUser(ctx, ctx.Doer, blocker, blockee)
 	}
-	if !willShowSpecifiedCommit && !willShowSpecifiedCommitRange && pull.Flow == issues_model.PullRequestFlowGithub {
+	if !willShowSpecifiedCommit && !willShowSpecifiedCommitRange && pull.Flow == issues_model.MergeRequestFlowGithub {
 		if err := pull.LoadHeadRepo(ctx); err != nil {
 			ctx.ServerError("LoadHeadRepo", err)
 			return
@@ -938,23 +938,23 @@ func UpdatePullRequest(ctx *context.Context) {
 		ctx.NotFound("MergePullRequest", nil)
 		return
 	}
-	if issue.PullRequest.HasMerged {
+	if issue.MergeRequest.HasMerged {
 		ctx.NotFound("MergePullRequest", nil)
 		return
 	}
 
 	rebase := ctx.FormString("style") == "rebase"
 
-	if err := issue.PullRequest.LoadBaseRepo(ctx); err != nil {
+	if err := issue.MergeRequest.LoadBaseRepo(ctx); err != nil {
 		ctx.ServerError("LoadBaseRepo", err)
 		return
 	}
-	if err := issue.PullRequest.LoadHeadRepo(ctx); err != nil {
+	if err := issue.MergeRequest.LoadHeadRepo(ctx); err != nil {
 		ctx.ServerError("LoadHeadRepo", err)
 		return
 	}
 
-	allowedUpdateByMerge, allowedUpdateByRebase, err := pull_service.IsUserAllowedToUpdate(ctx, issue.PullRequest, ctx.Doer)
+	allowedUpdateByMerge, allowedUpdateByRebase, err := pull_service.IsUserAllowedToUpdate(ctx, issue.MergeRequest, ctx.Doer)
 	if err != nil {
 		ctx.ServerError("IsUserAllowedToMerge", err)
 		return
@@ -968,9 +968,9 @@ func UpdatePullRequest(ctx *context.Context) {
 	}
 
 	// default merge commit message
-	message := fmt.Sprintf("Merge branch '%s' into %s", issue.PullRequest.BaseBranch, issue.PullRequest.HeadBranch)
+	message := fmt.Sprintf("Merge branch '%s' into %s", issue.MergeRequest.BaseBranch, issue.MergeRequest.HeadBranch)
 
-	if err = pull_service.Update(ctx, issue.PullRequest, ctx.Doer, message, rebase); err != nil {
+	if err = pull_service.Update(ctx, issue.MergeRequest, ctx.Doer, message, rebase); err != nil {
 		if models.IsErrMergeConflicts(err) {
 			conflictError := err.(models.ErrMergeConflicts)
 			flashError, err := ctx.RenderToHTML(tplAlertDetails, map[string]any{
@@ -1019,7 +1019,7 @@ func MergePullRequest(ctx *context.Context) {
 		return
 	}
 
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 	pr.Issue = issue
 	pr.Issue.Repo = ctx.Repo.Repository
 
@@ -1225,7 +1225,7 @@ func CancelAutoMergePullRequest(ctx *context.Context) {
 		return
 	}
 
-	if err := automerge.RemoveScheduledAutoMerge(ctx, ctx.Doer, issue.PullRequest); err != nil {
+	if err := automerge.RemoveScheduledAutoMerge(ctx, ctx.Doer, issue.MergeRequest); err != nil {
 		if db.IsErrNotExist(err) {
 			ctx.Flash.Error(ctx.Tr("repo.merges.auto_merge_not_scheduled"))
 			ctx.Redirect(fmt.Sprintf("%s/pulls/%d", ctx.Repo.RepoLink, issue.Index))
@@ -1312,7 +1312,7 @@ func CompareAndPullRequestPost(ctx *context.Context) {
 		IsMergeRequest:      true,
 		Content:     content,
 	}
-	pullRequest := &issues_model.PullRequest{
+	pullRequest := &issues_model.MergeRequest{
 		HeadRepoID:          ci.HeadRepo.ID,
 		BaseRepoID:          repo.ID,
 		HeadBranch:          ci.HeadBranch,
@@ -1320,7 +1320,7 @@ func CompareAndPullRequestPost(ctx *context.Context) {
 		HeadRepo:            ci.HeadRepo,
 		BaseRepo:            repo,
 		MergeBase:           ci.CompareInfo.MergeBase,
-		Type:                issues_model.PullRequestGitea,
+		Type:                issues_model.MergeRequestGitea,
 		AllowMaintainerEdit: form.AllowMaintainerEdit,
 	}
 	// FIXME: check error in the case two people send pull request at almost same time, give nice error prompt
@@ -1405,10 +1405,10 @@ func CleanUpPullRequest(ctx *context.Context) {
 		return
 	}
 
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 
 	// Don't cleanup unmerged and unclosed PRs and agit PRs
-	if !pr.HasMerged && !issue.IsClosed && pr.Flow != issues_model.PullRequestFlowGithub {
+	if !pr.HasMerged && !issue.IsClosed && pr.Flow != issues_model.MergeRequestFlowGithub {
 		ctx.NotFound("CleanUpPullRequest", nil)
 		return
 	}
@@ -1505,7 +1505,7 @@ func CleanUpPullRequest(ctx *context.Context) {
 	deleteBranch(ctx, pr, gitRepo)
 }
 
-func deleteBranch(ctx *context.Context, pr *issues_model.PullRequest, gitRepo *git.Repository) {
+func deleteBranch(ctx *context.Context, pr *issues_model.MergeRequest, gitRepo *git.Repository) {
 	fullBranchName := pr.HeadRepo.FullName() + ":" + pr.HeadBranch
 
 	if err := pull_service.RetargetChildrenOnMerge(ctx, ctx.Doer, pr); err != nil {
@@ -1550,7 +1550,7 @@ func DownloadPullPatch(ctx *context.Context) {
 func DownloadPullDiffOrPatch(ctx *context.Context, patch bool) {
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.ServerError("GetPullRequestByIndex", err)
@@ -1572,7 +1572,7 @@ func UpdatePullRequestTarget(ctx *context.Context) {
 	if ctx.Written() {
 		return
 	}
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 	if !issue.IsMergeRequest {
 		ctx.Error(http.StatusNotFound)
 		return
@@ -1590,8 +1590,8 @@ func UpdatePullRequestTarget(ctx *context.Context) {
 	}
 
 	if err := pull_service.ChangeTargetBranch(ctx, pr, ctx.Doer, targetBranch); err != nil {
-		if issues_model.IsErrPullRequestAlreadyExists(err) {
-			err := err.(issues_model.ErrPullRequestAlreadyExists)
+		if issues_model.IsErrMergeRequestAlreadyExists(err) {
+			err := err.(issues_model.ErrMergeRequestAlreadyExists)
 
 			RepoRelPath := ctx.Repo.Owner.Name + "/" + ctx.Repo.Repository.Name
 			errorMessage := ctx.Tr("repo.merges.has_pull_request", html.EscapeString(ctx.Repo.RepoLink+"/pulls/"+strconv.FormatInt(err.IssueID, 10)), html.EscapeString(RepoRelPath), err.IssueID) // FIXME: Creates url inside locale string
@@ -1609,7 +1609,7 @@ func UpdatePullRequestTarget(ctx *context.Context) {
 				"error":      err.Error(),
 				"user_error": errorMessage,
 			})
-		} else if models.IsErrPullRequestHasMerged(err) {
+		} else if models.IsErrMergeRequestHasMerged(err) {
 			errorMessage := ctx.Tr("repo.merges.has_merged")
 
 			ctx.Flash.Error(errorMessage)
@@ -1643,7 +1643,7 @@ func SetAllowEdits(ctx *context.Context) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.ServerError("GetPullRequestByIndex", err)

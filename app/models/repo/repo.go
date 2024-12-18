@@ -409,7 +409,7 @@ func (repo *Repository) MustGetUnit(ctx context.Context, tp unit.Type) *RepoUnit
 	} else if tp == unit.TypeMergeRequests {
 		return &RepoUnit{
 			Type:   tp,
-			Config: new(PullRequestsConfig),
+			Config: new(MergeRequestsConfig),
 		}
 	} else if tp == unit.TypeIssues {
 		return &RepoUnit{

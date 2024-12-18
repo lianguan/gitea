@@ -22,7 +22,7 @@ type Downloader interface {
 	GetComments(commentable Commentable) ([]*Comment, bool, error)
 	GetAllComments(page, perPage int) ([]*Comment, bool, error)
 	SupportGetRepoComments() bool
-	GetPullRequests(page, perPage int) ([]*PullRequest, bool, error)
+	GetPullRequests(page, perPage int) ([]*MergeRequest, bool, error)
 	GetReviews(reviewable Reviewable) ([]*Review, error)
 	FormatCloneURL(opts MigrateOptions, remoteAddr string) (string, error)
 }

@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// PullRequest represents a pull request
-type PullRequest struct {
+// MergeRequest represents a pull request
+type MergeRequest struct {
 	ID                      int64      `json:"id"`
 	URL                     string     `json:"url"`
 	Index                   int64      `json:"number"`

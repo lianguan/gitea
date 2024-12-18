@@ -30,7 +30,7 @@ const (
 type prContext struct {
 	context.Context
 	tmpBasePath string
-	pr          *issues_model.PullRequest
+	pr          *issues_model.MergeRequest
 	outbuf      *strings.Builder // we keep these around to help reduce needless buffer recreation,
 	errbuf      *strings.Builder // any use should be preceded by a Reset and preferably after use
 }
@@ -47,7 +47,7 @@ func (ctx *prContext) RunOpts() *git.RunOpts {
 
 // createTemporaryRepoForPR creates a temporary repo with "base" for pr.BaseBranch and "tracking" for  pr.HeadBranch
 // it also create a second base branch called "original_base"
-func createTemporaryRepoForPR(ctx context.Context, pr *issues_model.PullRequest) (prCtx *prContext, cancel context.CancelFunc, err error) {
+func createTemporaryRepoForPR(ctx context.Context, pr *issues_model.MergeRequest) (prCtx *prContext, cancel context.CancelFunc, err error) {
 	if err := pr.LoadHeadRepo(ctx); err != nil {
 		log.Error("%-v LoadHeadRepo: %v", pr, err)
 		return nil, nil, fmt.Errorf("%v LoadHeadRepo: %w", pr, err)
@@ -171,7 +171,7 @@ func createTemporaryRepoForPR(ctx context.Context, pr *issues_model.PullRequest)
 	objectFormat := git.ObjectFormatFromName(pr.BaseRepo.ObjectFormatName)
 	// Fetch head branch
 	var headBranch string
-	if pr.Flow == issues_model.PullRequestFlowGithub {
+	if pr.Flow == issues_model.MergeRequestFlowGithub {
 		headBranch = git.BranchPrefix + pr.HeadBranch
 	} else if len(pr.HeadCommitID) == objectFormat.FullLength() { // for not created pull request
 		headBranch = pr.HeadCommitID

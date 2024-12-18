@@ -166,7 +166,7 @@ func TestAPIListPinnedPullrequests(t *testing.T) {
 
 	req := NewRequest(t, "GET", fmt.Sprintf("/api/v1/repos/%s/%s/pulls/pinned", repo.OwnerName, repo.Name))
 	resp := MakeRequest(t, req, http.StatusOK)
-	var prList []api.PullRequest
+	var prList []api.MergeRequest
 	DecodeJSON(t, resp, &prList)
 
 	assert.Empty(t, prList)

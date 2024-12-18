@@ -466,7 +466,7 @@ func (d *OneDevDownloader) GetComments(commentable base.Commentable) ([]*base.Co
 }
 
 // GetPullRequests returns pull requests
-func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	rawPullRequests := make([]struct {
 		ID             int64     `json:"id"`
 		Number         int64     `json:"number"`
@@ -496,7 +496,7 @@ func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 		return nil, false, err
 	}
 
-	pullRequests := make([]*base.PullRequest, 0, len(rawPullRequests))
+	pullRequests := make([]*base.MergeRequest, 0, len(rawPullRequests))
 	for _, pr := range rawPullRequests {
 		var mergePreview struct {
 			TargetHeadCommitHash string `json:"targetHeadCommitHash"`
@@ -528,7 +528,7 @@ func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 		poster := d.tryGetUser(pr.SubmitterID)
 
 		number := pr.Number + d.maxIssueIndex
-		pullRequests = append(pullRequests, &base.PullRequest{
+		pullRequests = append(pullRequests, &base.MergeRequest{
 			Title:      pr.Title,
 			Number:     number,
 			PosterName: poster.Name,
@@ -540,12 +540,12 @@ func (d *OneDevDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 			Closed:     closeTime,
 			Merged:     merged,
 			MergedTime: mergedTime,
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      pr.SourceBranch,
 				SHA:      mergePreview.HeadCommitHash,
 				RepoName: d.repoName,
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:      pr.TargetBranch,
 				SHA:      mergePreview.TargetHeadCommitHash,
 				RepoName: d.repoName,

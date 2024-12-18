@@ -19,14 +19,14 @@ import (
 // IssueList defines a list of issues
 type IssueList []*Issue
 
-// get the repo IDs to be loaded later, these IDs are for issue.Repo and issue.PullRequest.HeadRepo
+// get the repo IDs to be loaded later, these IDs are for issue.Repo and issue.MergeRequest.HeadRepo
 func (issues IssueList) getRepoIDs() []int64 {
 	return container.FilterSlice(issues, func(issue *Issue) (int64, bool) {
 		if issue.Repo == nil {
 			return issue.RepoID, true
 		}
-		if issue.PullRequest != nil && issue.PullRequest.HeadRepo == nil {
-			return issue.PullRequest.HeadRepoID, true
+		if issue.MergeRequest != nil && issue.MergeRequest.HeadRepo == nil {
+			return issue.MergeRequest.HeadRepoID, true
 		}
 		return 0, false
 	})
@@ -62,10 +62,10 @@ func (issues IssueList) LoadRepositories(ctx context.Context) (repo_model.Reposi
 		} else {
 			repoMaps[issue.RepoID] = issue.Repo
 		}
-		if issue.PullRequest != nil {
-			issue.PullRequest.BaseRepo = issue.Repo
-			if issue.PullRequest.HeadRepo == nil {
-				issue.PullRequest.HeadRepo = repoMaps[issue.PullRequest.HeadRepoID]
+		if issue.MergeRequest != nil {
+			issue.MergeRequest.BaseRepo = issue.Repo
+			if issue.MergeRequest.HeadRepo == nil {
+				issue.MergeRequest.HeadRepo = repoMaps[issue.MergeRequest.HeadRepoID]
 			}
 		}
 	}
@@ -323,7 +323,7 @@ func (issues IssueList) LoadAssignees(ctx context.Context) error {
 func (issues IssueList) getPullIssueIDs() []int64 {
 	ids := make([]int64, 0, len(issues))
 	for _, issue := range issues {
-		if issue.IsMergeRequest && issue.PullRequest == nil {
+		if issue.IsMergeRequest && issue.MergeRequest == nil {
 			ids = append(ids, issue.ID)
 		}
 	}
@@ -337,7 +337,7 @@ func (issues IssueList) LoadPullRequests(ctx context.Context) error {
 		return nil
 	}
 
-	pullRequestMaps := make(map[int64]*PullRequest, len(issuesIDs))
+	pullRequestMaps := make(map[int64]*MergeRequest, len(issuesIDs))
 	left := len(issuesIDs)
 	for left > 0 {
 		limit := db.DefaultMaxInSize
@@ -346,13 +346,13 @@ func (issues IssueList) LoadPullRequests(ctx context.Context) error {
 		}
 		rows, err := db.GetEngine(ctx).
 			In("issue_id", issuesIDs[:limit]).
-			Rows(new(PullRequest))
+			Rows(new(MergeRequest))
 		if err != nil {
 			return err
 		}
 
 		for rows.Next() {
-			var pr PullRequest
+			var pr MergeRequest
 			err = rows.Scan(&pr)
 			if err != nil {
 				if err1 := rows.Close(); err1 != nil {
@@ -370,9 +370,9 @@ func (issues IssueList) LoadPullRequests(ctx context.Context) error {
 	}
 
 	for _, issue := range issues {
-		issue.PullRequest = pullRequestMaps[issue.ID]
-		if issue.PullRequest != nil {
-			issue.PullRequest.Issue = issue
+		issue.MergeRequest = pullRequestMaps[issue.ID]
+		if issue.MergeRequest != nil {
+			issue.MergeRequest.Issue = issue
 		}
 	}
 	return nil

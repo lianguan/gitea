@@ -99,16 +99,16 @@ func toIssue(ctx context.Context, doer *user_model.User, issue *issues_model.Iss
 		if err := issue.LoadPullRequest(ctx); err != nil {
 			return &api.Issue{}
 		}
-		if issue.PullRequest != nil {
-			apiIssue.PullRequest = &api.PullRequestMeta{
-				HasMerged:        issue.PullRequest.HasMerged,
-				IsWorkInProgress: issue.PullRequest.IsWorkInProgress(ctx),
+		if issue.MergeRequest != nil {
+			apiIssue.MergeRequest = &api.MergeRequestMeta{
+				HasMerged:        issue.MergeRequest.HasMerged,
+				IsWorkInProgress: issue.MergeRequest.IsWorkInProgress(ctx),
 			}
-			if issue.PullRequest.HasMerged {
-				apiIssue.PullRequest.Merged = issue.PullRequest.MergedUnix.AsTimePtr()
+			if issue.MergeRequest.HasMerged {
+				apiIssue.MergeRequest.Merged = issue.MergeRequest.MergedUnix.AsTimePtr()
 			}
 			// Add pr's html url
-			apiIssue.PullRequest.HTMLURL = issue.HTMLURL()
+			apiIssue.MergeRequest.HTMLURL = issue.HTMLURL()
 		}
 	}
 	if issue.DeadlineUnix != 0 {

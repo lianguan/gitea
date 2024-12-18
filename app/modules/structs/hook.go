@@ -110,7 +110,7 @@ var (
 	_ Payloader = &PushPayload{}
 	_ Payloader = &IssuePayload{}
 	_ Payloader = &IssueCommentPayload{}
-	_ Payloader = &PullRequestPayload{}
+	_ Payloader = &MergeRequestPayload{}
 	_ Payloader = &RepositoryPayload{}
 	_ Payloader = &ReleasePayload{}
 	_ Payloader = &PackagePayload{}
@@ -217,14 +217,14 @@ const (
 
 // IssueCommentPayload represents a payload information of issue comment event.
 type IssueCommentPayload struct {
-	Action      HookIssueCommentAction `json:"action"`
-	Issue       *Issue                 `json:"issue"`
-	PullRequest *PullRequest           `json:"pull_request,omitempty"`
-	Comment     *Comment               `json:"comment"`
-	Changes     *ChangesPayload        `json:"changes,omitempty"`
-	Repository  *Repository            `json:"repository"`
-	Sender      *User                  `json:"sender"`
-	IsMergeRequest      bool                   `json:"is_merge_request"`
+	Action         HookIssueCommentAction `json:"action"`
+	Issue          *Issue                 `json:"issue"`
+	MergeRequest   *MergeRequest          `json:"merge_request,omitempty"`
+	Comment        *Comment               `json:"comment"`
+	Changes        *ChangesPayload        `json:"changes,omitempty"`
+	Repository     *Repository            `json:"repository"`
+	Sender         *User                  `json:"sender"`
+	IsMergeRequest bool                   `json:"is_merge_request"`
 }
 
 // JSONPayload implements Payload
@@ -378,12 +378,12 @@ type ChangesPayload struct {
 //  |____|   |____/|____/____/  |____|_  /\___  >__   |____/  \___  >____  > |__|
 //                                     \/     \/   |__|           \/     \/
 
-// PullRequestPayload represents a payload information of pull request event.
-type PullRequestPayload struct {
+// MergeRequestPayload represents a payload information of pull request event.
+type MergeRequestPayload struct {
 	Action            HookIssueAction `json:"action"`
 	Index             int64           `json:"number"`
 	Changes           *ChangesPayload `json:"changes,omitempty"`
-	PullRequest       *PullRequest    `json:"pull_request"`
+	MergeRequest      *MergeRequest   `json:"pull_request"`
 	RequestedReviewer *User           `json:"requested_reviewer"`
 	Repository        *Repository     `json:"repository"`
 	Sender            *User           `json:"sender"`
@@ -392,7 +392,7 @@ type PullRequestPayload struct {
 }
 
 // JSONPayload FIXME
-func (p *PullRequestPayload) JSONPayload() ([]byte, error) {
+func (p *MergeRequestPayload) JSONPayload() ([]byte, error) {
 	return json.MarshalIndent(p, "", "  ")
 }
 

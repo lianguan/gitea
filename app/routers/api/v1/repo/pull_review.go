@@ -63,7 +63,7 @@ func ListPullReviews(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -308,7 +308,7 @@ func CreatePullReview(ctx *context.APIContext) {
 	opts := web.GetForm(ctx).(*api.CreatePullReviewOptions)
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -482,7 +482,7 @@ func SubmitPullReview(ctx *context.APIContext) {
 }
 
 // preparePullReviewType return ReviewType and false or nil and true if an error happen
-func preparePullReviewType(ctx *context.APIContext, pr *issues_model.PullRequest, event api.ReviewStateType, body string, hasComments bool) (issues_model.ReviewType, bool) {
+func preparePullReviewType(ctx *context.APIContext, pr *issues_model.MergeRequest, event api.ReviewStateType, body string, hasComments bool) (issues_model.ReviewType, bool) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		ctx.Error(http.StatusInternalServerError, "LoadIssue", err)
 		return -1, true
@@ -532,10 +532,10 @@ func preparePullReviewType(ctx *context.APIContext, pr *issues_model.PullRequest
 }
 
 // prepareSingleReview return review, related pull and false or nil, nil and true if an error happen
-func prepareSingleReview(ctx *context.APIContext) (*issues_model.Review, *issues_model.PullRequest, bool) {
+func prepareSingleReview(ctx *context.APIContext) (*issues_model.Review, *issues_model.MergeRequest, bool) {
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -700,7 +700,7 @@ func parseReviewersByNames(ctx *context.APIContext, reviewerNames, teamReviewerN
 func apiReviewRequest(ctx *context.APIContext, opts api.PullReviewRequestOptions, isAdd bool) {
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)

@@ -293,8 +293,8 @@ func HookPostReceive(ctx *gitea_context.PrivateContext) {
 				}
 			}
 
-			pr, err := issues_model.GetUnmergedPullRequest(ctx, repo.ID, baseRepo.ID, branch, baseRepo.DefaultBranch, issues_model.PullRequestFlowGithub)
-			if err != nil && !issues_model.IsErrPullRequestNotExist(err) {
+			pr, err := issues_model.GetUnmergedPullRequest(ctx, repo.ID, baseRepo.ID, branch, baseRepo.DefaultBranch, issues_model.MergeRequestFlowGithub)
+			if err != nil && !issues_model.IsErrMergeRequestNotExist(err) {
 				log.Error("Failed to get active PR in: %-v Branch: %s to: %-v Branch: %s Error: %v", repo, branch, baseRepo, baseRepo.DefaultBranch, err)
 				ctx.JSON(http.StatusInternalServerError, private.HookPostReceiveResult{
 					Err: fmt.Sprintf(

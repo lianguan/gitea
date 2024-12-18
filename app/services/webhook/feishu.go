@@ -107,25 +107,25 @@ func (fc feishuConvertor) IssueComment(p *api.IssueCommentPayload) (FeishuPayloa
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (fc feishuConvertor) PullRequest(p *api.PullRequestPayload) (FeishuPayload, error) {
+func (fc feishuConvertor) PullRequest(p *api.MergeRequestPayload) (FeishuPayload, error) {
 	title, link, by, operator, result, assignees := getPullRequestInfo(p)
 	if assignees != "" {
 		if p.Action == api.HookIssueAssigned || p.Action == api.HookIssueUnassigned || p.Action == api.HookIssueMilestoned {
-			return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, result, assignees, p.PullRequest.Body)), nil
+			return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, result, assignees, p.MergeRequest.Body)), nil
 		}
-		return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, assignees, p.PullRequest.Body)), nil
+		return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, assignees, p.MergeRequest.Body)), nil
 	}
-	return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, p.PullRequest.Body)), nil
+	return newFeishuTextPayload(fmt.Sprintf("%s\n%s\n%s\n%s\n\n%s", title, link, by, operator, p.MergeRequest.Body)), nil
 }
 
 // Review implements PayloadConvertor Review method
-func (fc feishuConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (FeishuPayload, error) {
+func (fc feishuConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (FeishuPayload, error) {
 	action, err := parseHookPullRequestEventType(event)
 	if err != nil {
 		return FeishuPayload{}, err
 	}
 
-	title := fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.PullRequest.Title)
+	title := fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.MergeRequest.Title)
 	text := p.Review.Content
 
 	return newFeishuTextPayload(title + "\r\n\r\n" + text), nil

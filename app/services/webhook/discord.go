@@ -187,14 +187,14 @@ func (d discordConvertor) IssueComment(p *api.IssueCommentPayload) (DiscordPaylo
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (d discordConvertor) PullRequest(p *api.PullRequestPayload) (DiscordPayload, error) {
-	title, _, extraMarkdown, color := getPullRequestPayloadInfo(p, noneLinkFormatter, false)
+func (d discordConvertor) PullRequest(p *api.MergeRequestPayload) (DiscordPayload, error) {
+	title, _, extraMarkdown, color := getMergeRequestPayloadInfo(p, noneLinkFormatter, false)
 
-	return d.createPayload(p.Sender, title, extraMarkdown, p.PullRequest.HTMLURL, color), nil
+	return d.createPayload(p.Sender, title, extraMarkdown, p.MergeRequest.HTMLURL, color), nil
 }
 
 // Review implements PayloadConvertor Review method
-func (d discordConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (DiscordPayload, error) {
+func (d discordConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (DiscordPayload, error) {
 	var text, title string
 	var color int
 	switch p.Action {
@@ -204,7 +204,7 @@ func (d discordConvertor) Review(p *api.PullRequestPayload, event webhook_module
 			return DiscordPayload{}, err
 		}
 
-		title = fmt.Sprintf("[%s] Pull request review %s: #%d %s", p.Repository.FullName, action, p.Index, p.PullRequest.Title)
+		title = fmt.Sprintf("[%s] Pull request review %s: #%d %s", p.Repository.FullName, action, p.Index, p.MergeRequest.Title)
 		text = p.Review.Content
 
 		switch event {
@@ -219,7 +219,7 @@ func (d discordConvertor) Review(p *api.PullRequestPayload, event webhook_module
 		}
 	}
 
-	return d.createPayload(p.Sender, title, text, p.PullRequest.HTMLURL, color), nil
+	return d.createPayload(p.Sender, title, text, p.MergeRequest.HTMLURL, color), nil
 }
 
 // Repository implements PayloadConvertor Repository method

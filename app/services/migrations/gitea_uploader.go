@@ -54,7 +54,7 @@ type GiteaLocalUploader struct {
 	prHeadCache    map[string]string
 	sameApp        bool
 	userMap        map[int64]int64 // external user id mapping to user id
-	prCache        map[int64]*issues_model.PullRequest
+	prCache        map[int64]*issues_model.MergeRequest
 	gitServiceType structs.GitServiceType
 }
 
@@ -70,7 +70,7 @@ func NewGiteaLocalUploader(ctx context.Context, doer *user_model.User, repoOwner
 		issues:      make(map[int64]*issues_model.Issue),
 		prHeadCache: make(map[string]string),
 		userMap:     make(map[int64]int64),
-		prCache:     make(map[int64]*issues_model.PullRequest),
+		prCache:     make(map[int64]*issues_model.MergeRequest),
 	}
 }
 
@@ -88,7 +88,7 @@ func (g *GiteaLocalUploader) MaxBatchInsertSize(tp string) int {
 	case "release":
 		return db.MaxBatchInsertSize(new(repo_model.Release))
 	case "pullrequest":
-		return db.MaxBatchInsertSize(new(issues_model.PullRequest))
+		return db.MaxBatchInsertSize(new(issues_model.MergeRequest))
 	}
 	return 10
 }
@@ -540,8 +540,8 @@ func (g *GiteaLocalUploader) CreateComments(comments ...*base.Comment) error {
 }
 
 // CreatePullRequests creates pull requests
-func (g *GiteaLocalUploader) CreatePullRequests(prs ...*base.PullRequest) error {
-	gprs := make([]*issues_model.PullRequest, 0, len(prs))
+func (g *GiteaLocalUploader) CreatePullRequests(prs ...*base.MergeRequest) error {
+	gprs := make([]*issues_model.MergeRequest, 0, len(prs))
 	for _, pr := range prs {
 		gpr, err := g.newPullRequest(pr)
 		if err != nil {
@@ -564,7 +564,7 @@ func (g *GiteaLocalUploader) CreatePullRequests(prs ...*base.PullRequest) error 
 	return nil
 }
 
-func (g *GiteaLocalUploader) updateGitForPullRequest(pr *base.PullRequest) (head string, err error) {
+func (g *GiteaLocalUploader) updateGitForPullRequest(pr *base.MergeRequest) (head string, err error) {
 	// SECURITY: this pr must have been must have been ensured safe
 	if !pr.EnsuredSafe {
 		log.Error("PR #%d in %s/%s has not been checked for safety.", pr.Number, g.repoOwner, g.repoName)
@@ -717,7 +717,7 @@ func (g *GiteaLocalUploader) updateGitForPullRequest(pr *base.PullRequest) (head
 	return head, nil
 }
 
-func (g *GiteaLocalUploader) newPullRequest(pr *base.PullRequest) (*issues_model.PullRequest, error) {
+func (g *GiteaLocalUploader) newPullRequest(pr *base.MergeRequest) (*issues_model.MergeRequest, error) {
 	var labels []*issues_model.Label
 	for _, label := range pr.Labels {
 		lb, ok := g.labels[label.Name]
@@ -796,7 +796,7 @@ func (g *GiteaLocalUploader) newPullRequest(pr *base.PullRequest) (*issues_model
 		issue.Reactions = append(issue.Reactions, &res)
 	}
 
-	pullRequest := issues_model.PullRequest{
+	pullRequest := issues_model.MergeRequest{
 		HeadRepoID: g.repo.ID,
 		HeadBranch: head,
 		BaseRepoID: g.repo.ID,

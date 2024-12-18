@@ -49,7 +49,7 @@ func RenderNewCodeCommentForm(ctx *context.Context) {
 	ctx.Data["PageIsMergeRequestFiles"] = true
 	ctx.Data["Issue"] = issue
 	ctx.Data["CurrentReview"] = currentReview
-	pullHeadCommitID, err := ctx.Repo.GitRepo.GetRefCommitID(issue.PullRequest.GetGitRefName())
+	pullHeadCommitID, err := ctx.Repo.GitRepo.GetRefCommitID(issue.MergeRequest.GetGitRefName())
 	if err != nil {
 		ctx.ServerError("GetRefCommitID", err)
 		return
@@ -199,7 +199,7 @@ func renderConversation(ctx *context.Context, comment *issues_model.Comment, ori
 		ctx.ServerError("comment.Issue.LoadPullRequest", err)
 		return
 	}
-	pullHeadCommitID, err := ctx.Repo.GitRepo.GetRefCommitID(comment.Issue.PullRequest.GetGitRefName())
+	pullHeadCommitID, err := ctx.Repo.GitRepo.GetRefCommitID(comment.Issue.MergeRequest.GetGitRefName())
 	if err != nil {
 		ctx.ServerError("GetRefCommitID", err)
 		return
@@ -305,7 +305,7 @@ func UpdateViewedFiles(ctx *context.Context) {
 	if !ok {
 		return
 	}
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 
 	var data *viewedFilesUpdate
 	err := json.NewDecoder(ctx.Req.Body).Decode(&data)

@@ -1267,7 +1267,7 @@ func GetPullDiffStats(gitRepo *git.Repository, opts *DiffOptions) (*PullDiffStat
 
 // SyncAndGetUserSpecificDiff is like GetDiff, except that user specific data such as which files the given user has already viewed on the given PR will also be set
 // Additionally, the database asynchronously is updated if files have changed since the last review
-func SyncAndGetUserSpecificDiff(ctx context.Context, userID int64, pull *issues_model.PullRequest, gitRepo *git.Repository, opts *DiffOptions, files ...string) (*Diff, error) {
+func SyncAndGetUserSpecificDiff(ctx context.Context, userID int64, pull *issues_model.MergeRequest, gitRepo *git.Repository, opts *DiffOptions, files ...string) (*Diff, error) {
 	diff, err := GetDiff(ctx, gitRepo, opts, files...)
 	if err != nil {
 		return nil, err

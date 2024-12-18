@@ -111,15 +111,15 @@ func (issue *Issue) createCrossReferences(stdCtx context.Context, ctx *crossRefe
 			refCommentID = ctx.OrigComment.ID
 		}
 		opts := &CreateCommentOptions{
-			Type:         ctx.Type,
-			Doer:         ctx.Doer,
-			Repo:         xref.Issue.Repo,
-			Issue:        xref.Issue,
-			RefRepoID:    ctx.OrigIssue.RepoID,
-			RefIssueID:   ctx.OrigIssue.ID,
-			RefCommentID: refCommentID,
-			RefAction:    xref.Action,
-			RefIsMergeRequest:    ctx.OrigIssue.IsMergeRequest,
+			Type:              ctx.Type,
+			Doer:              ctx.Doer,
+			Repo:              xref.Issue.Repo,
+			Issue:             xref.Issue,
+			RefRepoID:         ctx.OrigIssue.RepoID,
+			RefIssueID:        ctx.OrigIssue.ID,
+			RefCommentID:      refCommentID,
+			RefAction:         xref.Action,
+			RefIsMergeRequest: ctx.OrigIssue.IsMergeRequest,
 		}
 		_, err := CreateComment(stdCtx, opts)
 		if err != nil {
@@ -330,7 +330,7 @@ func (c *Comment) RefIssueIdent(ctx context.Context) string {
 //                                  \/     \/   |__|           \/     \/
 
 // ResolveCrossReferences will return the list of references to close/reopen by this PR
-func (pr *PullRequest) ResolveCrossReferences(ctx context.Context) ([]*Comment, error) {
+func (pr *MergeRequest) ResolveCrossReferences(ctx context.Context) ([]*Comment, error) {
 	unfiltered := make([]*Comment, 0, 5)
 	if err := db.GetEngine(ctx).
 		Where("ref_repo_id = ? AND ref_issue_id = ?", pr.Issue.RepoID, pr.Issue.ID).

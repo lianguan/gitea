@@ -42,35 +42,35 @@ func (*NullNotifier) DeleteIssue(ctx context.Context, doer *user_model.User, iss
 }
 
 // NewPullRequest places a place holder function
-func (*NullNotifier) NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User) {
+func (*NullNotifier) NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User) {
 }
 
 // PullRequestReview places a place holder function
-func (*NullNotifier) PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, r *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
+func (*NullNotifier) PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, r *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
 }
 
 // PullRequestCodeComment places a place holder function
-func (*NullNotifier) PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, comment *issues_model.Comment, mentions []*user_model.User) {
+func (*NullNotifier) PullRequestCodeComment(ctx context.Context, pr *issues_model.MergeRequest, comment *issues_model.Comment, mentions []*user_model.User) {
 }
 
 // MergePullRequest places a place holder function
-func (*NullNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (*NullNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 }
 
 // AutoMergePullRequest places a place holder function
-func (*NullNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (*NullNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 }
 
 // PullRequestSynchronized places a place holder function
-func (*NullNotifier) PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (*NullNotifier) PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 }
 
 // PullRequestChangeTargetBranch places a place holder function
-func (*NullNotifier) PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, oldBranch string) {
+func (*NullNotifier) PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, oldBranch string) {
 }
 
 // PullRequestPushCommits notifies when push commits to pull request's head branch
-func (*NullNotifier) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, comment *issues_model.Comment) {
+func (*NullNotifier) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, comment *issues_model.Comment) {
 }
 
 // PullReviewDismiss notifies when a review was dismissed by repo admin

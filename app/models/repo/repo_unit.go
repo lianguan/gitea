@@ -117,8 +117,8 @@ func (cfg *IssuesConfig) ToDB() ([]byte, error) {
 	return json.Marshal(cfg)
 }
 
-// PullRequestsConfig describes pull requests config
-type PullRequestsConfig struct {
+// MergeRequestsConfig describes pull requests config
+type MergeRequestsConfig struct {
 	IgnoreWhitespaceConflicts     bool
 	AllowMerge                    bool
 	AllowRebase                   bool
@@ -133,20 +133,20 @@ type PullRequestsConfig struct {
 	DefaultAllowMaintainerEdit    bool
 }
 
-// FromDB fills up a PullRequestsConfig from serialized format.
-func (cfg *PullRequestsConfig) FromDB(bs []byte) error {
+// FromDB fills up a MergeRequestsConfig from serialized format.
+func (cfg *MergeRequestsConfig) FromDB(bs []byte) error {
 	// AllowRebaseUpdate = true as default for existing PullRequestConfig in DB
 	cfg.AllowRebaseUpdate = true
 	return json.UnmarshalHandleDoubleEncode(bs, &cfg)
 }
 
-// ToDB exports a PullRequestsConfig to a serialized format.
-func (cfg *PullRequestsConfig) ToDB() ([]byte, error) {
+// ToDB exports a MergeRequestsConfig to a serialized format.
+func (cfg *MergeRequestsConfig) ToDB() ([]byte, error) {
 	return json.Marshal(cfg)
 }
 
 // IsMergeStyleAllowed returns if merge style is allowed
-func (cfg *PullRequestsConfig) IsMergeStyleAllowed(mergeStyle MergeStyle) bool {
+func (cfg *MergeRequestsConfig) IsMergeStyleAllowed(mergeStyle MergeStyle) bool {
 	return mergeStyle == MergeStyleMerge && cfg.AllowMerge ||
 		mergeStyle == MergeStyleRebase && cfg.AllowRebase ||
 		mergeStyle == MergeStyleRebaseMerge && cfg.AllowRebaseMerge ||
@@ -156,7 +156,7 @@ func (cfg *PullRequestsConfig) IsMergeStyleAllowed(mergeStyle MergeStyle) bool {
 }
 
 // GetDefaultMergeStyle returns the default merge style for this pull request
-func (cfg *PullRequestsConfig) GetDefaultMergeStyle() MergeStyle {
+func (cfg *MergeRequestsConfig) GetDefaultMergeStyle() MergeStyle {
 	if len(cfg.DefaultMergeStyle) != 0 {
 		return cfg.DefaultMergeStyle
 	}
@@ -261,7 +261,7 @@ func (r *RepoUnit) BeforeSet(colName string, val xorm.Cell) {
 		case unit.TypeExternalTracker:
 			r.Config = new(ExternalTrackerConfig)
 		case unit.TypeMergeRequests:
-			r.Config = new(PullRequestsConfig)
+			r.Config = new(MergeRequestsConfig)
 		case unit.TypeIssues:
 			r.Config = new(IssuesConfig)
 		case unit.TypeActions:
@@ -286,9 +286,9 @@ func (r *RepoUnit) CodeConfig() *UnitConfig {
 	return r.Config.(*UnitConfig)
 }
 
-// PullRequestsConfig returns config for unit.TypeMergeRequests
-func (r *RepoUnit) PullRequestsConfig() *PullRequestsConfig {
-	return r.Config.(*PullRequestsConfig)
+// MergeRequestsConfig returns config for unit.TypeMergeRequests
+func (r *RepoUnit) MergeRequestsConfig() *MergeRequestsConfig {
+	return r.Config.(*MergeRequestsConfig)
 }
 
 // ReleasesConfig returns config for unit.TypeReleases

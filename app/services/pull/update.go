@@ -20,8 +20,8 @@ import (
 )
 
 // Update updates pull request with base branch.
-func Update(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User, message string, rebase bool) error {
-	if pr.Flow == issues_model.PullRequestFlowAGit {
+func Update(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User, message string, rebase bool) error {
+	if pr.Flow == issues_model.MergeRequestFlowAGit {
 		// TODO: update of agit flow pull request's head branch is unsupported
 		return fmt.Errorf("update of agit flow pull request's head branch is unsupported")
 	}
@@ -68,7 +68,7 @@ func Update(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.
 	// TODO: FakePR: it is somewhat hacky, but it is the only way to "merge" at the moment
 	// ideally in the future the "merge" functions should be refactored to decouple from the PullRequest
 	// now use a fake reverse PR to switch head&base repos/branches
-	reversePR := &issues_model.PullRequest{
+	reversePR := &issues_model.MergeRequest{
 		ID: pr.ID,
 
 		HeadRepoID: pr.BaseRepoID,
@@ -90,8 +90,8 @@ func Update(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.
 }
 
 // IsUserAllowedToUpdate check if user is allowed to update PR with given permissions and branch protections
-func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.PullRequest, user *user_model.User) (mergeAllowed, rebaseAllowed bool, err error) {
-	if pull.Flow == issues_model.PullRequestFlowAGit {
+func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.MergeRequest, user *user_model.User) (mergeAllowed, rebaseAllowed bool, err error) {
+	if pull.Flow == issues_model.MergeRequestFlowAGit {
 		return false, false, nil
 	}
 
@@ -110,7 +110,7 @@ func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.PullRequest, 
 		return false, false, err
 	}
 
-	pr := &issues_model.PullRequest{
+	pr := &issues_model.MergeRequest{
 		HeadRepoID: pull.BaseRepoID,
 		HeadRepo:   pull.BaseRepo,
 		BaseRepoID: pull.HeadRepoID,
@@ -136,7 +136,7 @@ func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.PullRequest, 
 		return false, false, err
 	}
 
-	rebaseAllowed = prUnit.PullRequestsConfig().AllowRebaseUpdate
+	rebaseAllowed = prUnit.MergeRequestsConfig().AllowRebaseUpdate
 
 	// If branch protected, disable rebase unless user is whitelisted to force push (which extends regular push)
 	if pb != nil {
@@ -169,7 +169,7 @@ func IsUserAllowedToUpdate(ctx context.Context, pull *issues_model.PullRequest, 
 }
 
 // GetDiverging determines how many commits a PR is ahead or behind the PR base branch
-func GetDiverging(ctx context.Context, pr *issues_model.PullRequest) (*git.DivergeObject, error) {
+func GetDiverging(ctx context.Context, pr *issues_model.MergeRequest) (*git.DivergeObject, error) {
 	log.Trace("GetDiverging[%-v]: compare commits", pr)
 	prCtx, cancel, err := createTemporaryRepoForPR(ctx, pr)
 	if err != nil {

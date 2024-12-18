@@ -91,19 +91,19 @@ func TestPullView_CodeOwner(t *testing.T) {
 			session := loginUser(t, "user2")
 			testPullCreate(t, session, "user2", "test_codeowner", false, repo.DefaultBranch, "codeowner-basebranch", "Test Pull Request")
 
-			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{BaseRepoID: repo.ID, HeadRepoID: repo.ID, HeadBranch: "codeowner-basebranch"})
+			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{BaseRepoID: repo.ID, HeadRepoID: repo.ID, HeadBranch: "codeowner-basebranch"})
 			unittest.AssertExistsIf(t, true, &issues_model.Review{IssueID: pr.IssueID, Type: issues_model.ReviewTypeRequest, ReviewerID: 5})
 			assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 
 			err := issue_service.ChangeTitle(db.DefaultContext, pr.Issue, user2, "[WIP] Test Pull Request")
 			assert.NoError(t, err)
-			prUpdated1 := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+			prUpdated1 := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 			assert.NoError(t, prUpdated1.LoadIssue(db.DefaultContext))
 			assert.EqualValues(t, "[WIP] Test Pull Request", prUpdated1.Issue.Title)
 
 			err = issue_service.ChangeTitle(db.DefaultContext, prUpdated1.Issue, user2, "Test Pull Request2")
 			assert.NoError(t, err)
-			prUpdated2 := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+			prUpdated2 := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 			assert.NoError(t, prUpdated2.LoadIssue(db.DefaultContext))
 			assert.EqualValues(t, "Test Pull Request2", prUpdated2.Issue.Title)
 		})
@@ -138,7 +138,7 @@ func TestPullView_CodeOwner(t *testing.T) {
 			session := loginUser(t, "user2")
 			testPullCreate(t, session, "user2", "test_codeowner", false, repo.DefaultBranch, "codeowner-basebranch2", "Test Pull Request2")
 
-			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{BaseRepoID: repo.ID, HeadBranch: "codeowner-basebranch2"})
+			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{BaseRepoID: repo.ID, HeadBranch: "codeowner-basebranch2"})
 			unittest.AssertExistsIf(t, true, &issues_model.Review{IssueID: pr.IssueID, Type: issues_model.ReviewTypeRequest, ReviewerID: 8})
 		})
 
@@ -168,13 +168,13 @@ func TestPullView_CodeOwner(t *testing.T) {
 			// create a pull request on the forked repository, code reviewers should not be mentioned
 			testPullCreateDirectly(t, session, "user5", "test_codeowner", forkedRepo.DefaultBranch, "", "", "codeowner-basebranch-forked", "Test Pull Request on Forked Repository")
 
-			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{BaseRepoID: forkedRepo.ID, HeadBranch: "codeowner-basebranch-forked"})
+			pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{BaseRepoID: forkedRepo.ID, HeadBranch: "codeowner-basebranch-forked"})
 			unittest.AssertExistsIf(t, false, &issues_model.Review{IssueID: pr.IssueID, Type: issues_model.ReviewTypeRequest, ReviewerID: 8})
 
 			// create a pull request to base repository, code reviewers should be mentioned
 			testPullCreateDirectly(t, session, repo.OwnerName, repo.Name, repo.DefaultBranch, forkedRepo.OwnerName, forkedRepo.Name, "codeowner-basebranch-forked", "Test Pull Request3")
 
-			pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{BaseRepoID: repo.ID, HeadRepoID: forkedRepo.ID, HeadBranch: "codeowner-basebranch-forked"})
+			pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{BaseRepoID: repo.ID, HeadRepoID: forkedRepo.ID, HeadBranch: "codeowner-basebranch-forked"})
 			unittest.AssertExistsIf(t, true, &issues_model.Review{IssueID: pr.IssueID, Type: issues_model.ReviewTypeRequest, ReviewerID: 8})
 		})
 	})

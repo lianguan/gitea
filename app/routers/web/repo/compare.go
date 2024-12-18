@@ -296,7 +296,7 @@ func ParseCompareInfo(ctx *context.Context) *common.CompareInfo {
 	}
 	ctx.Data["HeadUser"] = ci.HeadUser
 	ctx.Data["HeadBranch"] = ci.HeadBranch
-	ctx.Repo.PullRequest.SameRepo = isSameRepo
+	ctx.Repo.MergeRequest.SameRepo = isSameRepo
 
 	// Check if base branch is valid.
 	baseIsCommit := ctx.Repo.GitRepo.IsCommitExist(ci.BaseBranch)
@@ -586,7 +586,7 @@ func PrepareCompareDiff(
 		headCommitID == ci.CompareInfo.BaseCommitID {
 		ctx.Data["IsNothingToCompare"] = true
 		if unit, err := repo.GetUnit(ctx, unit.TypeMergeRequests); err == nil {
-			config := unit.PullRequestsConfig()
+			config := unit.MergeRequestsConfig()
 
 			if !config.AutodetectManualMerge {
 				allowEmptyPr := !(ci.BaseBranch == ci.HeadBranch && ctx.Repo.Repository.Name == ci.HeadRepo.Name)
@@ -769,9 +769,9 @@ func CompareDiff(ctx *context.Context) {
 	ctx.Data["HeadTags"] = headTags
 
 	if ctx.Data["PageIsComparePull"] == true {
-		pr, err := issues_model.GetUnmergedPullRequest(ctx, ci.HeadRepo.ID, ctx.Repo.Repository.ID, ci.HeadBranch, ci.BaseBranch, issues_model.PullRequestFlowGithub)
+		pr, err := issues_model.GetUnmergedPullRequest(ctx, ci.HeadRepo.ID, ctx.Repo.Repository.ID, ci.HeadBranch, ci.BaseBranch, issues_model.MergeRequestFlowGithub)
 		if err != nil {
-			if !issues_model.IsErrPullRequestNotExist(err) {
+			if !issues_model.IsErrMergeRequestNotExist(err) {
 				ctx.ServerError("GetUnmergedPullRequest", err)
 				return
 			}
@@ -841,7 +841,7 @@ func CompareDiff(ctx *context.Context) {
 	ctx.Data["HasIssuesOrPullsWritePermission"] = ctx.Repo.CanWrite(unit.TypeMergeRequests)
 
 	if unit, err := ctx.Repo.Repository.GetUnit(ctx, unit.TypeMergeRequests); err == nil {
-		config := unit.PullRequestsConfig()
+		config := unit.MergeRequestsConfig()
 		ctx.Data["AllowMaintainerEdit"] = config.DefaultAllowMaintainerEdit
 	} else {
 		ctx.Data["AllowMaintainerEdit"] = false

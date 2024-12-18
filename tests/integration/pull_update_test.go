@@ -81,7 +81,7 @@ func TestAPIPullUpdateByRebase(t *testing.T) {
 	})
 }
 
-func createOutdatedPR(t *testing.T, actor, forkOrg *user_model.User) *issues_model.PullRequest {
+func createOutdatedPR(t *testing.T, actor, forkOrg *user_model.User) *issues_model.MergeRequest {
 	baseRepo, err := repo_service.CreateRepository(db.DefaultContext, actor, actor, repo_service.CreateRepoOptions{
 		Name:        "repo-pr-update",
 		Description: "repo-tmp-pr-update description",
@@ -164,14 +164,14 @@ func createOutdatedPR(t *testing.T, actor, forkOrg *user_model.User) *issues_mod
 		Poster:   actor,
 		IsMergeRequest:   true,
 	}
-	pullRequest := &issues_model.PullRequest{
+	pullRequest := &issues_model.MergeRequest{
 		HeadRepoID: headRepo.ID,
 		BaseRepoID: baseRepo.ID,
 		HeadBranch: "newBranch",
 		BaseBranch: "master",
 		HeadRepo:   headRepo,
 		BaseRepo:   baseRepo,
-		Type:       issues_model.PullRequestGitea,
+		Type:       issues_model.MergeRequestGitea,
 	}
 	prOpts := &pull_service.NewPullRequestOptions{Repo: baseRepo, Issue: pullIssue, PullRequest: pullRequest}
 	err = pull_service.NewPullRequest(git.DefaultContext, prOpts)
@@ -180,5 +180,5 @@ func createOutdatedPR(t *testing.T, actor, forkOrg *user_model.User) *issues_mod
 	issue := unittest.AssertExistsAndLoadBean(t, &issues_model.Issue{Title: "Test Pull -to-update-"})
 	assert.NoError(t, issue.LoadPullRequest(db.DefaultContext))
 
-	return issue.PullRequest
+	return issue.MergeRequest
 }

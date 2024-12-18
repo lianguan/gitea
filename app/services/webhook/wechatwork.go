@@ -116,8 +116,8 @@ func (wc wechatworkConvertor) IssueComment(p *api.IssueCommentPayload) (Wechatwo
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (wc wechatworkConvertor) PullRequest(p *api.PullRequestPayload) (WechatworkPayload, error) {
-	text, issueTitle, extraMarkdown, _ := getPullRequestPayloadInfo(p, noneLinkFormatter, true)
+func (wc wechatworkConvertor) PullRequest(p *api.MergeRequestPayload) (WechatworkPayload, error) {
+	text, issueTitle, extraMarkdown, _ := getMergeRequestPayloadInfo(p, noneLinkFormatter, true)
 	pr := fmt.Sprintf("> <font color=\"info\"> %s </font> \r\n > <font color=\"comment\">%s </font> \r\n > <font color=\"comment\">%s </font> \r\n",
 		text, issueTitle, extraMarkdown)
 
@@ -125,7 +125,7 @@ func (wc wechatworkConvertor) PullRequest(p *api.PullRequestPayload) (Wechatwork
 }
 
 // Review implements PayloadConvertor Review method
-func (wc wechatworkConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (WechatworkPayload, error) {
+func (wc wechatworkConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (WechatworkPayload, error) {
 	var text, title string
 	switch p.Action {
 	case api.HookIssueReviewed:
@@ -133,7 +133,7 @@ func (wc wechatworkConvertor) Review(p *api.PullRequestPayload, event webhook_mo
 		if err != nil {
 			return WechatworkPayload{}, err
 		}
-		title = fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.PullRequest.Title)
+		title = fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.MergeRequest.Title)
 		text = p.Review.Content
 	}
 

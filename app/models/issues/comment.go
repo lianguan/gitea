@@ -299,11 +299,11 @@ type Comment struct {
 
 	// Reference an issue or pull from another comment, issue or PR
 	// All information is about the origin of the reference
-	RefRepoID    int64                 `xorm:"index"` // Repo where the referencing
-	RefIssueID   int64                 `xorm:"index"`
-	RefCommentID int64                 `xorm:"index"`    // 0 if origin is Issue title or content (or PR's)
-	RefAction    references.XRefAction `xorm:"SMALLINT"` // What happens if RefIssueID resolves
-	RefIsMergeRequest    bool
+	RefRepoID         int64                 `xorm:"index"` // Repo where the referencing
+	RefIssueID        int64                 `xorm:"index"`
+	RefCommentID      int64                 `xorm:"index"`    // 0 if origin is Issue title or content (or PR's)
+	RefAction         references.XRefAction `xorm:"SMALLINT"` // What happens if RefIssueID resolves
+	RefIsMergeRequest bool
 
 	CommentMetaData *CommentMetaData `xorm:"JSON TEXT"` // put all non-index metadata in a single field
 
@@ -819,39 +819,39 @@ func CreateComment(ctx context.Context, opts *CreateCommentOptions) (_ *Comment,
 	}
 
 	comment := &Comment{
-		Type:             opts.Type,
-		PosterID:         opts.Doer.ID,
-		Poster:           opts.Doer,
-		IssueID:          opts.Issue.ID,
-		LabelID:          LabelID,
-		OldMilestoneID:   opts.OldMilestoneID,
-		MilestoneID:      opts.MilestoneID,
-		OldProjectID:     opts.OldProjectID,
-		ProjectID:        opts.ProjectID,
-		TimeID:           opts.TimeID,
-		RemovedAssignee:  opts.RemovedAssignee,
-		AssigneeID:       opts.AssigneeID,
-		AssigneeTeamID:   opts.AssigneeTeamID,
-		CommitID:         opts.CommitID,
-		CommitSHA:        opts.CommitSHA,
-		Line:             opts.LineNum,
-		Content:          opts.Content,
-		OldTitle:         opts.OldTitle,
-		NewTitle:         opts.NewTitle,
-		OldRef:           opts.OldRef,
-		NewRef:           opts.NewRef,
-		DependentIssueID: opts.DependentIssueID,
-		TreePath:         opts.TreePath,
-		ReviewID:         opts.ReviewID,
-		Patch:            opts.Patch,
-		RefRepoID:        opts.RefRepoID,
-		RefIssueID:       opts.RefIssueID,
-		RefCommentID:     opts.RefCommentID,
-		RefAction:        opts.RefAction,
-		RefIsMergeRequest:        opts.RefIsMergeRequest,
-		IsForcePush:      opts.IsForcePush,
-		Invalidated:      opts.Invalidated,
-		CommentMetaData:  commentMetaData,
+		Type:              opts.Type,
+		PosterID:          opts.Doer.ID,
+		Poster:            opts.Doer,
+		IssueID:           opts.Issue.ID,
+		LabelID:           LabelID,
+		OldMilestoneID:    opts.OldMilestoneID,
+		MilestoneID:       opts.MilestoneID,
+		OldProjectID:      opts.OldProjectID,
+		ProjectID:         opts.ProjectID,
+		TimeID:            opts.TimeID,
+		RemovedAssignee:   opts.RemovedAssignee,
+		AssigneeID:        opts.AssigneeID,
+		AssigneeTeamID:    opts.AssigneeTeamID,
+		CommitID:          opts.CommitID,
+		CommitSHA:         opts.CommitSHA,
+		Line:              opts.LineNum,
+		Content:           opts.Content,
+		OldTitle:          opts.OldTitle,
+		NewTitle:          opts.NewTitle,
+		OldRef:            opts.OldRef,
+		NewRef:            opts.NewRef,
+		DependentIssueID:  opts.DependentIssueID,
+		TreePath:          opts.TreePath,
+		ReviewID:          opts.ReviewID,
+		Patch:             opts.Patch,
+		RefRepoID:         opts.RefRepoID,
+		RefIssueID:        opts.RefIssueID,
+		RefCommentID:      opts.RefCommentID,
+		RefAction:         opts.RefAction,
+		RefIsMergeRequest: opts.RefIsMergeRequest,
+		IsForcePush:       opts.IsForcePush,
+		Invalidated:       opts.Invalidated,
+		CommentMetaData:   commentMetaData,
 	}
 	if _, err = e.Insert(comment); err != nil {
 		return nil, err
@@ -1032,7 +1032,7 @@ type CreateCommentOptions struct {
 	RefIssueID         int64
 	RefCommentID       int64
 	RefAction          references.XRefAction
-	RefIsMergeRequest          bool
+	RefIsMergeRequest  bool
 	IsForcePush        bool
 	Invalidated        bool
 }
@@ -1052,17 +1052,17 @@ func GetCommentByID(ctx context.Context, id int64) (*Comment, error) {
 // FindCommentsOptions describes the conditions to Find comments
 type FindCommentsOptions struct {
 	db.ListOptions
-	RepoID      int64
-	IssueID     int64
-	ReviewID    int64
-	Since       int64
-	Before      int64
-	Line        int64
-	TreePath    string
-	Type        CommentType
-	IssueIDs    []int64
-	Invalidated optional.Option[bool]
-	IsMergeRequest      optional.Option[bool]
+	RepoID         int64
+	IssueID        int64
+	ReviewID       int64
+	Since          int64
+	Before         int64
+	Line           int64
+	TreePath       string
+	Type           CommentType
+	IssueIDs       []int64
+	Invalidated    optional.Option[bool]
+	IsMergeRequest optional.Option[bool]
 }
 
 // ToConds implements FindOptions interface
@@ -1218,7 +1218,7 @@ func UpdateCommentsMigrationsByType(ctx context.Context, tp structs.GitServiceTy
 }
 
 // CreateAutoMergeComment is a internal function, only use it for CommentTypePRScheduledToAutoMerge and CommentTypePRUnScheduledToAutoMerge CommentTypes
-func CreateAutoMergeComment(ctx context.Context, typ CommentType, pr *PullRequest, doer *user_model.User) (comment *Comment, err error) {
+func CreateAutoMergeComment(ctx context.Context, typ CommentType, pr *MergeRequest, doer *user_model.User) (comment *Comment, err error) {
 	if typ != CommentTypePRScheduledToAutoMerge && typ != CommentTypePRUnScheduledToAutoMerge {
 		return nil, fmt.Errorf("comment type %d cannot be used to create an auto merge comment", typ)
 	}

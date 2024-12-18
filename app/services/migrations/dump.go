@@ -421,7 +421,7 @@ func (g *RepositoryDumper) CreateComments(comments ...*base.Comment) error {
 	return g.createItems(g.commentDir(), g.commentFiles, commentsMap)
 }
 
-func (g *RepositoryDumper) handlePullRequest(pr *base.PullRequest) error {
+func (g *RepositoryDumper) handlePullRequest(pr *base.MergeRequest) error {
 	// SECURITY: this pr must have been ensured safe
 	if !pr.EnsuredSafe {
 		log.Error("PR #%d in %s/%s has not been checked for safety ... We will ignore this.", pr.Number, g.repoOwner, g.repoName)
@@ -589,7 +589,7 @@ func (g *RepositoryDumper) handlePullRequest(pr *base.PullRequest) error {
 }
 
 // CreatePullRequests creates pull requests
-func (g *RepositoryDumper) CreatePullRequests(prs ...*base.PullRequest) error {
+func (g *RepositoryDumper) CreatePullRequests(prs ...*base.MergeRequest) error {
 	var err error
 	if g.pullrequestFile == nil {
 		if err := os.MkdirAll(g.baseDir, os.ModePerm); err != nil {

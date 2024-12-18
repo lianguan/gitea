@@ -35,7 +35,7 @@ import (
 )
 
 // getMergeMessage composes the message used when merging a pull request.
-func getMergeMessage(ctx context.Context, baseGitRepo *git.Repository, pr *issues_model.PullRequest, mergeStyle repo_model.MergeStyle, extraVars map[string]string) (message, body string, err error) {
+func getMergeMessage(ctx context.Context, baseGitRepo *git.Repository, pr *issues_model.MergeRequest, mergeStyle repo_model.MergeStyle, extraVars map[string]string) (message, body string, err error) {
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		return "", "", err
 	}
@@ -155,13 +155,13 @@ func expandDefaultMergeMessage(template string, vars map[string]string) (message
 }
 
 // GetDefaultMergeMessage returns default message used when merging pull request
-func GetDefaultMergeMessage(ctx context.Context, baseGitRepo *git.Repository, pr *issues_model.PullRequest, mergeStyle repo_model.MergeStyle) (message, body string, err error) {
+func GetDefaultMergeMessage(ctx context.Context, baseGitRepo *git.Repository, pr *issues_model.MergeRequest, mergeStyle repo_model.MergeStyle) (message, body string, err error) {
 	return getMergeMessage(ctx, baseGitRepo, pr, mergeStyle, nil)
 }
 
 // Merge merges pull request to base repository.
 // Caller should check PR is ready to be merged (review and status checks)
-func Merge(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User, baseGitRepo *git.Repository, mergeStyle repo_model.MergeStyle, expectedHeadCommitID, message string, wasAutoMerged bool) error {
+func Merge(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User, baseGitRepo *git.Repository, mergeStyle repo_model.MergeStyle, expectedHeadCommitID, message string, wasAutoMerged bool) error {
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		log.Error("Unable to load base repo: %v", err)
 		return fmt.Errorf("unable to load base repo: %w", err)
@@ -175,7 +175,7 @@ func Merge(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.U
 		log.Error("pr.BaseRepo.GetUnit(unit.TypeMergeRequests): %v", err)
 		return err
 	}
-	prConfig := prUnit.PullRequestsConfig()
+	prConfig := prUnit.MergeRequestsConfig()
 
 	// Check if merge style is correct and allowed
 	if !prConfig.IsMergeStyleAllowed(mergeStyle) {
@@ -227,7 +227,7 @@ func Merge(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.U
 	return handleCloseCrossReferences(ctx, pr, doer)
 }
 
-func handleCloseCrossReferences(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User) error {
+func handleCloseCrossReferences(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User) error {
 	// Resolve cross references
 	refs, err := pr.ResolveCrossReferences(ctx)
 	if err != nil {
@@ -256,7 +256,7 @@ func handleCloseCrossReferences(ctx context.Context, pr *issues_model.PullReques
 }
 
 // doMergeAndPush performs the merge operation without changing any pull information in database and pushes it up to the base repository
-func doMergeAndPush(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User, mergeStyle repo_model.MergeStyle, expectedHeadCommitID, message string, pushTrigger repo_module.PushTrigger) (string, error) { //nolint:unparam
+func doMergeAndPush(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User, mergeStyle repo_model.MergeStyle, expectedHeadCommitID, message string, pushTrigger repo_module.PushTrigger) (string, error) { //nolint:unparam
 	// Clone base repo.
 	mergeCtx, cancel, err := createTemporaryRepoForMerge(ctx, pr, doer, expectedHeadCommitID)
 	if err != nil {
@@ -414,7 +414,7 @@ func runMergeCommand(ctx *mergeContext, mergeStyle repo_model.MergeStyle, cmd *g
 var escapedSymbols = regexp.MustCompile(`([*[?! \\])`)
 
 // IsUserAllowedToMerge check if user is allowed to merge PR with given permissions and branch protections
-func IsUserAllowedToMerge(ctx context.Context, pr *issues_model.PullRequest, p access_model.Permission, user *user_model.User) (bool, error) {
+func IsUserAllowedToMerge(ctx context.Context, pr *issues_model.MergeRequest, p access_model.Permission, user *user_model.User) (bool, error) {
 	if user == nil {
 		return false, nil
 	}
@@ -432,7 +432,7 @@ func IsUserAllowedToMerge(ctx context.Context, pr *issues_model.PullRequest, p a
 }
 
 // CheckPullBranchProtections checks whether the PR is ready to be merged (reviews and status checks)
-func CheckPullBranchProtections(ctx context.Context, pr *issues_model.PullRequest, skipProtectedFilesCheck bool) (err error) {
+func CheckPullBranchProtections(ctx context.Context, pr *issues_model.MergeRequest, skipProtectedFilesCheck bool) (err error) {
 	if err = pr.LoadBaseRepo(ctx); err != nil {
 		return fmt.Errorf("LoadBaseRepo: %w", err)
 	}
@@ -491,7 +491,7 @@ func CheckPullBranchProtections(ctx context.Context, pr *issues_model.PullReques
 }
 
 // MergedManually mark pr as merged manually
-func MergedManually(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User, baseGitRepo *git.Repository, commitID string) error {
+func MergedManually(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User, baseGitRepo *git.Repository, commitID string) error {
 	releaser, err := globallock.Lock(ctx, getPullWorkingLockKey(pr.ID))
 	if err != nil {
 		log.Error("lock.Lock(): %v", err)
@@ -507,7 +507,7 @@ func MergedManually(ctx context.Context, pr *issues_model.PullRequest, doer *use
 		if err != nil {
 			return err
 		}
-		prConfig := prUnit.PullRequestsConfig()
+		prConfig := prUnit.MergeRequestsConfig()
 
 		// Check if merge style is correct and allowed
 		if !prConfig.IsMergeStyleAllowed(repo_model.MergeStyleManuallyMerged) {
@@ -538,7 +538,7 @@ func MergedManually(ctx context.Context, pr *issues_model.PullRequest, doer *use
 
 		pr.MergedCommitID = commitID
 		pr.MergedUnix = timeutil.TimeStamp(commit.Author.When.Unix())
-		pr.Status = issues_model.PullRequestStatusManuallyMerged
+		pr.Status = issues_model.MergeRequestStatusManuallyMerged
 		pr.Merger = doer
 		pr.MergerID = doer.ID
 

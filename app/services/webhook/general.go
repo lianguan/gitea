@@ -29,9 +29,9 @@ func htmlLinkFormatter(url, text string) string {
 }
 
 // getPullRequestInfo gets the information for a pull request
-func getPullRequestInfo(p *api.PullRequestPayload) (title, link, by, operator, operateResult, assignees string) {
-	title = fmt.Sprintf("[PullRequest-%s #%d]: %s\n%s", p.Repository.FullName, p.PullRequest.Index, p.Action, p.PullRequest.Title)
-	assignList := p.PullRequest.Assignees
+func getPullRequestInfo(p *api.MergeRequestPayload) (title, link, by, operator, operateResult, assignees string) {
+	title = fmt.Sprintf("[PullRequest-%s #%d]: %s\n%s", p.Repository.FullName, p.MergeRequest.Index, p.Action, p.MergeRequest.Title)
+	assignList := p.MergeRequest.Assignees
 	assignStringList := make([]string, len(assignList))
 
 	for i, user := range assignList {
@@ -42,10 +42,10 @@ func getPullRequestInfo(p *api.PullRequestPayload) (title, link, by, operator, o
 	} else if p.Action == api.HookIssueUnassigned {
 		operateResult = fmt.Sprintf("%s unassigned this for someone", p.Sender.UserName)
 	} else if p.Action == api.HookIssueMilestoned {
-		operateResult = fmt.Sprintf("%s/milestone/%d", p.Repository.HTMLURL, p.PullRequest.Milestone.ID)
+		operateResult = fmt.Sprintf("%s/milestone/%d", p.Repository.HTMLURL, p.MergeRequest.Milestone.ID)
 	}
-	link = p.PullRequest.HTMLURL
-	by = fmt.Sprintf("PullRequest by %s", p.PullRequest.Poster.UserName)
+	link = p.MergeRequest.HTMLURL
+	by = fmt.Sprintf("PullRequest by %s", p.MergeRequest.Poster.UserName)
 	if len(assignStringList) > 0 {
 		assignees = fmt.Sprintf("Assignees: %s", strings.Join(assignStringList, ", "))
 	}
@@ -141,19 +141,19 @@ func getIssuesPayloadInfo(p *api.IssuePayload, linkFormatter linkFormatter, with
 	return text, issueTitle, extraMarkdown, color
 }
 
-func getPullRequestPayloadInfo(p *api.PullRequestPayload, linkFormatter linkFormatter, withSender bool) (text, issueTitle, extraMarkdown string, color int) {
+func getMergeRequestPayloadInfo(p *api.MergeRequestPayload, linkFormatter linkFormatter, withSender bool) (text, issueTitle, extraMarkdown string, color int) {
 	color = yellowColor
-	issueTitle = fmt.Sprintf("#%d %s", p.Index, p.PullRequest.Title)
-	titleLink := linkFormatter(p.PullRequest.URL, issueTitle)
+	issueTitle = fmt.Sprintf("#%d %s", p.Index, p.MergeRequest.Title)
+	titleLink := linkFormatter(p.MergeRequest.URL, issueTitle)
 	repoLink := linkFormatter(p.Repository.HTMLURL, p.Repository.FullName)
 
 	switch p.Action {
 	case api.HookIssueOpened:
 		text = fmt.Sprintf("[%s] Pull request opened: %s", repoLink, titleLink)
-		extraMarkdown = p.PullRequest.Body
+		extraMarkdown = p.MergeRequest.Body
 		color = greenColor
 	case api.HookIssueClosed:
-		if p.PullRequest.HasMerged {
+		if p.MergeRequest.HasMerged {
 			text = fmt.Sprintf("[%s] Pull request merged: %s", repoLink, titleLink)
 			color = purpleColor
 		} else {
@@ -164,10 +164,10 @@ func getPullRequestPayloadInfo(p *api.PullRequestPayload, linkFormatter linkForm
 		text = fmt.Sprintf("[%s] Pull request re-opened: %s", repoLink, titleLink)
 	case api.HookIssueEdited:
 		text = fmt.Sprintf("[%s] Pull request edited: %s", repoLink, titleLink)
-		extraMarkdown = p.PullRequest.Body
+		extraMarkdown = p.MergeRequest.Body
 	case api.HookIssueAssigned:
-		list := make([]string, len(p.PullRequest.Assignees))
-		for i, user := range p.PullRequest.Assignees {
+		list := make([]string, len(p.MergeRequest.Assignees))
+		for i, user := range p.MergeRequest.Assignees {
 			list[i] = linkFormatter(setting.AppURL+user.UserName, user.UserName)
 		}
 		text = fmt.Sprintf("[%s] Pull request assigned to %s: %s", repoLink,
@@ -182,9 +182,9 @@ func getPullRequestPayloadInfo(p *api.PullRequestPayload, linkFormatter linkForm
 	case api.HookIssueSynchronized:
 		text = fmt.Sprintf("[%s] Pull request synchronized: %s", repoLink, titleLink)
 	case api.HookIssueMilestoned:
-		mileStoneLink := fmt.Sprintf("%s/milestone/%d", p.Repository.HTMLURL, p.PullRequest.Milestone.ID)
+		mileStoneLink := fmt.Sprintf("%s/milestone/%d", p.Repository.HTMLURL, p.MergeRequest.Milestone.ID)
 		text = fmt.Sprintf("[%s] Pull request milestoned to %s: %s", repoLink,
-			linkFormatter(mileStoneLink, p.PullRequest.Milestone.Title), titleLink)
+			linkFormatter(mileStoneLink, p.MergeRequest.Milestone.Title), titleLink)
 	case api.HookIssueDemilestoned:
 		text = fmt.Sprintf("[%s] Pull request milestone cleared: %s", repoLink, titleLink)
 	case api.HookIssueReviewed:

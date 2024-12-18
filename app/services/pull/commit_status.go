@@ -101,7 +101,7 @@ func IsCommitStatusContextSuccess(commitStatuses []*git_model.CommitStatus, requ
 }
 
 // IsMergeRequestCommitStatusPass returns if all required status checks PASS
-func IsMergeRequestCommitStatusPass(ctx context.Context, pr *issues_model.PullRequest) (bool, error) {
+func IsMergeRequestCommitStatusPass(ctx context.Context, pr *issues_model.MergeRequest) (bool, error) {
 	pb, err := git_model.GetFirstMatchProtectedBranchRule(ctx, pr.BaseRepoID, pr.BaseBranch)
 	if err != nil {
 		return false, errors.Wrap(err, "GetLatestCommitStatus")
@@ -118,7 +118,7 @@ func IsMergeRequestCommitStatusPass(ctx context.Context, pr *issues_model.PullRe
 }
 
 // GetPullRequestCommitStatusState returns pull request merged commit status state
-func GetPullRequestCommitStatusState(ctx context.Context, pr *issues_model.PullRequest) (structs.CommitStatusState, error) {
+func GetPullRequestCommitStatusState(ctx context.Context, pr *issues_model.MergeRequest) (structs.CommitStatusState, error) {
 	// Ensure HeadRepo is loaded
 	if err := pr.LoadHeadRepo(ctx); err != nil {
 		return "", errors.Wrap(err, "LoadHeadRepo")
@@ -131,15 +131,15 @@ func GetPullRequestCommitStatusState(ctx context.Context, pr *issues_model.PullR
 	}
 	defer closer.Close()
 
-	if pr.Flow == issues_model.PullRequestFlowGithub && !headGitRepo.IsBranchExist(pr.HeadBranch) {
+	if pr.Flow == issues_model.MergeRequestFlowGithub && !headGitRepo.IsBranchExist(pr.HeadBranch) {
 		return "", errors.New("Head branch does not exist, can not merge")
 	}
-	if pr.Flow == issues_model.PullRequestFlowAGit && !git.IsReferenceExist(ctx, headGitRepo.Path, pr.GetGitRefName()) {
+	if pr.Flow == issues_model.MergeRequestFlowAGit && !git.IsReferenceExist(ctx, headGitRepo.Path, pr.GetGitRefName()) {
 		return "", errors.New("Head branch does not exist, can not merge")
 	}
 
 	var sha string
-	if pr.Flow == issues_model.PullRequestFlowGithub {
+	if pr.Flow == issues_model.MergeRequestFlowGithub {
 		sha, err = headGitRepo.GetBranchCommitID(pr.HeadBranch)
 	} else {
 		sha, err = headGitRepo.GetRefCommitID(pr.GetGitRefName())

@@ -20,7 +20,7 @@ import (
 )
 
 // LFSPush pushes lfs objects referred to in new commits in the head repository from the base repository
-func LFSPush(ctx context.Context, tmpBasePath, mergeHeadSHA, mergeBaseSHA string, pr *issues_model.PullRequest) error {
+func LFSPush(ctx context.Context, tmpBasePath, mergeHeadSHA, mergeBaseSHA string, pr *issues_model.MergeRequest) error {
 	// Now we have to implement git lfs push
 	// git rev-list --objects --filter=blob:limit=1k HEAD --not base
 	// pass blob shas in to git cat-file --batch-check (possibly unnecessary)
@@ -68,7 +68,7 @@ func LFSPush(ctx context.Context, tmpBasePath, mergeHeadSHA, mergeBaseSHA string
 	return nil
 }
 
-func createLFSMetaObjectsFromCatFileBatch(ctx context.Context, catFileBatchReader *io.PipeReader, wg *sync.WaitGroup, pr *issues_model.PullRequest) {
+func createLFSMetaObjectsFromCatFileBatch(ctx context.Context, catFileBatchReader *io.PipeReader, wg *sync.WaitGroup, pr *issues_model.MergeRequest) {
 	defer wg.Done()
 	defer catFileBatchReader.Close()
 

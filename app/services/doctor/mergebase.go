@@ -17,11 +17,11 @@ import (
 	"xorm.io/builder"
 )
 
-func iteratePRs(ctx context.Context, repo *repo_model.Repository, each func(*repo_model.Repository, *issues_model.PullRequest) error) error {
+func iteratePRs(ctx context.Context, repo *repo_model.Repository, each func(*repo_model.Repository, *issues_model.MergeRequest) error) error {
 	return db.Iterate(
 		ctx,
 		builder.Eq{"base_repo_id": repo.ID},
-		func(ctx context.Context, bean *issues_model.PullRequest) error {
+		func(ctx context.Context, bean *issues_model.MergeRequest) error {
 			return each(repo, bean)
 		},
 	)
@@ -33,7 +33,7 @@ func checkPRMergeBase(ctx context.Context, logger log.Logger, autofix bool) erro
 	numPRsUpdated := 0
 	err := iterateRepositories(ctx, func(repo *repo_model.Repository) error {
 		numRepos++
-		return iteratePRs(ctx, repo, func(repo *repo_model.Repository, pr *issues_model.PullRequest) error {
+		return iteratePRs(ctx, repo, func(repo *repo_model.Repository, pr *issues_model.MergeRequest) error {
 			numPRs++
 			pr.BaseRepo = repo
 			repoPath := repo.RepoPath()

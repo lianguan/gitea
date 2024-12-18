@@ -112,7 +112,7 @@ func TestOneDevDownloadRepo(t *testing.T) {
 
 	prs, _, err := downloader.GetPullRequests(1, 1)
 	assert.NoError(t, err)
-	assertPullRequestsEqual(t, []*base.PullRequest{
+	assertPullRequestsEqual(t, []*base.MergeRequest{
 		{
 			Number:     5,
 			Title:      "Pull to add a new file",
@@ -121,12 +121,12 @@ func TestOneDevDownloadRepo(t *testing.T) {
 			State:      "open",
 			Created:    time.Unix(1628550076, 25000000),
 			Updated:    time.Unix(1628550076, 25000000),
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      "branch-for-a-pull",
 				SHA:      "343deffe3526b9bc84e873743ff7f6e6d8b827c0",
 				RepoName: "go-gitea-test_repo",
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:      "master",
 				SHA:      "f32b0a9dfd09a60f616f29158f772cedd89942d2",
 				RepoName: "go-gitea-test_repo",
@@ -136,7 +136,7 @@ func TestOneDevDownloadRepo(t *testing.T) {
 		},
 	}, prs)
 
-	rvs, err := downloader.GetReviews(&base.PullRequest{Number: 5, ForeignIndex: 186})
+	rvs, err := downloader.GetReviews(&base.MergeRequest{Number: 5, ForeignIndex: 186})
 	assert.NoError(t, err)
 	assertReviewsEqual(t, []*base.Review{
 		{

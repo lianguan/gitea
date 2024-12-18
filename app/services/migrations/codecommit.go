@@ -155,7 +155,7 @@ func (c *CodeCommitDownloader) GetComments(commentable base.Commentable) ([]*bas
 }
 
 // GetPullRequests returns pull requests according page and perPage
-func (c *CodeCommitDownloader) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (c *CodeCommitDownloader) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	allPullRequestIDs, err := c.getAllPullRequestIDs()
 	if err != nil {
 		return nil, false, err
@@ -168,7 +168,7 @@ func (c *CodeCommitDownloader) GetPullRequests(page, perPage int) ([]*base.PullR
 	}
 	batch := allPullRequestIDs[startIndex:endIndex]
 
-	prs := make([]*base.PullRequest, 0, len(batch))
+	prs := make([]*base.MergeRequest, 0, len(batch))
 	for _, id := range batch {
 		output, err := c.codeCommitClient.GetPullRequest(c.ctx, &codecommit.GetPullRequestInput{
 			PullRequestId: aws.String(id),
@@ -187,7 +187,7 @@ func (c *CodeCommitDownloader) GetPullRequests(page, perPage int) ([]*base.PullR
 			continue
 		}
 		target := orig.PullRequestTargets[0]
-		pr := &base.PullRequest{
+		pr := &base.MergeRequest{
 			Number:     number,
 			Title:      *orig.Title,
 			PosterName: c.getUsernameFromARN(*orig.AuthorArn),
@@ -196,12 +196,12 @@ func (c *CodeCommitDownloader) GetPullRequests(page, perPage int) ([]*base.PullR
 			Created:    *orig.CreationDate,
 			Updated:    *orig.LastActivityDate,
 			Merged:     target.MergeMetadata.IsMerged,
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      strings.TrimPrefix(*target.SourceReference, git_module.BranchPrefix),
 				SHA:      *target.SourceCommit,
 				RepoName: c.repoName,
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:      strings.TrimPrefix(*target.DestinationReference, git_module.BranchPrefix),
 				SHA:      *target.DestinationCommit,
 				RepoName: c.repoName,

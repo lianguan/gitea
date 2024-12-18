@@ -25,8 +25,8 @@ const (
 	StateAll StateType = "all"
 )
 
-// PullRequestMeta PR info if an issue is a PR
-type PullRequestMeta struct {
+// MergeRequestMeta PR info if an issue is a PR
+type MergeRequestMeta struct {
 	HasMerged        bool       `json:"merged"`
 	Merged           *time.Time `json:"merged_at"`
 	IsWorkInProgress bool       `json:"draft"`
@@ -76,8 +76,8 @@ type Issue struct {
 	// swagger:strfmt date-time
 	Deadline *time.Time `json:"due_date"`
 
-	PullRequest *PullRequestMeta `json:"pull_request"`
-	Repo        *RepositoryMeta  `json:"repository"`
+	MergeRequest *MergeRequestMeta `json:"merge_request"`
+	Repo         *RepositoryMeta   `json:"repository"`
 
 	PinOrder int `json:"pin_order"`
 }

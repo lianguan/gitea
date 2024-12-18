@@ -285,7 +285,7 @@ func IsOfficialReviewer(ctx context.Context, issue *Issue, reviewer *user_model.
 		return false, err
 	}
 
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 	rule, err := git_model.GetFirstMatchProtectedBranchRule(ctx, pr.BaseRepoID, pr.BaseBranch)
 	if err != nil {
 		return false, err
@@ -316,7 +316,7 @@ func IsOfficialReviewerTeam(ctx context.Context, issue *Issue, team *organizatio
 	if err := issue.LoadPullRequest(ctx); err != nil {
 		return false, err
 	}
-	pb, err := git_model.GetFirstMatchProtectedBranchRule(ctx, issue.PullRequest.BaseRepoID, issue.PullRequest.BaseBranch)
+	pb, err := git_model.GetFirstMatchProtectedBranchRule(ctx, issue.MergeRequest.BaseRepoID, issue.MergeRequest.BaseBranch)
 	if err != nil {
 		return false, err
 	}
@@ -672,7 +672,7 @@ func AddReviewRequest(ctx context.Context, issue *Issue, reviewer, doer *user_mo
 			if err := issue.LoadPullRequest(ctx); err != nil {
 				return nil, err
 			}
-			if issue.PullRequest.HasMerged {
+			if issue.MergeRequest.HasMerged {
 				return nil, ErrReviewRequestOnClosedPR{}
 			}
 		}

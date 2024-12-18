@@ -15,7 +15,7 @@ type Uploader interface {
 	CreateLabels(labels ...*Label) error
 	CreateIssues(issues ...*Issue) error
 	CreateComments(comments ...*Comment) error
-	CreatePullRequests(prs ...*PullRequest) error
+	CreatePullRequests(prs ...*MergeRequest) error
 	CreateReviews(reviews ...*Review) error
 	Rollback() error
 	Finish() error

@@ -22,8 +22,8 @@ type payloadConvertor[T any] interface {
 	Issue(*api.IssuePayload) (T, error)
 	IssueComment(*api.IssueCommentPayload) (T, error)
 	Push(*api.PushPayload) (T, error)
-	PullRequest(*api.PullRequestPayload) (T, error)
-	Review(*api.PullRequestPayload, webhook_module.HookEventType) (T, error)
+	PullRequest(*api.MergeRequestPayload) (T, error)
+	Review(*api.MergeRequestPayload, webhook_module.HookEventType) (T, error)
 	Repository(*api.RepositoryPayload) (T, error)
 	Release(*api.ReleasePayload) (T, error)
 	Wiki(*api.WikiPayload) (T, error)
@@ -49,14 +49,14 @@ func newPayload[T any](rc payloadConvertor[T], data []byte, event webhook_module
 	case webhook_module.HookEventIssues, webhook_module.HookEventIssueAssign, webhook_module.HookEventIssueLabel, webhook_module.HookEventIssueMilestone:
 		return convertUnmarshalledJSON(rc.Issue, data)
 	case webhook_module.HookEventIssueComment, webhook_module.HookEventPullRequestComment:
-		// previous code sometimes sent s.PullRequest(p.(*api.PullRequestPayload))
+		// previous code sometimes sent s.PullRequest(p.(*api.MergeRequestPayload))
 		// however I couldn't find in notifier.go such a payload with an HookEvent***Comment event
 
 		// History (most recent first):
 		//  - refactored in https://github.com/go-gitea/gitea/pull/12310
 		//  - assertion added in https://github.com/go-gitea/gitea/pull/12046
 		//  - issue raised in https://github.com/go-gitea/gitea/issues/11940#issuecomment-645713996
-		//    > That's because for HookEventPullRequestComment event, some places use IssueCommentPayload and others use PullRequestPayload
+		//    > That's because for HookEventPullRequestComment event, some places use IssueCommentPayload and others use MergeRequestPayload
 
 		// In modules/actions/workflows.go:183 the type assertion is always payload.(*api.IssueCommentPayload)
 		return convertUnmarshalledJSON(rc.IssueComment, data)
@@ -66,7 +66,7 @@ func newPayload[T any](rc payloadConvertor[T], data []byte, event webhook_module
 		webhook_module.HookEventPullRequestMilestone, webhook_module.HookEventPullRequestSync, webhook_module.HookEventPullRequestReviewRequest:
 		return convertUnmarshalledJSON(rc.PullRequest, data)
 	case webhook_module.HookEventPullRequestReviewApproved, webhook_module.HookEventPullRequestReviewRejected, webhook_module.HookEventPullRequestReviewComment:
-		return convertUnmarshalledJSON(func(p *api.PullRequestPayload) (T, error) {
+		return convertUnmarshalledJSON(func(p *api.MergeRequestPayload) (T, error) {
 			return rc.Review(p, event)
 		}, data)
 	case webhook_module.HookEventRepository:

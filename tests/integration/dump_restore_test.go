@@ -190,19 +190,19 @@ func (c *compareDump) assertEquals(repoBefore, repoAfter *repo_model.Repository)
 	//
 	// base.PullRequest and the associated comments
 	//
-	comparePullRequestBranch := &compareFields{
+	compareMergeRequestBranch := &compareFields{
 		"RepoName": {
 			before: c.repoBefore.Name,
 			after:  c.repoAfter.Name,
 		},
 		"CloneURL": {transform: c.replaceRepoName},
 	}
-	prs, ok := c.assertEqual("pull_request.yml", []base.PullRequest{}, compareFields{
+	prs, ok := c.assertEqual("pull_request.yml", []base.MergeRequest{}, compareFields{
 		"Assignees": {ignore: true}, // not implemented yet
-		"Head":      {nested: comparePullRequestBranch},
-		"Base":      {nested: comparePullRequestBranch},
+		"Head":      {nested: compareMergeRequestBranch},
+		"Base":      {nested: compareMergeRequestBranch},
 		"Labels":    {ignore: true}, // because org labels are not handled properly
-	}).([]*base.PullRequest)
+	}).([]*base.MergeRequest)
 	assert.True(c.t, ok)
 	assert.GreaterOrEqual(c.t, len(prs), 1)
 	for _, pr := range prs {

@@ -79,20 +79,20 @@ func (m *mailNotifier) IssueChangeTitle(ctx context.Context, doer *user_model.Us
 		log.Error("issue.LoadPullRequest: %v", err)
 		return
 	}
-	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.PullRequest.IsWorkInProgress(ctx) {
+	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.MergeRequest.IsWorkInProgress(ctx) {
 		if err := MailParticipants(ctx, issue, doer, activities_model.ActionPullRequestReadyForReview, nil); err != nil {
 			log.Error("MailParticipants: %v", err)
 		}
 	}
 }
 
-func (m *mailNotifier) NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User) {
+func (m *mailNotifier) NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User) {
 	if err := MailParticipants(ctx, pr.Issue, pr.Issue.Poster, activities_model.ActionCreatePullRequest, mentions); err != nil {
 		log.Error("MailParticipants: %v", err)
 	}
 }
 
-func (m *mailNotifier) PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, r *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
+func (m *mailNotifier) PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, r *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
 	var act activities_model.ActionType
 	if comment.Type == issues_model.CommentTypeClose {
 		act = activities_model.ActionCloseIssue
@@ -106,7 +106,7 @@ func (m *mailNotifier) PullRequestReview(ctx context.Context, pr *issues_model.P
 	}
 }
 
-func (m *mailNotifier) PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, comment *issues_model.Comment, mentions []*user_model.User) {
+func (m *mailNotifier) PullRequestCodeComment(ctx context.Context, pr *issues_model.MergeRequest, comment *issues_model.Comment, mentions []*user_model.User) {
 	if err := MailMentionsComment(ctx, pr, comment, mentions); err != nil {
 		log.Error("MailMentionsComment: %v", err)
 	}
@@ -131,7 +131,7 @@ func (m *mailNotifier) PullRequestReviewRequest(ctx context.Context, doer *user_
 	}
 }
 
-func (m *mailNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (m *mailNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("LoadIssue: %v", err)
 		return
@@ -141,7 +141,7 @@ func (m *mailNotifier) MergePullRequest(ctx context.Context, doer *user_model.Us
 	}
 }
 
-func (m *mailNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (m *mailNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("pr.LoadIssue: %v", err)
 		return
@@ -151,7 +151,7 @@ func (m *mailNotifier) AutoMergePullRequest(ctx context.Context, doer *user_mode
 	}
 }
 
-func (m *mailNotifier) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, comment *issues_model.Comment) {
+func (m *mailNotifier) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, comment *issues_model.Comment) {
 	var err error
 	if err = comment.LoadIssue(ctx); err != nil {
 		log.Error("comment.LoadIssue: %v", err)
@@ -165,8 +165,8 @@ func (m *mailNotifier) PullRequestPushCommits(ctx context.Context, doer *user_mo
 		log.Error("comment.Issue.LoadPullRequest: %v", err)
 		return
 	}
-	if err = comment.Issue.PullRequest.LoadBaseRepo(ctx); err != nil {
-		log.Error("comment.Issue.PullRequest.LoadBaseRepo: %v", err)
+	if err = comment.Issue.MergeRequest.LoadBaseRepo(ctx); err != nil {
+		log.Error("comment.Issue.MergeRequest.LoadBaseRepo: %v", err)
 		return
 	}
 	if err := comment.LoadPushCommits(ctx); err != nil {

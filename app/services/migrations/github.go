@@ -648,7 +648,7 @@ func (g *GithubDownloaderV3) GetAllComments(page, perPage int) ([]*base.Comment,
 }
 
 // GetPullRequests returns pull requests according page and perPage
-func (g *GithubDownloaderV3) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (g *GithubDownloaderV3) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	if perPage > g.maxPerPage {
 		perPage = g.maxPerPage
 	}
@@ -661,7 +661,7 @@ func (g *GithubDownloaderV3) GetPullRequests(page, perPage int) ([]*base.PullReq
 			Page:    page,
 		},
 	}
-	allPRs := make([]*base.PullRequest, 0, perPage)
+	allPRs := make([]*base.MergeRequest, 0, perPage)
 	g.waitAndPickClient()
 	prs, resp, err := g.getClient().PullRequests.List(g.ctx, g.repoOwner, g.repoName, opt)
 	if err != nil {
@@ -704,7 +704,7 @@ func (g *GithubDownloaderV3) GetPullRequests(page, perPage int) ([]*base.PullReq
 		// download patch and saved as tmp file
 		g.waitAndPickClient()
 
-		allPRs = append(allPRs, &base.PullRequest{
+		allPRs = append(allPRs, &base.MergeRequest{
 			Title:          pr.GetTitle(),
 			Number:         int64(pr.GetNumber()),
 			PosterID:       pr.GetUser().GetID(),
@@ -721,14 +721,14 @@ func (g *GithubDownloaderV3) GetPullRequests(page, perPage int) ([]*base.PullReq
 			MergeCommitSHA: pr.GetMergeCommitSHA(),
 			MergedTime:     pr.MergedAt.GetTime(),
 			IsLocked:       pr.ActiveLockReason != nil,
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:       pr.GetHead().GetRef(),
 				SHA:       pr.GetHead().GetSHA(),
 				OwnerName: pr.GetHead().GetUser().GetLogin(),
 				RepoName:  pr.GetHead().GetRepo().GetName(),
 				CloneURL:  pr.GetHead().GetRepo().GetCloneURL(), // see below for SECURITY related issues here
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       pr.GetBase().GetRef(),
 				SHA:       pr.GetBase().GetSHA(),
 				RepoName:  pr.GetBase().GetRepo().GetName(),

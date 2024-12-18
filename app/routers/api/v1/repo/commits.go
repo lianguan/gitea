@@ -356,7 +356,7 @@ func GetCommitPullRequest(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByMergedCommit(ctx, ctx.Repo.Repository.ID, ctx.PathParam("sha"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.Error(http.StatusNotFound, "GetPullRequestByMergedCommit", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)

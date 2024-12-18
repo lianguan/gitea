@@ -114,7 +114,7 @@ func (ns *notificationService) IssueChangeTitle(ctx context.Context, doer *user_
 		log.Error("issue.LoadPullRequest: %v", err)
 		return
 	}
-	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.PullRequest.IsWorkInProgress(ctx) {
+	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issue.MergeRequest.IsWorkInProgress(ctx) {
 		_ = ns.issueQueue.Push(issueNotificationOpts{
 			IssueID:              issue.ID,
 			NotificationAuthorID: doer.ID,
@@ -122,18 +122,18 @@ func (ns *notificationService) IssueChangeTitle(ctx context.Context, doer *user_
 	}
 }
 
-func (ns *notificationService) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (ns *notificationService) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	_ = ns.issueQueue.Push(issueNotificationOpts{
 		IssueID:              pr.Issue.ID,
 		NotificationAuthorID: doer.ID,
 	})
 }
 
-func (ns *notificationService) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (ns *notificationService) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	ns.MergePullRequest(ctx, doer, pr)
 }
 
-func (ns *notificationService) NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User) {
+func (ns *notificationService) NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("Unable to load issue: %d for pr: %d: Error: %v", pr.IssueID, pr.ID, err)
 		return
@@ -168,7 +168,7 @@ func (ns *notificationService) NewPullRequest(ctx context.Context, pr *issues_mo
 	}
 }
 
-func (ns *notificationService) PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, r *issues_model.Review, c *issues_model.Comment, mentions []*user_model.User) {
+func (ns *notificationService) PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, r *issues_model.Review, c *issues_model.Comment, mentions []*user_model.User) {
 	opts := issueNotificationOpts{
 		IssueID:              pr.Issue.ID,
 		NotificationAuthorID: r.Reviewer.ID,
@@ -190,7 +190,7 @@ func (ns *notificationService) PullRequestReview(ctx context.Context, pr *issues
 	}
 }
 
-func (ns *notificationService) PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, c *issues_model.Comment, mentions []*user_model.User) {
+func (ns *notificationService) PullRequestCodeComment(ctx context.Context, pr *issues_model.MergeRequest, c *issues_model.Comment, mentions []*user_model.User) {
 	for _, mention := range mentions {
 		_ = ns.issueQueue.Push(issueNotificationOpts{
 			IssueID:              pr.Issue.ID,
@@ -201,7 +201,7 @@ func (ns *notificationService) PullRequestCodeComment(ctx context.Context, pr *i
 	}
 }
 
-func (ns *notificationService) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, comment *issues_model.Comment) {
+func (ns *notificationService) PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, comment *issues_model.Comment) {
 	opts := issueNotificationOpts{
 		IssueID:              pr.IssueID,
 		NotificationAuthorID: doer.ID,

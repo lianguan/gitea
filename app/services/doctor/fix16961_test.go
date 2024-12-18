@@ -171,11 +171,11 @@ func Test_fixExternalTrackerConfig_16961(t *testing.T) {
 	}
 }
 
-func Test_fixPullRequestsConfig_16961(t *testing.T) {
+func Test_fixMergeRequestsConfig_16961(t *testing.T) {
 	tests := []struct {
 		name      string
 		bs        string
-		expected  repo_model.PullRequestsConfig
+		expected  repo_model.MergeRequestsConfig
 		wantFixed bool
 		wantErr   bool
 	}{
@@ -186,7 +186,7 @@ func Test_fixPullRequestsConfig_16961(t *testing.T) {
 		{
 			name: "broken - 1.14",
 			bs:   `&{%!s(bool=false) %!s(bool=true) %!s(bool=true) %!s(bool=true) %!s(bool=true) %!s(bool=false) %!s(bool=false)}`,
-			expected: repo_model.PullRequestsConfig{
+			expected: repo_model.MergeRequestsConfig{
 				IgnoreWhitespaceConflicts: false,
 				AllowMerge:                true,
 				AllowRebase:               true,
@@ -200,7 +200,7 @@ func Test_fixPullRequestsConfig_16961(t *testing.T) {
 		{
 			name: "broken - 1.15",
 			bs:   `&{%!s(bool=false) %!s(bool=true) %!s(bool=true) %!s(bool=true) %!s(bool=true) %!s(bool=false) %!s(bool=false) %!s(bool=false) merge}`,
-			expected: repo_model.PullRequestsConfig{
+			expected: repo_model.MergeRequestsConfig{
 				AllowMerge:        true,
 				AllowRebase:       true,
 				AllowRebaseMerge:  true,
@@ -212,14 +212,14 @@ func Test_fixPullRequestsConfig_16961(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cfg := &repo_model.PullRequestsConfig{}
-			gotFixed, err := fixPullRequestsConfig16961([]byte(tt.bs), cfg)
+			cfg := &repo_model.MergeRequestsConfig{}
+			gotFixed, err := fixMergeRequestsConfig16961([]byte(tt.bs), cfg)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("fixPullRequestsConfig_16961() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("fixMergeRequestsConfig_16961() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if gotFixed != tt.wantFixed {
-				t.Errorf("fixPullRequestsConfig_16961() = %v, want %v", gotFixed, tt.wantFixed)
+				t.Errorf("fixMergeRequestsConfig_16961() = %v, want %v", gotFixed, tt.wantFixed)
 			}
 			assert.EqualValues(t, &tt.expected, cfg)
 		})

@@ -45,17 +45,17 @@ func MergeUpstream(ctx context.Context, doer *user_model.User, repo *repo_model.
 	// TODO: FakePR: it is somewhat hacky, but it is the only way to "merge" at the moment
 	// ideally in the future the "merge" functions should be refactored to decouple from the PullRequest
 	fakeIssue := &issue_model.Issue{
-		ID:       -1,
-		RepoID:   repo.ID,
-		Repo:     repo,
-		Index:    -1,
-		PosterID: doer.ID,
-		Poster:   doer,
-		IsMergeRequest:   true,
+		ID:             -1,
+		RepoID:         repo.ID,
+		Repo:           repo,
+		Index:          -1,
+		PosterID:       doer.ID,
+		Poster:         doer,
+		IsMergeRequest: true,
 	}
-	fakePR := &issue_model.PullRequest{
+	fakePR := &issue_model.MergeRequest{
 		ID:         -1,
-		Status:     issue_model.PullRequestStatusMergeable,
+		Status:     issue_model.MergeRequestStatusMergeable,
 		IssueID:    -1,
 		Issue:      fakeIssue,
 		Index:      -1,
@@ -66,7 +66,7 @@ func MergeUpstream(ctx context.Context, doer *user_model.User, repo *repo_model.
 		HeadBranch: branch, // maybe HeadCommitID is not needed
 		BaseBranch: branch,
 	}
-	fakeIssue.PullRequest = fakePR
+	fakeIssue.MergeRequest = fakePR
 	err = pull.Update(ctx, fakePR, doer, "merge upstream", false)
 	if err != nil {
 		return "", err

@@ -37,8 +37,8 @@ import (
 	"github.com/editorconfig/editorconfig-core-go/v2"
 )
 
-// PullRequest contains information to make a pull request
-type PullRequest struct {
+// MergeRequest contains information to make a pull request
+type MergeRequest struct {
 	BaseRepo *repo_model.Repository
 	Allowed  bool // it only used by the web tmpl: "PullRequestCtx.Allowed"
 	SameRepo bool // it only used by the web tmpl: "PullRequestCtx.SameRepo"
@@ -65,7 +65,7 @@ type Repository struct {
 	CloneLink    repo_model.CloneLink
 	CommitsCount int64
 
-	PullRequest *PullRequest
+	MergeRequest *MergeRequest
 }
 
 // CanWriteToBranch checks if the branch is writable by the user
@@ -695,18 +695,18 @@ func RepoAssignment(ctx *Context) context.CancelFunc {
 	if repo.BaseRepo != nil && repo.BaseRepo.AllowsPulls(ctx) {
 		canCompare = true
 		ctx.Data["BaseRepo"] = repo.BaseRepo
-		ctx.Repo.PullRequest.BaseRepo = repo.BaseRepo
-		ctx.Repo.PullRequest.Allowed = canPush
+		ctx.Repo.MergeRequest.BaseRepo = repo.BaseRepo
+		ctx.Repo.MergeRequest.Allowed = canPush
 	} else if repo.AllowsPulls(ctx) {
 		// Or, this is repository accepts pull requests between branches.
 		canCompare = true
 		ctx.Data["BaseRepo"] = repo
-		ctx.Repo.PullRequest.BaseRepo = repo
-		ctx.Repo.PullRequest.Allowed = canPush
-		ctx.Repo.PullRequest.SameRepo = true
+		ctx.Repo.MergeRequest.BaseRepo = repo
+		ctx.Repo.MergeRequest.Allowed = canPush
+		ctx.Repo.MergeRequest.SameRepo = true
 	}
 	ctx.Data["CanCompareOrPull"] = canCompare
-	ctx.Data["PullRequestCtx"] = ctx.Repo.PullRequest
+	ctx.Data["PullRequestCtx"] = ctx.Repo.MergeRequest
 
 	if ctx.Repo.Repository.Status == repo_model.RepositoryPendingTransfer {
 		repoTransfer, err := models.GetPendingRepositoryTransfer(ctx, ctx.Repo.Repository)

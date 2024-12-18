@@ -257,7 +257,7 @@ func TestCantMergeConflict(t *testing.T) {
 			Name:    "repo1",
 		})
 
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			HeadRepoID: repo1.ID,
 			BaseRepoID: repo1.ID,
 			HeadBranch: "conflict",
@@ -359,7 +359,7 @@ func TestCantMergeUnrelated(t *testing.T) {
 		// Now this PR could be marked conflict - or at least a race may occur - so drop down to pure code at this point...
 		gitRepo, err := gitrepo.OpenRepository(git.DefaultContext, repo1)
 		assert.NoError(t, err)
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			HeadRepoID: repo1.ID,
 			BaseRepoID: repo1.ID,
 			HeadBranch: "unrelated",
@@ -396,7 +396,7 @@ func TestFastForwardOnlyMerge(t *testing.T) {
 			Name:    "repo1",
 		})
 
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			HeadRepoID: repo1.ID,
 			BaseRepoID: repo1.ID,
 			HeadBranch: "update",
@@ -438,7 +438,7 @@ func TestCantFastForwardOnlyMergeDiverging(t *testing.T) {
 			Name:    "repo1",
 		})
 
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			HeadRepoID: repo1.ID,
 			BaseRepoID: repo1.ID,
 			HeadBranch: "diverging",
@@ -511,14 +511,14 @@ func TestConflictChecking(t *testing.T) {
 			IsMergeRequest:   true,
 		}
 
-		pullRequest := &issues_model.PullRequest{
+		pullRequest := &issues_model.MergeRequest{
 			HeadRepoID: baseRepo.ID,
 			BaseRepoID: baseRepo.ID,
 			HeadBranch: "important-secrets",
 			BaseBranch: "main",
 			HeadRepo:   baseRepo,
 			BaseRepo:   baseRepo,
-			Type:       issues_model.PullRequestGitea,
+			Type:       issues_model.MergeRequestGitea,
 		}
 		prOpts := &pull.NewPullRequestOptions{Repo: baseRepo, Issue: pullIssue, PullRequest: pullRequest}
 		err = pull.NewPullRequest(git.DefaultContext, prOpts)
@@ -526,12 +526,12 @@ func TestConflictChecking(t *testing.T) {
 
 		issue := unittest.AssertExistsAndLoadBean(t, &issues_model.Issue{Title: "PR with conflict!"})
 		assert.NoError(t, issue.LoadPullRequest(db.DefaultContext))
-		conflictingPR := issue.PullRequest
+		conflictingPR := issue.MergeRequest
 
 		// Ensure conflictedFiles is populated.
 		assert.Len(t, conflictingPR.ConflictedFiles, 1)
 		// Check if status is correct.
-		assert.Equal(t, issues_model.PullRequestStatusConflict, conflictingPR.Status)
+		assert.Equal(t, issues_model.MergeRequestStatusConflict, conflictingPR.Status)
 		// Ensure that mergeable returns false
 		assert.False(t, conflictingPR.Mergeable(db.DefaultContext))
 	})
@@ -717,7 +717,7 @@ func TestPullAutoMergeAfterCommitStatusSucceed(t *testing.T) {
 
 		baseRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user2", Name: "repo1"})
 		forkedRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user1", Name: forkedName})
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			BaseRepoID: baseRepo.ID,
 			BaseBranch: "master",
 			HeadRepoID: forkedRepo.ID,
@@ -747,7 +747,7 @@ func TestPullAutoMergeAfterCommitStatusSucceed(t *testing.T) {
 		assert.False(t, scheduled)
 
 		// reload pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.False(t, pr.HasMerged)
 		assert.Empty(t, pr.MergedCommitID)
 
@@ -777,7 +777,7 @@ func TestPullAutoMergeAfterCommitStatusSucceed(t *testing.T) {
 		time.Sleep(2 * time.Second)
 
 		// realod pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
@@ -800,7 +800,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApproval(t *testing.T) {
 
 		baseRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user2", Name: "repo1"})
 		forkedRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user1", Name: forkedName})
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			BaseRepoID: baseRepo.ID,
 			BaseBranch: "master",
 			HeadRepoID: forkedRepo.ID,
@@ -831,7 +831,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApproval(t *testing.T) {
 		assert.False(t, scheduled)
 
 		// reload pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.False(t, pr.HasMerged)
 		assert.Empty(t, pr.MergedCommitID)
 
@@ -857,7 +857,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApproval(t *testing.T) {
 		time.Sleep(2 * time.Second)
 
 		// reload pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.False(t, pr.HasMerged)
 		assert.Empty(t, pr.MergedCommitID)
 
@@ -871,7 +871,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApproval(t *testing.T) {
 		time.Sleep(2 * time.Second)
 
 		// realod pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
@@ -926,8 +926,8 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApprovalForAgitFlow(t *testing.
 		assert.Contains(t, stderrBuf.String(), setting.AppURL+"user2/repo1/pulls/6")
 
 		baseRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user2", Name: "repo1"})
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
-			Flow:       issues_model.PullRequestFlowAGit,
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
+			Flow:       issues_model.MergeRequestFlowAGit,
 			BaseRepoID: baseRepo.ID,
 			BaseBranch: "master",
 			HeadRepoID: baseRepo.ID,
@@ -960,7 +960,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApprovalForAgitFlow(t *testing.
 		assert.False(t, scheduled)
 
 		// reload pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.False(t, pr.HasMerged)
 		assert.Empty(t, pr.MergedCommitID)
 
@@ -986,7 +986,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApprovalForAgitFlow(t *testing.
 		time.Sleep(2 * time.Second)
 
 		// reload pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.False(t, pr.HasMerged)
 		assert.Empty(t, pr.MergedCommitID)
 
@@ -1000,7 +1000,7 @@ func TestPullAutoMergeAfterCommitStatusSucceedAndApprovalForAgitFlow(t *testing.
 		time.Sleep(2 * time.Second)
 
 		// realod pr again
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 		assert.True(t, pr.HasMerged)
 		assert.NotEmpty(t, pr.MergedCommitID)
 
@@ -1021,7 +1021,7 @@ func TestPullNonMergeForAdminWithBranchProtection(t *testing.T) {
 
 		baseRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user2", Name: "repo1"})
 		forkedRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{OwnerName: "user1", Name: forkedName})
-		unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{
+		unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{
 			BaseRepoID: baseRepo.ID,
 			BaseBranch: "master",
 			HeadRepoID: forkedRepo.ID,

@@ -36,12 +36,12 @@ func TestPullRequest_AddToTaskQueue(t *testing.T) {
 	prPatchCheckerQueue, err = queue.NewWorkerPoolQueueWithContext(context.Background(), "pr_patch_checker", cfg, testHandler, true)
 	assert.NoError(t, err)
 
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
 	AddToTaskQueue(db.DefaultContext, pr)
 
 	assert.Eventually(t, func() bool {
-		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
-		return pr.Status == issues_model.PullRequestStatusChecking
+		pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
+		return pr.Status == issues_model.MergeRequestStatusChecking
 	}, 1*time.Second, 100*time.Millisecond)
 
 	has, err := prPatchCheckerQueue.Has(strconv.FormatInt(pr.ID, 10))
@@ -61,8 +61,8 @@ func TestPullRequest_AddToTaskQueue(t *testing.T) {
 	assert.False(t, has)
 	assert.NoError(t, err)
 
-	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
-	assert.Equal(t, issues_model.PullRequestStatusChecking, pr.Status)
+	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
+	assert.Equal(t, issues_model.MergeRequestStatusChecking, pr.Status)
 
 	prPatchCheckerQueue.ShutdownWait(5 * time.Second)
 	prPatchCheckerQueue = nil

@@ -142,10 +142,10 @@ func TestRenameBranch(t *testing.T) {
 	repo1 = unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: 1})
 	assert.Equal(t, "main", repo1.DefaultBranch)
 
-	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1}) // merged
+	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1}) // merged
 	assert.Equal(t, "master", pull.BaseBranch)
 
-	pull = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2}) // open
+	pull = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2}) // open
 	assert.Equal(t, "main", pull.BaseBranch)
 
 	renamedBranch := unittest.AssertExistsAndLoadBean(t, &git_model.RenamedBranch{ID: 2})

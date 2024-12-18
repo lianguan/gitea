@@ -230,7 +230,7 @@ func ListPinnedPullRequests(ctx *context.APIContext) {
 	//   required: true
 	// responses:
 	//   "200":
-	//     "$ref": "#/responses/PullRequestList"
+	//     "$ref": "#/responses/MergeRequestList"
 	//   "404":
 	//     "$ref": "#/responses/notFound"
 	issues, err := issues_model.GetPinnedIssues(ctx, ctx.Repo.Repository.ID, true)
@@ -239,13 +239,13 @@ func ListPinnedPullRequests(ctx *context.APIContext) {
 		return
 	}
 
-	apiPrs := make([]*api.PullRequest, len(issues))
+	apiPrs := make([]*api.MergeRequest, len(issues))
 	if err := issues.LoadPullRequests(ctx); err != nil {
 		ctx.Error(http.StatusInternalServerError, "LoadPullRequests", err)
 		return
 	}
 	for i, currentIssue := range issues {
-		pr := currentIssue.PullRequest
+		pr := currentIssue.MergeRequest
 		if err = pr.LoadAttributes(ctx); err != nil {
 			ctx.Error(http.StatusInternalServerError, "LoadAttributes", err)
 			return

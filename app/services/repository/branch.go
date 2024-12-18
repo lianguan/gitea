@@ -53,7 +53,7 @@ type Branch struct {
 	IsIncluded        bool
 	CommitsAhead      int
 	CommitsBehind     int
-	LatestPullRequest *issues_model.PullRequest
+	LatestPullRequest *issues_model.MergeRequest
 	MergeMovedOn      bool
 }
 

@@ -30,9 +30,9 @@ type ActivityAuthorData struct {
 
 // ActivityStats represents issue and pull request information.
 type ActivityStats struct {
-	OpenedPRs                   issues_model.PullRequestList
+	OpenedPRs                   issues_model.MergeRequestList
 	OpenedPRAuthorCount         int64
-	MergedPRs                   issues_model.PullRequestList
+	MergedPRs                   issues_model.MergeRequestList
 	MergedPRAuthorCount         int64
 	ActiveIssues                issues_model.IssueList
 	OpenedIssues                issues_model.IssueList
@@ -213,8 +213,8 @@ func (stats *ActivityStats) FillPullRequests(ctx context.Context, repoID int64, 
 
 	// Merged pull requests
 	sess := pullRequestsForActivityStatement(ctx, repoID, fromTime, true)
-	sess.OrderBy("pull_request.merged_unix DESC")
-	stats.MergedPRs = make(issues_model.PullRequestList, 0)
+	sess.OrderBy("merge_request.merged_unix DESC")
+	stats.MergedPRs = make(issues_model.MergeRequestList, 0)
 	if err = sess.Find(&stats.MergedPRs); err != nil {
 		return err
 	}
@@ -224,7 +224,7 @@ func (stats *ActivityStats) FillPullRequests(ctx context.Context, repoID int64, 
 
 	// Merged pull request authors
 	sess = pullRequestsForActivityStatement(ctx, repoID, fromTime, true)
-	if _, err = sess.Select("count(distinct issue.poster_id) as `count`").Table("pull_request").Get(&count); err != nil {
+	if _, err = sess.Select("count(distinct issue.poster_id) as `count`").Table("merge_request").Get(&count); err != nil {
 		return err
 	}
 	stats.MergedPRAuthorCount = count
@@ -232,7 +232,7 @@ func (stats *ActivityStats) FillPullRequests(ctx context.Context, repoID int64, 
 	// Opened pull requests
 	sess = pullRequestsForActivityStatement(ctx, repoID, fromTime, false)
 	sess.OrderBy("issue.created_unix ASC")
-	stats.OpenedPRs = make(issues_model.PullRequestList, 0)
+	stats.OpenedPRs = make(issues_model.MergeRequestList, 0)
 	if err = sess.Find(&stats.OpenedPRs); err != nil {
 		return err
 	}
@@ -242,7 +242,7 @@ func (stats *ActivityStats) FillPullRequests(ctx context.Context, repoID int64, 
 
 	// Opened pull request authors
 	sess = pullRequestsForActivityStatement(ctx, repoID, fromTime, false)
-	if _, err = sess.Select("count(distinct issue.poster_id) as `count`").Table("pull_request").Get(&count); err != nil {
+	if _, err = sess.Select("count(distinct issue.poster_id) as `count`").Table("merge_request").Get(&count); err != nil {
 		return err
 	}
 	stats.OpenedPRAuthorCount = count
@@ -251,12 +251,12 @@ func (stats *ActivityStats) FillPullRequests(ctx context.Context, repoID int64, 
 }
 
 func pullRequestsForActivityStatement(ctx context.Context, repoID int64, fromTime time.Time, merged bool) *xorm.Session {
-	sess := db.GetEngine(ctx).Where("pull_request.base_repo_id=?", repoID).
-		Join("INNER", "issue", "pull_request.issue_id = issue.id")
+	sess := db.GetEngine(ctx).Where("merge_request.base_repo_id=?", repoID).
+		Join("INNER", "issue", "merge_request.issue_id = issue.id")
 
 	if merged {
-		sess.And("pull_request.has_merged = ?", true)
-		sess.And("pull_request.merged_unix >= ?", fromTime.Unix())
+		sess.And("merge_request.has_merged = ?", true)
+		sess.And("merge_request.merged_unix >= ?", fromTime.Unix())
 	} else {
 		sess.And("issue.is_closed = ?", false)
 		sess.And("issue.created_unix >= ?", fromTime.Unix())

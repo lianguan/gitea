@@ -579,7 +579,7 @@ func SettingsPost(ctx *context.Context) {
 			units = append(units, repo_model.RepoUnit{
 				RepoID: repo.ID,
 				Type:   unit_model.TypeMergeRequests,
-				Config: &repo_model.PullRequestsConfig{
+				Config: &repo_model.MergeRequestsConfig{
 					IgnoreWhitespaceConflicts:     form.PullsIgnoreWhitespace,
 					AllowMerge:                    form.PullsAllowMerge,
 					AllowRebase:                   form.PullsAllowRebase,

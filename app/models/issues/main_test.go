@@ -22,7 +22,7 @@ func TestFixturesAreConsistent(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 	unittest.CheckConsistencyFor(t,
 		&issues_model.Issue{},
-		&issues_model.PullRequest{},
+		&issues_model.MergeRequest{},
 		&issues_model.Milestone{},
 		&issues_model.Label{},
 	)

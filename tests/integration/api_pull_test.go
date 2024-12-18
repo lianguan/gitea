@@ -39,7 +39,7 @@ func TestAPIViewPulls(t *testing.T) {
 		AddTokenAuth(ctx.Token)
 	resp := ctx.Session.MakeRequest(t, req, http.StatusOK)
 
-	var pulls []*api.PullRequest
+	var pulls []*api.MergeRequest
 	DecodeJSON(t, resp, &pulls)
 	expectedLen := unittest.GetCount(t, &issues_model.Issue{RepoID: repo.ID}, unittest.Cond("is_merge_request = ?", true))
 	assert.Len(t, pulls, expectedLen)
@@ -150,7 +150,7 @@ func TestAPIViewPullsByBaseHead(t *testing.T) {
 		AddTokenAuth(ctx.Token)
 	resp := ctx.Session.MakeRequest(t, req, http.StatusOK)
 
-	pull := &api.PullRequest{}
+	pull := &api.MergeRequest{}
 	DecodeJSON(t, resp, pull)
 	assert.EqualValues(t, 3, pull.Index)
 	assert.EqualValues(t, 2, pull.ID)
@@ -165,7 +165,7 @@ func TestAPIMergePullWIP(t *testing.T) {
 	defer tests.PrepareTestEnv(t)()
 	repo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: 1})
 	owner := unittest.AssertExistsAndLoadBean(t, &user_model.User{ID: repo.OwnerID})
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{Status: issues_model.PullRequestStatusMergeable}, unittest.Cond("has_merged = ?", false))
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{Status: issues_model.MergeRequestStatusMergeable}, unittest.Cond("has_merged = ?", false))
 	pr.LoadIssue(db.DefaultContext)
 	issue_service.ChangeTitle(db.DefaultContext, pr.Issue, owner, setting.Repository.PullRequest.WorkInProgressPrefixes[0]+" "+pr.Issue.Title)
 
@@ -306,7 +306,7 @@ func TestAPICreatePullWithFieldsSuccess(t *testing.T) {
 		AddTokenAuth(token)
 
 	res := MakeRequest(t, req, http.StatusCreated)
-	pull := new(api.PullRequest)
+	pull := new(api.MergeRequest)
 	DecodeJSON(t, res, pull)
 
 	assert.NotNil(t, pull.Milestone)
@@ -366,7 +366,7 @@ func TestAPIEditPull(t *testing.T) {
 		Base:  "master",
 		Title: title,
 	}).AddTokenAuth(token)
-	apiPull := new(api.PullRequest)
+	apiPull := new(api.MergeRequest)
 	resp := MakeRequest(t, req, http.StatusCreated)
 	DecodeJSON(t, resp, apiPull)
 	assert.EqualValues(t, "master", apiPull.Base.Name)
@@ -382,7 +382,7 @@ func TestAPIEditPull(t *testing.T) {
 	DecodeJSON(t, resp, apiPull)
 	assert.EqualValues(t, "feature/1", apiPull.Base.Name)
 	// check comment history
-	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: apiPull.ID})
+	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: apiPull.ID})
 	err := pull.LoadIssue(db.DefaultContext)
 	assert.NoError(t, err)
 	unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: pull.Issue.ID, OldTitle: title, NewTitle: newTitle})
@@ -394,7 +394,7 @@ func TestAPIEditPull(t *testing.T) {
 	MakeRequest(t, req, http.StatusNotFound)
 }
 
-func doAPIGetPullFiles(ctx APITestContext, pr *api.PullRequest, callback func(*testing.T, []*api.ChangedFile)) func(*testing.T) {
+func doAPIGetPullFiles(ctx APITestContext, pr *api.MergeRequest, callback func(*testing.T, []*api.ChangedFile)) func(*testing.T) {
 	return func(t *testing.T) {
 		req := NewRequest(t, http.MethodGet, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d/files", ctx.Username, ctx.Reponame, pr.Index)).
 			AddTokenAuth(ctx.Token)

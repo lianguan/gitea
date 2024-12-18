@@ -183,17 +183,17 @@ func (m matrixConvertor) Push(p *api.PushPayload) (MatrixPayload, error) {
 }
 
 // PullRequest implements payloadConvertor PullRequest method
-func (m matrixConvertor) PullRequest(p *api.PullRequestPayload) (MatrixPayload, error) {
-	text, _, _, _ := getPullRequestPayloadInfo(p, htmlLinkFormatter, true)
+func (m matrixConvertor) PullRequest(p *api.MergeRequestPayload) (MatrixPayload, error) {
+	text, _, _, _ := getMergeRequestPayloadInfo(p, htmlLinkFormatter, true)
 
 	return m.newPayload(text)
 }
 
 // Review implements payloadConvertor Review method
-func (m matrixConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (MatrixPayload, error) {
+func (m matrixConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (MatrixPayload, error) {
 	senderLink := htmlLinkFormatter(setting.AppURL+url.PathEscape(p.Sender.UserName), p.Sender.UserName)
-	title := fmt.Sprintf("#%d %s", p.Index, p.PullRequest.Title)
-	titleLink := htmlLinkFormatter(p.PullRequest.HTMLURL, title)
+	title := fmt.Sprintf("#%d %s", p.Index, p.MergeRequest.Title)
+	titleLink := htmlLinkFormatter(p.MergeRequest.HTMLURL, title)
 	repoLink := htmlLinkFormatter(p.Repository.HTMLURL, p.Repository.FullName)
 	var text string
 

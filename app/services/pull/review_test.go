@@ -18,7 +18,7 @@ import (
 func TestDismissReview(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{})
+	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{})
 	assert.NoError(t, pull.LoadIssue(db.DefaultContext))
 	issue := pull.Issue
 	assert.NoError(t, issue.LoadRepo(db.DefaultContext))

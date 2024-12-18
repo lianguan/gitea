@@ -56,7 +56,7 @@ func TestIssueList_LoadAttributes(t *testing.T) {
 			assert.EqualValues(t, issue.MilestoneID, issue.Milestone.ID)
 		}
 		if issue.IsMergeRequest {
-			assert.EqualValues(t, issue.ID, issue.PullRequest.IssueID)
+			assert.EqualValues(t, issue.ID, issue.MergeRequest.IssueID)
 		}
 		for _, attachment := range issue.Attachments {
 			assert.EqualValues(t, issue.ID, attachment.IssueID)

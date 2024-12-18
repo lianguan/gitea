@@ -224,16 +224,16 @@ func detectMatched(gitRepo *git.Repository, commit *git.Commit, triggedEvent web
 		webhook_module.HookEventPullRequestLabel,
 		webhook_module.HookEventPullRequestReviewRequest,
 		webhook_module.HookEventPullRequestMilestone:
-		return matchPullRequestEvent(gitRepo, commit, payload.(*api.PullRequestPayload), evt)
+		return matchPullRequestEvent(gitRepo, commit, payload.(*api.MergeRequestPayload), evt)
 
 	case // pull_request_review
 		webhook_module.HookEventPullRequestReviewApproved,
 		webhook_module.HookEventPullRequestReviewRejected:
-		return matchPullRequestReviewEvent(payload.(*api.PullRequestPayload), evt)
+		return matchPullRequestReviewEvent(payload.(*api.MergeRequestPayload), evt)
 
 	case // pull_request_review_comment
 		webhook_module.HookEventPullRequestReviewComment:
-		return matchPullRequestReviewCommentEvent(payload.(*api.PullRequestPayload), evt)
+		return matchPullRequestReviewCommentEvent(payload.(*api.MergeRequestPayload), evt)
 
 	case // release
 		webhook_module.HookEventRelease:
@@ -387,7 +387,7 @@ func matchIssuesEvent(issuePayload *api.IssuePayload, evt *jobparser.Event) bool
 	return matchTimes == len(evt.Acts())
 }
 
-func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayload *api.PullRequestPayload, evt *jobparser.Event) bool {
+func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayload *api.MergeRequestPayload, evt *jobparser.Event) bool {
 	acts := evt.Acts()
 	activityTypeMatched := false
 	matchTimes := 0
@@ -431,9 +431,9 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 		err        error
 	)
 	if evt.Name == GithubEventPullRequestTarget && (len(acts["paths"]) > 0 || len(acts["paths-ignore"]) > 0) {
-		headCommit, err = gitRepo.GetCommit(prPayload.PullRequest.Head.Sha)
+		headCommit, err = gitRepo.GetCommit(prPayload.MergeRequest.Head.Sha)
 		if err != nil {
-			log.Error("GetCommit [ref: %s]: %v", prPayload.PullRequest.Head.Sha, err)
+			log.Error("GetCommit [ref: %s]: %v", prPayload.MergeRequest.Head.Sha, err)
 			return false
 		}
 	}
@@ -445,7 +445,7 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 			// types have been checked
 			continue
 		case "branches":
-			refName := git.RefName(prPayload.PullRequest.Base.Ref)
+			refName := git.RefName(prPayload.MergeRequest.Base.Ref)
 			patterns, err := workflowpattern.CompilePatterns(vals...)
 			if err != nil {
 				break
@@ -454,7 +454,7 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 				matchTimes++
 			}
 		case "branches-ignore":
-			refName := git.RefName(prPayload.PullRequest.Base.Ref)
+			refName := git.RefName(prPayload.MergeRequest.Base.Ref)
 			patterns, err := workflowpattern.CompilePatterns(vals...)
 			if err != nil {
 				break
@@ -463,7 +463,7 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 				matchTimes++
 			}
 		case "paths":
-			filesChanged, err := headCommit.GetFilesChangedSinceCommit(prPayload.PullRequest.Base.Ref)
+			filesChanged, err := headCommit.GetFilesChangedSinceCommit(prPayload.MergeRequest.Base.Ref)
 			if err != nil {
 				log.Error("GetFilesChangedSinceCommit [commit_sha1: %s]: %v", headCommit.ID.String(), err)
 			} else {
@@ -476,7 +476,7 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 				}
 			}
 		case "paths-ignore":
-			filesChanged, err := headCommit.GetFilesChangedSinceCommit(prPayload.PullRequest.Base.Ref)
+			filesChanged, err := headCommit.GetFilesChangedSinceCommit(prPayload.MergeRequest.Base.Ref)
 			if err != nil {
 				log.Error("GetFilesChangedSinceCommit [commit_sha1: %s]: %v", headCommit.ID.String(), err)
 			} else {
@@ -527,7 +527,7 @@ func matchIssueCommentEvent(issueCommentPayload *api.IssueCommentPayload, evt *j
 	return matchTimes == len(evt.Acts())
 }
 
-func matchPullRequestReviewEvent(prPayload *api.PullRequestPayload, evt *jobparser.Event) bool {
+func matchPullRequestReviewEvent(prPayload *api.MergeRequestPayload, evt *jobparser.Event) bool {
 	// with no special filter parameters
 	if len(evt.Acts()) == 0 {
 		return true
@@ -576,7 +576,7 @@ func matchPullRequestReviewEvent(prPayload *api.PullRequestPayload, evt *jobpars
 	return matchTimes == len(evt.Acts())
 }
 
-func matchPullRequestReviewCommentEvent(prPayload *api.PullRequestPayload, evt *jobparser.Event) bool {
+func matchPullRequestReviewCommentEvent(prPayload *api.MergeRequestPayload, evt *jobparser.Event) bool {
 	// with no special filter parameters
 	if len(evt.Acts()) == 0 {
 		return true

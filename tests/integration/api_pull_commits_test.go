@@ -19,7 +19,7 @@ import (
 
 func TestAPIPullCommits(t *testing.T) {
 	defer tests.PrepareTestEnv(t)()
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
 	assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 	repo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: pr.HeadRepoID})
 

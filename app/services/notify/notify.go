@@ -76,21 +76,21 @@ func DeleteIssue(ctx context.Context, doer *user_model.User, issue *issues_model
 }
 
 // MergePullRequest notifies merge pull request to notifiers
-func MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	for _, notifier := range notifiers {
 		notifier.MergePullRequest(ctx, doer, pr)
 	}
 }
 
 // AutoMergePullRequest notifies merge pull request to notifiers
-func AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	for _, notifier := range notifiers {
 		notifier.AutoMergePullRequest(ctx, doer, pr)
 	}
 }
 
 // NewPullRequest notifies new pull request to notifiers
-func NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User) {
+func NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("LoadIssue failed: %v", err)
 		return
@@ -104,14 +104,14 @@ func NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions 
 }
 
 // PullRequestSynchronized notifies Synchronized pull request
-func PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	for _, notifier := range notifiers {
 		notifier.PullRequestSynchronized(ctx, doer, pr)
 	}
 }
 
 // PullRequestReview notifies new pull request review
-func PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
+func PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
 	if err := review.LoadReviewer(ctx); err != nil {
 		log.Error("LoadReviewer failed: %v", err)
 		return
@@ -122,7 +122,7 @@ func PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, review
 }
 
 // PullRequestCodeComment notifies new pull request code comment
-func PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, comment *issues_model.Comment, mentions []*user_model.User) {
+func PullRequestCodeComment(ctx context.Context, pr *issues_model.MergeRequest, comment *issues_model.Comment, mentions []*user_model.User) {
 	if err := comment.LoadPoster(ctx); err != nil {
 		log.Error("LoadPoster: %v", err)
 		return
@@ -133,14 +133,14 @@ func PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, c
 }
 
 // PullRequestChangeTargetBranch notifies when a pull request's target branch was changed
-func PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, oldBranch string) {
+func PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, oldBranch string) {
 	for _, notifier := range notifiers {
 		notifier.PullRequestChangeTargetBranch(ctx, doer, pr, oldBranch)
 	}
 }
 
 // PullRequestPushCommits notifies when push commits to pull request's head branch
-func PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, comment *issues_model.Comment) {
+func PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, comment *issues_model.Comment) {
 	for _, notifier := range notifiers {
 		notifier.PullRequestPushCommits(ctx, doer, pr, comment)
 	}

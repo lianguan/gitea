@@ -67,7 +67,7 @@ func getRepoEditOptionFromRepo(repo *repo_model.Repository) *api.EditRepoOption 
 	allowSquash := false
 	allowFastForwardOnly := false
 	if unit, err := repo.GetUnit(db.DefaultContext, unit_model.TypeMergeRequests); err == nil {
-		config := unit.PullRequestsConfig()
+		config := unit.MergeRequestsConfig()
 		hasPullRequests = true
 		ignoreWhitespaceConflicts = config.IgnoreWhitespaceConflicts
 		allowMerge = config.AllowMerge

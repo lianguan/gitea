@@ -17,7 +17,7 @@ import (
 var ErrUserHasNoPermissionForAction = errors.New("user not allowed to do this action")
 
 // SetAllowEdits allow edits from maintainers to PRs
-func SetAllowEdits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, allow bool) error {
+func SetAllowEdits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, allow bool) error {
 	if doer == nil || !pr.Issue.IsPoster(doer.ID) {
 		return ErrUserHasNoPermissionForAction
 	}

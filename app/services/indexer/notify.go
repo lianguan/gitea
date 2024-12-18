@@ -43,7 +43,7 @@ func (r *indexerNotifier) NewIssue(ctx context.Context, issue *issues_model.Issu
 	issue_indexer.UpdateIssueIndexer(ctx, issue.ID)
 }
 
-func (r *indexerNotifier) NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User) {
+func (r *indexerNotifier) NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("LoadIssue: %v", err)
 		return
@@ -153,7 +153,7 @@ func (r *indexerNotifier) IssueClearLabels(ctx context.Context, doer *user_model
 	issue_indexer.UpdateIssueIndexer(ctx, issue.ID)
 }
 
-func (r *indexerNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (r *indexerNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("LoadIssue: %v", err)
 		return
@@ -161,7 +161,7 @@ func (r *indexerNotifier) MergePullRequest(ctx context.Context, doer *user_model
 	issue_indexer.UpdateIssueIndexer(ctx, pr.Issue.ID)
 }
 
-func (r *indexerNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (r *indexerNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := pr.LoadIssue(ctx); err != nil {
 		log.Error("LoadIssue: %v", err)
 		return

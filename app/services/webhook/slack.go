@@ -209,17 +209,17 @@ func (s slackConvertor) Push(p *api.PushPayload) (SlackPayload, error) {
 }
 
 // PullRequest implements payloadConvertor PullRequest method
-func (s slackConvertor) PullRequest(p *api.PullRequestPayload) (SlackPayload, error) {
-	text, issueTitle, extraMarkdown, color := getPullRequestPayloadInfo(p, SlackLinkFormatter, true)
+func (s slackConvertor) PullRequest(p *api.MergeRequestPayload) (SlackPayload, error) {
+	text, issueTitle, extraMarkdown, color := getMergeRequestPayloadInfo(p, SlackLinkFormatter, true)
 
 	var attachments []SlackAttachment
 	if extraMarkdown != "" {
-		extraMarkdown = SlackTextFormatter(p.PullRequest.Body)
+		extraMarkdown = SlackTextFormatter(p.MergeRequest.Body)
 		issueTitle = SlackTextFormatter(issueTitle)
 		attachments = append(attachments, SlackAttachment{
 			Color:     fmt.Sprintf("%x", color),
 			Title:     issueTitle,
-			TitleLink: p.PullRequest.HTMLURL,
+			TitleLink: p.MergeRequest.HTMLURL,
 			Text:      extraMarkdown,
 		})
 	}
@@ -228,9 +228,9 @@ func (s slackConvertor) PullRequest(p *api.PullRequestPayload) (SlackPayload, er
 }
 
 // Review implements payloadConvertor Review method
-func (s slackConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (SlackPayload, error) {
+func (s slackConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (SlackPayload, error) {
 	senderLink := SlackLinkFormatter(setting.AppURL+p.Sender.UserName, p.Sender.UserName)
-	title := fmt.Sprintf("#%d %s", p.Index, p.PullRequest.Title)
+	title := fmt.Sprintf("#%d %s", p.Index, p.MergeRequest.Title)
 	titleLink := fmt.Sprintf("%s/merge_requests/%d", p.Repository.HTMLURL, p.Index)
 	repoLink := SlackLinkFormatter(p.Repository.HTMLURL, p.Repository.FullName)
 	var text string

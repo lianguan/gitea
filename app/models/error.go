@@ -529,8 +529,8 @@ func (err ErrRebaseConflicts) Error() string {
 	return fmt.Sprintf("Rebase Error: %v: Whilst Rebasing: %s\n%s\n%s", err.Err, err.CommitSHA, err.StdErr, err.StdOut)
 }
 
-// ErrPullRequestHasMerged represents a "PullRequestHasMerged"-error
-type ErrPullRequestHasMerged struct {
+// ErrMergeRequestHasMerged represents a "PullRequestHasMerged"-error
+type ErrMergeRequestHasMerged struct {
 	ID         int64
 	IssueID    int64
 	HeadRepoID int64
@@ -539,14 +539,14 @@ type ErrPullRequestHasMerged struct {
 	BaseBranch string
 }
 
-// IsErrPullRequestHasMerged checks if an error is a ErrPullRequestHasMerged.
-func IsErrPullRequestHasMerged(err error) bool {
-	_, ok := err.(ErrPullRequestHasMerged)
+// IsErrMergeRequestHasMerged checks if an error is a ErrMergeRequestHasMerged.
+func IsErrMergeRequestHasMerged(err error) bool {
+	_, ok := err.(ErrMergeRequestHasMerged)
 	return ok
 }
 
 // Error does pretty-printing :D
-func (err ErrPullRequestHasMerged) Error() string {
+func (err ErrMergeRequestHasMerged) Error() string {
 	return fmt.Sprintf("pull request has merged [id: %d, issue_id: %d, head_repo_id: %d, base_repo_id: %d, head_branch: %s, base_branch: %s]",
 		err.ID, err.IssueID, err.HeadRepoID, err.BaseRepoID, err.HeadBranch, err.BaseBranch)
 }

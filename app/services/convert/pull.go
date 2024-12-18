@@ -23,7 +23,7 @@ import (
 // ToAPIPullRequest assumes following fields have been assigned with valid values:
 // Required - Issue
 // Optional - Merger
-func ToAPIPullRequest(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User) *api.PullRequest {
+func ToAPIPullRequest(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User) *api.MergeRequest {
 	var (
 		baseBranch *git.Branch
 		headBranch *git.Branch
@@ -62,7 +62,7 @@ func ToAPIPullRequest(ctx context.Context, pr *issues_model.PullRequest, doer *u
 		p.AccessMode = perm.AccessModeNone
 	}
 
-	apiPullRequest := &api.PullRequest{
+	apiPullRequest := &api.MergeRequest{
 		ID:             pr.ID,
 		URL:            pr.Issue.HTMLURL(),
 		Index:          pr.Index,
@@ -156,7 +156,7 @@ func ToAPIPullRequest(ctx context.Context, pr *issues_model.PullRequest, doer *u
 		}
 	}
 
-	if pr.Flow == issues_model.PullRequestFlowAGit {
+	if pr.Flow == issues_model.MergeRequestFlowAGit {
 		gitRepo, err := gitrepo.OpenRepository(ctx, pr.BaseRepo)
 		if err != nil {
 			log.Error("OpenRepository[%s]: %v", pr.GetGitRefName(), err)
@@ -174,7 +174,7 @@ func ToAPIPullRequest(ctx context.Context, pr *issues_model.PullRequest, doer *u
 		apiPullRequest.Head.Name = ""
 	}
 
-	if pr.HeadRepo != nil && pr.Flow == issues_model.PullRequestFlowGithub {
+	if pr.HeadRepo != nil && pr.Flow == issues_model.MergeRequestFlowGithub {
 		p, err := access_model.GetUserRepoPermission(ctx, pr.HeadRepo, doer)
 		if err != nil {
 			log.Error("GetUserRepoPermission[%d]: %v", pr.HeadRepoID, err)
@@ -262,7 +262,7 @@ func ToAPIPullRequest(ctx context.Context, pr *issues_model.PullRequest, doer *u
 	return apiPullRequest
 }
 
-func ToAPIPullRequests(ctx context.Context, baseRepo *repo_model.Repository, prs issues_model.PullRequestList, doer *user_model.User) ([]*api.PullRequest, error) {
+func ToAPIPullRequests(ctx context.Context, baseRepo *repo_model.Repository, prs issues_model.MergeRequestList, doer *user_model.User) ([]*api.MergeRequest, error) {
 	for _, pr := range prs {
 		pr.BaseRepo = baseRepo
 		if pr.BaseRepoID == pr.HeadRepoID {
@@ -329,11 +329,11 @@ func ToAPIPullRequests(ctx context.Context, baseRepo *repo_model.Repository, prs
 
 	apiRepo := ToRepo(ctx, baseRepo, baseRepoPerm)
 	baseBranchCache := make(map[string]*git_model.Branch)
-	apiPullRequests := make([]*api.PullRequest, 0, len(prs))
+	apiPullRequests := make([]*api.MergeRequest, 0, len(prs))
 	for _, pr := range prs {
 		apiIssue := ToAPIIssue(ctx, doer, pr.Issue)
 
-		apiPullRequest := &api.PullRequest{
+		apiPullRequest := &api.MergeRequest{
 			ID:             pr.ID,
 			URL:            pr.Issue.HTMLURL(),
 			Index:          pr.Index,
@@ -408,7 +408,7 @@ func ToAPIPullRequests(ctx context.Context, baseRepo *repo_model.Repository, prs
 			apiPullRequest.Base.Sha = baseBranch.CommitID
 		}
 
-		if pr.Flow == issues_model.PullRequestFlowAGit {
+		if pr.Flow == issues_model.MergeRequestFlowAGit {
 			apiPullRequest.Head.Sha, err = gitRepo.GetRefCommitID(pr.GetGitRefName())
 			if err != nil {
 				log.Error("GetRefCommitID[%s]: %v", pr.GetGitRefName(), err)
@@ -420,7 +420,7 @@ func ToAPIPullRequests(ctx context.Context, baseRepo *repo_model.Repository, prs
 		}
 
 		var headGitRepo *git.Repository
-		if pr.HeadRepo != nil && pr.Flow == issues_model.PullRequestFlowGithub {
+		if pr.HeadRepo != nil && pr.Flow == issues_model.MergeRequestFlowGithub {
 			if pr.HeadRepoID == pr.BaseRepoID {
 				apiPullRequest.Head.RepoID = pr.HeadRepo.ID
 				apiPullRequest.Head.Repository = apiRepo

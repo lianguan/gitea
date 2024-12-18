@@ -18,7 +18,7 @@ import (
 
 func TestPullRequest_LoadAttributes(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadAttributes(db.DefaultContext))
 	assert.NotNil(t, pr.Merger)
 	assert.Equal(t, pr.MergerID, pr.Merger.ID)
@@ -26,7 +26,7 @@ func TestPullRequest_LoadAttributes(t *testing.T) {
 
 func TestPullRequest_LoadIssue(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 	assert.NotNil(t, pr.Issue)
 	assert.Equal(t, int64(2), pr.Issue.ID)
@@ -37,7 +37,7 @@ func TestPullRequest_LoadIssue(t *testing.T) {
 
 func TestPullRequest_LoadBaseRepo(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadBaseRepo(db.DefaultContext))
 	assert.NotNil(t, pr.BaseRepo)
 	assert.Equal(t, pr.BaseRepoID, pr.BaseRepo.ID)
@@ -48,7 +48,7 @@ func TestPullRequest_LoadBaseRepo(t *testing.T) {
 
 func TestPullRequest_LoadHeadRepo(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadHeadRepo(db.DefaultContext))
 	assert.NotNil(t, pr.HeadRepo)
 	assert.Equal(t, pr.HeadRepoID, pr.HeadRepo.ID)
@@ -60,7 +60,7 @@ func TestPullRequest_LoadHeadRepo(t *testing.T) {
 
 func TestPullRequestsNewest(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	prs, count, err := issues_model.PullRequests(db.DefaultContext, 1, &issues_model.PullRequestsOptions{
+	prs, count, err := issues_model.MergeRequests(db.DefaultContext, 1, &issues_model.MergeRequestsOptions{
 		ListOptions: db.ListOptions{
 			Page: 1,
 		},
@@ -79,7 +79,7 @@ func TestPullRequestsNewest(t *testing.T) {
 func TestLoadRequestedReviewers(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
+	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
 	assert.NoError(t, pull.LoadIssue(db.DefaultContext))
 	issue := pull.Issue
 	assert.NoError(t, issue.LoadRepo(db.DefaultContext))
@@ -106,7 +106,7 @@ func TestLoadRequestedReviewers(t *testing.T) {
 
 func TestPullRequestsOldest(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	prs, count, err := issues_model.PullRequests(db.DefaultContext, 1, &issues_model.PullRequestsOptions{
+	prs, count, err := issues_model.MergeRequests(db.DefaultContext, 1, &issues_model.MergeRequestsOptions{
 		ListOptions: db.ListOptions{
 			Page: 1,
 		},
@@ -124,13 +124,13 @@ func TestPullRequestsOldest(t *testing.T) {
 
 func TestGetUnmergedPullRequest(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr, err := issues_model.GetUnmergedPullRequest(db.DefaultContext, 1, 1, "branch2", "master", issues_model.PullRequestFlowGithub)
+	pr, err := issues_model.GetUnmergedPullRequest(db.DefaultContext, 1, 1, "branch2", "master", issues_model.MergeRequestFlowGithub)
 	assert.NoError(t, err)
 	assert.Equal(t, int64(2), pr.ID)
 
-	_, err = issues_model.GetUnmergedPullRequest(db.DefaultContext, 1, 9223372036854775807, "branch1", "master", issues_model.PullRequestFlowGithub)
+	_, err = issues_model.GetUnmergedPullRequest(db.DefaultContext, 1, 9223372036854775807, "branch1", "master", issues_model.MergeRequestFlowGithub)
 	assert.Error(t, err)
-	assert.True(t, issues_model.IsErrPullRequestNotExist(err))
+	assert.True(t, issues_model.IsErrMergeRequestNotExist(err))
 }
 
 func TestHasUnmergedPullRequestsByHeadInfo(t *testing.T) {
@@ -176,11 +176,11 @@ func TestGetPullRequestByIndex(t *testing.T) {
 
 	_, err = issues_model.GetPullRequestByIndex(db.DefaultContext, 9223372036854775807, 9223372036854775807)
 	assert.Error(t, err)
-	assert.True(t, issues_model.IsErrPullRequestNotExist(err))
+	assert.True(t, issues_model.IsErrMergeRequestNotExist(err))
 
 	_, err = issues_model.GetPullRequestByIndex(db.DefaultContext, 1, 0)
 	assert.Error(t, err)
-	assert.True(t, issues_model.IsErrPullRequestNotExist(err))
+	assert.True(t, issues_model.IsErrMergeRequestNotExist(err))
 }
 
 func TestGetPullRequestByID(t *testing.T) {
@@ -192,7 +192,7 @@ func TestGetPullRequestByID(t *testing.T) {
 
 	_, err = issues_model.GetPullRequestByID(db.DefaultContext, 9223372036854775807)
 	assert.Error(t, err)
-	assert.True(t, issues_model.IsErrPullRequestNotExist(err))
+	assert.True(t, issues_model.IsErrMergeRequestNotExist(err))
 }
 
 func TestGetPullRequestByIssueID(t *testing.T) {
@@ -203,17 +203,17 @@ func TestGetPullRequestByIssueID(t *testing.T) {
 
 	_, err = issues_model.GetPullRequestByIssueID(db.DefaultContext, 9223372036854775807)
 	assert.Error(t, err)
-	assert.True(t, issues_model.IsErrPullRequestNotExist(err))
+	assert.True(t, issues_model.IsErrMergeRequestNotExist(err))
 }
 
 func TestPullRequest_Update(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	pr.BaseBranch = "baseBranch"
 	pr.HeadBranch = "headBranch"
 	pr.Update(db.DefaultContext)
 
-	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: pr.ID})
+	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: pr.ID})
 	assert.Equal(t, "baseBranch", pr.BaseBranch)
 	assert.Equal(t, "headBranch", pr.HeadBranch)
 	unittest.CheckConsistencyFor(t, pr)
@@ -221,14 +221,14 @@ func TestPullRequest_Update(t *testing.T) {
 
 func TestPullRequest_UpdateCols(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := &issues_model.PullRequest{
+	pr := &issues_model.MergeRequest{
 		ID:         1,
 		BaseBranch: "baseBranch",
 		HeadBranch: "headBranch",
 	}
 	assert.NoError(t, pr.UpdateCols(db.DefaultContext, "head_branch"))
 
-	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.Equal(t, "master", pr.BaseBranch)
 	assert.Equal(t, "headBranch", pr.HeadBranch)
 	unittest.CheckConsistencyFor(t, pr)
@@ -239,7 +239,7 @@ func TestPullRequest_UpdateCols(t *testing.T) {
 func TestPullRequest_IsWorkInProgress(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
 	pr.LoadIssue(db.DefaultContext)
 
 	assert.False(t, pr.IsWorkInProgress(db.DefaultContext))
@@ -254,7 +254,7 @@ func TestPullRequest_IsWorkInProgress(t *testing.T) {
 func TestPullRequest_GetWorkInProgressPrefixWorkInProgress(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 2})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 2})
 	pr.LoadIssue(db.DefaultContext)
 
 	assert.Empty(t, pr.GetWorkInProgressPrefix(db.DefaultContext))
@@ -270,10 +270,10 @@ func TestPullRequest_GetWorkInProgressPrefixWorkInProgress(t *testing.T) {
 func TestDeleteOrphanedObjects(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	countBefore, err := db.GetEngine(db.DefaultContext).Count(&issues_model.PullRequest{})
+	countBefore, err := db.GetEngine(db.DefaultContext).Count(&issues_model.MergeRequest{})
 	assert.NoError(t, err)
 
-	_, err = db.GetEngine(db.DefaultContext).Insert(&issues_model.PullRequest{IssueID: 1000}, &issues_model.PullRequest{IssueID: 1001}, &issues_model.PullRequest{IssueID: 1003})
+	_, err = db.GetEngine(db.DefaultContext).Insert(&issues_model.MergeRequest{IssueID: 1000}, &issues_model.MergeRequest{IssueID: 1001}, &issues_model.MergeRequest{IssueID: 1003})
 	assert.NoError(t, err)
 
 	orphaned, err := db.CountOrphanedObjects(db.DefaultContext, "pull_request", "issue", "pull_request.issue_id=issue.id")
@@ -283,7 +283,7 @@ func TestDeleteOrphanedObjects(t *testing.T) {
 	err = db.DeleteOrphanedObjects(db.DefaultContext, "pull_request", "issue", "pull_request.issue_id=issue.id")
 	assert.NoError(t, err)
 
-	countAfter, err := db.GetEngine(db.DefaultContext).Count(&issues_model.PullRequest{})
+	countAfter, err := db.GetEngine(db.DefaultContext).Count(&issues_model.MergeRequest{})
 	assert.NoError(t, err)
 	assert.EqualValues(t, countBefore, countAfter)
 }
@@ -312,7 +312,7 @@ func TestParseCodeOwnersLine(t *testing.T) {
 
 func TestGetApprovers(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 5})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 5})
 	// Official reviews are already deduplicated. Allow unofficial reviews
 	// to assert that there are no duplicated approvers.
 	setting.Repository.PullRequest.DefaultMergeMessageOfficialApproversOnly = false
@@ -328,9 +328,9 @@ func TestGetPullRequestByMergedCommit(t *testing.T) {
 	assert.EqualValues(t, 1, pr.ID)
 
 	_, err = issues_model.GetPullRequestByMergedCommit(db.DefaultContext, 0, "1a8823cd1a9549fde083f992f6b9b87a7ab74fb3")
-	assert.ErrorAs(t, err, &issues_model.ErrPullRequestNotExist{})
+	assert.ErrorAs(t, err, &issues_model.ErrMergeRequestNotExist{})
 	_, err = issues_model.GetPullRequestByMergedCommit(db.DefaultContext, 1, "")
-	assert.ErrorAs(t, err, &issues_model.ErrPullRequestNotExist{})
+	assert.ErrorAs(t, err, &issues_model.ErrMergeRequestNotExist{})
 }
 
 func TestMigrate_InsertPullRequests(t *testing.T) {
@@ -340,23 +340,23 @@ func TestMigrate_InsertPullRequests(t *testing.T) {
 	owner := unittest.AssertExistsAndLoadBean(t, &user_model.User{ID: repo.OwnerID})
 
 	i := &issues_model.Issue{
-		RepoID:   repo.ID,
-		Repo:     repo,
-		Title:    "title1",
-		Content:  "issuecontent1",
-		IsMergeRequest:   true,
-		PosterID: owner.ID,
-		Poster:   owner,
+		RepoID:         repo.ID,
+		Repo:           repo,
+		Title:          "title1",
+		Content:        "issuecontent1",
+		IsMergeRequest: true,
+		PosterID:       owner.ID,
+		Poster:         owner,
 	}
 
-	p := &issues_model.PullRequest{
+	p := &issues_model.MergeRequest{
 		Issue: i,
 	}
 
 	err := issues_model.InsertPullRequests(db.DefaultContext, p)
 	assert.NoError(t, err)
 
-	_ = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{IssueID: i.ID})
+	_ = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{IssueID: i.ID})
 
-	unittest.CheckConsistencyFor(t, &issues_model.Issue{}, &issues_model.PullRequest{})
+	unittest.CheckConsistencyFor(t, &issues_model.Issue{}, &issues_model.MergeRequest{})
 }

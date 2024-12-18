@@ -604,7 +604,7 @@ func (g *GitlabDownloader) convertNoteToComment(localIndex int64, note *gitlab.N
 }
 
 // GetPullRequests returns pull requests according page and perPage
-func (g *GitlabDownloader) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (g *GitlabDownloader) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	if perPage > g.maxPerPage {
 		perPage = g.maxPerPage
 	}
@@ -618,7 +618,7 @@ func (g *GitlabDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 		View: &view,
 	}
 
-	allPRs := make([]*base.PullRequest, 0, perPage)
+	allPRs := make([]*base.MergeRequest, 0, perPage)
 
 	prs, _, err := g.client.MergeRequests.ListProjectMergeRequests(g.repoID, opt, nil, gitlab.WithContext(g.ctx))
 	if err != nil {
@@ -690,7 +690,7 @@ func (g *GitlabDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 		// Generate new PR Numbers by the known Issue Numbers, because they share the same number space in Gitea, but they are independent in Gitlab
 		newPRNumber := g.iidResolver.generatePullRequestNumber(pr.IID)
 
-		allPRs = append(allPRs, &base.PullRequest{
+		allPRs = append(allPRs, &base.MergeRequest{
 			Title:          pr.Title,
 			Number:         newPRNumber,
 			PosterName:     pr.Author.Username,
@@ -706,14 +706,14 @@ func (g *GitlabDownloader) GetPullRequests(page, perPage int) ([]*base.PullReque
 			MergedTime:     mergeTime,
 			IsLocked:       locked,
 			Reactions:      g.awardsToReactions(reactions),
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:       pr.SourceBranch,
 				SHA:       pr.SHA,
 				RepoName:  g.repoName,
 				OwnerName: pr.Author.Username,
 				CloneURL:  pr.WebURL,
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       pr.TargetBranch,
 				SHA:       pr.DiffRefs.BaseSha,
 				RepoName:  g.repoName,

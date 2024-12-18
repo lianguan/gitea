@@ -250,7 +250,7 @@ func TestGitHubDownloadRepo(t *testing.T) {
 	// downloader.GetPullRequests()
 	prs, _, err := downloader.GetPullRequests(1, 2)
 	assert.NoError(t, err)
-	assertPullRequestsEqual(t, []*base.PullRequest{
+	assertPullRequestsEqual(t, []*base.MergeRequest{
 		{
 			Number:     3,
 			Title:      "Update README.md",
@@ -269,7 +269,7 @@ func TestGitHubDownloadRepo(t *testing.T) {
 				},
 			},
 			PatchURL: "https://github.com/go-gitea/test_repo/pull/3.patch",
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      "master",
 				CloneURL: "https://github.com/mrsdizzie/test_repo.git",
 				SHA:      "076160cf0b039f13e5eff19619932d181269414b",
@@ -277,7 +277,7 @@ func TestGitHubDownloadRepo(t *testing.T) {
 
 				OwnerName: "mrsdizzie",
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       "master",
 				SHA:       "72866af952e98d02a73003501836074b286a78f6",
 				OwnerName: "go-gitea",
@@ -307,14 +307,14 @@ func TestGitHubDownloadRepo(t *testing.T) {
 				},
 			},
 			PatchURL: "https://github.com/go-gitea/test_repo/pull/4.patch",
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:       "test-branch",
 				SHA:       "2be9101c543658591222acbee3eb799edfc3853d",
 				RepoName:  "test_repo",
 				OwnerName: "mrsdizzie",
 				CloneURL:  "https://github.com/mrsdizzie/test_repo.git",
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       "master",
 				SHA:       "f32b0a9dfd09a60f616f29158f772cedd89942d2",
 				OwnerName: "go-gitea",
@@ -338,7 +338,7 @@ func TestGitHubDownloadRepo(t *testing.T) {
 		},
 	}, prs)
 
-	reviews, err := downloader.GetReviews(&base.PullRequest{Number: 3, ForeignIndex: 3})
+	reviews, err := downloader.GetReviews(&base.MergeRequest{Number: 3, ForeignIndex: 3})
 	assert.NoError(t, err)
 	assertReviewsEqual(t, []*base.Review{
 		{
@@ -370,7 +370,7 @@ func TestGitHubDownloadRepo(t *testing.T) {
 		},
 	}, reviews)
 
-	reviews, err = downloader.GetReviews(&base.PullRequest{Number: 4, ForeignIndex: 4})
+	reviews, err = downloader.GetReviews(&base.MergeRequest{Number: 4, ForeignIndex: 4})
 	assert.NoError(t, err)
 	assertReviewsEqual(t, []*base.Review{
 		{

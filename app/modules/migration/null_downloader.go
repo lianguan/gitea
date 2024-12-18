@@ -57,7 +57,7 @@ func (n NullDownloader) GetAllComments(page, perPage int) ([]*Comment, bool, err
 }
 
 // GetPullRequests returns pull requests according page and perPage
-func (n NullDownloader) GetPullRequests(page, perPage int) ([]*PullRequest, bool, error) {
+func (n NullDownloader) GetPullRequests(page, perPage int) ([]*MergeRequest, bool, error) {
 	return nil, false, ErrNotSupported{Entity: "PullRequests"}
 }
 

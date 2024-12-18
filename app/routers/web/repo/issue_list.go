@@ -438,7 +438,7 @@ func UpdateIssueStatus(ctx *context.Context) {
 	}
 
 	for _, issue := range issues {
-		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.MergeRequest.HasMerged {
 			continue
 		}
 		if issue.IsClosed != isClosed {

@@ -114,7 +114,7 @@ func assertIssuesEqual(t *testing.T, expected, actual []*base.Issue) {
 	}
 }
 
-func assertPullRequestEqual(t *testing.T, expected, actual *base.PullRequest) {
+func assertPullRequestEqual(t *testing.T, expected, actual *base.MergeRequest) {
 	assert.Equal(t, expected.Number, actual.Number)
 	assert.Equal(t, expected.Title, actual.Title)
 	assert.Equal(t, expected.PosterID, actual.PosterID)
@@ -131,14 +131,14 @@ func assertPullRequestEqual(t *testing.T, expected, actual *base.PullRequest) {
 	assert.Equal(t, expected.Merged, actual.Merged)
 	assertTimePtrEqual(t, expected.MergedTime, actual.MergedTime)
 	assert.Equal(t, expected.MergeCommitSHA, actual.MergeCommitSHA)
-	assertPullRequestBranchEqual(t, expected.Head, actual.Head)
-	assertPullRequestBranchEqual(t, expected.Base, actual.Base)
+	assertMergeRequestBranchEqual(t, expected.Head, actual.Head)
+	assertMergeRequestBranchEqual(t, expected.Base, actual.Base)
 	assert.ElementsMatch(t, expected.Assignees, actual.Assignees)
 	assert.Equal(t, expected.IsLocked, actual.IsLocked)
 	assertReactionsEqual(t, expected.Reactions, actual.Reactions)
 }
 
-func assertPullRequestsEqual(t *testing.T, expected, actual []*base.PullRequest) {
+func assertPullRequestsEqual(t *testing.T, expected, actual []*base.MergeRequest) {
 	if assert.Len(t, actual, len(expected)) {
 		for i := range expected {
 			assertPullRequestEqual(t, expected[i], actual[i])
@@ -146,7 +146,7 @@ func assertPullRequestsEqual(t *testing.T, expected, actual []*base.PullRequest)
 	}
 }
 
-func assertPullRequestBranchEqual(t *testing.T, expected, actual base.PullRequestBranch) {
+func assertMergeRequestBranchEqual(t *testing.T, expected, actual base.MergeRequestBranch) {
 	assert.Equal(t, expected.CloneURL, actual.CloneURL)
 	assert.Equal(t, expected.Ref, actual.Ref)
 	assert.Equal(t, expected.SHA, actual.SHA)

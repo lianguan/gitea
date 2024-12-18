@@ -183,22 +183,22 @@ func (m msteamsConvertor) IssueComment(p *api.IssueCommentPayload) (MSTeamsPaylo
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (m msteamsConvertor) PullRequest(p *api.PullRequestPayload) (MSTeamsPayload, error) {
-	title, _, extraMarkdown, color := getPullRequestPayloadInfo(p, noneLinkFormatter, false)
+func (m msteamsConvertor) PullRequest(p *api.MergeRequestPayload) (MSTeamsPayload, error) {
+	title, _, extraMarkdown, color := getMergeRequestPayloadInfo(p, noneLinkFormatter, false)
 
 	return createMSTeamsPayload(
 		p.Repository,
 		p.Sender,
 		title,
 		extraMarkdown,
-		p.PullRequest.HTMLURL,
+		p.MergeRequest.HTMLURL,
 		color,
-		&MSTeamsFact{"Pull request #:", fmt.Sprintf("%d", p.PullRequest.ID)},
+		&MSTeamsFact{"Pull request #:", fmt.Sprintf("%d", p.MergeRequest.ID)},
 	), nil
 }
 
 // Review implements PayloadConvertor Review method
-func (m msteamsConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (MSTeamsPayload, error) {
+func (m msteamsConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (MSTeamsPayload, error) {
 	var text, title string
 	var color int
 	switch p.Action {
@@ -208,7 +208,7 @@ func (m msteamsConvertor) Review(p *api.PullRequestPayload, event webhook_module
 			return MSTeamsPayload{}, err
 		}
 
-		title = fmt.Sprintf("[%s] Pull request review %s: #%d %s", p.Repository.FullName, action, p.Index, p.PullRequest.Title)
+		title = fmt.Sprintf("[%s] Pull request review %s: #%d %s", p.Repository.FullName, action, p.Index, p.MergeRequest.Title)
 		text = p.Review.Content
 
 		switch event {
@@ -228,9 +228,9 @@ func (m msteamsConvertor) Review(p *api.PullRequestPayload, event webhook_module
 		p.Sender,
 		title,
 		text,
-		p.PullRequest.HTMLURL,
+		p.MergeRequest.HTMLURL,
 		color,
-		&MSTeamsFact{"Pull request #:", fmt.Sprintf("%d", p.PullRequest.ID)},
+		&MSTeamsFact{"Pull request #:", fmt.Sprintf("%d", p.MergeRequest.ID)},
 	), nil
 }
 

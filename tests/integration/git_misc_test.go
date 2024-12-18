@@ -109,7 +109,7 @@ func TestAgitPullPush(t *testing.T) {
 		assert.NoError(t, err)
 
 		// check pull request exist
-		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{BaseRepoID: 1, Flow: issues_model.PullRequestFlowAGit, HeadBranch: "user2/test-agit-push"})
+		pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{BaseRepoID: 1, Flow: issues_model.MergeRequestFlowAGit, HeadBranch: "user2/test-agit-push"})
 		assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 		assert.Equal(t, "test-title", pr.Issue.Title)
 		assert.Equal(t, "test-description", pr.Issue.Content)

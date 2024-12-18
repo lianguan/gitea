@@ -17,7 +17,7 @@ import (
 	"gitmin.com/gitmin/app/modules/setting"
 )
 
-func getMergeBase(repo *git.Repository, pr *issues_model.PullRequest, baseBranch, headBranch string) (string, error) {
+func getMergeBase(repo *git.Repository, pr *issues_model.MergeRequest, baseBranch, headBranch string) (string, error) {
 	// Add a temporary remote
 	tmpRemote := fmt.Sprintf("mergebase-%d-%d", pr.ID, time.Now().UnixNano())
 	if err := repo.AddRemote(tmpRemote, repo.Path, false); err != nil {
@@ -40,7 +40,7 @@ type ReviewRequestNotifier struct {
 	ReviewTeam *org_model.Team
 }
 
-func PullRequestCodeOwnersReview(ctx context.Context, issue *issues_model.Issue, pr *issues_model.PullRequest) ([]*ReviewRequestNotifier, error) {
+func PullRequestCodeOwnersReview(ctx context.Context, issue *issues_model.Issue, pr *issues_model.MergeRequest) ([]*ReviewRequestNotifier, error) {
 	files := []string{"CODEOWNERS", "docs/CODEOWNERS", ".gitea/CODEOWNERS"}
 
 	if pr.IsWorkInProgress(ctx) {

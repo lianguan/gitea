@@ -298,7 +298,7 @@ func TestDeleteDismissedReview(t *testing.T) {
 func TestAddReviewRequest(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pull := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pull.LoadIssue(db.DefaultContext))
 	issue := pull.Issue
 	assert.NoError(t, issue.LoadRepo(db.DefaultContext))

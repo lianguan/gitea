@@ -430,7 +430,7 @@ func (d *CodebaseDownloader) GetComments(commentable base.Commentable) ([]*base.
 
 // GetPullRequests returns pull requests
 // https://support.codebasehq.com/kb/repositories/merge-requests
-func (d *CodebaseDownloader) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (d *CodebaseDownloader) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	var rawMergeRequests struct {
 		XMLName      xml.Name `xml:"merge-requests"`
 		Type         string   `xml:"type,attr"`
@@ -455,7 +455,7 @@ func (d *CodebaseDownloader) GetPullRequests(page, perPage int) ([]*base.PullReq
 		return nil, false, err
 	}
 
-	pullRequests := make([]*base.PullRequest, 0, len(rawMergeRequests.MergeRequest))
+	pullRequests := make([]*base.MergeRequest, 0, len(rawMergeRequests.MergeRequest))
 	for i, mr := range rawMergeRequests.MergeRequest {
 		var rawMergeRequest struct {
 			XMLName xml.Name `xml:"merge-request"`
@@ -549,7 +549,7 @@ func (d *CodebaseDownloader) GetPullRequests(page, perPage int) ([]*base.PullReq
 
 		poster := d.tryGetUser(rawMergeRequest.UserID.Value)
 
-		pullRequests = append(pullRequests, &base.PullRequest{
+		pullRequests = append(pullRequests, &base.MergeRequest{
 			Title:       rawMergeRequest.Subject,
 			Number:      number,
 			PosterName:  poster.Name,
@@ -561,12 +561,12 @@ func (d *CodebaseDownloader) GetPullRequests(page, perPage int) ([]*base.PullReq
 			Closed:      closeTime,
 			Merged:      merged,
 			MergedTime:  mergedTime,
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      rawMergeRequest.SourceRef,
 				SHA:      d.getHeadCommit(rawMergeRequest.SourceRef),
 				RepoName: d.repoName,
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:      rawMergeRequest.TargetRef,
 				SHA:      d.getHeadCommit(rawMergeRequest.TargetRef),
 				RepoName: d.repoName,

@@ -82,12 +82,12 @@ func (pc packagistConvertor) IssueComment(_ *api.IssueCommentPayload) (Packagist
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (pc packagistConvertor) PullRequest(_ *api.PullRequestPayload) (PackagistPayload, error) {
+func (pc packagistConvertor) PullRequest(_ *api.MergeRequestPayload) (PackagistPayload, error) {
 	return PackagistPayload{}, nil
 }
 
 // Review implements PayloadConvertor Review method
-func (pc packagistConvertor) Review(_ *api.PullRequestPayload, _ webhook_module.HookEventType) (PackagistPayload, error) {
+func (pc packagistConvertor) Review(_ *api.MergeRequestPayload, _ webhook_module.HookEventType) (PackagistPayload, error) {
 	return PackagistPayload{}, nil
 }
 

@@ -64,12 +64,12 @@ func createCommitStatus(ctx context.Context, job *actions_model.ActionRunJob) er
 		if err != nil {
 			return fmt.Errorf("GetPullRequestEventPayload: %w", err)
 		}
-		if payload.PullRequest == nil {
+		if payload.MergeRequest == nil {
 			return fmt.Errorf("pull request is missing in event payload")
-		} else if payload.PullRequest.Head == nil {
+		} else if payload.MergeRequest.Head == nil {
 			return fmt.Errorf("head of pull request is missing in event payload")
 		}
-		sha = payload.PullRequest.Head.Sha
+		sha = payload.MergeRequest.Head.Sha
 	case webhook_module.HookEventRelease:
 		event = string(run.Event)
 		sha = run.CommitSHA

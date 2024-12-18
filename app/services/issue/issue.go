@@ -93,7 +93,7 @@ func ChangeTitle(ctx context.Context, issue *issues_model.Issue, doer *user_mode
 	var reviewNotifiers []*ReviewRequestNotifier
 	if issue.IsMergeRequest && issues_model.HasWorkInProgressPrefix(oldTitle) && !issues_model.HasWorkInProgressPrefix(title) {
 		var err error
-		reviewNotifiers, err = PullRequestCodeOwnersReview(ctx, issue, issue.PullRequest)
+		reviewNotifiers, err = PullRequestCodeOwnersReview(ctx, issue, issue.MergeRequest)
 		if err != nil {
 			log.Error("PullRequestCodeOwnersReview: %v", err)
 		}
@@ -192,7 +192,7 @@ func DeleteIssue(ctx context.Context, doer *user_model.User, gitRepo *git.Reposi
 
 	// delete pull request related git data
 	if issue.IsMergeRequest && gitRepo != nil {
-		if err := gitRepo.RemoveReference(fmt.Sprintf("%s%d/head", git.PullPrefix, issue.PullRequest.Index)); err != nil {
+		if err := gitRepo.RemoveReference(fmt.Sprintf("%s%d/head", git.PullPrefix, issue.MergeRequest.Index)); err != nil {
 			return err
 		}
 	}
@@ -314,7 +314,7 @@ func deleteIssue(ctx context.Context, issue *issues_model.Issue) error {
 		&issues_model.TrackedTime{IssueID: issue.ID},
 		&project_model.ProjectIssue{IssueID: issue.ID},
 		&repo_model.Attachment{IssueID: issue.ID},
-		&issues_model.PullRequest{IssueID: issue.ID},
+		&issues_model.MergeRequest{IssueID: issue.ID},
 		&issues_model.Comment{RefIssueID: issue.ID},
 		&issues_model.IssueDependency{DependencyID: issue.ID},
 		&issues_model.Comment{DependentIssueID: issue.ID},

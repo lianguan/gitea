@@ -68,7 +68,7 @@ type notifyInput struct {
 	// optional
 	Ref         git.RefName
 	Payload     api.Payloader
-	PullRequest *issues_model.PullRequest
+	PullRequest *issues_model.MergeRequest
 }
 
 func newNotifyInput(repo *repo_model.Repository, doer *user_model.User, event webhook_module.HookEventType) *notifyInput {
@@ -99,7 +99,7 @@ func (input *notifyInput) WithPayload(payload api.Payloader) *notifyInput {
 	return input
 }
 
-func (input *notifyInput) WithPullRequest(pr *issues_model.PullRequest) *notifyInput {
+func (input *notifyInput) WithPullRequest(pr *issues_model.MergeRequest) *notifyInput {
 	input.PullRequest = pr
 	if input.Ref == "" {
 		input.Ref = git.RefName(pr.GetGitRefName())
@@ -285,9 +285,9 @@ func handleWorkflows(
 	isForkPullRequest := false
 	if pr := input.PullRequest; pr != nil {
 		switch pr.Flow {
-		case issues_model.PullRequestFlowGithub:
+		case issues_model.MergeRequestFlowGithub:
 			isForkPullRequest = pr.IsFromFork()
-		case issues_model.PullRequestFlowAGit:
+		case issues_model.MergeRequestFlowAGit:
 			// There is no fork concept in agit flow, anyone with read permission can push refs/for/<target-branch>/<topic-branch> to the repo.
 			// So we can treat it as a fork pull request because it may be from an untrusted user
 			isForkPullRequest = true

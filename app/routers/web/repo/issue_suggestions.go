@@ -67,10 +67,10 @@ func IssueSuggestions(ctx *context.Context) {
 				ctx.ServerError("LoadPullRequest", err)
 				return
 			}
-			if issue.PullRequest != nil {
-				suggestion.PullRequest = &structs.PullRequestMeta{
-					HasMerged:        issue.PullRequest.HasMerged,
-					IsWorkInProgress: issue.PullRequest.IsWorkInProgress(ctx),
+			if issue.MergeRequest != nil {
+				suggestion.MergeRequest = &structs.MergeRequestMeta{
+					HasMerged:        issue.MergeRequest.HasMerged,
+					IsWorkInProgress: issue.MergeRequest.IsWorkInProgress(ctx),
 				}
 			}
 		}

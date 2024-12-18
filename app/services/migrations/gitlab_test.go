@@ -257,7 +257,7 @@ func TestGitlabDownloadRepo(t *testing.T) {
 
 	prs, _, err := downloader.GetPullRequests(1, 1)
 	assert.NoError(t, err)
-	assertPullRequestsEqual(t, []*base.PullRequest{
+	assertPullRequestsEqual(t, []*base.MergeRequest{
 		{
 			Number:     4,
 			Title:      "Test branch",
@@ -282,14 +282,14 @@ func TestGitlabDownloadRepo(t *testing.T) {
 				Content:  "tada",
 			}},
 			PatchURL: "https://gitlab.com/gitea/test_repo/-/merge_requests/2.patch",
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:       "feat/test",
 				CloneURL:  "https://gitlab.com/gitea/test_repo/-/merge_requests/2",
 				SHA:       "9f733b96b98a4175276edf6a2e1231489c3bdd23",
 				RepoName:  "test_repo",
 				OwnerName: "lafriks",
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       "master",
 				SHA:       "",
 				OwnerName: "lafriks",
@@ -304,7 +304,7 @@ func TestGitlabDownloadRepo(t *testing.T) {
 		},
 	}, prs)
 
-	rvs, err := downloader.GetReviews(&base.PullRequest{Number: 1, ForeignIndex: 1})
+	rvs, err := downloader.GetReviews(&base.MergeRequest{Number: 1, ForeignIndex: 1})
 	assert.NoError(t, err)
 	assertReviewsEqual(t, []*base.Review{
 		{
@@ -323,7 +323,7 @@ func TestGitlabDownloadRepo(t *testing.T) {
 		},
 	}, rvs)
 
-	rvs, err = downloader.GetReviews(&base.PullRequest{Number: 2, ForeignIndex: 2})
+	rvs, err = downloader.GetReviews(&base.MergeRequest{Number: 2, ForeignIndex: 2})
 	assert.NoError(t, err)
 	assertReviewsEqual(t, []*base.Review{
 		{

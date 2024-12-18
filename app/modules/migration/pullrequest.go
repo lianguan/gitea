@@ -11,8 +11,8 @@ import (
 	"gitmin.com/gitmin/app/modules/git"
 )
 
-// PullRequest defines a standard pull request information
-type PullRequest struct {
+// MergeRequest defines a standard pull request information
+type MergeRequest struct {
 	Number         int64
 	Title          string
 	PosterName     string `yaml:"poster_name"`
@@ -29,8 +29,8 @@ type PullRequest struct {
 	Merged         bool
 	MergedTime     *time.Time `yaml:"merged_time"`
 	MergeCommitSHA string     `yaml:"merge_commit_sha"`
-	Head           PullRequestBranch
-	Base           PullRequestBranch
+	Head           MergeRequestBranch
+	Base           MergeRequestBranch
 	Assignees      []string
 	IsLocked       bool `yaml:"is_locked"`
 	Reactions      []*Reaction
@@ -40,22 +40,22 @@ type PullRequest struct {
 	IsDraft        bool              `yaml:"is_draft"`
 }
 
-func (p *PullRequest) GetLocalIndex() int64          { return p.Number }
-func (p *PullRequest) GetForeignIndex() int64        { return p.ForeignIndex }
-func (p *PullRequest) GetContext() DownloaderContext { return p.Context }
+func (p *MergeRequest) GetLocalIndex() int64          { return p.Number }
+func (p *MergeRequest) GetForeignIndex() int64        { return p.ForeignIndex }
+func (p *MergeRequest) GetContext() DownloaderContext { return p.Context }
 
 // IsForkPullRequest returns true if the pull request from a forked repository but not the same repository
-func (p *PullRequest) IsForkPullRequest() bool {
+func (p *MergeRequest) IsForkPullRequest() bool {
 	return p.Head.RepoFullName() != p.Base.RepoFullName()
 }
 
-// GetGitRefName returns pull request relative path to head
-func (p PullRequest) GetGitRefName() string {
+// GetGitRefName returns merge request relative path to head
+func (p MergeRequest) GetGitRefName() string {
 	return fmt.Sprintf("%s%d/head", git.PullPrefix, p.Number)
 }
 
-// PullRequestBranch represents a pull request branch
-type PullRequestBranch struct {
+// MergeRequestBranch represents a pull request branch
+type MergeRequestBranch struct {
 	CloneURL  string `yaml:"clone_url"` // SECURITY: This must be safe to download from
 	Ref       string // SECURITY: this must be a git.IsValidRefPattern
 	SHA       string // SECURITY: this must be a git.IsValidSHAPattern
@@ -64,12 +64,12 @@ type PullRequestBranch struct {
 }
 
 // RepoFullName returns pull request repo full name
-func (p PullRequestBranch) RepoFullName() string {
+func (p MergeRequestBranch) RepoFullName() string {
 	return fmt.Sprintf("%s/%s", p.OwnerName, p.RepoName)
 }
 
 // GetExternalName ExternalUserMigrated interface
-func (p *PullRequest) GetExternalName() string { return p.PosterName }
+func (p *MergeRequest) GetExternalName() string { return p.PosterName }
 
 // ExternalID ExternalUserMigrated interface
-func (p *PullRequest) GetExternalID() int64 { return p.PosterID }
+func (p *MergeRequest) GetExternalID() int64 { return p.PosterID }

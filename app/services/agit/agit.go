@@ -91,9 +91,9 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 			headBranch = currentTopicBranch
 		}
 
-		pr, err := issues_model.GetUnmergedPullRequest(ctx, repo.ID, repo.ID, headBranch, baseBranchName, issues_model.PullRequestFlowAGit)
+		pr, err := issues_model.GetUnmergedPullRequest(ctx, repo.ID, repo.ID, headBranch, baseBranchName, issues_model.MergeRequestFlowAGit)
 		if err != nil {
-			if !issues_model.IsErrPullRequestNotExist(err) {
+			if !issues_model.IsErrMergeRequestNotExist(err) {
 				return nil, fmt.Errorf("failed to get unmerged agit flow pull request in repository: %s Error: %w", repo.FullName(), err)
 			}
 
@@ -125,7 +125,7 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 				Content:  description,
 			}
 
-			pr := &issues_model.PullRequest{
+			pr := &issues_model.MergeRequest{
 				HeadRepoID:   repo.ID,
 				BaseRepoID:   repo.ID,
 				HeadBranch:   headBranch,
@@ -134,8 +134,8 @@ func ProcReceive(ctx context.Context, repo *repo_model.Repository, gitRepo *git.
 				HeadRepo:     repo,
 				BaseRepo:     repo,
 				MergeBase:    "",
-				Type:         issues_model.PullRequestGitea,
-				Flow:         issues_model.PullRequestFlowAGit,
+				Type:         issues_model.MergeRequestGitea,
+				Flow:         issues_model.MergeRequestFlowAGit,
 			}
 			prOpts := &pull_service.NewPullRequestOptions{
 				Repo:        repo,

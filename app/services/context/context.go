@@ -108,7 +108,7 @@ func NewTemplateContextForWeb(ctx *Context) TemplateContext {
 	tmplCtx["Consts"] = map[string]any{
 		"RepoUnitTypeCode":            unit.TypeCode,
 		"RepoUnitTypeIssues":          unit.TypeIssues,
-		"RepoUnitTypeMergeRequests":    unit.TypeMergeRequests,
+		"RepoUnitTypeMergeRequests":   unit.TypeMergeRequests,
 		"RepoUnitTypeReleases":        unit.TypeReleases,
 		"RepoUnitTypeWiki":            unit.TypeWiki,
 		"RepoUnitTypeExternalWiki":    unit.TypeExternalWiki,
@@ -128,7 +128,7 @@ func NewWebContext(base *Base, render Render, session session.Store) *Context {
 
 		Cache: cache.GetCache(),
 		Link:  setting.AppSubURL + strings.TrimSuffix(base.Req.URL.EscapedPath(), "/"),
-		Repo:  &Repository{PullRequest: &PullRequest{}},
+		Repo:  &Repository{MergeRequest: &MergeRequest{}},
 		Org:   &Organization{},
 	}
 	ctx.TemplateContext = NewTemplateContextForWeb(ctx)

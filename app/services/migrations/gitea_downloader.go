@@ -504,11 +504,11 @@ func (g *GiteaDownloader) GetComments(commentable base.Commentable) ([]*base.Com
 }
 
 // GetPullRequests returns pull requests according page and perPage
-func (g *GiteaDownloader) GetPullRequests(page, perPage int) ([]*base.PullRequest, bool, error) {
+func (g *GiteaDownloader) GetPullRequests(page, perPage int) ([]*base.MergeRequest, bool, error) {
 	if perPage > g.maxPerPage {
 		perPage = g.maxPerPage
 	}
-	allPRs := make([]*base.PullRequest, 0, perPage)
+	allPRs := make([]*base.MergeRequest, 0, perPage)
 
 	prs, _, err := g.client.ListRepoPullRequests(g.repoOwner, g.repoName, gitea_sdk.ListPullRequestsOptions{
 		ListOptions: gitea_sdk.ListOptions{
@@ -577,7 +577,7 @@ func (g *GiteaDownloader) GetPullRequests(page, perPage int) ([]*base.PullReques
 			closedAt = pr.Merged
 		}
 
-		allPRs = append(allPRs, &base.PullRequest{
+		allPRs = append(allPRs, &base.MergeRequest{
 			Title:          pr.Title,
 			Number:         pr.Index,
 			PosterID:       pr.Poster.ID,
@@ -597,14 +597,14 @@ func (g *GiteaDownloader) GetPullRequests(page, perPage int) ([]*base.PullReques
 			MergeCommitSHA: mergeCommitSHA,
 			IsLocked:       pr.IsLocked,
 			PatchURL:       pr.PatchURL,
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:       headRef,
 				SHA:       headSHA,
 				RepoName:  headRepoName,
 				OwnerName: headUserName,
 				CloneURL:  headCloneURL,
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:       pr.Base.Ref,
 				SHA:       pr.Base.Sha,
 				RepoName:  g.repoName,

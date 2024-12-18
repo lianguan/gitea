@@ -253,8 +253,8 @@ func pullReleaseTestPayload() *api.ReleasePayload {
 	}
 }
 
-func pullRequestTestPayload() *api.PullRequestPayload {
-	return &api.PullRequestPayload{
+func pullRequestTestPayload() *api.MergeRequestPayload {
+	return &api.MergeRequestPayload{
 		Action: api.HookIssueOpened,
 		Index:  12,
 		Sender: &api.User{
@@ -266,7 +266,7 @@ func pullRequestTestPayload() *api.PullRequestPayload {
 			Name:     "repo",
 			FullName: "test/repo",
 		},
-		PullRequest: &api.PullRequest{
+		MergeRequest: &api.MergeRequest{
 			ID:        12,
 			Index:     12,
 			URL:       "http://localhost:3000/test/repo/merge_requests/12",
@@ -440,7 +440,7 @@ func TestGetIssuesPayloadInfo(t *testing.T) {
 	}
 }
 
-func TestGetPullRequestPayloadInfo(t *testing.T) {
+func TestGetMergeRequestPayloadInfo(t *testing.T) {
 	p := pullRequestTestPayload()
 
 	cases := []struct {
@@ -531,7 +531,7 @@ func TestGetPullRequestPayloadInfo(t *testing.T) {
 
 	for i, c := range cases {
 		p.Action = c.action
-		text, issueTitle, extraMarkdown, color := getPullRequestPayloadInfo(p, noneLinkFormatter, true)
+		text, issueTitle, extraMarkdown, color := getMergeRequestPayloadInfo(p, noneLinkFormatter, true)
 		assert.Equal(t, c.text, text, "case %d", i)
 		assert.Equal(t, c.issueTitle, issueTitle, "case %d", i)
 		assert.Equal(t, c.attachmentText, extraMarkdown, "case %d", i)

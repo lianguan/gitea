@@ -46,30 +46,30 @@ func TestDetectMatched(t *testing.T) {
 		{
 			desc:         "HookEventPullRequestSync(pull_request_sync) matches GithubEventPullRequest(pull_request)",
 			triggedEvent: webhook_module.HookEventPullRequestSync,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueSynchronized},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueSynchronized},
 			yamlOn:       "on: pull_request",
 			expected:     true,
 		},
 		{
 			desc:         "HookEventPullRequest(pull_request) `label_updated` action doesn't match GithubEventPullRequest(pull_request) with no activity type",
 			triggedEvent: webhook_module.HookEventPullRequest,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueLabelUpdated},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueLabelUpdated},
 			yamlOn:       "on: pull_request",
 			expected:     false,
 		},
 		{
 			desc:         "HookEventPullRequest(pull_request) `closed` action doesn't match GithubEventPullRequest(pull_request) with no activity type",
 			triggedEvent: webhook_module.HookEventPullRequest,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueClosed},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueClosed},
 			yamlOn:       "on: pull_request",
 			expected:     false,
 		},
 		{
 			desc:         "HookEventPullRequest(pull_request) `closed` action doesn't match GithubEventPullRequest(pull_request) with branches",
 			triggedEvent: webhook_module.HookEventPullRequest,
-			payload: &api.PullRequestPayload{
+			payload: &api.MergeRequestPayload{
 				Action: api.HookIssueClosed,
-				PullRequest: &api.PullRequest{
+				MergeRequest: &api.MergeRequest{
 					Base: &api.PRBranchInfo{},
 				},
 			},
@@ -79,21 +79,21 @@ func TestDetectMatched(t *testing.T) {
 		{
 			desc:         "HookEventPullRequest(pull_request) `label_updated` action matches GithubEventPullRequest(pull_request) with `label` activity type",
 			triggedEvent: webhook_module.HookEventPullRequest,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueLabelUpdated},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueLabelUpdated},
 			yamlOn:       "on:\n  pull_request:\n    types: [labeled]",
 			expected:     true,
 		},
 		{
 			desc:         "HookEventPullRequestReviewComment(pull_request_review_comment) matches GithubEventPullRequestReviewComment(pull_request_review_comment)",
 			triggedEvent: webhook_module.HookEventPullRequestReviewComment,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueReviewed},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueReviewed},
 			yamlOn:       "on:\n  pull_request_review_comment:\n    types: [created]",
 			expected:     true,
 		},
 		{
 			desc:         "HookEventPullRequestReviewRejected(pull_request_review_rejected) doesn't match GithubEventPullRequestReview(pull_request_review) with `dismissed` activity type (we don't support `dismissed` at present)",
 			triggedEvent: webhook_module.HookEventPullRequestReviewRejected,
-			payload:      &api.PullRequestPayload{Action: api.HookIssueReviewed},
+			payload:      &api.MergeRequestPayload{Action: api.HookIssueReviewed},
 			yamlOn:       "on:\n  pull_request_review:\n    types: [dismissed]",
 			expected:     false,
 		},

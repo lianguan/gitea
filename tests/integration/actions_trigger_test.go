@@ -136,14 +136,14 @@ func TestPullRequestTargetEvent(t *testing.T) {
 			Poster:   user4,
 			IsMergeRequest:   true,
 		}
-		pullRequest := &issues_model.PullRequest{
+		pullRequest := &issues_model.MergeRequest{
 			HeadRepoID: forkedRepo.ID,
 			BaseRepoID: baseRepo.ID,
 			HeadBranch: "fork-branch-1",
 			BaseBranch: "main",
 			HeadRepo:   forkedRepo,
 			BaseRepo:   baseRepo,
-			Type:       issues_model.PullRequestGitea,
+			Type:       issues_model.MergeRequestGitea,
 		}
 		prOpts := &pull_service.NewPullRequestOptions{Repo: baseRepo, Issue: pullIssue, PullRequest: pullRequest}
 		err = pull_service.NewPullRequest(git.DefaultContext, prOpts)
@@ -191,14 +191,14 @@ func TestPullRequestTargetEvent(t *testing.T) {
 			Poster:   user4,
 			IsMergeRequest:   true,
 		}
-		pullRequest = &issues_model.PullRequest{
+		pullRequest = &issues_model.MergeRequest{
 			HeadRepoID: forkedRepo.ID,
 			BaseRepoID: baseRepo.ID,
 			HeadBranch: "fork-branch-2",
 			BaseBranch: "main",
 			HeadRepo:   forkedRepo,
 			BaseRepo:   baseRepo,
-			Type:       issues_model.PullRequestGitea,
+			Type:       issues_model.MergeRequestGitea,
 		}
 		prOpts = &pull_service.NewPullRequestOptions{Repo: baseRepo, Issue: pullIssue, PullRequest: pullRequest}
 		err = pull_service.NewPullRequest(git.DefaultContext, prOpts)

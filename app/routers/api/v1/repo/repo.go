@@ -891,10 +891,10 @@ func updateRepoUnits(ctx *context.APIContext, opts api.EditRepoOption) error {
 			// we get the config settings and then set them
 			// if those settings were provided in the opts.
 			unit, err := repo.GetUnit(ctx, unit_model.TypeMergeRequests)
-			var config *repo_model.PullRequestsConfig
+			var config *repo_model.MergeRequestsConfig
 			if err != nil {
 				// Unit type doesn't exist so we make a new config file with default values
-				config = &repo_model.PullRequestsConfig{
+				config = &repo_model.MergeRequestsConfig{
 					IgnoreWhitespaceConflicts:     false,
 					AllowMerge:                    true,
 					AllowRebase:                   true,
@@ -909,7 +909,7 @@ func updateRepoUnits(ctx *context.APIContext, opts api.EditRepoOption) error {
 					DefaultAllowMaintainerEdit:    false,
 				}
 			} else {
-				config = unit.PullRequestsConfig()
+				config = unit.MergeRequestsConfig()
 			}
 
 			if opts.IgnoreWhitespaceConflicts != nil {

@@ -113,14 +113,14 @@ func (dc dingtalkConvertor) IssueComment(p *api.IssueCommentPayload) (DingtalkPa
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (dc dingtalkConvertor) PullRequest(p *api.PullRequestPayload) (DingtalkPayload, error) {
-	text, issueTitle, extraMarkdown, _ := getPullRequestPayloadInfo(p, noneLinkFormatter, true)
+func (dc dingtalkConvertor) PullRequest(p *api.MergeRequestPayload) (DingtalkPayload, error) {
+	text, issueTitle, extraMarkdown, _ := getMergeRequestPayloadInfo(p, noneLinkFormatter, true)
 
-	return createDingtalkPayload(issueTitle, text+"\r\n\r\n"+extraMarkdown, "view pull request", p.PullRequest.HTMLURL), nil
+	return createDingtalkPayload(issueTitle, text+"\r\n\r\n"+extraMarkdown, "view pull request", p.MergeRequest.HTMLURL), nil
 }
 
 // Review implements PayloadConvertor Review method
-func (dc dingtalkConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (DingtalkPayload, error) {
+func (dc dingtalkConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (DingtalkPayload, error) {
 	var text, title string
 	switch p.Action {
 	case api.HookIssueReviewed:
@@ -129,11 +129,11 @@ func (dc dingtalkConvertor) Review(p *api.PullRequestPayload, event webhook_modu
 			return DingtalkPayload{}, err
 		}
 
-		title = fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.PullRequest.Title)
+		title = fmt.Sprintf("[%s] Pull request review %s : #%d %s", p.Repository.FullName, action, p.Index, p.MergeRequest.Title)
 		text = p.Review.Content
 	}
 
-	return createDingtalkPayload(title, title+"\r\n\r\n"+text, "view pull request", p.PullRequest.HTMLURL), nil
+	return createDingtalkPayload(title, title+"\r\n\r\n"+text, "view pull request", p.MergeRequest.HTMLURL), nil
 }
 
 // Repository implements PayloadConvertor Repository method

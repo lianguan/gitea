@@ -36,10 +36,10 @@ func TestDumpDatabase(t *testing.T) {
 func TestDeleteOrphanedObjects(t *testing.T) {
 	assert.NoError(t, unittest.PrepareTestDatabase())
 
-	countBefore, err := db.GetEngine(db.DefaultContext).Count(&issues_model.PullRequest{})
+	countBefore, err := db.GetEngine(db.DefaultContext).Count(&issues_model.MergeRequest{})
 	assert.NoError(t, err)
 
-	_, err = db.GetEngine(db.DefaultContext).Insert(&issues_model.PullRequest{IssueID: 1000}, &issues_model.PullRequest{IssueID: 1001}, &issues_model.PullRequest{IssueID: 1003})
+	_, err = db.GetEngine(db.DefaultContext).Insert(&issues_model.MergeRequest{IssueID: 1000}, &issues_model.MergeRequest{IssueID: 1001}, &issues_model.MergeRequest{IssueID: 1003})
 	assert.NoError(t, err)
 
 	orphaned, err := db.CountOrphanedObjects(db.DefaultContext, "pull_request", "issue", "pull_request.issue_id=issue.id")
@@ -49,7 +49,7 @@ func TestDeleteOrphanedObjects(t *testing.T) {
 	err = db.DeleteOrphanedObjects(db.DefaultContext, "pull_request", "issue", "pull_request.issue_id=issue.id")
 	assert.NoError(t, err)
 
-	countAfter, err := db.GetEngine(db.DefaultContext).Count(&issues_model.PullRequest{})
+	countAfter, err := db.GetEngine(db.DefaultContext).Count(&issues_model.MergeRequest{})
 	assert.NoError(t, err)
 	assert.EqualValues(t, countBefore, countAfter)
 }

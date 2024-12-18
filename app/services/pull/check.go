@@ -45,8 +45,8 @@ var (
 )
 
 // AddToTaskQueue adds itself to pull request test task queue.
-func AddToTaskQueue(ctx context.Context, pr *issues_model.PullRequest) {
-	pr.Status = issues_model.PullRequestStatusChecking
+func AddToTaskQueue(ctx context.Context, pr *issues_model.MergeRequest) {
+	pr.Status = issues_model.MergeRequestStatusChecking
 	err := pr.UpdateColsIfNotMerged(ctx, "status")
 	if err != nil {
 		log.Error("AddToTaskQueue(%-v).UpdateCols.(add to queue): %v", pr, err)
@@ -68,7 +68,7 @@ const (
 )
 
 // CheckPullMergeable check if the pull mergeable based on all conditions (branch protection, merge options, ...)
-func CheckPullMergeable(stdCtx context.Context, doer *user_model.User, perm *access_model.Permission, pr *issues_model.PullRequest, mergeCheckType MergeCheckType, adminForceMerge bool) error {
+func CheckPullMergeable(stdCtx context.Context, doer *user_model.User, perm *access_model.Permission, pr *issues_model.MergeRequest, mergeCheckType MergeCheckType, adminForceMerge bool) error {
 	return db.WithTx(stdCtx, func(ctx context.Context) error {
 		if pr.HasMerged {
 			return ErrHasMerged
@@ -158,7 +158,7 @@ func CheckPullMergeable(stdCtx context.Context, doer *user_model.User, perm *acc
 }
 
 // isSignedIfRequired check if merge will be signed if required
-func isSignedIfRequired(ctx context.Context, pr *issues_model.PullRequest, doer *user_model.User) (bool, error) {
+func isSignedIfRequired(ctx context.Context, pr *issues_model.MergeRequest, doer *user_model.User) (bool, error) {
 	pb, err := git_model.GetFirstMatchProtectedBranchRule(ctx, pr.BaseRepoID, pr.BaseBranch)
 	if err != nil {
 		return false, err
@@ -175,10 +175,10 @@ func isSignedIfRequired(ctx context.Context, pr *issues_model.PullRequest, doer 
 
 // checkAndUpdateStatus checks if pull request is possible to leaving checking status,
 // and set to be either conflict or mergeable.
-func checkAndUpdateStatus(ctx context.Context, pr *issues_model.PullRequest) {
+func checkAndUpdateStatus(ctx context.Context, pr *issues_model.MergeRequest) {
 	// If status has not been changed to conflict by testPatch then we are mergeable
-	if pr.Status == issues_model.PullRequestStatusChecking {
-		pr.Status = issues_model.PullRequestStatusMergeable
+	if pr.Status == issues_model.MergeRequestStatusChecking {
+		pr.Status = issues_model.MergeRequestStatusMergeable
 	}
 
 	// Make sure there is no waiting test to process before leaving the checking status.
@@ -199,7 +199,7 @@ func checkAndUpdateStatus(ctx context.Context, pr *issues_model.PullRequest) {
 
 // getMergeCommit checks if a pull request has been merged
 // Returns the git.Commit of the pull request if merged
-func getMergeCommit(ctx context.Context, pr *issues_model.PullRequest) (*git.Commit, error) {
+func getMergeCommit(ctx context.Context, pr *issues_model.MergeRequest) (*git.Commit, error) {
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		return nil, fmt.Errorf("unable to load base repo for %s: %w", pr, err)
 	}
@@ -256,14 +256,14 @@ func getMergeCommit(ctx context.Context, pr *issues_model.PullRequest) (*git.Com
 
 // manuallyMerged checks if a pull request got manually merged
 // When a pull request got manually merged mark the pull request as merged
-func manuallyMerged(ctx context.Context, pr *issues_model.PullRequest) bool {
+func manuallyMerged(ctx context.Context, pr *issues_model.MergeRequest) bool {
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		log.Error("%-v LoadBaseRepo: %v", pr, err)
 		return false
 	}
 
 	if unit, err := pr.BaseRepo.GetUnit(ctx, unit.TypeMergeRequests); err == nil {
-		config := unit.PullRequestsConfig()
+		config := unit.MergeRequestsConfig()
 		if !config.AutodetectManualMerge {
 			return false
 		}
@@ -285,7 +285,7 @@ func manuallyMerged(ctx context.Context, pr *issues_model.PullRequest) bool {
 
 	pr.MergedCommitID = commit.ID.String()
 	pr.MergedUnix = timeutil.TimeStamp(commit.Author.When.Unix())
-	pr.Status = issues_model.PullRequestStatusManuallyMerged
+	pr.Status = issues_model.MergeRequestStatusManuallyMerged
 	merger, _ := user_model.GetUserByEmail(ctx, commit.Author.Email)
 
 	// When the commit author is unknown set the BaseRepo owner as merger
@@ -316,7 +316,7 @@ func manuallyMerged(ctx context.Context, pr *issues_model.PullRequest) bool {
 
 // InitializePullRequests checks and tests untested patches of pull requests.
 func InitializePullRequests(ctx context.Context) {
-	prs, err := issues_model.GetPullRequestIDsByCheckStatus(ctx, issues_model.PullRequestStatusChecking)
+	prs, err := issues_model.GetPullRequestIDsByCheckStatus(ctx, issues_model.MergeRequestStatusChecking)
 	if err != nil {
 		log.Error("Find Checking PRs: %v", err)
 		return
@@ -378,9 +378,9 @@ func testPR(id int64) {
 
 	if err := TestPatch(pr); err != nil {
 		log.Error("testPatch[%-v]: %v", pr, err)
-		pr.Status = issues_model.PullRequestStatusError
+		pr.Status = issues_model.MergeRequestStatusError
 		if err := pr.UpdateCols(ctx, "status"); err != nil {
-			log.Error("update pr [%-v] status to PullRequestStatusError failed: %v", pr, err)
+			log.Error("update pr [%-v] status to MergeRequestStatusError failed: %v", pr, err)
 		}
 		return
 	}

@@ -112,7 +112,7 @@ func MustAllowPulls(ctx *context.Context) {
 
 	// User can send pull request if owns a forked repository.
 	if ctx.IsSigned && repo_model.HasForkedRepo(ctx, ctx.Doer.ID, ctx.Repo.Repository.ID) {
-		ctx.Repo.PullRequest.Allowed = true
+		ctx.Repo.MergeRequest.Allowed = true
 	}
 }
 

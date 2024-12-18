@@ -906,7 +906,7 @@ func EditIssue(ctx *context.APIContext) {
 				ctx.Error(http.StatusInternalServerError, "GetPullRequest", err)
 				return
 			}
-			if issue.PullRequest.HasMerged {
+			if issue.MergeRequest.HasMerged {
 				ctx.Error(http.StatusPreconditionFailed, "MergedPRState", "cannot change state of this pull request, it was already merged")
 				return
 			}

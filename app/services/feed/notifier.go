@@ -131,7 +131,7 @@ func (a *actionNotifier) CreateIssueComment(ctx context.Context, doer *user_mode
 	}
 }
 
-func (a *actionNotifier) NewPullRequest(ctx context.Context, pull *issues_model.PullRequest, mentions []*user_model.User) {
+func (a *actionNotifier) NewPullRequest(ctx context.Context, pull *issues_model.MergeRequest, mentions []*user_model.User) {
 	if err := pull.LoadIssue(ctx); err != nil {
 		log.Error("pull.LoadIssue: %v", err)
 		return
@@ -212,7 +212,7 @@ func (a *actionNotifier) ForkRepository(ctx context.Context, doer *user_model.Us
 	}
 }
 
-func (a *actionNotifier) PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
+func (a *actionNotifier) PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User) {
 	if err := review.LoadReviewer(ctx); err != nil {
 		log.Error("LoadReviewer '%d/%d': %v", review.ID, review.ReviewerID, err)
 		return
@@ -270,7 +270,7 @@ func (a *actionNotifier) PullRequestReview(ctx context.Context, pr *issues_model
 	}
 }
 
-func (*actionNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (*actionNotifier) MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := activities_model.NotifyWatchers(ctx, &activities_model.Action{
 		ActUserID: doer.ID,
 		ActUser:   doer,
@@ -284,7 +284,7 @@ func (*actionNotifier) MergePullRequest(ctx context.Context, doer *user_model.Us
 	}
 }
 
-func (*actionNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest) {
+func (*actionNotifier) AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest) {
 	if err := activities_model.NotifyWatchers(ctx, &activities_model.Action{
 		ActUserID: doer.ID,
 		ActUser:   doer,

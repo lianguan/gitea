@@ -22,7 +22,7 @@ func TestPullRequest_APIFormat(t *testing.T) {
 	// with HeadRepo
 	assert.NoError(t, unittest.PrepareTestDatabase())
 	headRepo := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: 1})
-	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr := unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadAttributes(db.DefaultContext))
 	assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 	apiPullRequest := ToAPIPullRequest(git.DefaultContext, pr, nil)
@@ -36,7 +36,7 @@ func TestPullRequest_APIFormat(t *testing.T) {
 	}, apiPullRequest.Head)
 
 	// withOut HeadRepo
-	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.PullRequest{ID: 1})
+	pr = unittest.AssertExistsAndLoadBean(t, &issues_model.MergeRequest{ID: 1})
 	assert.NoError(t, pr.LoadIssue(db.DefaultContext))
 	assert.NoError(t, pr.LoadAttributes(db.DefaultContext))
 	// simulate fork deletion

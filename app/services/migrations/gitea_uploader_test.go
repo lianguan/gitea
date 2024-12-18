@@ -108,16 +108,16 @@ func TestGiteaUploadRepo(t *testing.T) {
 	assert.Len(t, releases, 1)
 
 	issues, err := issues_model.Issues(db.DefaultContext, &issues_model.IssuesOptions{
-		RepoIDs:  []int64{repo.ID},
-		IsMergeRequest:   optional.Some(false),
-		SortType: "oldest",
+		RepoIDs:        []int64{repo.ID},
+		IsMergeRequest: optional.Some(false),
+		SortType:       "oldest",
 	})
 	assert.NoError(t, err)
 	assert.Len(t, issues, 15)
 	assert.NoError(t, issues[0].LoadDiscussComments(db.DefaultContext))
 	assert.Empty(t, issues[0].Comments)
 
-	pulls, _, err := issues_model.PullRequests(db.DefaultContext, repo.ID, &issues_model.PullRequestsOptions{
+	pulls, _, err := issues_model.MergeRequests(db.DefaultContext, repo.ID, &issues_model.MergeRequestsOptions{
 		SortType: "oldest",
 	})
 	assert.NoError(t, err)
@@ -322,23 +322,23 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		head        string
 		logFilter   []string
 		logFiltered []bool
-		pr          base.PullRequest
+		pr          base.MergeRequest
 	}{
 		{
 			name: "fork, good Head.SHA",
 			head: fmt.Sprintf("%s/%s", forkRepo.OwnerName, forkHeadRef),
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  forkRepo.RepoPath(),
 					Ref:       forkHeadRef,
 					SHA:       forkHeadSHA,
@@ -350,18 +350,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "fork, invalid Head.Ref",
 			head: "unknown repository",
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  forkRepo.RepoPath(),
 					Ref:       "INVALID",
 					SHA:       forkHeadSHA,
@@ -375,18 +375,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "invalid fork CloneURL",
 			head: "unknown repository",
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  "UNLIKELY",
 					Ref:       forkHeadRef,
 					SHA:       forkHeadSHA,
@@ -400,18 +400,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "no fork, good Head.SHA",
 			head: headRef,
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       headRef,
 					SHA:       headSHA,
@@ -423,18 +423,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "no fork, empty Head.SHA",
 			head: headRef,
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       headRef,
 					SHA:       "",
@@ -448,18 +448,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "no fork, invalid Head.SHA",
 			head: headRef,
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       headRef,
 					SHA:       "brokenSHA",
@@ -473,18 +473,18 @@ func TestGiteaUploadUpdateGitForPullRequest(t *testing.T) {
 		{
 			name: "no fork, not found Head.SHA",
 			head: headRef,
-			pr: base.PullRequest{
+			pr: base.MergeRequest{
 				PatchURL: "",
 				Number:   1,
 				State:    "open",
-				Base: base.PullRequestBranch{
+				Base: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       baseRef,
 					SHA:       baseSHA,
 					RepoName:  fromRepo.Name,
 					OwnerName: fromRepo.OwnerName,
 				},
-				Head: base.PullRequestBranch{
+				Head: base.MergeRequestBranch{
 					CloneURL:  fromRepo.RepoPath(),
 					Ref:       headRef,
 					SHA:       "2697b352310fcd01cbd1f3dbd43b894080027f68",

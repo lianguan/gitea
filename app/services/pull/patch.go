@@ -30,7 +30,7 @@ import (
 )
 
 // DownloadDiffOrPatch will write the patch for the pr to the writer
-func DownloadDiffOrPatch(ctx context.Context, pr *issues_model.PullRequest, w io.Writer, patch, binary bool) error {
+func DownloadDiffOrPatch(ctx context.Context, pr *issues_model.MergeRequest, w io.Writer, patch, binary bool) error {
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		log.Error("Unable to load base repository ID %d for pr #%d [%d]", pr.BaseRepoID, pr.Index, pr.ID)
 		return err
@@ -59,7 +59,7 @@ var patchErrorSuffices = []string{
 }
 
 // TestPatch will test whether a simple patch will apply
-func TestPatch(pr *issues_model.PullRequest) error {
+func TestPatch(pr *issues_model.MergeRequest) error {
 	ctx, _, finished := process.GetManager().AddContext(graceful.GetManager().HammerContext(), fmt.Sprintf("TestPatch: %s", pr))
 	defer finished()
 
@@ -75,7 +75,7 @@ func TestPatch(pr *issues_model.PullRequest) error {
 	return testPatch(ctx, prCtx, pr)
 }
 
-func testPatch(ctx context.Context, prCtx *prContext, pr *issues_model.PullRequest) error {
+func testPatch(ctx context.Context, prCtx *prContext, pr *issues_model.MergeRequest) error {
 	gitRepo, err := git.OpenRepository(ctx, prCtx.tmpBasePath)
 	if err != nil {
 		return fmt.Errorf("OpenRepository: %w", err)
@@ -97,12 +97,12 @@ func testPatch(ctx context.Context, prCtx *prContext, pr *issues_model.PullReque
 	}
 
 	if pr.HeadCommitID == pr.MergeBase {
-		pr.Status = issues_model.PullRequestStatusAncestor
+		pr.Status = issues_model.MergeRequestStatusAncestor
 		return nil
 	}
 
 	// 2. Check for conflicts
-	if conflicts, err := checkConflicts(ctx, pr, gitRepo, prCtx.tmpBasePath); err != nil || conflicts || pr.Status == issues_model.PullRequestStatusEmpty {
+	if conflicts, err := checkConflicts(ctx, pr, gitRepo, prCtx.tmpBasePath); err != nil || conflicts || pr.Status == issues_model.MergeRequestStatusEmpty {
 		return err
 	}
 
@@ -115,7 +115,7 @@ func testPatch(ctx context.Context, prCtx *prContext, pr *issues_model.PullReque
 		log.Trace("Found %d protected files changed", len(pr.ChangedProtectedFiles))
 	}
 
-	pr.Status = issues_model.PullRequestStatusMergeable
+	pr.Status = issues_model.MergeRequestStatusMergeable
 
 	return nil
 }
@@ -299,7 +299,7 @@ func AttemptThreeWayMerge(ctx context.Context, gitPath string, gitRepo *git.Repo
 	return conflict, conflictedFiles, nil
 }
 
-func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *git.Repository, tmpBasePath string) (bool, error) {
+func checkConflicts(ctx context.Context, pr *issues_model.MergeRequest, gitRepo *git.Repository, tmpBasePath string) (bool, error) {
 	// 1. checkConflicts resets the conflict status - therefore - reset the conflict status
 	pr.ConflictedFiles = nil
 
@@ -329,7 +329,7 @@ func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *
 		// b. compare the new tree-hash with the base tree hash
 		if treeHash == baseTree.ID.String() {
 			log.Debug("PullRequest[%d]: Patch is empty - ignoring", pr.ID)
-			pr.Status = issues_model.PullRequestStatusEmpty
+			pr.Status = issues_model.MergeRequestStatusEmpty
 		}
 
 		return false, nil
@@ -338,7 +338,7 @@ func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *
 	// 3. OK the three-way merge method has detected conflicts
 	// 3a. Are still testing with GitApply? If not set the conflict status and move on
 	if !setting.Repository.PullRequest.TestConflictingPatchesWithGitApply {
-		pr.Status = issues_model.PullRequestStatusConflict
+		pr.Status = issues_model.MergeRequestStatusConflict
 		pr.ConflictedFiles = conflictFiles
 
 		log.Trace("Found %d files conflicted: %v", len(pr.ConflictedFiles), pr.ConflictedFiles)
@@ -371,7 +371,7 @@ func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *
 	// 3c. if the size of that patch is 0 - there can be no conflicts!
 	if stat.Size() == 0 {
 		log.Debug("PullRequest[%d]: Patch is empty - ignoring", pr.ID)
-		pr.Status = issues_model.PullRequestStatusEmpty
+		pr.Status = issues_model.MergeRequestStatusEmpty
 		return false, nil
 	}
 
@@ -388,7 +388,7 @@ func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *
 	if err != nil {
 		return false, err
 	}
-	prConfig := prUnit.PullRequestsConfig()
+	prConfig := prUnit.MergeRequestsConfig()
 
 	// 6. Prepare the arguments to apply the patch against the index
 	cmdApply := git.NewCommand(gitRepo.Ctx, "apply", "--check", "--cached")
@@ -491,7 +491,7 @@ func checkConflicts(ctx context.Context, pr *issues_model.PullRequest, gitRepo *
 	// Note: `"err" could be non-nil` is due that if enable 3-way merge, it doesn't return any error on found conflicts.
 	if len(pr.ConflictedFiles) > 0 {
 		if conflict {
-			pr.Status = issues_model.PullRequestStatusConflict
+			pr.Status = issues_model.MergeRequestStatusConflict
 			log.Trace("Found %d files conflicted: %v", len(pr.ConflictedFiles), pr.ConflictedFiles)
 
 			return true, nil
@@ -558,8 +558,8 @@ func CheckUnprotectedFiles(repo *git.Repository, branchName, oldCommitID, newCom
 }
 
 // checkPullFilesProtection check if pr changed protected files and save results
-func checkPullFilesProtection(ctx context.Context, pr *issues_model.PullRequest, gitRepo *git.Repository) error {
-	if pr.Status == issues_model.PullRequestStatusEmpty {
+func checkPullFilesProtection(ctx context.Context, pr *issues_model.MergeRequest, gitRepo *git.Repository) error {
+	if pr.Status == issues_model.MergeRequestStatusEmpty {
 		pr.ChangedProtectedFiles = nil
 		return nil
 	}

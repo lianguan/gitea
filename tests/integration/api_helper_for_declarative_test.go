@@ -214,8 +214,8 @@ func doAPICreateDeployKey(ctx APITestContext, keyname, keyFile string, readOnly 
 	}
 }
 
-func doAPICreatePullRequest(ctx APITestContext, owner, repo, baseBranch, headBranch string) func(*testing.T) (api.PullRequest, error) {
-	return func(t *testing.T) (api.PullRequest, error) {
+func doAPICreatePullRequest(ctx APITestContext, owner, repo, baseBranch, headBranch string) func(*testing.T) (api.MergeRequest, error) {
+	return func(t *testing.T) (api.MergeRequest, error) {
 		req := NewRequestWithJSON(t, http.MethodPost, fmt.Sprintf("/api/v1/repos/%s/%s/pulls", owner, repo), &api.CreatePullRequestOption{
 			Head:  headBranch,
 			Base:  baseBranch,
@@ -229,14 +229,14 @@ func doAPICreatePullRequest(ctx APITestContext, owner, repo, baseBranch, headBra
 		resp := ctx.Session.MakeRequest(t, req, expected)
 
 		decoder := json.NewDecoder(resp.Body)
-		pr := api.PullRequest{}
+		pr := api.MergeRequest{}
 		err := decoder.Decode(&pr)
 		return pr, err
 	}
 }
 
-func doAPIGetPullRequest(ctx APITestContext, owner, repo string, index int64) func(*testing.T) (api.PullRequest, error) {
-	return func(t *testing.T) (api.PullRequest, error) {
+func doAPIGetPullRequest(ctx APITestContext, owner, repo string, index int64) func(*testing.T) (api.MergeRequest, error) {
+	return func(t *testing.T) (api.MergeRequest, error) {
 		req := NewRequest(t, http.MethodGet, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d", owner, repo, index)).
 			AddTokenAuth(ctx.Token)
 
@@ -247,7 +247,7 @@ func doAPIGetPullRequest(ctx APITestContext, owner, repo string, index int64) fu
 		resp := ctx.Session.MakeRequest(t, req, expected)
 
 		decoder := json.NewDecoder(resp.Body)
-		pr := api.PullRequest{}
+		pr := api.MergeRequest{}
 		err := decoder.Decode(&pr)
 		return pr, err
 	}

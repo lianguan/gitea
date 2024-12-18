@@ -114,7 +114,7 @@ func getBranchData(ctx *context.Context, issue *issues_model.Issue) {
 	ctx.Data["HeadUserName"] = nil
 	ctx.Data["BaseName"] = ctx.Repo.Repository.OwnerName
 	if issue.IsMergeRequest {
-		pull := issue.PullRequest
+		pull := issue.MergeRequest
 		ctx.Data["BaseBranch"] = pull.BaseBranch
 		ctx.Data["HeadBranch"] = pull.HeadBranch
 		ctx.Data["HeadUserName"] = pull.MustHeadUserName(ctx)
@@ -377,8 +377,8 @@ func ViewIssue(ctx *context.Context) {
 
 	// Get more information if it's a pull request.
 	if issue.IsMergeRequest {
-		if issue.PullRequest.HasMerged {
-			ctx.Data["DisableStatusChange"] = issue.PullRequest.HasMerged
+		if issue.MergeRequest.HasMerged {
+			ctx.Data["DisableStatusChange"] = issue.MergeRequest.HasMerged
 		} else {
 			ctx.Data["DisableStatusChange"] = ctx.Data["IsMergeRequestBroken"] == true && issue.IsClosed
 		}
@@ -446,7 +446,7 @@ func preparePullViewSigning(ctx *context.Context, issue *issues_model.Issue) {
 	if !issue.IsMergeRequest {
 		return
 	}
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 	ctx.Data["WillSign"] = false
 	if ctx.Doer != nil {
 		sign, key, _, err := asymkey_service.SignMerge(ctx, pull, ctx.Doer, pull.BaseRepo.RepoPath(), pull.BaseBranch, pull.GetGitRefName())
@@ -516,7 +516,7 @@ func preparePullViewDeleteBranch(ctx *context.Context, issue *issues_model.Issue
 	if !issue.IsMergeRequest {
 		return
 	}
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 	isPullBranchDeletable := canDelete &&
 		pull.HeadRepo != nil &&
 		git.IsBranchExist(ctx, pull.HeadRepo.RepoPath(), pull.HeadBranch) &&
@@ -772,7 +772,7 @@ func preparePullViewReviewAndMerge(ctx *context.Context, issue *issues_model.Iss
 		return
 	}
 
-	pull := issue.PullRequest
+	pull := issue.MergeRequest
 	pull.Issue = issue
 	canDelete := false
 	allowMerge := false
@@ -833,7 +833,7 @@ func preparePullViewReviewAndMerge(ctx *context.Context, issue *issues_model.Iss
 		ctx.ServerError("GetUnit", err)
 		return
 	}
-	prConfig := prUnit.PullRequestsConfig()
+	prConfig := prUnit.MergeRequestsConfig()
 
 	ctx.Data["AutodetectManualMerge"] = prConfig.AutodetectManualMerge
 

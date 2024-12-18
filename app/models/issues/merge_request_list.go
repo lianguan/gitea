@@ -20,8 +20,8 @@ import (
 	"xorm.io/xorm"
 )
 
-// PullRequestsOptions holds the options for PRs
-type PullRequestsOptions struct {
+// MergeRequestsOptions holds the options for PRs
+type MergeRequestsOptions struct {
 	db.ListOptions
 	State       string
 	SortType    string
@@ -30,7 +30,7 @@ type PullRequestsOptions struct {
 	PosterID    int64
 }
 
-func listPullRequestStatement(ctx context.Context, baseRepoID int64, opts *PullRequestsOptions) *xorm.Session {
+func listPullRequestStatement(ctx context.Context, baseRepoID int64, opts *MergeRequestsOptions) *xorm.Session {
 	sess := db.GetEngine(ctx).Where("pull_request.base_repo_id=?", baseRepoID)
 
 	sess.Join("INNER", "issue", "pull_request.issue_id = issue.id")
@@ -56,11 +56,11 @@ func listPullRequestStatement(ctx context.Context, baseRepoID int64, opts *PullR
 }
 
 // GetUnmergedPullRequestsByHeadInfo returns all pull requests that are open and has not been merged
-func GetUnmergedPullRequestsByHeadInfo(ctx context.Context, repoID int64, branch string) ([]*PullRequest, error) {
-	prs := make([]*PullRequest, 0, 2)
+func GetUnmergedPullRequestsByHeadInfo(ctx context.Context, repoID int64, branch string) ([]*MergeRequest, error) {
+	prs := make([]*MergeRequest, 0, 2)
 	sess := db.GetEngine(ctx).
 		Join("INNER", "issue", "issue.id = pull_request.issue_id").
-		Where("head_repo_id = ? AND head_branch = ? AND has_merged = ? AND issue.is_closed = ? AND flow = ?", repoID, branch, false, false, PullRequestFlowGithub)
+		Where("head_repo_id = ? AND head_branch = ? AND has_merged = ? AND issue.is_closed = ? AND flow = ?", repoID, branch, false, false, MergeRequestFlowGithub)
 	return prs, sess.Find(&prs)
 }
 
@@ -104,15 +104,15 @@ func CanMaintainerWriteToBranch(ctx context.Context, p access_model.Permission, 
 func HasUnmergedPullRequestsByHeadInfo(ctx context.Context, repoID int64, branch string) (bool, error) {
 	return db.GetEngine(ctx).
 		Where("head_repo_id = ? AND head_branch = ? AND has_merged = ? AND issue.is_closed = ? AND flow = ?",
-			repoID, branch, false, false, PullRequestFlowGithub).
+			repoID, branch, false, false, MergeRequestFlowGithub).
 		Join("INNER", "issue", "issue.id = pull_request.issue_id").
-		Exist(&PullRequest{})
+		Exist(&MergeRequest{})
 }
 
 // GetUnmergedPullRequestsByBaseInfo returns all pull requests that are open and has not been merged
 // by given base information (repo and branch).
-func GetUnmergedPullRequestsByBaseInfo(ctx context.Context, repoID int64, branch string) ([]*PullRequest, error) {
-	prs := make([]*PullRequest, 0, 2)
+func GetUnmergedPullRequestsByBaseInfo(ctx context.Context, repoID int64, branch string) ([]*MergeRequest, error) {
+	prs := make([]*MergeRequest, 0, 2)
 	return prs, db.GetEngine(ctx).
 		Where("base_repo_id=? AND base_branch=? AND has_merged=? AND issue.is_closed=?",
 			repoID, branch, false, false).
@@ -122,7 +122,7 @@ func GetUnmergedPullRequestsByBaseInfo(ctx context.Context, repoID int64, branch
 }
 
 // GetPullRequestIDsByCheckStatus returns all pull requests according the special checking status.
-func GetPullRequestIDsByCheckStatus(ctx context.Context, status PullRequestStatus) ([]int64, error) {
+func GetPullRequestIDsByCheckStatus(ctx context.Context, status MergeRequestStatus) ([]int64, error) {
 	prs := make([]int64, 0, 10)
 	return prs, db.GetEngine(ctx).Table("pull_request").
 		Where("status=?", status).
@@ -130,14 +130,14 @@ func GetPullRequestIDsByCheckStatus(ctx context.Context, status PullRequestStatu
 		Find(&prs)
 }
 
-// PullRequests returns all pull requests for a base Repo by the given conditions
-func PullRequests(ctx context.Context, baseRepoID int64, opts *PullRequestsOptions) (PullRequestList, int64, error) {
+// MergeRequests returns all pull requests for a base Repo by the given conditions
+func MergeRequests(ctx context.Context, baseRepoID int64, opts *MergeRequestsOptions) (MergeRequestList, int64, error) {
 	if opts.Page <= 0 {
 		opts.Page = 1
 	}
 
 	countSession := listPullRequestStatement(ctx, baseRepoID, opts)
-	maxResults, err := countSession.Count(new(PullRequest))
+	maxResults, err := countSession.Count(new(MergeRequest))
 	if err != nil {
 		log.Error("Count PRs: %v", err)
 		return nil, maxResults, err
@@ -146,14 +146,14 @@ func PullRequests(ctx context.Context, baseRepoID int64, opts *PullRequestsOptio
 	findSession := listPullRequestStatement(ctx, baseRepoID, opts)
 	applySorts(findSession, opts.SortType, 0)
 	findSession = db.SetSessionPagination(findSession, opts)
-	prs := make([]*PullRequest, 0, opts.PageSize)
+	prs := make([]*MergeRequest, 0, opts.PageSize)
 	return prs, maxResults, findSession.Find(&prs)
 }
 
-// PullRequestList defines a list of pull requests
-type PullRequestList []*PullRequest
+// MergeRequestList defines a list of pull requests
+type MergeRequestList []*MergeRequest
 
-func (prs PullRequestList) getRepositoryIDs() []int64 {
+func (prs MergeRequestList) getRepositoryIDs() []int64 {
 	repoIDs := make(container.Set[int64])
 	for _, pr := range prs {
 		if pr.BaseRepo == nil && pr.BaseRepoID > 0 {
@@ -166,7 +166,7 @@ func (prs PullRequestList) getRepositoryIDs() []int64 {
 	return repoIDs.Values()
 }
 
-func (prs PullRequestList) LoadRepositories(ctx context.Context) error {
+func (prs MergeRequestList) LoadRepositories(ctx context.Context) error {
 	repoIDs := prs.getRepositoryIDs()
 	reposMap := make(map[int64]*repo_model.Repository, len(repoIDs))
 	if err := db.GetEngine(ctx).
@@ -186,20 +186,20 @@ func (prs PullRequestList) LoadRepositories(ctx context.Context) error {
 	return nil
 }
 
-func (prs PullRequestList) LoadAttributes(ctx context.Context) error {
+func (prs MergeRequestList) LoadAttributes(ctx context.Context) error {
 	if _, err := prs.LoadIssues(ctx); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (prs PullRequestList) LoadIssues(ctx context.Context) (IssueList, error) {
+func (prs MergeRequestList) LoadIssues(ctx context.Context) (IssueList, error) {
 	if len(prs) == 0 {
 		return nil, nil
 	}
 
 	// Load issues which are not loaded
-	issueIDs := container.FilterSlice(prs, func(pr *PullRequest) (int64, bool) {
+	issueIDs := container.FilterSlice(prs, func(pr *MergeRequest) (int64, bool) {
 		return pr.IssueID, pr.Issue == nil && pr.IssueID > 0
 	})
 	issues := make(map[int64]*Issue, len(issueIDs))
@@ -215,7 +215,7 @@ func (prs PullRequestList) LoadIssues(ctx context.Context) (IssueList, error) {
 			pr.Issue = issues[pr.IssueID]
 			/*
 				Old code:
-				pr.Issue.PullRequest = pr // panic here means issueIDs and prs are not in sync
+				pr.Issue.MergeRequest = pr // panic here means issueIDs and prs are not in sync
 
 				It's worth panic because it's almost impossible to happen under normal use.
 				But in integration testing, an asynchronous task could read a database that has been reset.
@@ -225,7 +225,7 @@ func (prs PullRequestList) LoadIssues(ctx context.Context) (IssueList, error) {
 				return nil, fmt.Errorf("issues and prs may be not in sync: cannot find issue %v for pr %v: %w", pr.IssueID, pr.ID, util.ErrNotExist)
 			}
 		}
-		pr.Issue.PullRequest = pr
+		pr.Issue.MergeRequest = pr
 		if pr.Issue.Repo == nil {
 			pr.Issue.Repo = pr.BaseRepo
 		}
@@ -235,13 +235,13 @@ func (prs PullRequestList) LoadIssues(ctx context.Context) (IssueList, error) {
 }
 
 // GetIssueIDs returns all issue ids
-func (prs PullRequestList) GetIssueIDs() []int64 {
-	return container.FilterSlice(prs, func(pr *PullRequest) (int64, bool) {
+func (prs MergeRequestList) GetIssueIDs() []int64 {
+	return container.FilterSlice(prs, func(pr *MergeRequest) (int64, bool) {
 		return pr.IssueID, pr.IssueID > 0
 	})
 }
 
-func (prs PullRequestList) LoadReviewCommentsCounts(ctx context.Context) (map[int64]int, error) {
+func (prs MergeRequestList) LoadReviewCommentsCounts(ctx context.Context) (map[int64]int, error) {
 	issueIDs := prs.GetIssueIDs()
 	countsMap := make(map[int64]int, len(issueIDs))
 	counts := make([]struct {
@@ -259,7 +259,7 @@ func (prs PullRequestList) LoadReviewCommentsCounts(ctx context.Context) (map[in
 	return countsMap, nil
 }
 
-func (prs PullRequestList) LoadReviews(ctx context.Context) (ReviewList, error) {
+func (prs MergeRequestList) LoadReviews(ctx context.Context) (ReviewList, error) {
 	issueIDs := prs.GetIssueIDs()
 	reviews := make([]*Review, 0, len(issueIDs))
 
@@ -313,8 +313,8 @@ func HasMergedPullRequestInRepo(ctx context.Context, repoID, posterID int64) (bo
 }
 
 // GetPullRequestByIssueIDs returns all pull requests by issue ids
-func GetPullRequestByIssueIDs(ctx context.Context, issueIDs []int64) (PullRequestList, error) {
-	prs := make([]*PullRequest, 0, len(issueIDs))
+func GetPullRequestByIssueIDs(ctx context.Context, issueIDs []int64) (MergeRequestList, error) {
+	prs := make([]*MergeRequest, 0, len(issueIDs))
 	return prs, db.GetEngine(ctx).
 		Where("issue_id > 0").
 		In("issue_id", issueIDs).

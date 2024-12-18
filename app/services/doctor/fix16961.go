@@ -93,7 +93,7 @@ func fixExternalTrackerConfig16961(bs []byte, cfg *repo_model.ExternalTrackerCon
 	return true, nil
 }
 
-func fixPullRequestsConfig16961(bs []byte, cfg *repo_model.PullRequestsConfig) (fixed bool, err error) {
+func fixMergeRequestsConfig16961(bs []byte, cfg *repo_model.MergeRequestsConfig) (fixed bool, err error) {
 	err = json.UnmarshalHandleDoubleEncode(bs, &cfg)
 	if err == nil {
 		return false, nil
@@ -108,8 +108,8 @@ func fixPullRequestsConfig16961(bs []byte, cfg *repo_model.PullRequestsConfig) (
 		return false, err
 	}
 
-	// PullRequestsConfig was the following in 1.14
-	// type PullRequestsConfig struct {
+	// MergeRequestsConfig was the following in 1.14
+	// type MergeRequestsConfig struct {
 	// 	IgnoreWhitespaceConflicts bool
 	// 	AllowMerge                bool
 	// 	AllowRebase               bool
@@ -243,10 +243,10 @@ func fixBrokenRepoUnit16961(repoUnit *repo_model.RepoUnit, bs []byte) (fixed boo
 			return false, err
 		}
 	case unit.TypeMergeRequests:
-		cfg := &repo_model.PullRequestsConfig{}
+		cfg := &repo_model.MergeRequestsConfig{}
 		repoUnit.Config = cfg
 
-		if fixed, err := fixPullRequestsConfig16961(bs, cfg); !fixed {
+		if fixed, err := fixMergeRequestsConfig16961(bs, cfg); !fixed {
 			return false, err
 		}
 	case unit.TypeIssues:

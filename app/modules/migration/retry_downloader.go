@@ -163,9 +163,9 @@ func (d *RetryDownloader) GetComments(commentable Commentable) ([]*Comment, bool
 }
 
 // GetPullRequests returns a repository's pull requests with retry
-func (d *RetryDownloader) GetPullRequests(page, perPage int) ([]*PullRequest, bool, error) {
+func (d *RetryDownloader) GetPullRequests(page, perPage int) ([]*MergeRequest, bool, error) {
 	var (
-		prs   []*PullRequest
+		prs   []*MergeRequest
 		err   error
 		isEnd bool
 	)

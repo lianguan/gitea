@@ -77,16 +77,16 @@ func NewComment(ctx *context.Context) {
 		// Check if issue admin/poster changes the status of issue.
 		if (ctx.Repo.CanWriteIssuesOrPulls(issue.IsMergeRequest) || (ctx.IsSigned && issue.IsPoster(ctx.Doer.ID))) &&
 			(form.Status == "reopen" || form.Status == "close") &&
-			!(issue.IsMergeRequest && issue.PullRequest.HasMerged) {
+			!(issue.IsMergeRequest && issue.MergeRequest.HasMerged) {
 			// Duplication and conflict check should apply to reopen pull request.
-			var pr *issues_model.PullRequest
+			var pr *issues_model.MergeRequest
 
 			if form.Status == "reopen" && issue.IsMergeRequest {
-				pull := issue.PullRequest
+				pull := issue.MergeRequest
 				var err error
 				pr, err = issues_model.GetUnmergedPullRequest(ctx, pull.HeadRepoID, pull.BaseRepoID, pull.HeadBranch, pull.BaseBranch, pull.Flow)
 				if err != nil {
-					if !issues_model.IsErrPullRequestNotExist(err) {
+					if !issues_model.IsErrMergeRequestNotExist(err) {
 						ctx.JSONError(ctx.Tr("repo.issues.dependency.pr_close_blocked"))
 						return
 					}
@@ -94,13 +94,13 @@ func NewComment(ctx *context.Context) {
 
 				// Regenerate patch and test conflict.
 				if pr == nil {
-					issue.PullRequest.HeadCommitID = ""
-					pull_service.AddToTaskQueue(ctx, issue.PullRequest)
+					issue.MergeRequest.HeadCommitID = ""
+					pull_service.AddToTaskQueue(ctx, issue.MergeRequest)
 				}
 
 				// check whether the ref of PR <refs/pulls/pr_index/head> in base repo is consistent with the head commit of head branch in the head repo
 				// get head commit of PR
-				if pull.Flow == issues_model.PullRequestFlowGithub {
+				if pull.Flow == issues_model.MergeRequestFlowGithub {
 					prHeadRef := pull.GetGitRefName()
 					if err := pull.LoadBaseRepo(ctx); err != nil {
 						ctx.ServerError("Unable to load base repo", err)

@@ -121,7 +121,7 @@ func TestCodebaseDownloadRepo(t *testing.T) {
 
 	prs, _, err := downloader.GetPullRequests(1, 1)
 	assert.NoError(t, err)
-	assertPullRequestsEqual(t, []*base.PullRequest{
+	assertPullRequestsEqual(t, []*base.MergeRequest{
 		{
 			Number:      3,
 			Title:       "Readme Change",
@@ -131,12 +131,12 @@ func TestCodebaseDownloadRepo(t *testing.T) {
 			State:       "open",
 			Created:     time.Date(2021, time.September, 26, 20, 25, 47, 0, time.UTC),
 			Updated:     time.Date(2021, time.September, 26, 20, 25, 47, 0, time.UTC),
-			Head: base.PullRequestBranch{
+			Head: base.MergeRequestBranch{
 				Ref:      "readme-mr",
 				SHA:      "1287f206b888d4d13540e0a8e1c07458f5420059",
 				RepoName: "test",
 			},
-			Base: base.PullRequestBranch{
+			Base: base.MergeRequestBranch{
 				Ref:      "master",
 				SHA:      "f32b0a9dfd09a60f616f29158f772cedd89942d2",
 				RepoName: "test",

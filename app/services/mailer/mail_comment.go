@@ -40,7 +40,7 @@ func MailParticipantsComment(ctx context.Context, c *issues_model.Comment, opTyp
 }
 
 // MailMentionsComment sends email to users mentioned in a code comment
-func MailMentionsComment(ctx context.Context, pr *issues_model.PullRequest, c *issues_model.Comment, mentions []*user_model.User) (err error) {
+func MailMentionsComment(ctx context.Context, pr *issues_model.MergeRequest, c *issues_model.Comment, mentions []*user_model.User) (err error) {
 	if setting.MailService == nil {
 		// No mail service configured
 		return nil

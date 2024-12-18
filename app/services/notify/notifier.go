@@ -41,14 +41,14 @@ type Notifier interface {
 	IssueChangeLabels(ctx context.Context, doer *user_model.User, issue *issues_model.Issue,
 		addedLabels, removedLabels []*issues_model.Label)
 
-	NewPullRequest(ctx context.Context, pr *issues_model.PullRequest, mentions []*user_model.User)
-	MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest)
-	AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest)
-	PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest)
-	PullRequestReview(ctx context.Context, pr *issues_model.PullRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User)
-	PullRequestCodeComment(ctx context.Context, pr *issues_model.PullRequest, comment *issues_model.Comment, mentions []*user_model.User)
-	PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, oldBranch string)
-	PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.PullRequest, comment *issues_model.Comment)
+	NewPullRequest(ctx context.Context, pr *issues_model.MergeRequest, mentions []*user_model.User)
+	MergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest)
+	AutoMergePullRequest(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest)
+	PullRequestSynchronized(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest)
+	PullRequestReview(ctx context.Context, pr *issues_model.MergeRequest, review *issues_model.Review, comment *issues_model.Comment, mentions []*user_model.User)
+	PullRequestCodeComment(ctx context.Context, pr *issues_model.MergeRequest, comment *issues_model.Comment, mentions []*user_model.User)
+	PullRequestChangeTargetBranch(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, oldBranch string)
+	PullRequestPushCommits(ctx context.Context, doer *user_model.User, pr *issues_model.MergeRequest, comment *issues_model.Comment)
 	PullReviewDismiss(ctx context.Context, doer *user_model.User, review *issues_model.Review, comment *issues_model.Comment)
 
 	CreateIssueComment(ctx context.Context, doer *user_model.User, repo *repo_model.Repository,

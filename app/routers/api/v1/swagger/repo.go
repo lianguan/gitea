@@ -144,14 +144,14 @@ type swaggerResponseReleaseList struct {
 // swagger:response PullRequest
 type swaggerResponsePullRequest struct {
 	// in:body
-	Body api.PullRequest `json:"body"`
+	Body api.MergeRequest `json:"body"`
 }
 
-// PullRequestList
-// swagger:response PullRequestList
-type swaggerResponsePullRequestList struct {
+// MergeRequestList
+// swagger:response MergeRequestList
+type swaggerResponseMergeRequestList struct {
 	// in:body
-	Body []api.PullRequest `json:"body"`
+	Body []api.MergeRequest `json:"body"`
 }
 
 // PullReview

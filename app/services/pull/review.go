@@ -67,7 +67,7 @@ func checkInvalidation(ctx context.Context, c *issues_model.Comment, repo *git.R
 }
 
 // InvalidateCodeComments will lookup the prs for code comments which got invalidated by change
-func InvalidateCodeComments(ctx context.Context, prs issues_model.PullRequestList, doer *user_model.User, repo *git.Repository, branch string) error {
+func InvalidateCodeComments(ctx context.Context, prs issues_model.MergeRequestList, doer *user_model.User, repo *git.Repository, branch string) error {
 	if len(prs) == 0 {
 		return nil
 	}
@@ -189,7 +189,7 @@ func createCodeComment(ctx context.Context, doer *user_model.User, repo *repo_mo
 	if err := issue.LoadPullRequest(ctx); err != nil {
 		return nil, fmt.Errorf("LoadPullRequest: %w", err)
 	}
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 	if err := pr.LoadBaseRepo(ctx); err != nil {
 		return nil, fmt.Errorf("LoadBaseRepo: %w", err)
 	}
@@ -292,7 +292,7 @@ func SubmitReview(ctx context.Context, doer *user_model.User, gitRepo *git.Repos
 		return nil, nil, err
 	}
 
-	pr := issue.PullRequest
+	pr := issue.MergeRequest
 	var stale bool
 	if reviewType != issues_model.ReviewTypeApprove && reviewType != issues_model.ReviewTypeReject {
 		stale = false
@@ -344,7 +344,7 @@ func SubmitReview(ctx context.Context, doer *user_model.User, gitRepo *git.Repos
 }
 
 // DismissApprovalReviews dismiss all approval reviews because of new commits
-func DismissApprovalReviews(ctx context.Context, doer *user_model.User, pull *issues_model.PullRequest) error {
+func DismissApprovalReviews(ctx context.Context, doer *user_model.User, pull *issues_model.MergeRequest) error {
 	reviews, err := issues_model.FindReviews(ctx, issues_model.FindReviewOptions{
 		ListOptions: db.ListOptionsAll,
 		IssueID:     pull.IssueID,
@@ -418,7 +418,7 @@ func DismissReview(ctx context.Context, reviewID, repoID int64, message string, 
 		if err := issue.LoadPullRequest(ctx); err != nil {
 			return nil, err
 		}
-		if issue.PullRequest.HasMerged {
+		if issue.MergeRequest.HasMerged {
 			return nil, ErrDismissRequestOnClosedPR{}
 		}
 	}

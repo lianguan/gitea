@@ -118,13 +118,13 @@ func (t telegramConvertor) IssueComment(p *api.IssueCommentPayload) (TelegramPay
 }
 
 // PullRequest implements PayloadConvertor PullRequest method
-func (t telegramConvertor) PullRequest(p *api.PullRequestPayload) (TelegramPayload, error) {
-	text, _, extraMarkdown, _ := getPullRequestPayloadInfo(p, htmlLinkFormatter, true)
+func (t telegramConvertor) PullRequest(p *api.MergeRequestPayload) (TelegramPayload, error) {
+	text, _, extraMarkdown, _ := getMergeRequestPayloadInfo(p, htmlLinkFormatter, true)
 	return createTelegramPayloadHTML(text + "\n" + html.EscapeString(extraMarkdown)), nil
 }
 
 // Review implements PayloadConvertor Review method
-func (t telegramConvertor) Review(p *api.PullRequestPayload, event webhook_module.HookEventType) (TelegramPayload, error) {
+func (t telegramConvertor) Review(p *api.MergeRequestPayload, event webhook_module.HookEventType) (TelegramPayload, error) {
 	var text, extraMarkdown string
 	switch p.Action {
 	case api.HookIssueReviewed:
@@ -133,7 +133,7 @@ func (t telegramConvertor) Review(p *api.PullRequestPayload, event webhook_modul
 			return TelegramPayload{}, err
 		}
 
-		text = fmt.Sprintf("[%s] Pull request review %s: #%d %s", html.EscapeString(p.Repository.FullName), html.EscapeString(action), p.Index, html.EscapeString(p.PullRequest.Title))
+		text = fmt.Sprintf("[%s] Pull request review %s: #%d %s", html.EscapeString(p.Repository.FullName), html.EscapeString(action), p.Index, html.EscapeString(p.MergeRequest.Title))
 		extraMarkdown = p.Review.Content
 	}
 

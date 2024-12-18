@@ -101,7 +101,7 @@ func ListPullRequests(ctx *context.APIContext) {
 	//   minimum: 0
 	// responses:
 	//   "200":
-	//     "$ref": "#/responses/PullRequestList"
+	//     "$ref": "#/responses/MergeRequestList"
 	//   "404":
 	//     "$ref": "#/responses/notFound"
 	//   "500":
@@ -126,7 +126,7 @@ func ListPullRequests(ctx *context.APIContext) {
 		posterID = poster.ID
 	}
 	listOptions := utils.GetListOptions(ctx)
-	prs, maxResults, err := issues_model.PullRequests(ctx, ctx.Repo.Repository.ID, &issues_model.PullRequestsOptions{
+	prs, maxResults, err := issues_model.MergeRequests(ctx, ctx.Repo.Repository.ID, &issues_model.MergeRequestsOptions{
 		ListOptions: listOptions,
 		State:       ctx.FormTrim("state"),
 		SortType:    ctx.FormTrim("sort"),
@@ -182,7 +182,7 @@ func GetPullRequest(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -267,7 +267,7 @@ func GetPullRequestByBaseHead(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByBaseHeadInfo(ctx, ctx.Repo.Repository.ID, headRepoID, ctx.PathParam(":base"), headBranch)
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByBaseHeadInfo", err)
@@ -327,7 +327,7 @@ func DownloadPullDiffOrPatch(ctx *context.APIContext) {
 	//     "$ref": "#/responses/notFound"
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.InternalServerError(err)
@@ -414,15 +414,15 @@ func CreatePullRequest(ctx *context.APIContext) {
 	// Check if another PR exists with the same targets
 	existingPr, err := issues_model.GetUnmergedPullRequest(ctx, compareResult.headRepo.ID, ctx.Repo.Repository.ID,
 		compareResult.headRef.ShortName(), compareResult.baseRef.ShortName(),
-		issues_model.PullRequestFlowGithub,
+		issues_model.MergeRequestFlowGithub,
 	)
 	if err != nil {
-		if !issues_model.IsErrPullRequestNotExist(err) {
+		if !issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.Error(http.StatusInternalServerError, "GetUnmergedPullRequest", err)
 			return
 		}
 	} else {
-		err = issues_model.ErrPullRequestAlreadyExists{
+		err = issues_model.ErrMergeRequestAlreadyExists{
 			ID:         existingPr.ID,
 			IssueID:    existingPr.Index,
 			HeadRepoID: existingPr.HeadRepoID,
@@ -481,16 +481,16 @@ func CreatePullRequest(ctx *context.APIContext) {
 	}
 
 	prIssue := &issues_model.Issue{
-		RepoID:       repo.ID,
-		Title:        form.Title,
-		PosterID:     ctx.Doer.ID,
-		Poster:       ctx.Doer,
-		MilestoneID:  milestoneID,
-		IsMergeRequest:       true,
-		Content:      form.Body,
-		DeadlineUnix: deadlineUnix,
+		RepoID:         repo.ID,
+		Title:          form.Title,
+		PosterID:       ctx.Doer.ID,
+		Poster:         ctx.Doer,
+		MilestoneID:    milestoneID,
+		IsMergeRequest: true,
+		Content:        form.Body,
+		DeadlineUnix:   deadlineUnix,
 	}
-	pr := &issues_model.PullRequest{
+	pr := &issues_model.MergeRequest{
 		HeadRepoID: compareResult.headRepo.ID,
 		BaseRepoID: repo.ID,
 		HeadBranch: compareResult.headRef.ShortName(),
@@ -498,7 +498,7 @@ func CreatePullRequest(ctx *context.APIContext) {
 		HeadRepo:   compareResult.headRepo,
 		BaseRepo:   repo,
 		MergeBase:  compareResult.compareInfo.MergeBase,
-		Type:       issues_model.PullRequestGitea,
+		Type:       issues_model.MergeRequestGitea,
 	}
 
 	// Get all assignee IDs
@@ -606,7 +606,7 @@ func EditPullRequest(ctx *context.APIContext) {
 	form := web.GetForm(ctx).(*api.EditPullRequestOption)
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -759,14 +759,14 @@ func EditPullRequest(ctx *context.APIContext) {
 			return
 		}
 		if err := pull_service.ChangeTargetBranch(ctx, pr, ctx.Doer, form.Base); err != nil {
-			if issues_model.IsErrPullRequestAlreadyExists(err) {
-				ctx.Error(http.StatusConflict, "IsErrPullRequestAlreadyExists", err)
+			if issues_model.IsErrMergeRequestAlreadyExists(err) {
+				ctx.Error(http.StatusConflict, "IsErrMergeRequestAlreadyExists", err)
 				return
 			} else if issues_model.IsErrIssueIsClosed(err) {
 				ctx.Error(http.StatusUnprocessableEntity, "IsErrIssueIsClosed", err)
 				return
-			} else if models.IsErrPullRequestHasMerged(err) {
-				ctx.Error(http.StatusConflict, "IsErrPullRequestHasMerged", err)
+			} else if models.IsErrMergeRequestHasMerged(err) {
+				ctx.Error(http.StatusConflict, "IsErrMergeRequestHasMerged", err)
 				return
 			}
 			ctx.InternalServerError(err)
@@ -790,7 +790,7 @@ func EditPullRequest(ctx *context.APIContext) {
 	// Refetch from database
 	pr, err = issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, pr.Index)
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -834,7 +834,7 @@ func IsMergeRequestMerged(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -892,7 +892,7 @@ func MergePullRequest(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound("GetPullRequestByIndex", err)
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -1034,7 +1034,7 @@ func MergePullRequest(ctx *context.APIContext) {
 	log.Trace("Pull request merged: %d", pr.ID)
 
 	// for agit flow, we should not delete the agit reference after merge
-	if form.DeleteBranchAfterMerge && pr.Flow == issues_model.PullRequestFlowGithub {
+	if form.DeleteBranchAfterMerge && pr.Flow == issues_model.MergeRequestFlowGithub {
 		// check permission even it has been checked in repo_service.DeleteBranch so that we don't need to
 		// do RetargetChildrenOnMerge
 		if err := repo_service.CanDeleteBranch(ctx, pr.HeadRepo, pr.HeadBranch, ctx.Doer); err == nil {
@@ -1259,7 +1259,7 @@ func UpdatePullRequest(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -1359,7 +1359,7 @@ func CancelScheduledAutoMerge(ctx *context.APIContext) {
 	pullIndex := ctx.PathParamInt64(":index")
 	pull, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, pullIndex)
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 			return
 		}
@@ -1444,7 +1444,7 @@ func GetPullRequestCommits(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)
@@ -1567,7 +1567,7 @@ func GetPullRequestFiles(ctx *context.APIContext) {
 
 	pr, err := issues_model.GetPullRequestByIndex(ctx, ctx.Repo.Repository.ID, ctx.PathParamInt64(":index"))
 	if err != nil {
-		if issues_model.IsErrPullRequestNotExist(err) {
+		if issues_model.IsErrMergeRequestNotExist(err) {
 			ctx.NotFound()
 		} else {
 			ctx.Error(http.StatusInternalServerError, "GetPullRequestByIndex", err)

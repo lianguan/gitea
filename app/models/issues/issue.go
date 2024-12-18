@@ -122,8 +122,8 @@ type Issue struct {
 	isAssigneeLoaded  bool             `xorm:"-"`
 	IsClosed          bool             `xorm:"INDEX"`
 	IsRead            bool             `xorm:"-"`
-	IsMergeRequest            bool             `xorm:"INDEX"` // Indicates whether is a pull request or not.
-	PullRequest       *PullRequest     `xorm:"-"`
+	IsMergeRequest    bool             `xorm:"INDEX"` // Indicates whether is a pull request or not.
+	MergeRequest      *MergeRequest    `xorm:"-"`
 	NumComments       int
 
 	// TODO: RemoveIssueRef: see "repo/issue/branch_selector_field.tmpl"
@@ -238,17 +238,17 @@ func (issue *Issue) LoadPoster(ctx context.Context) (err error) {
 // LoadPullRequest loads pull request info
 func (issue *Issue) LoadPullRequest(ctx context.Context) (err error) {
 	if issue.IsMergeRequest {
-		if issue.PullRequest == nil && issue.ID != 0 {
-			issue.PullRequest, err = GetPullRequestByIssueID(ctx, issue.ID)
+		if issue.MergeRequest == nil && issue.ID != 0 {
+			issue.MergeRequest, err = GetPullRequestByIssueID(ctx, issue.ID)
 			if err != nil {
-				if IsErrPullRequestNotExist(err) {
+				if IsErrMergeRequestNotExist(err) {
 					return err
 				}
 				return fmt.Errorf("getPullRequestByIssueID [%d]: %w", issue.ID, err)
 			}
 		}
-		if issue.PullRequest != nil {
-			issue.PullRequest.Issue = issue
+		if issue.MergeRequest != nil {
+			issue.MergeRequest.Issue = issue
 		}
 	}
 	return nil
@@ -346,7 +346,7 @@ func (issue *Issue) LoadAttributes(ctx context.Context) (err error) {
 		return err
 	}
 
-	if err = issue.LoadPullRequest(ctx); err != nil && !IsErrPullRequestNotExist(err) {
+	if err = issue.LoadPullRequest(ctx); err != nil && !IsErrMergeRequestNotExist(err) {
 		// It is possible pull request is not yet created.
 		return err
 	}
@@ -480,7 +480,7 @@ func (issue *Issue) GetLastEventTimestamp() timeutil.TimeStamp {
 // GetLastEventLabel returns the localization label for the current issue.
 func (issue *Issue) GetLastEventLabel() string {
 	if issue.IsClosed {
-		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.MergeRequest.HasMerged {
 			return "repo.merges.merged_by"
 		}
 		return "repo.issues.closed_by"
@@ -505,7 +505,7 @@ func (issue *Issue) GetLastComment(ctx context.Context) (*Comment, error) {
 // GetLastEventLabelFake returns the localization label for the current issue without providing a link in the username.
 func (issue *Issue) GetLastEventLabelFake() string {
 	if issue.IsClosed {
-		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
+		if issue.IsMergeRequest && issue.MergeRequest.HasMerged {
 			return "repo.merges.merged_by_fake"
 		}
 		return "repo.issues.closed_by_fake"

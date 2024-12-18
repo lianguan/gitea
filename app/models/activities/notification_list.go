@@ -474,7 +474,7 @@ func (nl NotificationList) LoadComments(ctx context.Context) ([]int, error) {
 func (nl NotificationList) LoadIssuePullRequests(ctx context.Context) error {
 	issues := make(map[int64]*issues_model.Issue, len(nl))
 	for _, notification := range nl {
-		if notification.Issue != nil && notification.Issue.IsMergeRequest && notification.Issue.PullRequest == nil {
+		if notification.Issue != nil && notification.Issue.IsMergeRequest && notification.Issue.MergeRequest == nil {
 			issues[notification.Issue.ID] = notification.Issue
 		}
 	}
@@ -490,8 +490,8 @@ func (nl NotificationList) LoadIssuePullRequests(ctx context.Context) error {
 
 	for _, pull := range pulls {
 		if issue := issues[pull.IssueID]; issue != nil {
-			issue.PullRequest = pull
-			issue.PullRequest.Issue = issue
+			issue.MergeRequest = pull
+			issue.MergeRequest.Issue = issue
 		}
 	}
 

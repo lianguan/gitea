@@ -228,7 +228,7 @@ func TestGiteaDownloadRepo(t *testing.T) {
 	assert.NoError(t, err)
 	assert.False(t, isEnd)
 	assert.Len(t, prs, 3)
-	assertPullRequestEqual(t, &base.PullRequest{
+	assertPullRequestEqual(t, &base.MergeRequest{
 		Number:      12,
 		PosterID:    689,
 		PosterName:  "6543",
@@ -242,14 +242,14 @@ func TestGiteaDownloadRepo(t *testing.T) {
 		Updated:     time.Unix(1599023425, 0),
 		Closed:      timePtr(time.Unix(1598982934, 0)),
 		Assignees:   []string{"techknowlogick"},
-		Base: base.PullRequestBranch{
+		Base: base.MergeRequestBranch{
 			CloneURL:  "",
 			Ref:       "master",
 			SHA:       "827aa28a907853e5ddfa40c8f9bc52471a2685fd",
 			RepoName:  "test_repo",
 			OwnerName: "gitea",
 		},
-		Head: base.PullRequestBranch{
+		Head: base.MergeRequestBranch{
 			CloneURL:  "https://gitea.com/6543-forks/test_repo.git",
 			Ref:       "refs/pull/12/head",
 			SHA:       "b6ab5d9ae000b579a5fff03f92c486da4ddf48b6",
