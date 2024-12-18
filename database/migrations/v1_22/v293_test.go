@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/app/models/project"
+	"code.gitea.io/gitea/database/migrations/base"
 
 	"github.com/stretchr/testify/assert"
 )

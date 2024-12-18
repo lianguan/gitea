@@ -7,8 +7,8 @@ import (
 	"context"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/database/migrations"
 	"code.gitea.io/gitea/app/modules/log"
+	"code.gitea.io/gitea/database/migrations"
 )
 
 func checkDBVersion(ctx context.Context, logger log.Logger, autofix bool) error {

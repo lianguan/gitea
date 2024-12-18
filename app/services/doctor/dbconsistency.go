@@ -10,10 +10,10 @@ import (
 	activities_model "code.gitea.io/gitea/app/models/activities"
 	"code.gitea.io/gitea/app/models/db"
 	issues_model "code.gitea.io/gitea/app/models/issues"
-	"code.gitea.io/gitea/database/migrations"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	"code.gitea.io/gitea/app/modules/log"
 	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/database/migrations"
 )
 
 type consistencyCheck struct {

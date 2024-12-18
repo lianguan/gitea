@@ -113,7 +113,10 @@ func FixMergeBase(x *xorm.Engine) error {
 				}
 			}
 			pr.MergeBase = strings.TrimSpace(pr.MergeBase)
-			x.ID(pr.ID).Cols("merge_base").Update(pr)
+			_, err = x.ID(pr.ID).Cols("merge_base").Update(pr)
+			if err != nil {
+				log.Info("Error occurred while updating data: %v", err)
+			}
 			i++
 			select {
 			case <-ticker.C:

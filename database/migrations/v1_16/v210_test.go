@@ -6,8 +6,8 @@ package v1_16 //nolint
 import (
 	"testing"
 
-	"code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/database/migrations/base"
 
 	"github.com/stretchr/testify/assert"
 	"xorm.io/xorm/schemas"

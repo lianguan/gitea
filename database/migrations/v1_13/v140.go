@@ -6,8 +6,8 @@ package v1_13 //nolint
 import (
 	"fmt"
 
-	"code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/app/modules/setting"
+	"code.gitea.io/gitea/database/migrations/base"
 
 	"xorm.io/xorm"
 )
@@ -37,7 +37,9 @@ func FixLanguageStatsToSaveSize(x *xorm.Engine) error {
 		return fmt.Errorf("Sync: %w", err)
 	}
 
-	x.Delete(&RepoIndexerStatus{IndexerType: RepoIndexerTypeStats})
+	if _, err := x.Delete(&RepoIndexerStatus{IndexerType: RepoIndexerTypeStats}); err != nil {
+		return err
+	}
 
 	// Delete language stat statuses
 	truncExpr := "TRUNCATE TABLE"

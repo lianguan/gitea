@@ -13,7 +13,6 @@ import (
 	actions_model "code.gitea.io/gitea/app/models/actions"
 	"code.gitea.io/gitea/app/models/db"
 	git_model "code.gitea.io/gitea/app/models/git"
-	"code.gitea.io/gitea/database/migrations"
 	packages_model "code.gitea.io/gitea/app/models/packages"
 	repo_model "code.gitea.io/gitea/app/models/repo"
 	user_model "code.gitea.io/gitea/app/models/user"
@@ -21,6 +20,7 @@ import (
 	packages_module "code.gitea.io/gitea/app/modules/packages"
 	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/modules/storage"
+	"code.gitea.io/gitea/database/migrations"
 
 	"github.com/urfave/cli/v2"
 )

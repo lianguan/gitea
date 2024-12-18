@@ -18,8 +18,6 @@ import (
 	"testing"
 
 	"code.gitea.io/gitea/app/models/db"
-	"code.gitea.io/gitea/database/migrations"
-	migrate_base "code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/app/models/unittest"
 	"code.gitea.io/gitea/app/modules/base"
 	"code.gitea.io/gitea/app/modules/charset"
@@ -28,6 +26,8 @@ import (
 	"code.gitea.io/gitea/app/modules/setting"
 	"code.gitea.io/gitea/app/modules/testlogger"
 	"code.gitea.io/gitea/app/modules/util"
+	"code.gitea.io/gitea/database/migrations"
+	migrate_base "code.gitea.io/gitea/database/migrations/base"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"xorm.io/xorm"

@@ -4,8 +4,8 @@
 package v1_13 //nolint
 
 import (
-	"code.gitea.io/gitea/database/migrations/base"
 	"code.gitea.io/gitea/app/modules/timeutil"
+	"code.gitea.io/gitea/database/migrations/base"
 
 	"xorm.io/xorm"
 )
@@ -32,8 +32,12 @@ func AddPrimaryKeyToRepoTopic(x *xorm.Engine) error {
 		return err
 	}
 
-	base.RecreateTable(sess, &Topic{})
-	base.RecreateTable(sess, &RepoTopic{})
+	if err := base.RecreateTable(sess, &Topic{}); err != nil {
+		return err
+	}
+	if err := base.RecreateTable(sess, &RepoTopic{}); err != nil {
+		return err
+	}
 
 	return sess.Commit()
 }
