@@ -11,7 +11,7 @@
 					<div class="field">
 						<input name="title" class="js-autofocus-end" id="issue_title" placeholder="{{ctx.Locale.Tr "repo.milestones.title"}}" value="{{if .TitleQuery}}{{.TitleQuery}}{{else if .IssueTemplateTitle}}{{.IssueTemplateTitle}}{{else}}{{.title}}{{end}}" required maxlength="255" autocomplete="off">
 						{{if .PageIsComparePull}}
-							<div class="title_wip_desc" data-wip-prefixes="{{JsonUtils.EncodeToString .PullRequestWorkInProgressPrefixes}}">{{ctx.Locale.Tr "repo.pulls.title_wip_desc" (index .PullRequestWorkInProgressPrefixes 0)}}</div>
+							<div class="title_wip_desc" data-wip-prefixes="{{JsonUtils.EncodeToString .PullRequestWorkInProgressPrefixes}}">{{ctx.Locale.Tr "repo.merges.title_wip_desc" (index .PullRequestWorkInProgressPrefixes 0)}}</div>
 						{{end}}
 					</div>
 					{{if .Fields}}
@@ -35,7 +35,7 @@
 					<div class="text right">
 						<button class="ui primary button">
 							{{if .PageIsComparePull}}
-								{{ctx.Locale.Tr "repo.pulls.create"}}
+								{{ctx.Locale.Tr "repo.merges.create"}}
 							{{else}}
 								{{ctx.Locale.Tr "repo.issues.create"}}
 							{{end}}
@@ -64,7 +64,7 @@
 		{{if and .PageIsComparePull (not (eq .HeadRepo.FullName .BaseCompareRepo.FullName)) .CanWriteToHeadRepo}}
 			<div class="divider"></div>
 			<div class="ui checkbox">
-				<label data-tooltip-content="{{ctx.Locale.Tr "repo.pulls.allow_edits_from_maintainers_desc"}}"><strong>{{ctx.Locale.Tr "repo.pulls.allow_edits_from_maintainers"}}</strong></label>
+				<label data-tooltip-content="{{ctx.Locale.Tr "repo.merges.allow_edits_from_maintainers_desc"}}"><strong>{{ctx.Locale.Tr "repo.merges.allow_edits_from_maintainers"}}</strong></label>
 				<input name="allow_maintainer_edit" type="checkbox" {{if .AllowMaintainerEdit}}checked{{end}}>
 			</div>
 		{{end}}

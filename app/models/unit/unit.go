@@ -274,7 +274,7 @@ var (
 		TypeMergeRequests,
 		"repo.pulls",
 		"/merge_requests",
-		"repo.pulls.desc",
+		"repo.merges.desc",
 		2,
 		perm.AccessModeOwner,
 	}

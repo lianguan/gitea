@@ -268,7 +268,7 @@ func MergeUpstream(ctx *context.Context) {
 			ctx.JSONError(ctx.Tr("error.not_found"))
 			return
 		} else if models.IsErrMergeConflicts(err) {
-			ctx.JSONError(ctx.Tr("repo.pulls.merge_conflict"))
+			ctx.JSONError(ctx.Tr("repo.merges.merge_conflict"))
 			return
 		}
 		ctx.ServerError("MergeUpstream", err)

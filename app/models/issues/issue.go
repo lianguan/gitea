@@ -481,7 +481,7 @@ func (issue *Issue) GetLastEventTimestamp() timeutil.TimeStamp {
 func (issue *Issue) GetLastEventLabel() string {
 	if issue.IsClosed {
 		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
-			return "repo.pulls.merged_by"
+			return "repo.merges.merged_by"
 		}
 		return "repo.issues.closed_by"
 	}
@@ -506,7 +506,7 @@ func (issue *Issue) GetLastComment(ctx context.Context) (*Comment, error) {
 func (issue *Issue) GetLastEventLabelFake() string {
 	if issue.IsClosed {
 		if issue.IsMergeRequest && issue.PullRequest.HasMerged {
-			return "repo.pulls.merged_by_fake"
+			return "repo.merges.merged_by_fake"
 		}
 		return "repo.issues.closed_by_fake"
 	}

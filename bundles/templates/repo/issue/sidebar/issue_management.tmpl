@@ -96,7 +96,7 @@
 	<div class="ui g-modal-confirm modal" id="sidebar-delete-issue">
 		<div class="header">
 			{{if .Issue.IsMergeRequest}}
-				{{ctx.Locale.Tr "repo.pulls.delete.title"}}
+				{{ctx.Locale.Tr "repo.merges.delete.title"}}
 			{{else}}
 				{{ctx.Locale.Tr "repo.issues.delete.title"}}
 			{{end}}
@@ -104,7 +104,7 @@
 		<div class="content">
 			<p>
 				{{if .Issue.IsMergeRequest}}
-					{{ctx.Locale.Tr "repo.pulls.delete.text"}}
+					{{ctx.Locale.Tr "repo.merges.delete.text"}}
 				{{else}}
 					{{ctx.Locale.Tr "repo.issues.delete.text"}}
 				{{end}}

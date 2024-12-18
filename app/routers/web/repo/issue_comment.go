@@ -152,7 +152,7 @@ func NewComment(ctx *context.Context) {
 			}
 
 			if pr != nil {
-				ctx.Flash.Info(ctx.Tr("repo.pulls.open_unmerged_pull_exists", pr.Index))
+				ctx.Flash.Info(ctx.Tr("repo.merges.open_unmerged_pull_exists", pr.Index))
 			} else {
 				isClosed := form.Status == "close"
 				if err := issue_service.ChangeStatus(ctx, issue, ctx.Doer, "", isClosed); err != nil {

@@ -3,10 +3,10 @@
 	<div class="divider"></div>
 	<div class="ui checkbox loading-icon-2px" id="allow-edits-from-maintainers"
 			data-url="{{.Issue.Link}}"
-			data-tooltip-content="{{ctx.Locale.Tr "repo.pulls.allow_edits_from_maintainers_desc"}}"
-			data-prompt-error="{{ctx.Locale.Tr "repo.pulls.allow_edits_from_maintainers_err"}}"
+			data-tooltip-content="{{ctx.Locale.Tr "repo.merges.allow_edits_from_maintainers_desc"}}"
+			data-prompt-error="{{ctx.Locale.Tr "repo.merges.allow_edits_from_maintainers_err"}}"
 	>
-		<label><strong>{{ctx.Locale.Tr "repo.pulls.allow_edits_from_maintainers"}}</strong></label>
+		<label><strong>{{ctx.Locale.Tr "repo.merges.allow_edits_from_maintainers"}}</strong></label>
 		<input type="checkbox" {{if .Issue.PullRequest.AllowMaintainerEdit}}checked{{end}}>
 	</div>
 	{{end}}

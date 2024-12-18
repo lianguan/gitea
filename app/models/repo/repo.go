@@ -600,7 +600,7 @@ func (repo *Repository) CanCreateBranch() bool {
 	return !repo.IsMirror
 }
 
-// CanEnablePulls returns true if repository meets the requirements of accepting pulls.
+// CanEnablePulls returns true if repository meets the requirements of accepting merges.
 func (repo *Repository) CanEnablePulls() bool {
 	return !repo.IsMirror && !repo.IsEmpty
 }

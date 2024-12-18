@@ -346,7 +346,7 @@ func UpdateIssueContent(ctx *context.Context) {
 			ctx.JSONError(ctx.Tr("repo.issues.edit.blocked_user"))
 		} else if errors.Is(err, issues_model.ErrIssueAlreadyChanged) {
 			if issue.IsMergeRequest {
-				ctx.JSONError(ctx.Tr("repo.pulls.edit.already_changed"))
+				ctx.JSONError(ctx.Tr("repo.merges.edit.already_changed"))
 			} else {
 				ctx.JSONError(ctx.Tr("repo.issues.edit.already_changed"))
 			}

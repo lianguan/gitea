@@ -11,25 +11,25 @@ Template Attributes:
 <div class="commit-status-panel">
 	<div class="ui top attached header commit-status-header">
 		{{if or (eq .CommitStatus.State "pending") (.MissingRequiredChecks)}}
-			{{ctx.Locale.Tr "repo.pulls.status_checking"}}
+			{{ctx.Locale.Tr "repo.merges.status_checking"}}
 		{{else if eq .CommitStatus.State "success"}}
-			{{ctx.Locale.Tr "repo.pulls.status_checks_success"}}
+			{{ctx.Locale.Tr "repo.merges.status_checks_success"}}
 		{{else if eq .CommitStatus.State "warning"}}
-			{{ctx.Locale.Tr "repo.pulls.status_checks_warning"}}
+			{{ctx.Locale.Tr "repo.merges.status_checks_warning"}}
 		{{else if eq .CommitStatus.State "failure"}}
-			{{ctx.Locale.Tr "repo.pulls.status_checks_failure"}}
+			{{ctx.Locale.Tr "repo.merges.status_checks_failure"}}
 		{{else if eq .CommitStatus.State "error"}}
-			{{ctx.Locale.Tr "repo.pulls.status_checks_error"}}
+			{{ctx.Locale.Tr "repo.merges.status_checks_error"}}
 		{{else}}
-			{{ctx.Locale.Tr "repo.pulls.status_checking"}}
+			{{ctx.Locale.Tr "repo.merges.status_checking"}}
 		{{end}}
 
 		{{if .ShowHideChecks}}
 		<div class="ui right">
 			<button class="commit-status-hide-checks btn interact-fg"
-			data-show-all="{{ctx.Locale.Tr "repo.pulls.status_checks_show_all"}}"
-			data-hide-all="{{ctx.Locale.Tr "repo.pulls.status_checks_hide_all"}}">
-			{{ctx.Locale.Tr "repo.pulls.status_checks_hide_all"}}</button>
+			data-show-all="{{ctx.Locale.Tr "repo.merges.status_checks_show_all"}}"
+			data-hide-all="{{ctx.Locale.Tr "repo.merges.status_checks_hide_all"}}">
+			{{ctx.Locale.Tr "repo.merges.status_checks_hide_all"}}</button>
 		</div>
 		{{end}}
 	</div>
@@ -41,9 +41,9 @@ Template Attributes:
 				<div class="status-context gt-ellipsis">{{.Context}} <span class="text light-2">{{.Description}}</span></div>
 				<div class="ui status-details">
 					{{if $.is_context_required}}
-						{{if (call $.is_context_required .Context)}}<div class="ui label">{{ctx.Locale.Tr "repo.pulls.status_checks_requested"}}</div>{{end}}
+						{{if (call $.is_context_required .Context)}}<div class="ui label">{{ctx.Locale.Tr "repo.merges.status_checks_requested"}}</div>{{end}}
 					{{end}}
-					<span>{{if .TargetURL}}<a href="{{.TargetURL}}">{{ctx.Locale.Tr "repo.pulls.status_checks_details"}}</a>{{end}}</span>
+					<span>{{if .TargetURL}}<a href="{{.TargetURL}}">{{ctx.Locale.Tr "repo.merges.status_checks_details"}}</a>{{end}}</span>
 				</div>
 			</div>
 		{{end}}
@@ -51,7 +51,7 @@ Template Attributes:
 			<div class="commit-status-item">
 				{{svg "octicon-dot-fill" 18 "commit-status icon text yellow"}}
 				<div class="status-context gt-ellipsis">{{.}}</div>
-				<div class="ui label">{{ctx.Locale.Tr "repo.pulls.status_checks_requested"}}</div>
+				<div class="ui label">{{ctx.Locale.Tr "repo.merges.status_checks_requested"}}</div>
 			</div>
 		{{end}}
 	</div>
