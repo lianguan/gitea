@@ -62,7 +62,7 @@ func runTestApp(app *cli.App, args ...string) (runResult, error) {
 func TestCliCmd(t *testing.T) {
 	defaultWorkPath := filepath.Dir(setting.AppPath)
 	defaultCustomPath := filepath.Join(defaultWorkPath, "custom")
-	defaultCustomConf := filepath.Join(defaultCustomPath, "conf/app.ini")
+	defaultCustomConf := filepath.Join(defaultWorkPath, "conf/app.ini")
 
 	cli.CommandHelpTemplate = "(command help template)"
 	cli.AppHelpTemplate = "(app help template)"
@@ -95,12 +95,12 @@ func TestCliCmd(t *testing.T) {
 		{
 			env: map[string]string{"GITEA_WORK_DIR": "/tmp"},
 			cmd: "./gitea test-cmd",
-			exp: makePathOutput("/tmp", "/tmp/custom", "/tmp/custom/conf/app.ini"),
+			exp: makePathOutput("/tmp", "/tmp/custom", "/tmp/conf/app.ini"),
 		},
 		{
 			env: map[string]string{"GITEA_WORK_DIR": "/tmp"},
 			cmd: "./gitea test-cmd --work-path /tmp/other",
-			exp: makePathOutput("/tmp/other", "/tmp/other/custom", "/tmp/other/custom/conf/app.ini"),
+			exp: makePathOutput("/tmp/other", "/tmp/other/custom", "/tmp/other/conf/app.ini"),
 		},
 		{
 			env: map[string]string{"GITEA_WORK_DIR": "/tmp"},

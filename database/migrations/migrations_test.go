@@ -1,3 +1,4 @@
+// Copyright 2025 The Gitmin Authors. All rights reserved.
 // Copyright 2024 The Gitea Authors. All rights reserved.
 // SPDX-License-Identifier: MIT
 
@@ -14,15 +15,15 @@ import (
 func TestMigrations(t *testing.T) {
 	defer test.MockVariableValue(&preparedMigrations)()
 	preparedMigrations = []*migration{
-		{idNumber: 70},
-		{idNumber: 71},
+		{idNumber: 0},
+		{idNumber: 1},
 	}
-	assert.EqualValues(t, 72, calcDBVersion(preparedMigrations))
-	assert.EqualValues(t, 72, ExpectedDBVersion())
+	assert.EqualValues(t, 2, calcDBVersion(preparedMigrations))
+	assert.EqualValues(t, 2, ExpectedDBVersion())
 
-	assert.EqualValues(t, 71, migrationIDNumberToDBVersion(70))
+	assert.EqualValues(t, 1, migrationIDNumberToDBVersion(0))
 
-	assert.EqualValues(t, []*migration{{idNumber: 70}, {idNumber: 71}}, getPendingMigrations(70, preparedMigrations))
-	assert.EqualValues(t, []*migration{{idNumber: 71}}, getPendingMigrations(71, preparedMigrations))
-	assert.EqualValues(t, []*migration{}, getPendingMigrations(72, preparedMigrations))
+	assert.EqualValues(t, []*migration{{idNumber: 0}, {idNumber: 1}}, getPendingMigrations(0, preparedMigrations))
+	assert.EqualValues(t, []*migration{{idNumber: 1}}, getPendingMigrations(1, preparedMigrations))
+	assert.EqualValues(t, []*migration{}, getPendingMigrations(2, preparedMigrations))
 }

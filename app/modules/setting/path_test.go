@@ -41,7 +41,7 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirFoo, AppWorkPath)
 		assert.Equal(t, fp(dirFoo, "custom"), CustomPath)
-		assert.Equal(t, fp(dirFoo, "custom/conf/app.ini"), CustomConf)
+		assert.Equal(t, fp(dirFoo, "conf/app.ini"), CustomConf)
 	})
 
 	t.Run("WorkDir(env)", func(t *testing.T) {
@@ -49,7 +49,7 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{"GITEA_WORK_DIR": dirBar}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirBar, AppWorkPath)
 		assert.Equal(t, fp(dirBar, "custom"), CustomPath)
-		assert.Equal(t, fp(dirBar, "custom/conf/app.ini"), CustomConf)
+		assert.Equal(t, fp(dirBar, "conf/app.ini"), CustomConf)
 	})
 
 	t.Run("WorkDir(env,arg)", func(t *testing.T) {
@@ -57,7 +57,7 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{"GITEA_WORK_DIR": dirBar}.Getenv, ArgWorkPathAndCustomConf{WorkPath: dirXxx})
 		assert.Equal(t, dirXxx, AppWorkPath)
 		assert.Equal(t, fp(dirXxx, "custom"), CustomPath)
-		assert.Equal(t, fp(dirXxx, "custom/conf/app.ini"), CustomConf)
+		assert.Equal(t, fp(dirXxx, "conf/app.ini"), CustomConf)
 	})
 
 	t.Run("CustomPath(env)", func(t *testing.T) {
@@ -65,7 +65,6 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{"GITEA_CUSTOM": fp(dirBar, "custom1")}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirFoo, AppWorkPath)
 		assert.Equal(t, fp(dirBar, "custom1"), CustomPath)
-		assert.Equal(t, fp(dirBar, "custom1/conf/app.ini"), CustomConf)
 	})
 
 	t.Run("CustomPath(env,arg)", func(t *testing.T) {
@@ -73,7 +72,6 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{"GITEA_CUSTOM": fp(dirBar, "custom1")}.Getenv, ArgWorkPathAndCustomConf{CustomPath: "custom2"})
 		assert.Equal(t, dirFoo, AppWorkPath)
 		assert.Equal(t, fp(dirFoo, "custom2"), CustomPath)
-		assert.Equal(t, fp(dirFoo, "custom2/conf/app.ini"), CustomConf)
 	})
 
 	t.Run("CustomConf", func(t *testing.T) {
@@ -126,19 +124,19 @@ func TestInitWorkPathAndCommonConfig(t *testing.T) {
 		InitWorkPathAndCommonConfig(envVars{}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirFoo, AppWorkPath)
 		assert.Equal(t, fp(dirFoo, "custom1"), CustomPath)
-		assert.Equal(t, fp(dirFoo, "custom1/cfg.ini"), CustomConf)
+		assert.Equal(t, fp(dirFoo, "cfg.ini"), CustomConf)
 
 		testInit(dirFoo, "custom1", "cfg.ini")
 		InitWorkPathAndCommonConfig(envVars{"GITEA_WORK_DIR": dirYyy}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirYyy, AppWorkPath)
 		assert.Equal(t, fp(dirYyy, "custom1"), CustomPath)
-		assert.Equal(t, fp(dirYyy, "custom1/cfg.ini"), CustomConf)
+		assert.Equal(t, fp(dirYyy, "cfg.ini"), CustomConf)
 
 		testInit(dirFoo, "custom1", "cfg.ini")
 		InitWorkPathAndCommonConfig(envVars{"GITEA_CUSTOM": dirYyy}.Getenv, ArgWorkPathAndCustomConf{})
 		assert.Equal(t, dirFoo, AppWorkPath)
 		assert.Equal(t, dirYyy, CustomPath)
-		assert.Equal(t, fp(dirYyy, "cfg.ini"), CustomConf)
+		assert.Equal(t, fp(dirFoo, "cfg.ini"), CustomConf)
 
 		iniWorkPath := fp(tmpDir, "app-workpath.ini")
 		_ = os.WriteFile(iniWorkPath, []byte("WORK_PATH="+dirXxx), 0o644)

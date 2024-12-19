@@ -166,7 +166,7 @@ func InitWorkPathAndCfgProvider(getEnvFn func(name string) string, args ArgWorkP
 	readFromArgs()
 
 	if !tmpCustomConf.IsSet {
-		tmpCustomConf.Set(tryAbsPath(tmpWorkPath.Value, tmpCustomPath.Value, tmpCustomConf.Value))
+		tmpCustomConf.Set(tryAbsPath(tmpWorkPath.Value, tmpCustomConf.Value))
 	}
 
 	// only read the config but do not load/init anything more, because the AppWorkPath and CustomPath are not ready
