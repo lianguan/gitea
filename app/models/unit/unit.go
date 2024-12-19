@@ -272,7 +272,7 @@ var (
 
 	UnitPullRequests = Unit{
 		TypeMergeRequests,
-		"repo.pulls",
+		"repo.merges",
 		"/merge_requests",
 		"repo.merges.desc",
 		2,

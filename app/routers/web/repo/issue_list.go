@@ -754,7 +754,7 @@ func Issues(ctx *context.Context) {
 		if ctx.Written() {
 			return
 		}
-		ctx.Data["Title"] = ctx.Tr("repo.pulls")
+		ctx.Data["Title"] = ctx.Tr("repo.merges")
 		ctx.Data["PageIsMergeRequestList"] = true
 	} else {
 		MustEnableIssues(ctx)

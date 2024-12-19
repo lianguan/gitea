@@ -155,7 +155,7 @@
 
 					{{if and .Repository.CanEnablePulls (.Permission.CanRead ctx.Consts.RepoUnitTypeMergeRequests)}}
 						<a class="{{if .PageIsMergeRequestList}}active {{end}}item" href="{{.RepoLink}}/merge_requests">
-							{{svg "octicon-git-pull-request"}} {{ctx.Locale.Tr "repo.pulls"}}
+							{{svg "octicon-git-pull-request"}} {{ctx.Locale.Tr "repo.merges"}}
 							{{if .Repository.NumOpenPulls}}
 								<span class="ui small label">{{CountFmt .Repository.NumOpenPulls}}</span>
 							{{end}}

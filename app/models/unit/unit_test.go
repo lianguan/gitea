@@ -25,7 +25,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		}(setting.Repository.DisabledRepoUnits, setting.Repository.DefaultRepoUnits, setting.Repository.DefaultForkRepoUnits)
 
 		setting.Repository.DisabledRepoUnits = []string{"repo.issues"}
-		setting.Repository.DefaultRepoUnits = []string{"repo.code", "repo.releases", "repo.issues", "repo.pulls"}
+		setting.Repository.DefaultRepoUnits = []string{"repo.code", "repo.releases", "repo.issues", "repo.merges"}
 		setting.Repository.DefaultForkRepoUnits = []string{"repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
@@ -45,7 +45,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		}(setting.Repository.DisabledRepoUnits, setting.Repository.DefaultRepoUnits, setting.Repository.DefaultForkRepoUnits)
 
 		setting.Repository.DisabledRepoUnits = []string{"repo.issues", "invalid.1"}
-		setting.Repository.DefaultRepoUnits = []string{"repo.code", "invalid.2", "repo.releases", "repo.issues", "repo.pulls"}
+		setting.Repository.DefaultRepoUnits = []string{"repo.code", "invalid.2", "repo.releases", "repo.issues", "repo.merges"}
 		setting.Repository.DefaultForkRepoUnits = []string{"invalid.3", "repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
@@ -65,7 +65,7 @@ func TestLoadUnitConfig(t *testing.T) {
 		}(setting.Repository.DisabledRepoUnits, setting.Repository.DefaultRepoUnits, setting.Repository.DefaultForkRepoUnits)
 
 		setting.Repository.DisabledRepoUnits = []string{"repo.issues", "repo.issues"}
-		setting.Repository.DefaultRepoUnits = []string{"repo.code", "repo.releases", "repo.issues", "repo.pulls", "repo.code"}
+		setting.Repository.DefaultRepoUnits = []string{"repo.code", "repo.releases", "repo.issues", "repo.merges", "repo.code"}
 		setting.Repository.DefaultForkRepoUnits = []string{"repo.releases", "repo.releases"}
 		assert.NoError(t, LoadUnitConfig())
 		assert.Equal(t, []Type{TypeIssues}, DisabledRepoUnitsGet())
