@@ -122,7 +122,7 @@ func GetUnmergedPullRequestsByBaseInfo(ctx context.Context, repoID int64, branch
 }
 
 // GetPullRequestIDsByCheckStatus returns all pull requests according the special checking status.
-func GetPullRequestIDsByCheckStatus(ctx context.Context, status PullRequestStatus) ([]int64, error) {
+func GetPullRequestIDsByCheckStatus(ctx context.Context, status MergeRequestStatus) ([]int64, error) {
 	prs := make([]int64, 0, 10)
 	return prs, db.GetEngine(ctx).Table("merge_request").
 		Where("status=?", status).

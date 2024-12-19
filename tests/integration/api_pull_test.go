@@ -146,7 +146,7 @@ func TestAPIViewPullsByBaseHead(t *testing.T) {
 
 	ctx := NewAPITestContext(t, "user2", repo.Name, auth_model.AccessTokenScopeReadRepository)
 
-	req := NewRequestf(t, "GET", "/api/v1/repos/%s/%s/pulls/master/branch2", owner.Name, repo.Name).
+	req := NewRequestf(t, "GET", "/api/v1/repos/%s/%s/merge_requests/master/branch2", owner.Name, repo.Name).
 		AddTokenAuth(ctx.Token)
 	resp := ctx.Session.MakeRequest(t, req, http.StatusOK)
 
@@ -155,7 +155,7 @@ func TestAPIViewPullsByBaseHead(t *testing.T) {
 	assert.EqualValues(t, 3, pull.Index)
 	assert.EqualValues(t, 2, pull.ID)
 
-	req = NewRequestf(t, "GET", "/api/v1/repos/%s/%s/pulls/master/branch-not-exist", owner.Name, repo.Name).
+	req = NewRequestf(t, "GET", "/api/v1/repos/%s/%s/merge_requests/master/branch-not-exist", owner.Name, repo.Name).
 		AddTokenAuth(ctx.Token)
 	ctx.Session.MakeRequest(t, req, http.StatusNotFound)
 }
@@ -176,7 +176,7 @@ func TestAPIMergePullWIP(t *testing.T) {
 
 	session := loginUser(t, owner.Name)
 	token := getTokenForLoggedInUser(t, session, auth_model.AccessTokenScopeWriteRepository)
-	req := NewRequestWithJSON(t, http.MethodPost, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d/merge", owner.Name, repo.Name, pr.Index), &forms.MergePullRequestForm{
+	req := NewRequestWithJSON(t, http.MethodPost, fmt.Sprintf("/api/v1/repos/%s/%s/merge_requests/%d/merge", owner.Name, repo.Name, pr.Index), &forms.MergePullRequestForm{
 		MergeMessageField: pr.Issue.Title,
 		Do:                string(repo_model.MergeStyleMerge),
 	}).AddTokenAuth(token)
@@ -373,7 +373,7 @@ func TestAPIEditPull(t *testing.T) {
 
 	newTitle := "edit a this pr"
 	newBody := "edited body"
-	req = NewRequestWithJSON(t, http.MethodPatch, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d", owner10.Name, repo10.Name, apiPull.Index), &api.EditPullRequestOption{
+	req = NewRequestWithJSON(t, http.MethodPatch, fmt.Sprintf("/api/v1/repos/%s/%s/merge_requests/%d", owner10.Name, repo10.Name, apiPull.Index), &api.EditPullRequestOption{
 		Base:  "feature/1",
 		Title: newTitle,
 		Body:  &newBody,
@@ -388,7 +388,7 @@ func TestAPIEditPull(t *testing.T) {
 	unittest.AssertExistsAndLoadBean(t, &issues_model.Comment{IssueID: pull.Issue.ID, OldTitle: title, NewTitle: newTitle})
 	unittest.AssertExistsAndLoadBean(t, &issues_model.ContentHistory{IssueID: pull.Issue.ID, ContentText: newBody, IsFirstCreated: false})
 
-	req = NewRequestWithJSON(t, http.MethodPatch, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d", owner10.Name, repo10.Name, pull.Index), &api.EditPullRequestOption{
+	req = NewRequestWithJSON(t, http.MethodPatch, fmt.Sprintf("/api/v1/repos/%s/%s/merge_requests/%d", owner10.Name, repo10.Name, pull.Index), &api.EditPullRequestOption{
 		Base: "not-exist",
 	}).AddTokenAuth(token)
 	MakeRequest(t, req, http.StatusNotFound)
@@ -396,7 +396,7 @@ func TestAPIEditPull(t *testing.T) {
 
 func doAPIGetPullFiles(ctx APITestContext, pr *api.MergeRequest, callback func(*testing.T, []*api.ChangedFile)) func(*testing.T) {
 	return func(t *testing.T) {
-		req := NewRequest(t, http.MethodGet, fmt.Sprintf("/api/v1/repos/%s/%s/pulls/%d/files", ctx.Username, ctx.Reponame, pr.Index)).
+		req := NewRequest(t, http.MethodGet, fmt.Sprintf("/api/v1/repos/%s/%s/merge_requests/%d/files", ctx.Username, ctx.Reponame, pr.Index)).
 			AddTokenAuth(ctx.Token)
 		if ctx.ExpectedCode == 0 {
 			ctx.ExpectedCode = http.StatusOK

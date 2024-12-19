@@ -538,7 +538,7 @@ func MergedManually(ctx context.Context, pr *issues_model.MergeRequest, doer *us
 
 		pr.MergedCommitID = commitID
 		pr.MergedUnix = timeutil.TimeStamp(commit.Author.When.Unix())
-		pr.Status = issues_model.PullRequestStatusManuallyMerged
+		pr.Status = issues_model.MergeRequestStatusManuallyMerged
 		pr.Merger = doer
 		pr.MergerID = doer.ID
 

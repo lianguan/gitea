@@ -162,7 +162,7 @@ func testCreatePR(t *testing.T, repo, doer int64, title, content string) *issues
 	r := unittest.AssertExistsAndLoadBean(t, &repo_model.Repository{ID: repo})
 	d := unittest.AssertExistsAndLoadBean(t, &user_model.User{ID: doer})
 	i := &issues_model.Issue{RepoID: r.ID, PosterID: d.ID, Poster: d, Title: title, Content: content, IsMergeRequest: true}
-	pr := &issues_model.MergeRequest{HeadRepoID: repo, BaseRepoID: repo, HeadBranch: "head", BaseBranch: "base", Status: issues_model.PullRequestStatusMergeable}
+	pr := &issues_model.MergeRequest{HeadRepoID: repo, BaseRepoID: repo, HeadBranch: "head", BaseBranch: "base", Status: issues_model.MergeRequestStatusMergeable}
 	assert.NoError(t, issues_model.NewPullRequest(db.DefaultContext, r, i, nil, nil, pr))
 	pr.Issue = i
 	return pr

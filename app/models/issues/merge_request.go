@@ -105,35 +105,35 @@ const (
 	MergeRequestGit
 )
 
-// PullRequestStatus defines pull request status
-type PullRequestStatus int
+// MergeRequestStatus defines pull request status
+type MergeRequestStatus int
 
 // Enumerate all the pull request status
 const (
-	PullRequestStatusConflict PullRequestStatus = iota
-	PullRequestStatusChecking
-	PullRequestStatusMergeable
-	PullRequestStatusManuallyMerged
-	PullRequestStatusError
-	PullRequestStatusEmpty
-	PullRequestStatusAncestor
+	MergeRequestStatusConflict MergeRequestStatus = iota
+	MergeRequestStatusChecking
+	MergeRequestStatusMergeable
+	MergeRequestStatusManuallyMerged
+	MergeRequestStatusError
+	MergeRequestStatusEmpty
+	MergeRequestStatusAncestor
 )
 
-func (status PullRequestStatus) String() string {
+func (status MergeRequestStatus) String() string {
 	switch status {
-	case PullRequestStatusConflict:
+	case MergeRequestStatusConflict:
 		return "CONFLICT"
-	case PullRequestStatusChecking:
+	case MergeRequestStatusChecking:
 		return "CHECKING"
-	case PullRequestStatusMergeable:
+	case MergeRequestStatusMergeable:
 		return "MERGEABLE"
-	case PullRequestStatusManuallyMerged:
+	case MergeRequestStatusManuallyMerged:
 		return "MANUALLY_MERGED"
-	case PullRequestStatusError:
+	case MergeRequestStatusError:
 		return "ERROR"
-	case PullRequestStatusEmpty:
+	case MergeRequestStatusEmpty:
 		return "EMPTY"
-	case PullRequestStatusAncestor:
+	case MergeRequestStatusAncestor:
 		return "ANCESTOR"
 	default:
 		return strconv.Itoa(int(status))
@@ -154,7 +154,7 @@ const (
 type MergeRequest struct {
 	ID              int64 `xorm:"pk autoincr"`
 	Type            MergeRequestType
-	Status          PullRequestStatus
+	Status          MergeRequestStatus
 	ConflictedFiles []string `xorm:"TEXT JSON"`
 	CommitsAhead    int
 	CommitsBehind   int
@@ -476,22 +476,22 @@ func (pr *MergeRequest) GetReviewCommentsCount(ctx context.Context) int {
 
 // IsChecking returns true if this pull request is still checking conflict.
 func (pr *MergeRequest) IsChecking() bool {
-	return pr.Status == PullRequestStatusChecking
+	return pr.Status == MergeRequestStatusChecking
 }
 
 // CanAutoMerge returns true if this pull request can be merged automatically.
 func (pr *MergeRequest) CanAutoMerge() bool {
-	return pr.Status == PullRequestStatusMergeable
+	return pr.Status == MergeRequestStatusMergeable
 }
 
 // IsEmpty returns true if this pull request is empty.
 func (pr *MergeRequest) IsEmpty() bool {
-	return pr.Status == PullRequestStatusEmpty
+	return pr.Status == MergeRequestStatusEmpty
 }
 
 // IsAncestor returns true if the Head Commit of this PR is an ancestor of the Base Commit
 func (pr *MergeRequest) IsAncestor() bool {
-	return pr.Status == PullRequestStatusAncestor
+	return pr.Status == MergeRequestStatusAncestor
 }
 
 // IsFromFork return true if this PR is from a fork.
@@ -863,8 +863,8 @@ func (pr *MergeRequest) Mergeable(ctx context.Context) bool {
 	// - Has a conflict.
 	// - Received a error while being conflict checked.
 	// - Is a work-in-progress pull request.
-	return pr.Status != PullRequestStatusChecking && pr.Status != PullRequestStatusConflict &&
-		pr.Status != PullRequestStatusError && !pr.IsWorkInProgress(ctx)
+	return pr.Status != MergeRequestStatusChecking && pr.Status != MergeRequestStatusConflict &&
+		pr.Status != MergeRequestStatusError && !pr.IsWorkInProgress(ctx)
 }
 
 // HasEnoughApprovals returns true if pr has enough granted approvals.
