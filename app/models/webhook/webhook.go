@@ -227,49 +227,49 @@ func (w *Webhook) HasPullRequestEvent() bool {
 		(w.ChooseEvents && w.HookEvents.PullRequest)
 }
 
-// HasPullRequestAssignEvent returns true if hook enabled pull request assign event.
+// HasPullRequestAssignEvent returns true if hook enabled merge request assign event.
 func (w *Webhook) HasPullRequestAssignEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestAssign)
 }
 
-// HasPullRequestLabelEvent returns true if hook enabled pull request label event.
+// HasPullRequestLabelEvent returns true if hook enabled merge request label event.
 func (w *Webhook) HasPullRequestLabelEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestLabel)
 }
 
-// HasPullRequestMilestoneEvent returns true if hook enabled pull request milestone event.
+// HasPullRequestMilestoneEvent returns true if hook enabled merge request milestone event.
 func (w *Webhook) HasPullRequestMilestoneEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestMilestone)
 }
 
-// HasPullRequestCommentEvent returns true if hook enabled pull_request_comment event.
+// HasPullRequestCommentEvent returns true if hook enabled merge_request_comment event.
 func (w *Webhook) HasPullRequestCommentEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestComment)
 }
 
-// HasPullRequestApprovedEvent returns true if hook enabled pull request review event.
+// HasPullRequestApprovedEvent returns true if hook enabled merge request review event.
 func (w *Webhook) HasPullRequestApprovedEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestReview)
 }
 
-// HasPullRequestRejectedEvent returns true if hook enabled pull request review event.
+// HasPullRequestRejectedEvent returns true if hook enabled merge request review event.
 func (w *Webhook) HasPullRequestRejectedEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestReview)
 }
 
-// HasPullRequestReviewCommentEvent returns true if hook enabled pull request review event.
+// HasPullRequestReviewCommentEvent returns true if hook enabled merge request review event.
 func (w *Webhook) HasPullRequestReviewCommentEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestReview)
 }
 
-// HasPullRequestSyncEvent returns true if hook enabled pull request sync event.
+// HasPullRequestSyncEvent returns true if hook enabled merge request sync event.
 func (w *Webhook) HasPullRequestSyncEvent() bool {
 	return w.SendEverything ||
 		(w.ChooseEvents && w.HookEvents.PullRequestSync)

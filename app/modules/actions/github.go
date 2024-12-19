@@ -8,10 +8,10 @@ import (
 )
 
 const (
-	GithubEventPullRequest              = "pull_request"
-	GithubEventPullRequestTarget        = "pull_request_target"
-	GithubEventPullRequestReviewComment = "pull_request_review_comment"
-	GithubEventPullRequestReview        = "pull_request_review"
+	GithubEventPullRequest              = "merge_request"
+	GithubEventPullRequestTarget        = "merge_request_target"
+	GithubEventPullRequestReviewComment = "merge_request_review_comment"
+	GithubEventPullRequestReview        = "merge_request_review"
 	GithubEventRegistryPackage          = "registry_package"
 	GithubEventCreate                   = "create"
 	GithubEventDelete                   = "delete"
@@ -20,7 +20,7 @@ const (
 	GithubEventIssues                   = "issues"
 	GithubEventIssueComment             = "issue_comment"
 	GithubEventRelease                  = "release"
-	GithubEventPullRequestComment       = "pull_request_comment"
+	GithubEventPullRequestComment       = "merge_request_comment"
 	GithubEventGollum                   = "gollum"
 	GithubEventSchedule                 = "schedule"
 )

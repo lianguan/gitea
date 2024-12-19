@@ -24,7 +24,7 @@ type ActionRunJob struct {
 	RepoID            int64      `xorm:"index"`
 	OwnerID           int64      `xorm:"index"`
 	CommitSHA         string     `xorm:"index"`
-	IsForkPullRequest bool
+	IsForkMergeRequest bool
 	Name              string `xorm:"VARCHAR(255)"`
 	Attempt           int64
 	WorkflowPayload   []byte

@@ -71,10 +71,10 @@ func TestWebhook_EventsArray(t *testing.T) {
 	assert.Equal(t, []string{
 		"create", "delete", "fork", "push",
 		"issues", "issue_assign", "issue_label", "issue_milestone", "issue_comment",
-		"pull_request", "pull_request_assign", "pull_request_label", "pull_request_milestone",
-		"pull_request_comment", "pull_request_review_approved", "pull_request_review_rejected",
-		"pull_request_review_comment", "pull_request_sync", "wiki", "repository", "release",
-		"package", "pull_request_review_request",
+		"merge_request", "merge_request_assign", "merge_request_label", "merge_request_milestone",
+		"merge_request_comment", "merge_request_review_approved", "merge_request_review_rejected",
+		"merge_request_review_comment", "merge_request_sync", "wiki", "repository", "release",
+		"package", "merge_request_review_request",
 	},
 		(&Webhook{
 			HookEvent: &webhook_module.HookEvent{SendEverything: true},
@@ -93,7 +93,7 @@ func TestCreateWebhook(t *testing.T) {
 		RepoID:      3,
 		URL:         "www.example.com/unit_test",
 		ContentType: ContentTypeJSON,
-		Events:      `{"push_only":false,"send_everything":false,"choose_events":false,"events":{"create":false,"push":true,"pull_request":true}}`,
+		Events:      `{"push_only":false,"send_everything":false,"choose_events":false,"events":{"create":false,"push":true,"merge_request":true}}`,
 	}
 	unittest.AssertNotExistsBean(t, hook)
 	assert.NoError(t, CreateWebhook(db.DefaultContext, hook))

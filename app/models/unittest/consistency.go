@@ -118,7 +118,7 @@ func init() {
 		actual := GetCountByCond(t, "comment", builder.Eq{"`type`": typeComment, "issue_id": issue.int("ID")})
 		assert.EqualValues(t, issue.int("NumComments"), actual, "Unexpected number of comments for issue id: %d", issue.int("ID"))
 		if issue.bool("IsMergeRequest") {
-			prRow := AssertExistsAndLoadMap(t, "pull_request", builder.Eq{"issue_id": issue.int("ID")})
+			prRow := AssertExistsAndLoadMap(t, "merge_request", builder.Eq{"issue_id": issue.int("ID")})
 			assert.EqualValues(t, parseInt(prRow["index"]), issue.int("Index"), "Unexpected index for issue id: %d", issue.int("ID"))
 		}
 	}
@@ -182,7 +182,7 @@ func init() {
 	consistencyCheckMap["user"] = checkForUserConsistency
 	consistencyCheckMap["repository"] = checkForRepoConsistency
 	consistencyCheckMap["issue"] = checkForIssueConsistency
-	consistencyCheckMap["pull_request"] = checkForPullRequestConsistency
+	consistencyCheckMap["merge_request"] = checkForPullRequestConsistency
 	consistencyCheckMap["milestone"] = checkForMilestoneConsistency
 	consistencyCheckMap["label"] = checkForLabelConsistency
 	consistencyCheckMap["team"] = checkForTeamConsistency

@@ -473,7 +473,7 @@ func (g *RepositoryDumper) handlePullRequest(pr *base.MergeRequest) error {
 		return err
 	}
 
-	isFork := pr.IsForkPullRequest()
+	isFork := pr.IsForkMergeRequest()
 
 	// Even if it's a forked repo PR, we have to change head info as the same as the base info
 	oldHeadOwnerName := pr.Head.OwnerName

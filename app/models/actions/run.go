@@ -39,7 +39,7 @@ type ActionRun struct {
 	Ref               string `xorm:"index"` // the commit/tag/… that caused the run
 	IsRefDeleted      bool   `xorm:"-"`
 	CommitSHA         string
-	IsForkPullRequest bool                         // If this is triggered by a PR from a forked repository or an untrusted user, we need to check if it is approved and limit permissions when running the workflow.
+	IsForkMergeRequest bool                         // If this is triggered by a PR from a forked repository or an untrusted user, we need to check if it is approved and limit permissions when running the workflow.
 	NeedApproval      bool                         // may need approval if it's a fork pull request
 	ApprovedBy        int64                        `xorm:"index"` // who approved
 	Event             webhook_module.HookEventType // the webhook event that causes the workflow to run
@@ -314,7 +314,7 @@ func InsertRun(ctx context.Context, run *ActionRun, jobs []*jobparser.SingleWork
 			RepoID:            run.RepoID,
 			OwnerID:           run.OwnerID,
 			CommitSHA:         run.CommitSHA,
-			IsForkPullRequest: run.IsForkPullRequest,
+			IsForkMergeRequest: run.IsForkMergeRequest,
 			Name:              job.Name,
 			WorkflowPayload:   payload,
 			JobID:             id,

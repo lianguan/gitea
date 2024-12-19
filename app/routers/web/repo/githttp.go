@@ -199,7 +199,7 @@ func httpBase(ctx *context.Context) *serviceHandler {
 					return nil
 				}
 
-				if task.IsForkPullRequest {
+				if task.IsForkMergeRequest {
 					if accessMode > perm.AccessModeRead {
 						ctx.PlainText(http.StatusForbidden, "User permission denied")
 						return nil

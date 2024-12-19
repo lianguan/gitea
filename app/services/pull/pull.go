@@ -296,8 +296,8 @@ func ChangeTargetBranch(ctx context.Context, pr *issues_model.MergeRequest, doer
 
 	// Update target branch, PR diff and status
 	// This is the same as checkAndUpdateStatus in check service, but also updates base_branch
-	if pr.Status == issues_model.MergeRequestStatusChecking {
-		pr.Status = issues_model.MergeRequestStatusMergeable
+	if pr.Status == issues_model.PullRequestStatusChecking {
+		pr.Status = issues_model.PullRequestStatusMergeable
 	}
 
 	// Update Commit Divergence

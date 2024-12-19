@@ -80,7 +80,7 @@ func (at ActionType) String() string {
 	case ActionCreateIssue:
 		return "create_issue"
 	case ActionCreatePullRequest:
-		return "create_pull_request"
+		return "create_merge_request"
 	case ActionTransferRepo:
 		return "transfer_repo"
 	case ActionPushTag:
@@ -88,15 +88,15 @@ func (at ActionType) String() string {
 	case ActionCommentIssue:
 		return "comment_issue"
 	case ActionMergePullRequest:
-		return "merge_pull_request"
+		return "merge_merge_request"
 	case ActionCloseIssue:
 		return "close_issue"
 	case ActionReopenIssue:
 		return "reopen_issue"
 	case ActionClosePullRequest:
-		return "close_pull_request"
+		return "close_merge_request"
 	case ActionReopenPullRequest:
-		return "reopen_pull_request"
+		return "reopen_merge_request"
 	case ActionDeleteTag:
 		return "delete_tag"
 	case ActionDeleteBranch:
@@ -108,9 +108,9 @@ func (at ActionType) String() string {
 	case ActionMirrorSyncDelete:
 		return "mirror_sync_delete"
 	case ActionApprovePullRequest:
-		return "approve_pull_request"
+		return "approve_merge_request"
 	case ActionRejectPullRequest:
-		return "reject_pull_request"
+		return "reject_merge_request"
 	case ActionCommentPull:
 		return "comment_pull"
 	case ActionPublishRelease:
@@ -118,9 +118,9 @@ func (at ActionType) String() string {
 	case ActionPullReviewDismissed:
 		return "pull_review_dismissed"
 	case ActionPullRequestReadyForReview:
-		return "pull_request_ready_for_review"
+		return "merge_request_ready_for_review"
 	case ActionAutoMergePullRequest:
-		return "auto_merge_pull_request"
+		return "auto_merge_merge_request"
 	default:
 		return "action-" + strconv.Itoa(int(at))
 	}
@@ -374,7 +374,7 @@ func (a *Action) GetCreate() time.Time {
 }
 
 func (a *Action) IsIssueEvent() bool {
-	return a.OpType.InActions("comment_issue", "approve_pull_request", "reject_pull_request", "comment_pull", "merge_pull_request")
+	return a.OpType.InActions("comment_issue", "approve_merge_request", "reject_merge_request", "comment_pull", "merge_merge_request")
 }
 
 // GetIssueInfos returns a list of associated information with the action.

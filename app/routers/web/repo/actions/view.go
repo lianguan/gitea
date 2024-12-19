@@ -892,7 +892,7 @@ func Run(ctx *context_module.Context) {
 		TriggerUserID:     ctx.Doer.ID,
 		Ref:               ref,
 		CommitSHA:         runTargetCommit.ID.String(),
-		IsForkPullRequest: false,
+		IsForkMergeRequest: false,
 		Event:             "workflow_dispatch",
 		TriggerEvent:      "workflow_dispatch",
 		EventPayload:      string(eventPayload),

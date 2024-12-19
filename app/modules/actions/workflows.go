@@ -212,12 +212,12 @@ func detectMatched(gitRepo *git.Repository, commit *git.Commit, triggedEvent web
 
 	case // issue_comment
 		webhook_module.HookEventIssueComment,
-		// `pull_request_comment` is same as `issue_comment`
-		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_comment-use-issue_comment
+		// `merge_request_comment` is same as `issue_comment`
+		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request_comment-use-issue_comment
 		webhook_module.HookEventPullRequestComment:
 		return matchIssueCommentEvent(payload.(*api.IssueCommentPayload), evt)
 
-	case // pull_request
+	case // merge_request
 		webhook_module.HookEventPullRequest,
 		webhook_module.HookEventPullRequestSync,
 		webhook_module.HookEventPullRequestAssign,
@@ -226,12 +226,12 @@ func detectMatched(gitRepo *git.Repository, commit *git.Commit, triggedEvent web
 		webhook_module.HookEventPullRequestMilestone:
 		return matchPullRequestEvent(gitRepo, commit, payload.(*api.MergeRequestPayload), evt)
 
-	case // pull_request_review
+	case // merge_request_review
 		webhook_module.HookEventPullRequestReviewApproved,
 		webhook_module.HookEventPullRequestReviewRejected:
 		return matchPullRequestReviewEvent(payload.(*api.MergeRequestPayload), evt)
 
-	case // pull_request_review_comment
+	case // merge_request_review_comment
 		webhook_module.HookEventPullRequestReviewComment:
 		return matchPullRequestReviewCommentEvent(payload.(*api.MergeRequestPayload), evt)
 
@@ -394,10 +394,10 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 
 	if vals, ok := acts["types"]; !ok {
 		// defaultly, only pull request `opened`, `reopened` and `synchronized` will trigger workflow
-		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request
 		activityTypeMatched = prPayload.Action == api.HookIssueSynchronized || prPayload.Action == api.HookIssueOpened || prPayload.Action == api.HookIssueReOpened
 	} else {
-		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+		// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request
 		// Actions with the same name:
 		// opened, edited, closed, reopened, assigned, unassigned, review_requested, review_request_removed, milestoned, demilestoned
 		// Actions need to be converted:
@@ -416,7 +416,7 @@ func matchPullRequestEvent(gitRepo *git.Repository, commit *git.Commit, prPayloa
 		case api.HookIssueLabelCleared:
 			action = "unlabeled"
 		}
-		log.Trace("matching pull_request %s with %v", action, vals)
+		log.Trace("matching merge_request %s with %v", action, vals)
 		for _, val := range vals {
 			if glob.MustCompile(val, '/').Match(string(action)) {
 				activityTypeMatched = true
@@ -538,7 +538,7 @@ func matchPullRequestReviewEvent(prPayload *api.MergeRequestPayload, evt *jobpar
 	for cond, vals := range evt.Acts() {
 		switch cond {
 		case "types":
-			// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review
+			// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request_review
 			// Activity types with the same name:
 			// NONE
 			// Activity types need to be converted:
@@ -550,7 +550,7 @@ func matchPullRequestReviewEvent(prPayload *api.MergeRequestPayload, evt *jobpar
 			actions := make([]string, 0)
 			if prPayload.Action == api.HookIssueReviewed {
 				// the `reviewed` HookIssueAction can match the two activity types: `submitted` and `edited`
-				// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review
+				// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request_review
 				actions = append(actions, "submitted", "edited")
 			}
 
@@ -587,7 +587,7 @@ func matchPullRequestReviewCommentEvent(prPayload *api.MergeRequestPayload, evt 
 	for cond, vals := range evt.Acts() {
 		switch cond {
 		case "types":
-			// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review_comment
+			// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request_review_comment
 			// Activity types with the same name:
 			// NONE
 			// Activity types need to be converted:
@@ -599,7 +599,7 @@ func matchPullRequestReviewCommentEvent(prPayload *api.MergeRequestPayload, evt 
 			actions := make([]string, 0)
 			if prPayload.Action == api.HookIssueReviewed {
 				// the `reviewed` HookIssueAction can match the two activity types: `created` and `edited`
-				// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review_comment
+				// See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#merge_request_review_comment
 				actions = append(actions, "created", "edited")
 			}
 

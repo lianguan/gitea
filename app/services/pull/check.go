@@ -46,7 +46,7 @@ var (
 
 // AddToTaskQueue adds itself to pull request test task queue.
 func AddToTaskQueue(ctx context.Context, pr *issues_model.MergeRequest) {
-	pr.Status = issues_model.MergeRequestStatusChecking
+	pr.Status = issues_model.PullRequestStatusChecking
 	err := pr.UpdateColsIfNotMerged(ctx, "status")
 	if err != nil {
 		log.Error("AddToTaskQueue(%-v).UpdateCols.(add to queue): %v", pr, err)
@@ -177,8 +177,8 @@ func isSignedIfRequired(ctx context.Context, pr *issues_model.MergeRequest, doer
 // and set to be either conflict or mergeable.
 func checkAndUpdateStatus(ctx context.Context, pr *issues_model.MergeRequest) {
 	// If status has not been changed to conflict by testPatch then we are mergeable
-	if pr.Status == issues_model.MergeRequestStatusChecking {
-		pr.Status = issues_model.MergeRequestStatusMergeable
+	if pr.Status == issues_model.PullRequestStatusChecking {
+		pr.Status = issues_model.PullRequestStatusMergeable
 	}
 
 	// Make sure there is no waiting test to process before leaving the checking status.
@@ -285,7 +285,7 @@ func manuallyMerged(ctx context.Context, pr *issues_model.MergeRequest) bool {
 
 	pr.MergedCommitID = commit.ID.String()
 	pr.MergedUnix = timeutil.TimeStamp(commit.Author.When.Unix())
-	pr.Status = issues_model.MergeRequestStatusManuallyMerged
+	pr.Status = issues_model.PullRequestStatusManuallyMerged
 	merger, _ := user_model.GetUserByEmail(ctx, commit.Author.Email)
 
 	// When the commit author is unknown set the BaseRepo owner as merger
@@ -316,7 +316,7 @@ func manuallyMerged(ctx context.Context, pr *issues_model.MergeRequest) bool {
 
 // InitializePullRequests checks and tests untested patches of pull requests.
 func InitializePullRequests(ctx context.Context) {
-	prs, err := issues_model.GetPullRequestIDsByCheckStatus(ctx, issues_model.MergeRequestStatusChecking)
+	prs, err := issues_model.GetPullRequestIDsByCheckStatus(ctx, issues_model.PullRequestStatusChecking)
 	if err != nil {
 		log.Error("Find Checking PRs: %v", err)
 		return
@@ -378,9 +378,9 @@ func testPR(id int64) {
 
 	if err := TestPatch(pr); err != nil {
 		log.Error("testPatch[%-v]: %v", pr, err)
-		pr.Status = issues_model.MergeRequestStatusError
+		pr.Status = issues_model.PullRequestStatusError
 		if err := pr.UpdateCols(ctx, "status"); err != nil {
-			log.Error("update pr [%-v] status to MergeRequestStatusError failed: %v", pr, err)
+			log.Error("update pr [%-v] status to PullRequestStatusError failed: %v", pr, err)
 		}
 		return
 	}

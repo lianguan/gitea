@@ -607,7 +607,7 @@ func (g *GiteaLocalUploader) updateGitForPullRequest(pr *base.MergeRequest) (hea
 	}
 
 	head = "unknown repository"
-	if pr.IsForkPullRequest() && pr.State != "closed" {
+	if pr.IsForkMergeRequest() && pr.State != "closed" {
 		// OK we want to fetch the current head as a branch from its CloneURL
 
 		// 1. Is there a head clone URL available?

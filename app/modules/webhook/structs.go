@@ -14,14 +14,14 @@ type HookEvents struct {
 	IssueMilestone           bool `json:"issue_milestone"`
 	IssueComment             bool `json:"issue_comment"`
 	Push                     bool `json:"push"`
-	PullRequest              bool `json:"pull_request"`
-	PullRequestAssign        bool `json:"pull_request_assign"`
-	PullRequestLabel         bool `json:"pull_request_label"`
-	PullRequestMilestone     bool `json:"pull_request_milestone"`
-	PullRequestComment       bool `json:"pull_request_comment"`
-	PullRequestReview        bool `json:"pull_request_review"`
-	PullRequestSync          bool `json:"pull_request_sync"`
-	PullRequestReviewRequest bool `json:"pull_request_review_request"`
+	PullRequest              bool `json:"merge_request"`
+	PullRequestAssign        bool `json:"merge_request_assign"`
+	PullRequestLabel         bool `json:"merge_request_label"`
+	PullRequestMilestone     bool `json:"merge_request_milestone"`
+	PullRequestComment       bool `json:"merge_request_comment"`
+	PullRequestReview        bool `json:"merge_request_review"`
+	PullRequestSync          bool `json:"merge_request_sync"`
+	PullRequestReviewRequest bool `json:"merge_request_review_request"`
 	Wiki                     bool `json:"wiki"`
 	Repository               bool `json:"repository"`
 	Release                  bool `json:"release"`

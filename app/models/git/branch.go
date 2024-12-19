@@ -399,7 +399,7 @@ func RenameBranch(ctx context.Context, repo *repo_model.Repository, from, to str
 	}
 
 	// 4. Update all not merged pull request base branch name
-	_, err = sess.Table("pull_request").Where("base_repo_id=? AND base_branch=? AND has_merged=?",
+	_, err = sess.Table("merge_request").Where("base_repo_id=? AND base_branch=? AND has_merged=?",
 		repo.ID, from, false).
 		Update(map[string]any{"base_branch": to})
 	if err != nil {
@@ -407,7 +407,7 @@ func RenameBranch(ctx context.Context, repo *repo_model.Repository, from, to str
 	}
 
 	// 4.1 Update all not merged pull request head branch name
-	if _, err = sess.Table("pull_request").Where("head_repo_id=? AND head_branch=? AND has_merged=?",
+	if _, err = sess.Table("merge_request").Where("head_repo_id=? AND head_branch=? AND has_merged=?",
 		repo.ID, from, false).
 		Update(map[string]any{"head_branch": to}); err != nil {
 		return err
@@ -521,7 +521,7 @@ func FindRecentlyPushedNewBranches(ctx context.Context, doer *user_model.User, o
 		}
 
 		// whether branch have already created PR
-		count, err := db.GetEngine(ctx).Table("pull_request").
+		count, err := db.GetEngine(ctx).Table("merge_request").
 			// we should not only use branch name here, because if there are branches with same name in other repos,
 			// we can not detect them correctly
 			Where(builder.Eq{"head_repo_id": branch.RepoID, "head_branch": branch.Name}).Count()

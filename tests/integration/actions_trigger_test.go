@@ -78,7 +78,7 @@ func TestPullRequestTargetEvent(t *testing.T) {
 				{
 					Operation:     "create",
 					TreePath:      ".gitea/workflows/pr.yml",
-					ContentReader: strings.NewReader("name: test\non:\n  pull_request_target:\n    paths:\n      - 'file_*.txt'\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo helloworld\n"),
+					ContentReader: strings.NewReader("name: test\non:\n  merge_request_target:\n    paths:\n      - 'file_*.txt'\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo helloworld\n"),
 				},
 			},
 			Message:   "add workflow",
@@ -241,7 +241,7 @@ func TestSkipCI(t *testing.T) {
 				{
 					Operation:     "create",
 					TreePath:      ".gitea/workflows/pr.yml",
-					ContentReader: strings.NewReader("name: test\non:\n  push:\n    branches: [master]\n  pull_request:\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo helloworld\n"),
+					ContentReader: strings.NewReader("name: test\non:\n  push:\n    branches: [master]\n  merge_request:\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo helloworld\n"),
 				},
 			},
 			Message:   "add workflow",

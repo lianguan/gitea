@@ -40,7 +40,7 @@ type ActionTask struct {
 	RepoID            int64  `xorm:"index"`
 	OwnerID           int64  `xorm:"index"`
 	CommitSHA         string `xorm:"index"`
-	IsForkPullRequest bool
+	IsForkMergeRequest bool
 
 	Token          string `xorm:"-"`
 	TokenHash      string `xorm:"UNIQUE"` // sha256 of token
@@ -271,7 +271,7 @@ func CreateTaskForRunner(ctx context.Context, runner *ActionRunner) (*ActionTask
 		RepoID:            job.RepoID,
 		OwnerID:           job.OwnerID,
 		CommitSHA:         job.CommitSHA,
-		IsForkPullRequest: job.IsForkPullRequest,
+		IsForkMergeRequest: job.IsForkMergeRequest,
 	}
 	if err := task.GenerateToken(); err != nil {
 		return nil, false, err

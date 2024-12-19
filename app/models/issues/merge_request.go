@@ -105,35 +105,35 @@ const (
 	MergeRequestGit
 )
 
-// MergeRequestStatus defines pull request status
-type MergeRequestStatus int
+// PullRequestStatus defines pull request status
+type PullRequestStatus int
 
 // Enumerate all the pull request status
 const (
-	MergeRequestStatusConflict MergeRequestStatus = iota
-	MergeRequestStatusChecking
-	MergeRequestStatusMergeable
-	MergeRequestStatusManuallyMerged
-	MergeRequestStatusError
-	MergeRequestStatusEmpty
-	MergeRequestStatusAncestor
+	PullRequestStatusConflict PullRequestStatus = iota
+	PullRequestStatusChecking
+	PullRequestStatusMergeable
+	PullRequestStatusManuallyMerged
+	PullRequestStatusError
+	PullRequestStatusEmpty
+	PullRequestStatusAncestor
 )
 
-func (status MergeRequestStatus) String() string {
+func (status PullRequestStatus) String() string {
 	switch status {
-	case MergeRequestStatusConflict:
+	case PullRequestStatusConflict:
 		return "CONFLICT"
-	case MergeRequestStatusChecking:
+	case PullRequestStatusChecking:
 		return "CHECKING"
-	case MergeRequestStatusMergeable:
+	case PullRequestStatusMergeable:
 		return "MERGEABLE"
-	case MergeRequestStatusManuallyMerged:
+	case PullRequestStatusManuallyMerged:
 		return "MANUALLY_MERGED"
-	case MergeRequestStatusError:
+	case PullRequestStatusError:
 		return "ERROR"
-	case MergeRequestStatusEmpty:
+	case PullRequestStatusEmpty:
 		return "EMPTY"
-	case MergeRequestStatusAncestor:
+	case PullRequestStatusAncestor:
 		return "ANCESTOR"
 	default:
 		return strconv.Itoa(int(status))
@@ -154,7 +154,7 @@ const (
 type MergeRequest struct {
 	ID              int64 `xorm:"pk autoincr"`
 	Type            MergeRequestType
-	Status          MergeRequestStatus
+	Status          PullRequestStatus
 	ConflictedFiles []string `xorm:"TEXT JSON"`
 	CommitsAhead    int
 	CommitsBehind   int
@@ -195,7 +195,7 @@ func init() {
 
 // DeletePullsByBaseRepoID deletes all pull requests by the base repository ID
 func DeletePullsByBaseRepoID(ctx context.Context, repoID int64) error {
-	deleteCond := builder.Select("id").From("pull_request").Where(builder.Eq{"pull_request.base_repo_id": repoID})
+	deleteCond := builder.Select("id").From("merge_request").Where(builder.Eq{"merge_request.base_repo_id": repoID})
 
 	// Delete scheduled auto merges
 	if _, err := db.GetEngine(ctx).In("merge_request_id", deleteCond).
@@ -476,22 +476,22 @@ func (pr *MergeRequest) GetReviewCommentsCount(ctx context.Context) int {
 
 // IsChecking returns true if this pull request is still checking conflict.
 func (pr *MergeRequest) IsChecking() bool {
-	return pr.Status == MergeRequestStatusChecking
+	return pr.Status == PullRequestStatusChecking
 }
 
 // CanAutoMerge returns true if this pull request can be merged automatically.
 func (pr *MergeRequest) CanAutoMerge() bool {
-	return pr.Status == MergeRequestStatusMergeable
+	return pr.Status == PullRequestStatusMergeable
 }
 
 // IsEmpty returns true if this pull request is empty.
 func (pr *MergeRequest) IsEmpty() bool {
-	return pr.Status == MergeRequestStatusEmpty
+	return pr.Status == PullRequestStatusEmpty
 }
 
 // IsAncestor returns true if the Head Commit of this PR is an ancestor of the Base Commit
 func (pr *MergeRequest) IsAncestor() bool {
-	return pr.Status == MergeRequestStatusAncestor
+	return pr.Status == PullRequestStatusAncestor
 }
 
 // IsFromFork return true if this PR is from a fork.
@@ -515,7 +515,7 @@ func (pr *MergeRequest) SetMerged(ctx context.Context) (bool, error) {
 		return false, err
 	}
 
-	if _, err := sess.Exec("UPDATE `pull_request` SET `issue_id` = `issue_id` WHERE `id` = ?", pr.ID); err != nil {
+	if _, err := sess.Exec("UPDATE `merge_request` SET `issue_id` = `issue_id` WHERE `id` = ?", pr.ID); err != nil {
 		return false, err
 	}
 
@@ -614,7 +614,7 @@ func GetUnmergedPullRequest(ctx context.Context, headRepoID, baseRepoID int64, h
 	has, err := db.GetEngine(ctx).
 		Where("head_repo_id=? AND head_branch=? AND base_repo_id=? AND base_branch=? AND has_merged=? AND flow = ? AND issue.is_closed=?",
 			headRepoID, headBranch, baseRepoID, baseBranch, false, flow, false).
-		Join("INNER", "issue", "issue.id=pull_request.issue_id").
+		Join("INNER", "issue", "issue.id=merge_request.issue_id").
 		Get(pr)
 	if err != nil {
 		return nil, err
@@ -706,7 +706,7 @@ func GetPullRequestByIssueID(ctx context.Context, issueID int64) (*MergeRequest,
 func GetPullRequestByBaseHeadInfo(ctx context.Context, baseID, headID int64, base, head string) (*MergeRequest, error) {
 	pr := &MergeRequest{}
 	sess := db.GetEngine(ctx).
-		Join("INNER", "issue", "issue.id = pull_request.issue_id").
+		Join("INNER", "issue", "issue.id = merge_request.issue_id").
 		Where("base_repo_id = ? AND base_branch = ? AND head_repo_id = ? AND head_branch = ?", baseID, base, headID, head)
 	has, err := sess.Get(pr)
 	if err != nil {
@@ -739,7 +739,7 @@ func GetAllUnmergedAgitPullRequestByPoster(ctx context.Context, uid int64) ([]*M
 	err := db.GetEngine(ctx).
 		Where("has_merged=? AND flow = ? AND issue.is_closed=? AND issue.poster_id=?",
 			false, MergeRequestFlowAGit, false, uid).
-		Join("INNER", "issue", "issue.id=pull_request.issue_id").
+		Join("INNER", "issue", "issue.id=merge_request.issue_id").
 		Find(&pulls)
 
 	return pulls, err
@@ -863,8 +863,8 @@ func (pr *MergeRequest) Mergeable(ctx context.Context) bool {
 	// - Has a conflict.
 	// - Received a error while being conflict checked.
 	// - Is a work-in-progress pull request.
-	return pr.Status != MergeRequestStatusChecking && pr.Status != MergeRequestStatusConflict &&
-		pr.Status != MergeRequestStatusError && !pr.IsWorkInProgress(ctx)
+	return pr.Status != PullRequestStatusChecking && pr.Status != PullRequestStatusConflict &&
+		pr.Status != PullRequestStatusError && !pr.IsWorkInProgress(ctx)
 }
 
 // HasEnoughApprovals returns true if pr has enough granted approvals.

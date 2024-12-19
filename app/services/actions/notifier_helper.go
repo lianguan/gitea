@@ -306,7 +306,7 @@ func handleWorkflows(
 			TriggerUserID:     input.Doer.ID,
 			Ref:               ref,
 			CommitSHA:         commit.ID.String(),
-			IsForkPullRequest: isForkPullRequest,
+			IsForkMergeRequest: isForkPullRequest,
 			Event:             input.Event,
 			EventPayload:      string(p),
 			TriggerEvent:      dwf.TriggerEvent.Name,
@@ -417,7 +417,7 @@ func ifNeedApproval(ctx context.Context, run *actions_model.ActionRun, repo *rep
 	// 1. don't need approval if it's not a fork PR
 	// 2. don't need approval if the event is `pull_request_target` since the workflow will run in the context of base branch
 	// 		see https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks#about-workflow-runs-from-public-forks
-	if !run.IsForkPullRequest || run.TriggerEvent == actions_module.GithubEventPullRequestTarget {
+	if !run.IsForkMergeRequest || run.TriggerEvent == actions_module.GithubEventPullRequestTarget {
 		return false, nil
 	}
 

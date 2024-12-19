@@ -31,9 +31,9 @@ type MergeRequestsOptions struct {
 }
 
 func listPullRequestStatement(ctx context.Context, baseRepoID int64, opts *MergeRequestsOptions) *xorm.Session {
-	sess := db.GetEngine(ctx).Where("pull_request.base_repo_id=?", baseRepoID)
+	sess := db.GetEngine(ctx).Where("merge_request.base_repo_id=?", baseRepoID)
 
-	sess.Join("INNER", "issue", "pull_request.issue_id = issue.id")
+	sess.Join("INNER", "issue", "merge_request.issue_id = issue.id")
 	switch opts.State {
 	case "closed", "open":
 		sess.And("issue.is_closed=?", opts.State == "closed")
@@ -59,7 +59,7 @@ func listPullRequestStatement(ctx context.Context, baseRepoID int64, opts *Merge
 func GetUnmergedPullRequestsByHeadInfo(ctx context.Context, repoID int64, branch string) ([]*MergeRequest, error) {
 	prs := make([]*MergeRequest, 0, 2)
 	sess := db.GetEngine(ctx).
-		Join("INNER", "issue", "issue.id = pull_request.issue_id").
+		Join("INNER", "issue", "issue.id = merge_request.issue_id").
 		Where("head_repo_id = ? AND head_branch = ? AND has_merged = ? AND issue.is_closed = ? AND flow = ?", repoID, branch, false, false, MergeRequestFlowGithub)
 	return prs, sess.Find(&prs)
 }
@@ -105,7 +105,7 @@ func HasUnmergedPullRequestsByHeadInfo(ctx context.Context, repoID int64, branch
 	return db.GetEngine(ctx).
 		Where("head_repo_id = ? AND head_branch = ? AND has_merged = ? AND issue.is_closed = ? AND flow = ?",
 			repoID, branch, false, false, MergeRequestFlowGithub).
-		Join("INNER", "issue", "issue.id = pull_request.issue_id").
+		Join("INNER", "issue", "issue.id = merge_request.issue_id").
 		Exist(&MergeRequest{})
 }
 
@@ -117,16 +117,16 @@ func GetUnmergedPullRequestsByBaseInfo(ctx context.Context, repoID int64, branch
 		Where("base_repo_id=? AND base_branch=? AND has_merged=? AND issue.is_closed=?",
 			repoID, branch, false, false).
 		OrderBy("issue.updated_unix DESC").
-		Join("INNER", "issue", "issue.id=pull_request.issue_id").
+		Join("INNER", "issue", "issue.id=merge_request.issue_id").
 		Find(&prs)
 }
 
 // GetPullRequestIDsByCheckStatus returns all pull requests according the special checking status.
-func GetPullRequestIDsByCheckStatus(ctx context.Context, status MergeRequestStatus) ([]int64, error) {
+func GetPullRequestIDsByCheckStatus(ctx context.Context, status PullRequestStatus) ([]int64, error) {
 	prs := make([]int64, 0, 10)
-	return prs, db.GetEngine(ctx).Table("pull_request").
+	return prs, db.GetEngine(ctx).Table("merge_request").
 		Where("status=?", status).
-		Cols("pull_request.id").
+		Cols("merge_request.id").
 		Find(&prs)
 }
 
@@ -302,11 +302,11 @@ func (prs MergeRequestList) LoadReviews(ctx context.Context) (ReviewList, error)
 // HasMergedPullRequestInRepo returns whether the user(poster) has merged pull-request in the repo
 func HasMergedPullRequestInRepo(ctx context.Context, repoID, posterID int64) (bool, error) {
 	return db.GetEngine(ctx).
-		Join("INNER", "pull_request", "pull_request.issue_id = issue.id").
+		Join("INNER", "merge_request", "merge_request.issue_id = issue.id").
 		Where("repo_id=?", repoID).
 		And("poster_id=?", posterID).
 		And("is_merge_request=?", true).
-		And("pull_request.has_merged=?", true).
+		And("merge_request.has_merged=?", true).
 		Select("issue.id").
 		Limit(1).
 		Get(new(Issue))

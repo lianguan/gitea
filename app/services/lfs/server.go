@@ -525,7 +525,7 @@ func authenticate(ctx *context.Context, repository *repo_model.Repository, autho
 			return false
 		}
 
-		if task.IsForkPullRequest {
+		if task.IsForkMergeRequest {
 			return accessMode <= perm_model.AccessModeRead
 		}
 		return accessMode <= perm_model.AccessModeWrite

@@ -44,8 +44,8 @@ func (p *MergeRequest) GetLocalIndex() int64          { return p.Number }
 func (p *MergeRequest) GetForeignIndex() int64        { return p.ForeignIndex }
 func (p *MergeRequest) GetContext() DownloaderContext { return p.Context }
 
-// IsForkPullRequest returns true if the pull request from a forked repository but not the same repository
-func (p *MergeRequest) IsForkPullRequest() bool {
+// IsForkMergeRequest returns true if the pull request from a forked repository but not the same repository
+func (p *MergeRequest) IsForkMergeRequest() bool {
 	return p.Head.RepoFullName() != p.Base.RepoFullName()
 }
 

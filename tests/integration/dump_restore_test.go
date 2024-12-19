@@ -86,7 +86,7 @@ func TestDumpRestore(t *testing.T) {
 
 		newreponame := "restored"
 		err = migrations.RestoreRepository(ctx, d, repo.OwnerName, newreponame, []string{
-			"labels", "issues", "comments", "milestones", "pull_requests",
+			"labels", "issues", "comments", "milestones", "merge_requests",
 		}, false)
 		assert.NoError(t, err)
 
@@ -197,7 +197,7 @@ func (c *compareDump) assertEquals(repoBefore, repoAfter *repo_model.Repository)
 		},
 		"CloneURL": {transform: c.replaceRepoName},
 	}
-	prs, ok := c.assertEqual("pull_request.yml", []base.MergeRequest{}, compareFields{
+	prs, ok := c.assertEqual("merge_request.yml", []base.MergeRequest{}, compareFields{
 		"Assignees": {ignore: true}, // not implemented yet
 		"Head":      {nested: compareMergeRequestBranch},
 		"Base":      {nested: compareMergeRequestBranch},

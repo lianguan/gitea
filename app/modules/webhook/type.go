@@ -17,16 +17,16 @@ const (
 	HookEventIssueLabel                HookEventType = "issue_label"
 	HookEventIssueMilestone            HookEventType = "issue_milestone"
 	HookEventIssueComment              HookEventType = "issue_comment"
-	HookEventPullRequest               HookEventType = "pull_request"
-	HookEventPullRequestAssign         HookEventType = "pull_request_assign"
-	HookEventPullRequestLabel          HookEventType = "pull_request_label"
-	HookEventPullRequestMilestone      HookEventType = "pull_request_milestone"
-	HookEventPullRequestComment        HookEventType = "pull_request_comment"
-	HookEventPullRequestReviewApproved HookEventType = "pull_request_review_approved"
-	HookEventPullRequestReviewRejected HookEventType = "pull_request_review_rejected"
-	HookEventPullRequestReviewComment  HookEventType = "pull_request_review_comment"
-	HookEventPullRequestSync           HookEventType = "pull_request_sync"
-	HookEventPullRequestReviewRequest  HookEventType = "pull_request_review_request"
+	HookEventPullRequest               HookEventType = "merge_request"
+	HookEventPullRequestAssign         HookEventType = "merge_request_assign"
+	HookEventPullRequestLabel          HookEventType = "merge_request_label"
+	HookEventPullRequestMilestone      HookEventType = "merge_request_milestone"
+	HookEventPullRequestComment        HookEventType = "merge_request_comment"
+	HookEventPullRequestReviewApproved HookEventType = "merge_request_review_approved"
+	HookEventPullRequestReviewRejected HookEventType = "merge_request_review_rejected"
+	HookEventPullRequestReviewComment  HookEventType = "merge_request_review_comment"
+	HookEventPullRequestSync           HookEventType = "merge_request_sync"
+	HookEventPullRequestReviewRequest  HookEventType = "merge_request_review_request"
 	HookEventWiki                      HookEventType = "wiki"
 	HookEventRepository                HookEventType = "repository"
 	HookEventRelease                   HookEventType = "release"
@@ -50,15 +50,15 @@ func (h HookEventType) Event() string {
 		return "issues"
 	case HookEventPullRequest, HookEventPullRequestAssign, HookEventPullRequestLabel, HookEventPullRequestMilestone,
 		HookEventPullRequestSync, HookEventPullRequestReviewRequest:
-		return "pull_request"
+		return "merge_request"
 	case HookEventIssueComment, HookEventPullRequestComment:
 		return "issue_comment"
 	case HookEventPullRequestReviewApproved:
-		return "pull_request_approved"
+		return "merge_request_approved"
 	case HookEventPullRequestReviewRejected:
-		return "pull_request_rejected"
+		return "merge_request_rejected"
 	case HookEventPullRequestReviewComment:
-		return "pull_request_comment"
+		return "merge_request_comment"
 	case HookEventWiki:
 		return "wiki"
 	case HookEventRepository:

@@ -200,7 +200,7 @@ func repoAssignment() func(ctx *context.APIContext) {
 				return
 			}
 
-			if task.IsForkPullRequest {
+			if task.IsForkMergeRequest {
 				ctx.Repo.Permission.AccessMode = perm.AccessModeRead
 			} else {
 				ctx.Repo.Permission.AccessMode = perm.AccessModeWrite
